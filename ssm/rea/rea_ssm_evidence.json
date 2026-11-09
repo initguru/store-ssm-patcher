@@ -75168,5 +75168,18 @@
       "returncode": 0,
       "verification_errors": 0
     }
+  },
+  "rea_apk_signature_inspection": {
+    "evidence_id": "ev_45f47c75e8c37cdcc97730b2f64434e66eecd9ed13197a67cc75ffdfeada4007",
+    "parent_evidence_id": "ev_8cf85d9bde1ea441ec97855e7717e493dce42eb948efb67623a3dad37d938e98",
+    "sha256": "2385c5adfdefe8bce114e7f140a50fad4458894085714e12d74198fc87b30d6b",
+    "schemes": {
+      "v1": true,
+      "v2": true,
+      "v3": false
+    },
+    "self_consistent": true,
+    "schemes_agree_on_signer": true,
+    "re_release_signer_cert_sha256": "8aac3faf7b0727fa49462b3811ce70650316338b6dbcc31f9192530eac98fa20"
   }
 }
