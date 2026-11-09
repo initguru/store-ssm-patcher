@@ -124,11 +124,26 @@ class StoreContract(unittest.TestCase):
   with zipfile.ZipFile(APK) as z: original = z.read('classes.dex')
   dex = DexFile(original)
   method = next(m for m in dex.methods if m.code_off and m.return_type.startswith(('L', '[')) and m.registers_size > m.ins_size and m.insns_size >= 4)
-  for code in ('1210110000000000', '1100000000000000'):
+  for code in ('1210110000000000', '1100000000000000',
+               '160000003800020012001100', '160000003200020012001100',
+               '2200000011000000'):
    data = bytearray(original)
-   data[method.insns_off:method.insns_off+8] = bytes.fromhex(code)
+   data[method.insns_off:method.insns_off+method.insns_size*2] = bytes.fromhex(code).ljust(method.insns_size*2, b'\0')
    with self.subTest(code=code), self.assertRaises(AssertionError):
     store.validate_methods(data, [(method.insns_off, '', code)])
+
+ def test_incompatible_concrete_reference_return(self):
+  import struct
+  with zipfile.ZipFile(APK) as z: original = z.read('classes.dex')
+  dex = DexFile(original)
+  method = next(m for m in dex.methods if m.code_off and m.return_type == 'Ljava/lang/String;' and m.registers_size >= 2 and m.insns_size >= 6 and not m.tries_size)
+  cls = dex.type_ids.index('Ljava/util/ArrayList;')
+  init = next(i for i,m in enumerate(dex.method_ids) if m['class_type'] == 'Ljava/util/ArrayList;' and m['name'] == '<init>' and m['proto'] == '()V')
+  code = b'\x22\x00'+struct.pack('<H',cls)+b'\x70\x10'+struct.pack('<H',init)+b'\x00\x00\x11\x00'
+  data = bytearray(original)
+  data[method.insns_off:method.insns_off+method.insns_size*2] = code.ljust(method.insns_size*2-2, b'\0') + b'\x11\x00'
+  with self.assertRaisesRegex(AssertionError, 'reference type mismatch'):
+   store.validate_methods(data, [(method.insns_off, '', code.hex())])
 
  def test_crc_solver(self):
   b = bytearray(b'CRC independent fixture with sufficient bytes')

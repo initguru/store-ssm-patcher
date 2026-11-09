@@ -432,14 +432,65 @@ def _validate_methods(d,patches):
         _verify_register_types(dex, m, ordinary, edges)
 
 
+def _is_ref_assignable(dex, src_desc, dst_desc):
+    """Reject proven incompatibility; unresolved external hierarchies stay unknown."""
+    if src_desc == dst_desc or dst_desc == 'Ljava/lang/Object;': return True
+    if src_desc.startswith('['):
+        if dst_desc in ('Ljava/lang/Cloneable;', 'Ljava/io/Serializable;'): return True
+        if not dst_desc.startswith('['): return False
+        src, dst = src_desc[1:], dst_desc[1:]
+        if src.startswith(('L','[')) and dst.startswith(('L','[')):
+            return _is_ref_assignable(dex, src, dst)
+        return src == dst
+    if dst_desc.startswith('['): return False
+    parents = {
+        'Ljava/lang/String;': ('Ljava/lang/Object;', 'Ljava/io/Serializable;', 'Ljava/lang/Comparable;', 'Ljava/lang/CharSequence;'),
+        'Ljava/util/ArrayList;': ('Ljava/util/AbstractList;', 'Ljava/util/List;', 'Ljava/util/RandomAccess;', 'Ljava/lang/Cloneable;', 'Ljava/io/Serializable;'),
+        'Ljava/util/AbstractList;': ('Ljava/util/AbstractCollection;', 'Ljava/util/List;'),
+        'Ljava/util/AbstractCollection;': ('Ljava/lang/Object;', 'Ljava/util/Collection;'),
+        'Ljava/util/List;': ('Ljava/util/Collection;',),
+        'Ljava/util/Collection;': ('Ljava/lang/Iterable;',),
+        'Ljava/lang/Integer;': ('Ljava/lang/Number;', 'Ljava/lang/Comparable;'),
+        'Ljava/lang/Number;': ('Ljava/lang/Object;', 'Ljava/io/Serializable;'),
+        'Ljava/lang/Boolean;': ('Ljava/lang/Object;', 'Ljava/io/Serializable;', 'Ljava/lang/Comparable;'),
+        'Ljava/lang/Object;': (),
+    }
+    for cls in dex.class_defs:
+        off = cls['interfaces_off']
+        interfaces = tuple(dex.type_ids[H(dex.data, off+4+i*2)] for i in range(U(dex.data, off))) if off else ()
+        sup = cls['superclass_idx']
+        parents[dex.type_ids[cls['class_idx']]] = (() if sup == 0xffffffff else (dex.type_ids[sup],)) + interfaces
+    pending, seen, unknown = [src_desc], set(), False
+    while pending:
+        desc = pending.pop()
+        if desc == dst_desc: return True
+        if desc in seen: continue
+        seen.add(desc)
+        if desc not in parents: unknown = True
+        else: pending.extend(parents[desc])
+    # Known final concrete targets cannot be a superclass of an unrelated
+    # known standard concrete source, even when an external interface is absent.
+    finals = {'Ljava/lang/String;', 'Ljava/lang/Integer;', 'Ljava/lang/Boolean;'}
+    if src_desc in finals or dst_desc in finals and src_desc in parents: return False
+    return unknown
+
+
 def _verify_register_types(dex, method, ordinary, edges):
     """Propagate verifier categories over normal and exceptional CFG edges."""
     def category(desc):
-        return 'R' if desc.startswith(('L', '[')) else 'W1' if desc in ('J', 'D') else 'I'
+        return 'R:' + desc if desc.startswith(('L', '[')) else 'W1' if desc in ('J', 'D') else 'I'
+    def is_ref(value):
+        return isinstance(value, str) and value.startswith('R:')
+    def join(a, b):
+        if a == b: return a
+        if a == '0' and (b == 'I' or is_ref(b)): return b
+        if b == '0' and (a == 'I' or is_ref(a)): return a
+        if is_ref(a) and is_ref(b): return 'R:Ljava/lang/Object;'
+        return 'CONFLICT'
     def arguments(proto):
         return re.findall(r'\[*L[^;]+;|\[*[ZBSCIFJD]', proto.split(')')[0][1:])
     entry = ['U'] * method.registers_size
-    params = ([] if method.access_flags & 8 else ['R'])
+    params = ([] if method.access_flags & 8 else [category(method.class_desc)])
     for desc in arguments(method.proto):
         typ = category(desc)
         params.extend(['W1', 'W2'] if typ == 'W1' else [typ])
@@ -467,12 +518,15 @@ def _verify_register_types(dex, method, ordinary, edges):
                     exceptional.setdefault(u, set()).update(targets)
     states = {0: tuple(entry)}
     pending = [0]
-    def merge(target, state):
+    def merge(target, state, exceptional_edge=False):
         old = states.get(target)
         if old is None:
             joined = tuple(state)
         else:
-            joined = tuple(a if a == b else b if a == '0' and b in ('I', 'R') else a if b == '0' and a in ('I', 'R') else 'CONFLICT' for a, b in zip(old, state))
+            require(exceptional_edge or not any((isinstance(a, tuple) and is_ref(b)) or
+                            (isinstance(b, tuple) and is_ref(a))
+                            for a, b in zip(old, state)), ('uninitialized object merge', target))
+            joined = tuple(join(a, b) for a, b in zip(old, state))
         if joined != old:
             states[target] = joined
             pending.append(target)
@@ -486,8 +540,13 @@ def _verify_register_types(dex, method, ordinary, edges):
             actual = state[reg]
             require(actual != 'CONFLICT', ('register type conflict', o, reg))
             require(actual != 'U', ('uninitialized register', o, reg))
-            require(typ is None or actual == typ or actual == '0' and typ in ('I', 'R'), ('register type mismatch', o, reg, typ, actual))
+            if is_ref(typ):
+                require(actual == '0' or is_ref(actual), ('register type mismatch', o, reg, typ, actual))
+                require(actual == '0' or _is_ref_assignable(dex, actual[2:], typ[2:]), 'reference type mismatch')
+            else:
+                require(typ is None or actual == typ or typ == 'R' and (is_ref(actual) or actual == '0') or actual == '0' and typ == 'I', ('register type mismatch', o, reg, typ, actual))
             if typ == 'W1': read(reg+1, 'W2')
+            return actual
         def write(reg, typ):
             if reg > 0 and state[reg] == 'W2' and state[reg-1] == 'W1': state[reg-1] = 'CONFLICT'
             if state[reg] == 'W1' and reg+1 < len(state): state[reg+1] = 'CONFLICT'
@@ -497,20 +556,32 @@ def _verify_register_types(dex, method, ordinary, edges):
                 state[reg+1] = 'W2'
         if op in (1, 2, 3, 4, 5, 6, 7, 8, 9):
             typ = 'W1' if op in (4,5,6) else 'R' if op in (7,8,9) else 'I'
-            read(regs[1], typ)
+            if typ == 'R' and isinstance(state[regs[1]], tuple):
+                read(regs[1])  # move-object preserves allocation identity before <init>.
+            else:
+                read(regs[1], typ)
             write(regs[0], state[regs[1]])
-        elif op in (0xa, 0xb, 0xc, 0xd): write(regs[0], {0xa:'I',0xb:'W1',0xc:'R',0xd:'R'}[op])
-        elif op in (0xf,0x10,0x11): read(regs[0], {0xf:'I',0x10:'W1',0x11:'R'}[op])
+        elif op in (0xa, 0xb, 0xc, 0xd):
+            typ = {0xa:'I',0xb:'W1',0xc:'R:Ljava/lang/Object;',0xd:'R:Ljava/lang/Throwable;'}[op]
+            if op == 0xc:
+                prev = next(v for k,v in ordinary.items() if k + v[1] == u)
+                if prev[2] in (0x24,0x25): typ = category(dex.type_ids[H(prev[3],2)])
+                else: typ = category(dex.method_ids[H(prev[3],2)]['proto'].split(')')[1])
+            write(regs[0], typ)
+        elif op in (0xf,0x10,0x11): read(regs[0], {0xf:'I',0x10:'W1',0x11:category(method.return_type)}[op])
         elif 0x12 <= op <= 0x15:
             value = raw[1] >> 4 if op == 0x12 else int.from_bytes(raw[2:], 'little')
             write(regs[0], '0' if value == 0 else 'I')
         elif 0x16 <= op <= 0x19: write(regs[0], 'W1')
-        elif op in (0x1a,0x1b,0x1c,0x22): write(regs[0], 'R')
-        elif op in (0x1d,0x1e,0x1f,0x26,0x27): read(regs[0], 'R')
+        elif op in (0x1a,0x1b,0x1c): write(regs[0], category('Ljava/lang/Class;' if op == 0x1c else 'Ljava/lang/String;'))
+        elif op == 0x22: write(regs[0], ('N', u, dex.type_ids[H(raw,2)]))
+        elif op == 0x1f:
+            read(regs[0], 'R'); write(regs[0], category(dex.type_ids[H(raw,2)]))
+        elif op in (0x1d,0x1e,0x26,0x27): read(regs[0], 'R')
         elif op in (0x20,0x21):
             read(regs[1], 'R'); write(regs[0], 'I')
         elif op == 0x23:
-            read(regs[1], 'I'); write(regs[0], 'R')
+            read(regs[1], 'I'); write(regs[0], category(dex.type_ids[H(raw,2)]))
         elif op in (0x24,0x25):
             desc = dex.type_ids[H(raw,2)]
             typ = category(desc[1:])
@@ -525,13 +596,20 @@ def _verify_register_types(dex, method, ordinary, edges):
             if op in (0x32,0x33):
                 read(regs[0]); read(regs[1])
                 a,b = state[regs[0]],state[regs[1]]
-                require(a == b or '0' in (a,b), ('incompatible equality operands',o))
-            elif op in (0x38,0x39): read(regs[0])
+                require((a in ('I','0') and b in ('I','0')) or
+                        ((is_ref(a) or a == '0') and (is_ref(b) or b == '0')),
+                        ('incompatible equality operands',o))
+            elif op in (0x38,0x39):
+                value = read(regs[0])
+                require(value in ('I','0') or is_ref(value), ('invalid zero-test operand',o))
             else:
                 for reg in regs: read(reg, 'I')
         elif 0x44 <= op <= 0x51:
             read(regs[1], 'R'); read(regs[2], 'I')
             typ = 'W1' if op in (0x45,0x4c) else 'R' if op in (0x46,0x4d) else 'I'
+            if op == 0x46:
+                array = state[regs[1]]
+                typ = category(array[3:]) if isinstance(array,str) and array.startswith('R:[') else 'R:Ljava/lang/Object;'
             if op <= 0x4a: write(regs[0], typ)
             else: read(regs[0], typ)
         elif 0x52 <= op <= 0x6d:
@@ -542,11 +620,20 @@ def _verify_register_types(dex, method, ordinary, edges):
             else: read(regs[0],typ)
         elif op in (*range(0x6e,0x73),*range(0x74,0x79)):
             mid = dex.method_ids[H(raw,2)]
-            types = ([] if op in (0x71,0x77) else ['R']) + [category(a) for a in arguments(mid['proto'])]
+            types = ([] if op in (0x71,0x77) else [category(mid['class_type'])]) + [category(a) for a in arguments(mid['proto'])]
+            initializing = op in (0x70,0x76) and mid['name'] == '<init>'
+            allocation = state[regs[0]] if initializing else None
             pos = 0
             for typ in types:
-                read(regs[pos],typ)
+                if initializing and pos == 0:
+                    require(isinstance(allocation, tuple) and allocation[0] == 'N',
+                            ('constructor requires uninitialized object',o))
+                    require(mid['class_type'] in (allocation[2], 'Ljava/lang/Object;'), 'reference type mismatch')
+                else:
+                    read(regs[pos],typ)
                 pos += 2 if typ == 'W1' else 1
+            if initializing:
+                state = [category(allocation[2]) if value == allocation else value for value in state]
         elif 0x7b <= op <= 0x8f:
             read(regs[1], 'W1' if 1 in wide else 'I')
             write(regs[0], 'W1' if 0 in wide else 'I')
@@ -562,7 +649,10 @@ def _verify_register_types(dex, method, ordinary, edges):
         # Only potentially throwing instructions transfer to a catch handler.
         if op in (*range(0x1a,0x28),*range(0x44,0x79),0x93,0x94,0x9e,0x9f,0xb3,0xb4,0xbe,0xbf,0xd3,0xd4,0xdb,0xdc):
             for target in exceptional.get(u, ()):
-                merge(target, before)
+                # Catch handlers may discard a partly initialized allocation;
+                # retain CONFLICT so using it still fails, rather than rejecting
+                # a dead local shared with a later throwing instruction.
+                merge(target, before, exceptional_edge=True)
 
 
 def dex_valid(d):

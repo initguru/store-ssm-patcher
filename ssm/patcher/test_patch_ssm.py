@@ -40,7 +40,7 @@ CERT_AND_AUDIT_PATCHES = [
 
 class PatchContract(unittest.TestCase):
  def test_semantic_plan_and_count(self):
-  self.assertEqual([len(patcher.DEX[n]) for n in ('classes.dex','classes2.dex')], [69,8])
+  self.assertEqual([len(patcher.DEX[n]) for n in ('classes.dex','classes2.dex')], [72,8])
   self.assertTrue(set(NEW_PATCHES) <= set(patcher.DEX['classes.dex']))
   self.assertTrue(set(CERT_AND_AUDIT_PATCHES) <= set(patcher.DEX['classes.dex']))
   self.assertFalse({0x529fec,0x52a01c,0x52a064} & {o for o,_,_ in patcher.DEX['classes.dex']})
@@ -139,6 +139,9 @@ class PatchContract(unittest.TestCase):
     required_strings=('com.sktelecom.ssm', 'currentSignature'))
 
  def test_permission_presets_return_without_persisting_empty_list(self):
+  self.assertIn((0x51fe58, '1a008582', '28290000'), patcher.DEX['classes.dex'])
+  self.assertIn((0x51ffe0, '1a00e6a9', '28290000'), patcher.DEX['classes.dex'])
+  self.assertIn((0x57acb4, '6200bb741a010000', '1a00000011000000'), patcher.DEX['classes.dex'])
   self.assertIn((0x51feb4, '62022472', '11010000'), patcher.DEX['classes.dex'])
   self.assertIn((0x52003c, '6e1094e504000a02', '1101000000000000'), patcher.DEX['classes.dex'])
 
@@ -198,11 +201,28 @@ class PatchContract(unittest.TestCase):
 
  def test_rejects_integer_and_uninitialized_object_returns(self):
   with zipfile.ZipFile(SOURCE) as z: original = z.read('classes.dex')
-  for code in ('1210110000000000', '1100000000000000'):
+  for code in ('1210110000000000', '1100000000000000',
+               '160000003800020012001100', '160000003200020012001100',
+               '22000d2711000000'):
    data = bytearray(original)
-   data[0x51fe58:0x51fe60] = bytes.fromhex(code)
+   data[0x51fe58:0x51fe58+360] = bytes.fromhex(code).ljust(360, b'\0')
    with self.subTest(code=code), self.assertRaises(AssertionError):
     patcher.validate_methods(data, [(0x51fe58, '', code)])
+
+ def test_reference_return_and_wide_branch_types(self):
+  with zipfile.ZipFile(SOURCE) as z: original = z.read('classes.dex')
+  dex = patcher.DexFile(original)
+  method = next(m for m in dex.methods if m.code_off and m.return_type == 'Ljava/lang/String;' and m.registers_size >= 2 and m.insns_size >= 6 and not m.tries_size)
+  cls = dex.type_ids.index('Ljava/util/ArrayList;')
+  init = next(i for i,m in enumerate(dex.method_ids) if m['class_type'] == 'Ljava/util/ArrayList;' and m['name'] == '<init>' and m['proto'] == '()V')
+  codes = [(b'\x22\x00'+struct.pack('<H',cls)+b'\x70\x10'+struct.pack('<H',init)+b'\x00\x00\x11\x00', 'reference type mismatch'),
+           (bytes.fromhex('160000003800020012001100'), 'invalid zero-test operand'),
+           (bytes.fromhex('160000003200020012001100'), 'incompatible equality operands')]
+  for code, reason in codes:
+   data = bytearray(original)
+   data[method.insns_off:method.insns_off+method.insns_size*2] = code.ljust(method.insns_size*2-2, b'\0') + b'\x11\x00'
+   with self.subTest(reason=reason), self.assertRaisesRegex(AssertionError, reason):
+    patcher.validate_methods(data, [(method.insns_off, '', code.hex())])
 
  def test_real_arm64_common_bl_target(self):
   with zipfile.ZipFile(SOURCE) as z: b=z.read('lib/arm64-v8a/libnative-lib.so')

@@ -5913,7 +5913,8 @@
       ],
       "has_patch": true,
       "patch_tuples": [
-        {"offset": "0x52003c", "old": "6e1094e504000a02", "new": "1101000000000000"}
+        {"offset": "0x52003c", "old": "6e1094e504000a02", "new": "1101000000000000"},
+        {"offset": "0x51ffe0", "old": "1a00e6a9", "new": "28290000"}
       ],
       "before_instructions": [
         {"byte_offset": 0, "file_offset": "0x51ffe0", "width": 4, "opcode": "0x1a", "raw_hex": "1a00e6a9", "ref": "optionalPermissions"},
@@ -5992,7 +5993,8 @@
         {"byte_offset": 302, "file_offset": "0x52010e", "width": 2, "opcode": "0x11", "raw_hex": "1101", "ref": null}
       ],
       "after_instructions": [
-        {"byte_offset": 0, "file_offset": "0x51ffe0", "width": 4, "opcode": "0x1a", "raw_hex": "1a00e6a9", "ref": "optionalPermissions"},
+        {"byte_offset": 0, "file_offset": "0x51ffe0", "width": 2, "opcode": "0x28", "raw_hex": "2829", "ref": null},
+        {"byte_offset": 2, "file_offset": "0x51ffe2", "width": 2, "opcode": "0x0", "raw_hex": "0000", "ref": null},
         {"byte_offset": 4, "file_offset": "0x51ffe4", "width": 4, "opcode": "0x54", "raw_hex": "5441c670", "ref": "Lcom/sktelecom/ssm/policy/config/Preset;->b:Landroid/content/Context;"},
         {"byte_offset": 8, "file_offset": "0x51ffe8", "width": 6, "opcode": "0x71", "raw_hex": "7110dee70100", "ref": "Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;"},
         {"byte_offset": 14, "file_offset": "0x51ffee", "width": 2, "opcode": "0xc", "raw_hex": "0c01", "ref": null},
@@ -6115,7 +6117,8 @@
       ],
       "has_patch": true,
       "patch_tuples": [
-        {"offset": "0x51feb4", "old": "62022472", "new": "11010000"}
+        {"offset": "0x51feb4", "old": "62022472", "new": "11010000"},
+        {"offset": "0x51fe58", "old": "1a008582", "new": "28290000"}
       ],
       "before_instructions": [
         {"byte_offset": 0, "file_offset": "0x51fe58", "width": 4, "opcode": "0x1a", "raw_hex": "1a008582", "ref": "essentialPermissions"},
@@ -6208,7 +6211,8 @@
         {"byte_offset": 358, "file_offset": "0x51ffbe", "width": 2, "opcode": "0x11", "raw_hex": "1101", "ref": null}
       ],
       "after_instructions": [
-        {"byte_offset": 0, "file_offset": "0x51fe58", "width": 4, "opcode": "0x1a", "raw_hex": "1a008582", "ref": "essentialPermissions"},
+        {"byte_offset": 0, "file_offset": "0x51fe58", "width": 2, "opcode": "0x28", "raw_hex": "2829", "ref": null},
+        {"byte_offset": 2, "file_offset": "0x51fe5a", "width": 2, "opcode": "0x0", "raw_hex": "0000", "ref": null},
         {"byte_offset": 4, "file_offset": "0x51fe5c", "width": 4, "opcode": "0x54", "raw_hex": "5451c670", "ref": "Lcom/sktelecom/ssm/policy/config/Preset;->b:Landroid/content/Context;"},
         {"byte_offset": 8, "file_offset": "0x51fe60", "width": 6, "opcode": "0x71", "raw_hex": "7110dee70100", "ref": "Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;"},
         {"byte_offset": 14, "file_offset": "0x51fe66", "width": 2, "opcode": "0xc", "raw_hex": "0c01", "ref": null},
@@ -6496,8 +6500,10 @@
           "catch_all_cu": null
         }
       ],
-      "has_patch": false,
-      "patch_tuples": [],
+      "has_patch": true,
+      "patch_tuples": [
+        {"offset": "0x57acb4", "old": "6200bb741a010000", "new": "1a00000011000000"}
+      ],
       "before_instructions": [
         {"byte_offset": 0, "file_offset": "0x57acb4", "width": 4, "opcode": "0x62", "raw_hex": "6200bb74", "ref": "Lcom/sktelecom/ssm/policy/util/h;->a:Ljava/lang/String;"},
         {"byte_offset": 4, "file_offset": "0x57acb8", "width": 4, "opcode": "0x1a", "raw_hex": "1a010000", "ref": ""},
@@ -6615,8 +6621,9 @@
         {"byte_offset": 466, "file_offset": "0x57ae86", "width": 2, "opcode": "0x11", "raw_hex": "1101", "ref": null}
       ],
       "after_instructions": [
-        {"byte_offset": 0, "file_offset": "0x57acb4", "width": 4, "opcode": "0x62", "raw_hex": "6200bb74", "ref": "Lcom/sktelecom/ssm/policy/util/h;->a:Ljava/lang/String;"},
-        {"byte_offset": 4, "file_offset": "0x57acb8", "width": 4, "opcode": "0x1a", "raw_hex": "1a010000", "ref": ""},
+        {"byte_offset": 0, "file_offset": "0x57acb4", "width": 4, "opcode": "0x1a", "raw_hex": "1a000000", "ref": ""},
+        {"byte_offset": 4, "file_offset": "0x57acb8", "width": 2, "opcode": "0x11", "raw_hex": "1100", "ref": null},
+        {"byte_offset": 6, "file_offset": "0x57acba", "width": 2, "opcode": "0x0", "raw_hex": "0000", "ref": null},
         {"byte_offset": 8, "file_offset": "0x57acbc", "width": 4, "opcode": "0x39", "raw_hex": "3900c900", "ref": null},
         {"byte_offset": 12, "file_offset": "0x57acc0", "width": 4, "opcode": "0x1a", "raw_hex": "1a0065ab", "ref": "phone"},
         {"byte_offset": 16, "file_offset": "0x57acc4", "width": 6, "opcode": "0x6e", "raw_hex": "6e2029120600", "ref": "Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;"},
@@ -9105,5 +9112,5 @@
     {"dex": "classes2.dex", "method": "Lorg/bouncycastle/jcajce/util/e;->e(Ljava/lang/String;)Ljava/security/MessageDigest;", "insns_off": "0x1ff4e8", "insns_size": 7, "matched_refs": [ "Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;Ljava/security/Provider;)Ljava/security/MessageDigest;" ]},
     {"dex": "classes2.dex", "method": "Lorg/apache/commons/net/pop3/POP3Client;->login(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z", "insns_off": "0x1a54cc", "insns_size": 115, "matched_refs": [ "Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;", "Ljava/security/MessageDigest;->digest([B)[B" ]}
   ],
-  "patch_tuple_count": 77
+  "patch_tuple_count": 80
 }
