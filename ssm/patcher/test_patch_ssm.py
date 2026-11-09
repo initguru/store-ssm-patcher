@@ -186,14 +186,29 @@ class FullIntegrity(unittest.TestCase):
    self.assertNotIn('before', m, sig)
    self.assertNotIn('after', m, sig)
   rea = json.loads((REPO_ROOT / 'ssm' / 'rea' / 'rea_ssm_evidence.json').read_text())
-  apk_sha = rea['canonical_artifacts']['patched_apk_sha256']
+  import hashlib
+  src_sha = hashlib.sha256(SOURCE.read_bytes()).hexdigest()
+  apk_sha = hashlib.sha256(OUTPUT.read_bytes()).hexdigest()
+  self.assertEqual(rea['canonical_artifacts']['patched_apk_sha256'], apk_sha)
+  self.assertEqual(rea['canonical_artifacts']['original_apk_sha256'], src_sha)
+  self.assertEqual(rea['canonical_artifacts']['source_apk_sha256'], src_sha)
   self.assertEqual(rea['patched_apk_signature_inspection']['summary']['artifact']['sha256'], apk_sha)
   self.assertEqual(rea['rea_apk_signature_inspection']['summary']['artifact']['sha256'], apk_sha)
-  self.assertIn(apk_sha, {a['sha256'] for a in rea['artifacts']})
+  self.assertEqual(len(rea['artifacts']), 2)
+  self.assertEqual({a['sha256'] for a in rea['artifacts']}, {src_sha, apk_sha})
+  self.assertEqual({a['digest']['sha256'] for a in rea['artifacts']}, {src_sha, apk_sha})
+  self.assertEqual({r['subject']['digest']['sha256'] for r in rea['records']}, {src_sha, apk_sha})
   rec_ids = {r['evidence_id'] for r in rea['records']}
   self.assertIn(rea['patched_apk_signature_inspection']['evidence_id'], rec_ids)
   self.assertIn(rea['patched_apk_signature_inspection']['parent_evidence_id'], rec_ids)
   for d in rea['android14_dex2oat64_verification']:
    self.assertEqual(d['source_patched_apk_sha256'], apk_sha)
+  with tempfile.TemporaryDirectory() as tmp:
+   dup_src = Path(tmp) / 'dup_src.apk'
+   with zipfile.ZipFile(dup_src, 'w') as z:
+    z.writestr('a.txt', b'1')
+    z.writestr('a.txt', b'2')
+   with self.assertRaisesRegex(AssertionError, 'duplicate source entries'):
+    patcher.check(dup_src, OUTPUT, {}, {})
 
 if __name__=='__main__':unittest.main()
