@@ -6,13 +6,17 @@
       "dex": "classes.dex",
       "command": "/apex/com.android.art/bin/dex2oat64 --dex-file=/data/local/tmp/ssm-r01-classes.dex --oat-file=/data/local/tmp/ssm-r01-classes.dex.oat --instruction-set=arm64 --compiler-filter=verify --runtime-arg -Xnorelocate",
       "exit_code": 0,
-      "log_path": "/Users/jihyun.son/dev/rea/ssm/ssm/rea/runtime_api34/classes.dex.verify.log"
+      "log_path": "/Users/jihyun.son/dev/rea/ssm/ssm/rea/runtime_api34/classes.dex.verify.log",
+      "sha256": "29f27cd1729df82d01da2199e6e93197d8c233d729802e630f6eb4eedfc4e35f",
+      "source_patched_apk_sha256": "8f1dbc6b9cae78bc97b59901eb4e5c6955d5a2fcde2178f6f85efe024cfa4a49"
     },
     {
       "dex": "classes2.dex",
       "command": "/apex/com.android.art/bin/dex2oat64 --dex-file=/data/local/tmp/ssm-r01-classes2.dex --oat-file=/data/local/tmp/ssm-r01-classes2.dex.oat --instruction-set=arm64 --compiler-filter=verify --runtime-arg -Xnorelocate",
       "exit_code": 0,
-      "log_path": "/Users/jihyun.son/dev/rea/ssm/ssm/rea/runtime_api34/classes2.dex.verify.log"
+      "log_path": "/Users/jihyun.son/dev/rea/ssm/ssm/rea/runtime_api34/classes2.dex.verify.log",
+      "sha256": "50ec09cb71e729e2cb8e7331669e5d1d40b6cbb7b4607d4d80adbc71aca8d4fe",
+      "source_patched_apk_sha256": "8f1dbc6b9cae78bc97b59901eb4e5c6955d5a2fcde2178f6f85efe024cfa4a49"
     }
   ],
   "install": {

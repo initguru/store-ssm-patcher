@@ -323,8 +323,15 @@ class FullIntegrity(unittest.TestCase):
    self.assertEqual(rea['canonical_artifacts']['patched_apk_bytes'], size)
    self.assertEqual(rea['patched_apk_signature_inspection']['summary']['artifact']['bytes'], size)
    self.assertEqual(next(a for a in rea['artifacts'] if a['sha256'] == apk_sha)['size_bytes'], size)
-   with zipfile.ZipFile(target) as zf:
+   runtime = json.loads((REPO_ROOT / 'ssm/rea/runtime_api34/result.json').read_text())
+   art = {entry['dex']: entry for entry in runtime['art']}
+   with zipfile.ZipFile(target) as zf, zipfile.ZipFile(SOURCE) as source:
     for d in rea['android14_dex2oat64_verification']:
+     section = p1['dex_analysis'][d['dex']]
+     self.assertEqual(section['original_sha256'], hashlib.sha256(source.read(d['dex'])).hexdigest())
+     self.assertEqual(section['patched_sha256'], d['sha256'])
+     self.assertEqual(art[d['dex']]['sha256'], d['sha256'])
+     self.assertEqual(art[d['dex']]['source_patched_apk_sha256'], apk_sha)
      self.assertEqual(d['source_patched_apk_sha256'], apk_sha)
      self.assertEqual(hashlib.sha256(zf.read(d['dex'])).hexdigest(), d['sha256'])
 

@@ -15793,7 +15793,9 @@
           "incoming_callers": [],
           "after_incoming_callers": []
         }
-      ]
+      ],
+      "original_sha256": "6e559cb61d8d982e272e19b93790f45eeb16ca392e0978c929bdfa5e93a29814",
+      "patched_sha256": "29f27cd1729df82d01da2199e6e93197d8c233d729802e630f6eb4eedfc4e35f"
     },
     "classes2.dex": {
       "patch_tuples": [
@@ -17560,7 +17562,9 @@
             {"dex": "classes2.dex", "method": "Lskinfosec/utils/f;->b(Ljava/lang/String;)Ljava/lang/String;", "file_offset": "0x29cd44", "byte_offset": 120}
           ]
         }
-      ]
+      ],
+      "original_sha256": "b2b680fa3411f28be8c0c171e08d3bd16f3f98f074428d3b2fb890c8133f65ba",
+      "patched_sha256": "50ec09cb71e729e2cb8e7331669e5d1d40b6cbb7b4607d4d80adbc71aca8d4fe"
     }
   }
 }

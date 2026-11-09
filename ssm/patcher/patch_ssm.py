@@ -586,7 +586,7 @@ def regenerate_analysis(source, output):
  evidence=dict(apk=Path(source).name,patch_tuple_count=total_patches,native_analysis=native,dex_analysis=dex_analysis)
  for name,patches in dex_plans.items():
   methods=[r for r in records if r['dex']==name]
-  dex_analysis[name]=dict(patch_tuples=[dict(offset=hex(o),old=old,new=new) for o,old,new in patches],method_count=len(methods),methods=methods)
+  dex_analysis[name]=dict(original_sha256=hashlib.sha256(before[name].data).hexdigest(),patched_sha256=hashlib.sha256(after[name].data).hexdigest(),patch_tuples=[dict(offset=hex(o),old=old,new=new) for o,old,new in patches],method_count=len(methods),methods=methods)
  first.write_text(dump_analysis_json(evidence))
  second.write_text(dump_analysis_json(dict(patch_tuple_count=total_patches,incoming_callers_coverage='All explicit invoke sites across all APK DEX methods; no runtime dispatch or reflection inference',patched_methods_summary=records)))
  audit_doc.pop('patched_methods', None)
