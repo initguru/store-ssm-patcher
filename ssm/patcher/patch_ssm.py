@@ -7,17 +7,117 @@ import struct
 import sys
 import tempfile
 import zipfile
+import zlib
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from patcher_common import (DEFAULT_KEYSTORE, DexFile, build_signed_apk,
- decode_tries, dex_valid, dump_analysis_json, extract_apk_cert_sha1,
+ correction_offset, restore_crc, decode_tries, dex_valid, dump_analysis_json, extract_apk_cert_sha1,
  find_unique_insn_offset, find_unique_method, fix_dex, require, run,
  validate_methods, verify_dex_exact)
 
 __all__ = ['verify_dex_exact']
 
 DEFAULT_SSM_CERT_SHA1 = '7477ca27bf39d4a8bde8e8c95ac706418b6e5b24'
+
+REMOVED_PERMISSIONS = frozenset({
+ 'android.permission.MANAGE_DEVICE_POLICY_LOCK_TASK',
+ 'android.permission.WRITE_SECURE_SETTINGS',
+ 'android.permission.GET_ACCOUNTS',
+ 'android.permission.READ_CONTACTS',
+ 'android.permission.WRITE_CONTACTS',
+ 'android.permission.READ_PHONE_STATE',
+ 'android.permission.READ_PRIVILEGED_PHONE_STATE',
+ 'android.permission.ACCESS_BACKGROUND_LOCATION',
+ 'android.permission.LAUNCH_ACTIVITY_FROM_FOREGROUND_SERVICE',
+ 'android.permission.READ_CALL_LOG',
+ 'android.permission.READ_OWNER_DATA',
+ 'android.permission.CALL_PHONE',
+ 'android.permission.SYSTEM_ALERT_WINDOW',
+ 'android.permission.PROCESS_OUTGOING_CALLS',
+ 'android.permission.WRITE_CALL_LOG',
+ 'com.sec.android.provider.logsprovider.permission.READ_LOGS',
+ 'com.sec.android.provider.logsprovider.permission.WRITE_LOGS',
+ 'android.permission.DISABLE_KEYGUARD',
+ 'android.permission.RECORD_AUDIO',
+})
+REMOVED_SERVICES = frozenset({
+ 'com.sktelecom.ssm.accessibility.SSMAccessibilityService',
+})
+SCRUB_STRINGS = REMOVED_PERMISSIONS | REMOVED_SERVICES | frozenset({
+ 'android.permission.BIND_ACCESSIBILITY_SERVICE',
+ 'android.accessibilityservice.AccessibilityService',
+ 'android.accessibilityservice',
+})
+
+def patch_manifest(data: bytes) -> bytes:
+ require(struct.unpack_from('<HHI', data, 0) == (3, 8, len(data)), 'invalid AXML header')
+ ctype, header, size = struct.unpack_from('<HHI', data, 8)
+ require(ctype == 1 and header == 28 and 8 + size <= len(data), 'invalid StringPool')
+ count, _, flags, start, _ = struct.unpack_from('<5I', data, 16)
+ require(flags == 0, 'expected UTF-16LE StringPool')
+ out = bytearray(data[:8+size])
+ strings = []
+ for idx in range(count):
+  off = 8 + start + struct.unpack_from('<I', data, 36+idx*4)[0]
+  u16_len, = struct.unpack_from('<H', data, off)
+  off += 2
+  if u16_len & 0x8000:
+   u16_len = ((u16_len & 0x7fff) << 16) | struct.unpack_from('<H', data, off)[0]
+   off += 2
+  text = data[off:off+u16_len*2].decode('utf-16le')
+  strings.append(text)
+  if text in SCRUB_STRINGS:
+   out[off:off+u16_len*2] = ('android.permission.UNUSED_' + f'{idx:03d}' + '_'*u16_len)[:u16_len].encode('utf-16le')
+ pos = 8 + size
+ ctype, header, size = struct.unpack_from('<HHI', data, pos)
+ require(ctype == 0x0180 and header == 8 and size >= 8 and pos+size <= len(data), 'invalid ResourceMap')
+ out.extend(data[pos:pos+size])
+ pos += size
+ skipped = 0
+ sdk = dict(compileSdkVersion=30, platformBuildVersionCode=30,
+            compileSdkVersionCodename=11, platformBuildVersionName=11)
+ while pos < len(data):
+  ctype, header, size = struct.unpack_from('<HHI', data, pos)
+  require(size >= header >= 8 and pos+size <= len(data), 'invalid XML chunk')
+  chunk = bytearray(data[pos:pos+size])
+  if ctype == 0x0102:
+   tag = strings[struct.unpack_from('<I', chunk, 20)[0]]
+   astart, width, nattrs = struct.unpack_from('<HHH', chunk, 24)
+   require(width >= 20 and 16+astart+nattrs*width <= size, 'invalid XML attributes')
+   remove = False
+   for idx in range(nattrs):
+    aoff = 16 + astart + idx*width
+    name = strings[struct.unpack_from('<I', chunk, aoff+4)[0]]
+    raw, _, _, dtype, value = struct.unpack_from('<IHBBI', chunk, aoff+8)
+    if name == 'name':
+     text = strings[raw] if raw != 0xffffffff else strings[value] if dtype == 3 else None
+     remove |= (tag == 'uses-permission' and text in REMOVED_PERMISSIONS or
+                tag == 'service' and text in REMOVED_SERVICES)
+    new_val = sdk.get(name) if tag == 'manifest' else 30 if tag == 'uses-sdk' and name == 'targetSdkVersion' else None
+    if new_val is not None:
+     struct.pack_into('<IHBBI', chunk, aoff+8, 0xffffffff, 8, 0, 0x10, new_val)
+   if skipped or remove:
+    skipped += 1
+  elif ctype == 0x0103 and skipped:
+   skipped -= 1
+   pos += size
+   continue
+  if not skipped:
+   out.extend(chunk)
+  pos += size
+ require(not skipped, 'unclosed removed XML element')
+ struct.pack_into('<I', out, 4, len(out))
+ return bytes(out)
+
+def patch_native(b, patches):
+ changed = bytearray(b)
+ for symbol, off, patch in patches:
+  before = b[off:off+len(patch)]
+  require(before != patch and len(before) == len(patch), (symbol, 'unexpected original'))
+  changed[off:off+len(patch)] = patch
+ restore_crc(changed, correction_offset(changed), zlib.crc32(b) & 0xffffffff)
+ return changed
 
 DEX = {
  'classes.dex': [
@@ -71,6 +171,20 @@ DEX['classes.dex'] += [
  (0x53d41c,'390a0300','0e000000'),(0x56585a,'0a04','1214'),
  (0x53e340,'0a04','1214'),(0x4c5994,'0a00','1200')]
 
+DEX['classes.dex'] += [
+ (0x51feb4,'62022472','287c0000'),
+ (0x52003c,'6e1094e504000a02','2860000000000000'),
+ (0x581044,'711008f000000a00','1210000000000000'),
+ (0x581388,'6000c507','12100f00'),
+ (0x4fbc60,'7110581703000a03','1213000000000000'),
+ (0x4f9b50,'37650a00','00000000'),
+ (0x4fb484,'54108a6f','12000f00')]
+DEX['classes2.dex'] += [
+ (0xaa80a,'7110330207000c01','1100000000000000'),
+ (0xaa6f0,'60000f00','12100f00'),
+ (0xaa758,'60000f00','12100f00'),
+ (0xae1f8,'1a00944e','12100f00')]
+
 SEMANTIC_METHODS = [
  ('policy/ss/util/SamsungInterface','D1','(Z)Z',49,5),
  ('policy/o0/i/a','G0','(Z)Z',47,6),
@@ -121,6 +235,17 @@ SEMANTIC_METHODS = [
  ('policy/receiver/PolicyBroadcastReceiver$a','run','()V',1038,9),
  ('policy/gid20/l/a','u','(Ljava/lang/String;)I',228,10),
  ('BackgroundService','onStartCommand','(Landroid/content/Intent;II)I',675,26),
+ ('policy/config/Preset','o','()Ljava/util/List;',180,6),
+ ('policy/config/Preset','J','()Ljava/util/List;',152,5),
+ ('policy/util/y','z','(Landroid/content/Context;)Z',5,1),
+ ('policy/util/y','K','(Landroid/content/Context;)Z',89,6),
+ ('init/a1','k','(Landroid/content/Context;)Z',53,4),
+ ('init/v0','k','(Landroid/content/Context;)Z',60,9),
+ ('init/z0','u','(Landroid/content/Context;)Z',28,3),
+ ('util/b','c','(Landroid/content/Context;)Ljava/util/List;',103,8),
+ ('util/b','d','(Landroid/content/Context;)Z',44,3),
+ ('util/b','e','(Landroid/content/Context;)Z',48,3),
+ ('util/h','s','(Landroid/content/Context;)Z',18,2),
 ]
 
 SEMANTIC_SITES = {
@@ -131,8 +256,9 @@ SEMANTIC_SITES = {
  (34,56),(34,68),(34,98),(34,110),(35,42),(36,48),(36,108),(37,0),(38,0),(39,0),
  (28,26),(29,22),(30,22),(31,22),(32,22),
  (9,220),(10,220),(11,220),(12,220),(13,96),(14,24),
- (43,6),(44,58),(45,0),(46,834),(47,252),(48,68)],
- 'classes2.dex': [(40,30),(40,36),(41,0),(42,0)]
+ (43,6),(44,58),(45,0),(46,834),(47,252),(48,68),
+ (49,92),(50,92),(51,0),(52,0),(53,36),(54,72),(55,0)],
+ 'classes2.dex': [(40,30),(40,36),(41,0),(42,0),(56,10),(57,0),(58,0),(59,0)]
 }
 
 SEMANTIC_FEATURES = {
@@ -186,6 +312,17 @@ SEMANTIC_FEATURES = {
  46: dict(required_strings=('commandMalwareInspection','android.intent.action.PACKAGE_REPLACED')),
  47: dict(required_strings=('sha256Value : ',' / info.signature : ')),
  48: dict(required_strings=('commandMalwareInspection','gid20cid214')),
+ 49: dict(required_strings=('essentialPermissions',)),
+ 50: dict(required_strings=('optionalPermissions',)),
+ 51: dict(required_calls=('Lcom/sktelecom/ssm/policy/util/b;->a(Landroid/content/Context;)Z',)),
+ 52: dict(required_strings=('canDrawOverlays = ','android:system_alert_window')),
+ 53: dict(required_strings=('isEnabled = ',), required_calls=('Landroid/provider/Settings;->canDrawOverlays(Landroid/content/Context;)Z',)),
+ 54: dict(required_strings=('permissionAgree',)),
+ 55: dict(required_calls=('Lcom/sktelecom/ssm/policy/config/Preset;->J()Ljava/util/List;',)),
+ 56: dict(required_strings=('170918 permission : ',)),
+ 57: dict(required_strings=('20160120 init isActiveEssentialPermissions.size() : ',)),
+ 58: dict(required_strings=('20181210 init isActiveOptionalPermissions.size() : ',)),
+ 59: dict(required_strings=('phone',), required_calls=('Landroid/telephony/TelephonyManager;->getCallState()I',)),
 }
 
 def plan_dex(dex_name, dex_bytes, cert_sha1=None):
@@ -325,7 +462,11 @@ def check(original,output,plans,dex_plans=None):
      expected[off:off+len(patch)]=patch
      require(b[off:off+len(patch)]==patch,(n,symbol,'patch absent'))
      print(n,symbol,hex(off),patch.hex())
+    restore_crc(expected, correction_offset(expected), zlib.crc32(original_so) & 0xffffffff)
     require(b==expected,(n,'unexpected native change'))
+    require((dst.getinfo(n).CRC, dst.getinfo(n).file_size) == (i.CRC, i.file_size), n)
+   elif n == 'AndroidManifest.xml' and len(src.read(n)) >= 84000:
+    require(b == patch_manifest(src.read(n)), (n, 'manifest mismatch'))
    else: require(b==src.read(n),(n,'content changed'))
   raw=Path(output).read_bytes();stored=0;native=0
   for entry in dst.infolist():
@@ -442,6 +583,7 @@ def main():
  cert_sha1=extract_apk_cert_sha1(src)
  replacements={};plans={};dex_plans={}
  with zipfile.ZipFile(src) as z:
+  replacements['AndroidManifest.xml'] = patch_manifest(z.read('AndroidManifest.xml'))
   for n in DEX:
    b=bytearray(z.read(n));require(dex_valid(b),(n,'invalid input DEX'))
    patches=plan_dex(n,b,cert_sha1)
@@ -455,13 +597,8 @@ def main():
    replacements[n]=fix_dex(b)
   for n in z.namelist():
    if not n.startswith('lib/') or not n.endswith('/libnative-lib.so'):continue
-   b=z.read(n);elf=ELF(b);plans[n]=elf.patches();changed=bytearray(b)
-   for symbol,off,patch in plans[n]:
-    before=b[off:off+len(patch)]
-    require(before!=patch and len(before)==len(patch),(n,symbol,'unexpected original'))
-    print('Native plan',n,symbol,hex(off),'original',before.hex(),'patch',patch.hex())
-    changed[off:off+len(patch)]=patch
-   replacements[n]=changed
+   b=z.read(n);elf=ELF(b);plans[n]=elf.patches()
+   replacements[n]=patch_native(b, plans[n])
  require(len(plans)==4, 'expected 4 ABI native plans')
  if a.red:
   check(src,src,plans,dex_plans)

@@ -40,7 +40,7 @@ CERT_AND_AUDIT_PATCHES = [
 
 class PatchContract(unittest.TestCase):
  def test_semantic_plan_and_count(self):
-  self.assertEqual([len(patcher.DEX[n]) for n in ('classes.dex','classes2.dex')], [62,4])
+  self.assertEqual([len(patcher.DEX[n]) for n in ('classes.dex','classes2.dex')], [69,8])
   self.assertTrue(set(NEW_PATCHES) <= set(patcher.DEX['classes.dex']))
   self.assertTrue(set(CERT_AND_AUDIT_PATCHES) <= set(patcher.DEX['classes.dex']))
   self.assertFalse({0x529fec,0x52a01c,0x52a064} & {o for o,_,_ in patcher.DEX['classes.dex']})
@@ -49,6 +49,60 @@ class PatchContract(unittest.TestCase):
   with zipfile.ZipFile(SOURCE) as z:
    for name, expected in patcher.DEX.items():
     self.assertEqual(patcher.plan_dex(name, z.read(name), cert_sha1), expected)
+
+ def test_manifest_sanitization_and_sdk_target(self):
+  with zipfile.ZipFile(SOURCE) as z: original = z.read('AndroidManifest.xml')
+  result = patcher.patch_manifest(original)
+  self.assertEqual((len(original), len(result)), (84052, 82172))
+  self.assertEqual(struct.unpack_from('<HHI', result), (3, 8, len(result)))
+  for text in patcher.SCRUB_STRINGS:
+   self.assertNotIn(text.encode('utf-16le'), result)
+   self.assertNotIn(text.encode('utf-8'), result)
+  count, = struct.unpack_from('<I', result, 16)
+  start, = struct.unpack_from('<I', result, 28)
+  strings = []
+  for idx in range(count):
+   off = 8 + start + struct.unpack_from('<I', result, 36 + idx * 4)[0]
+   length, = struct.unpack_from('<H', result, off)
+   strings.append(result[off+2:off+2+length*2].decode('utf-16le'))
+  off = 8 + struct.unpack_from('<I', result, 12)[0]
+  attrs = {}
+  tags = []
+  while off < len(result):
+   kind, _, size = struct.unpack_from('<HHI', result, off)
+   if kind == 0x0102:
+    tag = strings[struct.unpack_from('<I', result, off+20)[0]]
+    tags.append(tag)
+    astart, width, nattrs = struct.unpack_from('<HHH', result, off+24)
+    for i in range(nattrs):
+     aoff = off+16+astart+i*width
+     name = strings[struct.unpack_from('<I', result, aoff+4)[0]]
+     if tag in ('manifest', 'uses-sdk'):
+      attrs[tag, name] = struct.unpack_from('<IHBBI', result, aoff+8)
+   off += size
+  original_tags = []
+  off = 8 + struct.unpack_from('<I', original, 12)[0]
+  while off < len(original):
+   kind, _, size = struct.unpack_from('<HHI', original, off)
+   if kind == 0x0102:
+    original_tags.append(strings[struct.unpack_from('<I', original, off+20)[0]])
+   off += size
+  self.assertEqual(original_tags.count('uses-permission') - tags.count('uses-permission'), 19)
+  self.assertEqual(original_tags.count('service') - tags.count('service'), 1)
+  for tag, name, value in [('manifest','compileSdkVersion',30), ('manifest','platformBuildVersionCode',30), ('manifest','compileSdkVersionCodename',11), ('manifest','platformBuildVersionName',11), ('uses-sdk','targetSdkVersion',30)]:
+   self.assertEqual(attrs[tag, name], (0xffffffff,8,0,0x10,value))
+
+ def test_native_crc_preserved(self):
+  import zlib
+  with zipfile.ZipFile(SOURCE) as z:
+   for name in z.namelist():
+    if name.startswith('lib/') and name.endswith('/libnative-lib.so'):
+     original = z.read(name)
+     result = patcher.patch_native(original, patcher.ELF(original).patches())
+     self.assertEqual(len(result), len(original))
+     self.assertEqual(zlib.crc32(result), zlib.crc32(original))
+     for _, off, patch_bytes in patcher.ELF(original).patches():
+      self.assertEqual(result[off:off+len(patch_bytes)], patch_bytes)
 
  def test_dynamic_cert_string_and_semantic_fallback(self):
   with zipfile.ZipFile(SOURCE) as z:
@@ -88,6 +142,9 @@ class PatchContract(unittest.TestCase):
    with zipfile.ZipFile(SOURCE) as src, zipfile.ZipFile(target) as dst:
     plans={n:patcher.ELF(src.read(n)).patches() for n in src.namelist() if n.startswith('lib/') and n.endswith('/libnative-lib.so')}
     patcher.check(SOURCE,target,plans)
+    for name in plans:
+     self.assertEqual((dst.getinfo(name).CRC, dst.getinfo(name).file_size),
+                      (src.getinfo(name).CRC, src.getinfo(name).file_size))
     for name, patches in patcher.DEX.items():
      patcher.verify_dex_exact(src.read(name), dst.read(name), patches)
 
