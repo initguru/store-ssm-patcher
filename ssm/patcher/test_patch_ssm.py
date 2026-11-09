@@ -209,6 +209,17 @@ class PatchContract(unittest.TestCase):
    with self.subTest(code=code), self.assertRaises(AssertionError):
     patcher.validate_methods(data, [(0x51fe58, '', code)])
 
+  import struct
+  dex = patcher.DexFile(original)
+  method = next(m for m in dex.methods if m.code_off and m.return_type == 'Ljava/lang/String;' and m.registers_size >= 2 and m.insns_size >= 7 and not m.tries_size)
+  cls = dex.type_ids.index('Ljava/lang/StringBuilder;')
+  init = next(i for i,m in enumerate(dex.method_ids) if m['class_type'] == 'Ljava/lang/StringBuilder;' and m['name'] == '<init>' and m['proto'] == '()V')
+  code = b'\x22\x00'+struct.pack('<H',cls)+b'\x70\x10'+struct.pack('<H',init)+b'\x00\x00\x11\x00'
+  data = bytearray(original)
+  data[method.insns_off:method.insns_off+method.insns_size*2] = code.ljust(method.insns_size*2-2, b'\0') + b'\x11\x00'
+  with self.assertRaisesRegex(AssertionError, 'reference type mismatch'):
+   patcher.validate_methods(data, [(method.insns_off, '', code.hex())])
+
  def test_reference_return_and_wide_branch_types(self):
   with zipfile.ZipFile(SOURCE) as z: original = z.read('classes.dex')
   dex = patcher.DexFile(original)
@@ -308,6 +319,10 @@ class FullIntegrity(unittest.TestCase):
    if not target.is_file():
     target = Path(tmp) / 'ssm_patched.apk'
     subprocess.run([sys.executable, str(Path(__file__).resolve().parent / 'patch_ssm.py'), str(SOURCE), str(target)], check=True)
+   size = target.stat().st_size
+   self.assertEqual(rea['canonical_artifacts']['patched_apk_bytes'], size)
+   self.assertEqual(rea['patched_apk_signature_inspection']['summary']['artifact']['bytes'], size)
+   self.assertEqual(next(a for a in rea['artifacts'] if a['sha256'] == apk_sha)['size_bytes'], size)
    with zipfile.ZipFile(target) as zf:
     for d in rea['android14_dex2oat64_verification']:
      self.assertEqual(d['source_patched_apk_sha256'], apk_sha)

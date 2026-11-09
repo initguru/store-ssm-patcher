@@ -871,7 +871,7 @@
     "source_apk_sha256": "0cc941a338fa577d18add15e1d89e9c6e9971acded2f1722bff7e6b457dc79a1",
     "patched_apk": "artifacts/SSM_5.5.14.2624_patched.apk",
     "patched_apk_sha256": "8f1dbc6b9cae78bc97b59901eb4e5c6955d5a2fcde2178f6f85efe024cfa4a49",
-    "patched_apk_bytes": 21542946
+    "patched_apk_bytes": 21542944
   },
   "rea_apk_signature_inspection": {
     "evidence_id": "ev_728e1d928a21cdddeb12c785b65d85fba127d9575b74f4f5de58a20e80cb9454",

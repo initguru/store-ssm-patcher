@@ -455,11 +455,17 @@ def _is_ref_assignable(dex, src_desc, dst_desc):
         'Ljava/lang/Boolean;': ('Ljava/lang/Object;', 'Ljava/io/Serializable;', 'Ljava/lang/Comparable;'),
         'Ljava/lang/Object;': (),
     }
+    finals = {'Ljava/lang/' + name + ';' for name in (
+        'String', 'Integer', 'Boolean', 'StringBuilder', 'StringBuffer',
+        'System', 'Math', 'Byte', 'Short', 'Character', 'Float', 'Double', 'Long')}
     for cls in dex.class_defs:
+        if cls['access_flags'] & 0x10:
+            finals.add(dex.type_ids[cls['class_idx']])
         off = cls['interfaces_off']
         interfaces = tuple(dex.type_ids[H(dex.data, off+4+i*2)] for i in range(U(dex.data, off))) if off else ()
         sup = cls['superclass_idx']
         parents[dex.type_ids[cls['class_idx']]] = (() if sup == 0xffffffff else (dex.type_ids[sup],)) + interfaces
+    if dst_desc in finals: return False
     pending, seen, unknown = [src_desc], set(), False
     while pending:
         desc = pending.pop()
@@ -468,10 +474,6 @@ def _is_ref_assignable(dex, src_desc, dst_desc):
         seen.add(desc)
         if desc not in parents: unknown = True
         else: pending.extend(parents[desc])
-    # Known final concrete targets cannot be a superclass of an unrelated
-    # known standard concrete source, even when an external interface is absent.
-    finals = {'Ljava/lang/String;', 'Ljava/lang/Integer;', 'Ljava/lang/Boolean;'}
-    if src_desc in finals or dst_desc in finals and src_desc in parents: return False
     return unknown
 
 
@@ -485,7 +487,11 @@ def _verify_register_types(dex, method, ordinary, edges):
         if a == b: return a
         if a == '0' and (b == 'I' or is_ref(b)): return b
         if b == '0' and (a == 'I' or is_ref(a)): return a
-        if is_ref(a) and is_ref(b): return 'R:Ljava/lang/Object;'
+        if is_ref(a) and is_ref(b):
+            throwable = 'Ljava/lang/Throwable;'
+            if a in (*exception_types.values(), 'R:' + throwable) and b in (*exception_types.values(), 'R:' + throwable):
+                return 'R:' + throwable
+            return 'R:Ljava/lang/Object;'
         return 'CONFLICT'
     def arguments(proto):
         return re.findall(r'\[*L[^;]+;|\[*[ZBSCIFJD]', proto.split(')')[0][1:])
@@ -497,6 +503,7 @@ def _verify_register_types(dex, method, ordinary, edges):
     require(len(params) == method.ins_size, ('parameter width mismatch', method.signature))
     entry[method.registers_size-method.ins_size:] = params
     exceptional = {}
+    exception_types = {}
     if method.tries_size:
         d = dex.data
         end = method.insns_off + method.insns_size*2
@@ -507,12 +514,16 @@ def _verify_register_types(dex, method, ordinary, edges):
             size, pos = sleb(d, base+ho)
             targets = []
             for _ in range(abs(size)):
-                _, pos = uleb(d, pos)
+                type_idx, pos = uleb(d, pos)
                 addr, pos = uleb(d, pos)
                 targets.append(addr)
+                desc = category(dex.type_ids[type_idx])
+                previous = exception_types.get(addr, desc)
+                exception_types[addr] = desc if previous == desc else 'R:Ljava/lang/Throwable;'
             if size <= 0:
                 addr, pos = uleb(d, pos)
                 targets.append(addr)
+                exception_types[addr] = 'R:Ljava/lang/Throwable;'
             for u in ordinary:
                 if start <= u < start+count:
                     exceptional.setdefault(u, set()).update(targets)
@@ -562,7 +573,7 @@ def _verify_register_types(dex, method, ordinary, edges):
                 read(regs[1], typ)
             write(regs[0], state[regs[1]])
         elif op in (0xa, 0xb, 0xc, 0xd):
-            typ = {0xa:'I',0xb:'W1',0xc:'R:Ljava/lang/Object;',0xd:'R:Ljava/lang/Throwable;'}[op]
+            typ = {0xa:'I',0xb:'W1',0xc:'R:Ljava/lang/Object;',0xd:exception_types.get(u, 'R:Ljava/lang/Throwable;')}[op]
             if op == 0xc:
                 prev = next(v for k,v in ordinary.items() if k + v[1] == u)
                 if prev[2] in (0x24,0x25): typ = category(dex.type_ids[H(prev[3],2)])
@@ -615,7 +626,10 @@ def _verify_register_types(dex, method, ordinary, edges):
         elif 0x52 <= op <= 0x6d:
             field = dex.field_ids[H(raw,2)]
             typ = category(field['field_type'])
-            if op < 0x60: read(regs[1], 'R')
+            if op < 0x60:
+                receiver = read(regs[1], 'R')
+                require(receiver == '0' or _is_ref_assignable(dex, receiver[2:], field['class_type']),
+                        f'{method.signature}@{o:#x}: field receiver type mismatch {receiver} -> {field["class_type"]}')
             if op in (*range(0x52,0x59),*range(0x60,0x67)): write(regs[0],typ)
             else: read(regs[0],typ)
         elif op in (*range(0x6e,0x73),*range(0x74,0x79)):
