@@ -1,93 +1,114 @@
+"""Repository-local static DEX/ELF and whole-entry integrity regressions."""
 import importlib.util
 from pathlib import Path
+import struct
+import tempfile
 import unittest
+from unittest.mock import patch
 import zipfile
 
-ROOT = Path('/tmp/ssm_re_work')
-spec = importlib.util.spec_from_file_location('patch_ssm', ROOT / 'patch_ssm.py')
+REPO_ROOT = Path(__file__).resolve().parents[2]
+spec = importlib.util.spec_from_file_location('patch_ssm', Path(__file__).resolve().parent / 'patch_ssm.py')
 assert spec is not None and spec.loader is not None
 patcher = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(patcher)
+SOURCE = REPO_ROOT / 'ssm' / 'apk' / 'SSM_5.5.14.2624.apk'
+OUTPUT = REPO_ROOT / 'artifacts' / 'SSM_5.5.14.2624_patched.apk'
+
+NEW_PATCHES = [
+ (0x529fde,'32504f00','00000000'), (0x529fea,'b715','1205'),
+ (0x52a006,'32503b00','00000000'), (0x52a00e,'38051600','00000000'),
+ (0x52a022,'6005c507','282d0000'), (0x528fa4,'32302000','00000000'),
+ (0x528fb0,'df030301','12030000'), (0x528fce,'32300b00','00000000'),
+ (0x528fda,'df030301','12030000'), (0x502f8a,'1215','1205'),
+ (0x560e98,'b725','1205'), (0x560ed4,'39051e00','281e0000'),
+ (0x552520,'71004eea0000','0e0000000000'), (0x5526c4,'1a00516b','0e000000'),
+ (0x551cc0,'22008726','0e000000')]
 
 class PatchContract(unittest.TestCase):
- def test_added_dex_contract(self):
-  expected = [(0x5401da,'1a01487a71203cff13000c01','1a01120b0000000000000000'),(0x4fdbec,'0a06','1216'),(0x4eadda,'0a03','1213'),(0x4ee052,'0a03','1213'),(0x4f1bda,'0a03','1213'),(0x4f5862,'0a03','1213'),(0x50e90c,'0a04','1214'),(0x50ec16,'0a05','1215')]
-  for item in expected: self.assertIn(item, patcher.DEX['classes.dex'])
- def test_android_fallback_dex_contract(self):
-  expected = {
-   'classes.dex': [
-    (0x5766bc,'62008474','12100f00'),
-    (0x571b0c,'120054318f74','12100f000000'),
-    (0x55fba0,'6200bd73','12100f00'),
-    (0x560f68,'6200bd73','0e000000'),
-    (0x529fec,'6e30325b2005','000000000000'),
-    (0x52a01c,'6e30f00b1502','000000000000'),
-    (0x52a064,'6e30f00b0501','000000000000'),
-    (0x4ce692,'13020020','13020000'),
-    (0x4ce7ee,'13000020','13000000'),
-    (0x4d9602,'13000020','13000000'),
-    (0x4d9eaa,'13000020','13000000'),
-    (0x4db652,'13000020','13000000'),
-    (0x57fa34,'1a00fa5a','0e000000'),
-    (0x5401d6,'38021100','00000000'),
-    (0x5758e8,'62008474','12100f00'),
-    (0x570edc,'120054318f74','12100f000000'),
-    (0x551c22,'6e30d70b2105','000000000000'),
-    (0x552876,'1214','1204'),
-    (0x54fb70,'08061700','12000f00'),
-    (0x4fc468,'1a003d96','12100f00'),
-    (0x4db080,'7100f3f000000c00','12100f0000000000'),
-    (0x50735c,'1a003996','12100f00'),
-    (0x5073c0,'1a003b96','12100f00')],
-   'classes2.dex': [(0xb4c70,'7100b70200000c00','12100f0000000000'),
-                    (0xb34c4,'7100860200000c00','12000f0000000000')]
-  }
-  with zipfile.ZipFile('/Users/jihyun.son/dev/rea/ssm/artifacts/SSM_5.5.14.2624.apk') as src, zipfile.ZipFile('/Users/jihyun.son/dev/rea/ssm/artifacts/SSM_5.5.14.2624_patched.apk') as dst:
-   for name, patches in expected.items():
-    original, patched = src.read(name), dst.read(name)
-    patcher.dex_valid(patched)
-    candidate = bytearray(original)
-    for off, old, new in patcher.DEX[name]:
-     self.assertEqual(original[off:off+len(bytes.fromhex(old))].hex(), old)
-     candidate[off:off+len(bytes.fromhex(new))] = bytes.fromhex(new)
-    patcher.validate_methods(candidate, patcher.DEX[name])
-    for off, old, new in patches:
-     with self.subTest(dex=name, offset=hex(off)):
-      self.assertEqual(original[off:off+len(bytes.fromhex(old))], bytes.fromhex(old))
-      self.assertIn((off, old, new), patcher.DEX[name])
-      self.assertEqual(patched[off:off+len(bytes.fromhex(new))], bytes.fromhex(new))
-   self.assertFalse(any(off == 0x52e3cc for off, _, _ in patcher.DEX['classes.dex']))
-   for apk in (src, dst):
-    self.assertEqual(apk.read('classes.dex')[0x52e3cc:0x52e3d0].hex(), '12000f00')
- def test_store_on_resume_branches_to_sso_tail(self):
-  spec = importlib.util.spec_from_file_location('patch_store', ROOT / 'patch_store.py')
-  assert spec is not None and spec.loader is not None
-  store = importlib.util.module_from_spec(spec)
-  spec.loader.exec_module(store)
-  with zipfile.ZipFile('/Users/jihyun.son/dev/rea/ssm/artifacts/Store_1.26.0.apk') as src:
-   original = src.read('classes.dex')
-  plan = store.plan(original)
-  self.assertNotIn((0x3a4a3e,'6e10','0e00'), plan)
-  self.assertIn((0x3a4a4e,'1a038226','2900e202'), plan)
-  patched = bytearray(original)
-  for off, old, new in plan:
-   self.assertEqual(original[off:off+len(bytes.fromhex(old))].hex(), old)
-   patched[off:off+len(bytes.fromhex(new))] = bytes.fromhex(new)
-  self.assertEqual(patched[0x3a4a38:0x3a4a40], original[0x3a4a38:0x3a4a40])
-  self.assertEqual(0x3a4a4e + 2 * int.from_bytes(patched[0x3a4a50:0x3a4a52], 'little', signed=True), 0x3a5012)
-  self.assertEqual(patched[0x3a5012:0x3a5016].hex(), '1d005501')
-  with zipfile.ZipFile('/Users/jihyun.son/dev/rea/ssm/artifacts/Store_1.26.0_patched.apk') as dst:
-   actual = dst.read('classes.dex')
-  patcher.dex_valid(actual)
-  self.assertEqual(actual[0x3a4a3e:0x3a4a40].hex(), '6e10')
-  self.assertEqual(actual[0x3a4a4e:0x3a4a52].hex(), '2900e202')
-  self.assertEqual(0x3a4a4e + 2 * int.from_bytes(actual[0x3a4a50:0x3a4a52], 'little', signed=True), 0x3a5012)
-  self.assertEqual(actual[0x3a5012:0x3a5016].hex(), '1d005501')
- def test_real_arm64_registration_and_body(self):
-  with zipfile.ZipFile('/Users/jihyun.son/dev/rea/ssm/artifacts/SSM_5.5.14.2624.apk') as z:
-   plans = patcher.ELF(z.read('lib/arm64-v8a/libnative-lib.so')).patches()
-  actual = {name:(off,patch.hex()) for name,off,patch in plans}
-  self.assertEqual(actual['checkSecurityStatus'], (0x314d4,'00008052c0035fd6'))
-  self.assertEqual(actual['checkSecurityStatus_body'], (0x31694,'00008052c0035fd6'))
+ def test_semantic_plan_and_count(self):
+  self.assertEqual([len(patcher.DEX[n]) for n in ('classes.dex','classes2.dex')], [50,4])
+  self.assertTrue(set(NEW_PATCHES) <= set(patcher.DEX['classes.dex']))
+  self.assertFalse({0x529fec,0x52a01c,0x52a064} & {o for o,_,_ in patcher.DEX['classes.dex']})
+  with zipfile.ZipFile(SOURCE) as z:
+   for name, expected in patcher.DEX.items():
+    self.assertEqual(patcher.plan_dex(name,z.read(name)), expected)
 
-if __name__ == '__main__': unittest.main()
+ def test_semantic_precondition_fails_closed(self):
+  with zipfile.ZipFile(SOURCE) as z: original = bytearray(z.read('classes.dex'))
+  original[0x529fea] = 0
+  with self.assertRaises((ValueError,AssertionError)):
+   patcher.plan_dex('classes.dex',original)
+
+ def test_actual_apk_exact_changes_and_cfg(self):
+  with zipfile.ZipFile(SOURCE) as src, zipfile.ZipFile(OUTPUT) as dst:
+   plans={n:patcher.ELF(src.read(n)).patches() for n in src.namelist() if n.startswith('lib/') and n.endswith('/libnative-lib.so')}
+   patcher.check(SOURCE,OUTPUT,plans)
+   for name, patches in patcher.DEX.items():
+    patcher.verify_dex_exact(src.read(name), dst.read(name), patches)
+
+ def test_new_bytecode_and_cfg(self):
+  with zipfile.ZipFile(SOURCE) as z: original=z.read('classes.dex')
+  candidate=bytearray(original)
+  for off,old,new in patcher.DEX['classes.dex']:
+   self.assertEqual(original[off:off+len(bytes.fromhex(old))].hex(),old)
+   candidate[off:off+len(bytes.fromhex(new))]=bytes.fromhex(new)
+  patcher.validate_methods(candidate,patcher.DEX['classes.dex'])
+  dex=patcher.DexFile(candidate)
+  expected={'u0','Z','E','g0','k0','l0','N'}
+  seen=set()
+  for off,old,new in NEW_PATCHES:
+   self.assertEqual(candidate[off:off+len(bytes.fromhex(new))].hex(),new)
+   method=next(m for m in dex.methods if m.insns_off<=off<m.insns_off+2*m.insns_size)
+   seen.add(method.name)
+   dex.decode_method(method)
+   self.assertIn(off,{i[1] for i in method.insns})
+  self.assertEqual(seen,expected)
+  # The new unconditional branches must land on actual instructions.
+  for off,target in [(0x52a022,0x52a07c),(0x560ed4,0x560f10)]:
+   self.assertEqual(off+2*struct.unpack_from('<b',candidate,off+1)[0],target)
+
+ def test_validator_rejects_bad_branch_register_return_and_move_result(self):
+  with zipfile.ZipFile(SOURCE) as z: original=z.read('classes.dex')
+  for off,new in [(0x529fde,'2900ff7f'),(0x529fea,'12ff'),(0x552520,'0f0000000000'),(0x552520,'0a0000000000')]:
+   with self.subTest(offset=hex(off),new=new):
+    b=bytearray(original);b[off:off+len(bytes.fromhex(new))]=bytes.fromhex(new)
+    with self.assertRaises(AssertionError):patcher.validate_methods(b,[(off,'',new)])
+
+ def test_real_arm64_common_bl_target(self):
+  with zipfile.ZipFile(SOURCE) as z: b=z.read('lib/arm64-v8a/libnative-lib.so')
+  elf=patcher.ELF(b)
+  self.assertEqual({n:o for n,o,_ in elf.patches()}['checkSecurityStatus_body'],0x31694)
+  # Retarget both wrappers: a hardcoded body offset would fail this test.
+  changed=bytearray(b)
+  for name in ('checkSecurityStatus','checkSecurityStatusWithBomb'):
+   start=elf.file(elf.jni(name))
+   for off in range(start,start+64,4):
+    insn=struct.unpack_from('<I',b,off)[0]
+    if insn & 0xfc000000 == 0x94000000:
+     imm=insn & 0x3ffffff
+     if imm & 0x2000000: imm-=0x4000000
+     if elf.addr(off)+imm*4 == elf.addr(0x31694):
+      delta=(elf.addr(0x31698)-elf.addr(off))//4
+      struct.pack_into('<I',changed,off,0x94000000 | (delta & 0x3ffffff))
+  self.assertEqual({n:o for n,o,_ in patcher.ELF(changed).patches()}['checkSecurityStatus_body'],0x31698)
+
+class FullIntegrity(unittest.TestCase):
+ def test_exact_planned_change_accepted(self):self.check_candidate(False)
+ def test_rechecksummed_outside_window_change_rejected(self):self.check_candidate(True)
+ def check_candidate(self,tamper):
+  original=bytearray(128);original[:8]=b'dex\n035\0';original[40:42]=b'\x12\x01';patcher.fix_dex(original)
+  candidate=bytearray(original);candidate[40:42]=b'\x12\x00'
+  if tamper:candidate[100]^=1
+  patcher.fix_dex(candidate)
+  with tempfile.TemporaryDirectory() as directory:
+   source,output=(Path(directory)/n for n in ('source.apk','output.apk'))
+   for path,data in ((source,original),(output,candidate)):
+    with zipfile.ZipFile(path,'w',compression=zipfile.ZIP_DEFLATED) as archive:
+     archive.writestr('classes.dex',data);archive.writestr('res/2p.xml',b'a');archive.writestr('res/2P.xml',b'b')
+   with patch.object(patcher,'DEX',{'classes.dex':[(40,'1201','1200')]}),patch.object(patcher,'validate_methods'):
+    if tamper:
+     with self.assertRaisesRegex(ValueError,'unexpected DEX change'):patcher.check(source,output,{})
+    else:patcher.check(source,output,{})
+
+if __name__=='__main__':unittest.main()

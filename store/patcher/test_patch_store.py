@@ -2,14 +2,27 @@ import importlib.util
 import unittest
 import zipfile
 import zlib
+import sys
+from pathlib import Path
 
-spec = importlib.util.spec_from_file_location('store', '/tmp/ssm_re_work/patch_store.py')
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+from patcher_common import DexFile
+
+spec = importlib.util.spec_from_file_location('store', ROOT / 'store' / 'patcher' / 'patch_store.py')
 assert spec is not None and spec.loader is not None
 store = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(store)
-APK = '/Users/jihyun.son/dev/rea/ssm/artifacts/Store_1.26.0.apk'
+APK = ROOT / 'artifacts' / 'Store_1.26.0.apk'
 
 class StoreContract(unittest.TestCase):
+ def test_empty_padding_payload(self):
+  with zipfile.ZipFile(APK) as z:
+   dex = DexFile(z.read('classes.dex'))
+  for m in dex.methods:
+   if m.code_off:
+    dex.decode_method(m)
+
  def test_exact_plan_and_preservation(self):
   with zipfile.ZipFile(APK) as z:
    d = z.read('classes.dex')
@@ -48,6 +61,55 @@ class StoreContract(unittest.TestCase):
   d[0x318068:0x31806a] = bytes.fromhex('8a00')
   with self.assertRaisesRegex(AssertionError, 'register out of range'):
    store.validate_methods(d, [(0x318068, '', '')])
+ def test_cfg_padding_and_reachable_payload(self):
+  with zipfile.ZipFile(APK) as z:
+   original = z.read('classes.dex')
+  d = bytearray(original)
+  p = store.plan(original)
+  for o, _, new in p:
+   d[o:o+len(bytes.fromhex(new))] = bytes.fromhex(new)
+  store.validate_methods(d, p)
+  # Replacing the entry goto with nop makes the alignment nop reachable.
+  d[0x3e7338:0x3e733a] = b'\x00\x00'
+  with self.assertRaisesRegex(AssertionError, 'invalid fallthrough into payload'):
+   store.validate_methods(d, p)
+
+ def test_branch_and_return_rejection(self):
+  with zipfile.ZipFile(APK) as z:
+   original = z.read('classes.dex')
+  for bad, reason in (('2801', 'invalid branch target'), ('0e00', 'return type mismatch')):
+   with self.subTest(bad=bad):
+    d = bytearray(original)
+    # goto into the second code unit of the following invoke instruction.
+    d[0x318068:0x31806a] = bytes.fromhex('2802' if bad == '2801' else bad)
+    with self.assertRaisesRegex(AssertionError, reason):
+     store.validate_methods(d, [(0x318068, '', '')])
+
+ def test_exact_window_rejection(self):
+  with zipfile.ZipFile(APK) as z:
+   original = z.read('classes.dex')
+  p = store.plan(original)
+  d = bytearray(original)
+  for o, _, new in p:
+   d[o:o+len(bytes.fromhex(new))] = bytes.fromhex(new)
+  store.fix_dex(d)
+  store.verify_dex_exact(original, d, p)
+  d[112] ^= 1
+  store.fix_dex(d)
+  with self.assertRaisesRegex(AssertionError, 'Unexpected DEX modifications'):
+   store.verify_dex_exact(original, d, p)
+
+ def test_semantic_fail_closed(self):
+  with zipfile.ZipFile(APK) as z:
+   dex = DexFile(z.read('classes.dex'))
+  with self.assertRaisesRegex(ValueError, 'found 0'):
+   store.find_unique_method(dex, 'missing', class_filter='Lmissing;')
+  with self.assertRaisesRegex(ValueError, 'expected 1 method'):
+   store.find_unique_method(dex, 'ambiguous')
+  m = store.select(dex, 'resume', store.RESUME)
+  with self.assertRaisesRegex(ValueError, 'expected 1 instruction'):
+   store.find_unique_insn_offset(dex, m, 'missing-insn', pattern=b'\xff' * 20)
+
  def test_crc_solver(self):
   b = bytearray(b'CRC independent fixture with sufficient bytes')
   expected = zlib.crc32(b)
