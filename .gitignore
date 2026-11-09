@@ -1,0 +1,7 @@
+/artifacts/
+/fixed.so
+/rea_evidence_bundle.json
+/SECURITY_ASSESSMENT_REPORT.md
+__pycache__/
+*.pyc
+.DS_Store

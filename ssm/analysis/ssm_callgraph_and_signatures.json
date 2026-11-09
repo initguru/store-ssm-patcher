@@ -1,0 +1,2959 @@
+{
+  "patched_methods_summary": [
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/gid20/l/c;->h(Landroid/content/Context;)Ljava/lang/String;",
+      "code_item": "0x5401b0",
+      "insns_start": "0x5401c0",
+      "header": {
+        "registers": 4,
+        "ins": 1,
+        "outs": 3,
+        "tries": 0,
+        "insns_size_cu": 33
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u000b",
+          "file_offset": "0x5401d6",
+          "orig_hex": "38021100",
+          "patched_hex": "00000000",
+          "changed": true,
+          "opcode": "0x38",
+          "ref": null
+        },
+        {
+          "cu_offset": "u000d",
+          "file_offset": "0x5401da",
+          "orig_hex": "1a01487a",
+          "patched_hex": "1a01120b",
+          "changed": true,
+          "opcode": "0x1a",
+          "ref": "string@0x7a48:'com.sktelecom.ssm'"
+        },
+        {
+          "cu_offset": "u000f",
+          "file_offset": "0x5401de",
+          "orig_hex": "71203cff1300",
+          "patched_hex": "000000000000",
+          "changed": true,
+          "opcode": "0x71",
+          "ref": "method@0xff3c:Lskinfosec/utils/f;->c(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "cu_offset": "u0012",
+          "file_offset": "0x5401e4",
+          "orig_hex": "0c01",
+          "patched_hex": "0000",
+          "changed": true,
+          "opcode": "0xc",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x7db1:'currentSignature'",
+        "string@0x7a48:'com.sktelecom.ssm'"
+      ],
+      "unique_calls": [
+        "method@0xe7bf:Lcom/sktelecom/ssm/policy/db/v;->e(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+        "method@0x1866:Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z",
+        "method@0xff3c:Lskinfosec/utils/f;->c(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;",
+        "method@0x1866:Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z",
+        "method@0xe7c4:Lcom/sktelecom/ssm/policy/db/v;->j(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)J",
+        "method@0xf91f:Ljava/lang/String;->toUpperCase()Ljava/lang/String;"
+      ],
+      "unique_fields": []
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/gid20/l/c;->x(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;",
+      "code_item": "0x53f77c",
+      "insns_start": "0x53f78c",
+      "header": {
+        "registers": 3,
+        "ins": 2,
+        "outs": 3,
+        "tries": 1,
+        "insns_size_cu": 21
+      },
+      "tries": [
+        {
+          "start_cu": "u0000",
+          "count_cu": 10,
+          "end_cu": "u000a",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": false,
+      "changed_instructions": [],
+      "unique_strings": [],
+      "unique_calls": [
+        "method@0x1222:Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;",
+        "method@0x12c8:Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;",
+        "method@0xf83f:Ljava/lang/Exception;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": []
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/i0/j/a;->L(Landroid/content/Context;)V",
+      "code_item": "0x551b3c",
+      "insns_start": "0x551b4c",
+      "header": {
+        "registers": 6,
+        "ins": 2,
+        "outs": 3,
+        "tries": 1,
+        "insns_size_cu": 127
+      },
+      "tries": [
+        {
+          "start_cu": "u006b",
+          "count_cu": 8,
+          "end_cu": "u0073",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u006b",
+          "file_offset": "0x551c22",
+          "orig_hex": "6e30d70b2105",
+          "patched_hex": "000000000000",
+          "changed": true,
+          "opcode": "0x6e",
+          "ref": "method@0xbd7:Landroid/app/admin/DevicePolicyManager;->setCameraDisabled(Landroid/content/ComponentName;Z)V"
+        }
+      ],
+      "unique_strings": [
+        "string@0x9b24:'jstest120925 m_oDeviceAdminReceiver is NULL'",
+        "string@0x9b16:'jstest120925 API(setCameraDisabled) is not supported.'",
+        "string@0x9b26:'jstest120925 performCamera ctlType = '",
+        "string@0x7f9e:'device_policy'",
+        "string@0x9b00:'jstest120905 performCamera() oDPM.isAdminActive(mDeviceAdminSample) = '",
+        "string@0x9b25:'jstest120925 performCamera'"
+      ],
+      "unique_calls": [
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xea4e:Lcom/sktelecom/ssm/policy/i0/d;->i()Lcom/sktelecom/ssm/policy/i0/d;",
+        "method@0xea4d:Lcom/sktelecom/ssm/policy/i0/d;->h(I)I",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf937:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x1229:Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;",
+        "method@0x11d3:Landroid/content/ComponentName;-><init>(Landroid/content/Context;Ljava/lang/Class;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xbc9:Landroid/app/admin/DevicePolicyManager;->isAdminActive(Landroid/content/ComponentName;)Z",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xbc9:Landroid/app/admin/DevicePolicyManager;->isAdminActive(Landroid/content/ComponentName;)Z",
+        "method@0xbd7:Landroid/app/admin/DevicePolicyManager;->setCameraDisabled(Landroid/content/ComponentName;Z)V",
+        "method@0xbd7:Landroid/app/admin/DevicePolicyManager;->setCameraDisabled(Landroid/content/ComponentName;Z)V",
+        "method@0xf83f:Ljava/lang/Exception;->toString()Ljava/lang/String;",
+        "method@0xf05d:Lcom/sktelecom/ssm/policy/util/i;->c(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x7333:Lcom/sktelecom/ssm/policy/i0/j/a;->b:Ljava/lang/Class;",
+        "field@0x7c5:Landroid/os/Build$VERSION;->SDK_INT:I",
+        "field@0x7333:Lcom/sktelecom/ssm/policy/i0/j/a;->b:Ljava/lang/Class;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/i0/j/a;->T(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Z)I",
+      "code_item": "0x54fb60",
+      "insns_start": "0x54fb70",
+      "header": {
+        "registers": 28,
+        "ins": 5,
+        "outs": 6,
+        "tries": 0,
+        "insns_size_cu": 688
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x54fb70",
+          "orig_hex": "08061700",
+          "patched_hex": "12000f00",
+          "changed": true,
+          "opcode": "0x8",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x758:',a_sPackageName : '",
+        "string@0xad6:'41'",
+        "string@0xad1:'40'",
+        "string@0x9801:'isNeedToRefresh : '",
+        "string@0x7a4c:'com.sktelecom.ssm.action.ACTION_RELOAD_WINDOW'",
+        "string@0x925:'170918 - startActivity 1- '",
+        "string@0x6bd5:'a_sPackageName'",
+        "string@0x933:'190502 - startActivity 2- '",
+        "string@0x923:'170918 - controlCamera: '",
+        "string@0x924:'170918 - controlMic: '"
+      ],
+      "unique_calls": [
+        "method@0xf910:Ljava/lang/String;->length()I",
+        "method@0xeae3:Lcom/sktelecom/ssm/policy/i0/j/a;->c(Landroid/content/Context;ILjava/lang/String;)I",
+        "method@0xeae3:Lcom/sktelecom/ssm/policy/i0/j/a;->c(Landroid/content/Context;ILjava/lang/String;)I",
+        "method@0xeae3:Lcom/sktelecom/ssm/policy/i0/j/a;->c(Landroid/content/Context;ILjava/lang/String;)I",
+        "method@0xfafa:Ljava/util/ArrayList;-><init>()V",
+        "method@0xfafa:Ljava/util/ArrayList;-><init>()V",
+        "method@0xe91b:Lcom/sktelecom/ssm/policy/gid20/l/c;->g(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xe8fa:Lcom/sktelecom/ssm/policy/gid20/l/b;->e(Landroid/content/Context;Ljava/lang/String;I)I",
+        "method@0xeae1:Lcom/sktelecom/ssm/policy/i0/j/a;->b(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;I)I",
+        "method@0xe71d:Lcom/sktelecom/ssm/policy/db/a0/b;->W(Landroid/content/Context;)Z",
+        "method@0xebc3:Lcom/sktelecom/ssm/policy/k0/g/a;->a()Lcom/sktelecom/ssm/policy/k0/g/a;",
+        "method@0xeb0f:Lcom/sktelecom/ssm/policy/i0/j/b;->a(IZ)Ljava/lang/String;",
+        "method@0xebc4:Lcom/sktelecom/ssm/policy/k0/g/a;->b(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)J",
+        "method@0xfafe:Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xe728:Lcom/sktelecom/ssm/policy/db/a0/b;->d0(Landroid/content/Context;)Z",
+        "method@0xeac9:Lcom/sktelecom/ssm/policy/i0/j/a;->E(Landroid/content/Context;Ljava/lang/String;)Z",
+        "method@0x1255:Landroid/content/Intent;-><init>(Ljava/lang/String;)V",
+        "method@0x1223:Landroid/content/Context;->getPackageName()Ljava/lang/String;",
+        "method@0x128b:Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;",
+        "method@0x1258:Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;",
+        "method@0xe913:Lcom/sktelecom/ssm/policy/gid20/l/c;->V(Landroid/content/Context;Landroid/content/Intent;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93b:Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf06b:Lcom/sktelecom/ssm/policy/util/k;->a(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/util/k;",
+        "method@0xf06e:Lcom/sktelecom/ssm/policy/util/k;->d()Z",
+        "method@0xeac9:Lcom/sktelecom/ssm/policy/i0/j/a;->E(Landroid/content/Context;Ljava/lang/String;)Z",
+        "method@0xe910:Lcom/sktelecom/ssm/policy/gid20/l/c;->S(Landroid/content/Context;Ljava/lang/String;)I",
+        "method@0x1252:Landroid/content/Intent;-><init>()V",
+        "method@0x1282:Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;",
+        "method@0x1277:Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;",
+        "method@0x1238:Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93b:Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xeafa:Lcom/sktelecom/ssm/policy/i0/j/a;->n0(Landroid/content/Context;Z)V",
+        "method@0xebc3:Lcom/sktelecom/ssm/policy/k0/g/a;->a()Lcom/sktelecom/ssm/policy/k0/g/a;",
+        "method@0xeb0f:Lcom/sktelecom/ssm/policy/i0/j/b;->a(IZ)Ljava/lang/String;",
+        "method@0xebc4:Lcom/sktelecom/ssm/policy/k0/g/a;->b(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)J",
+        "method@0xeafa:Lcom/sktelecom/ssm/policy/i0/j/a;->n0(Landroid/content/Context;Z)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf937:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xea4e:Lcom/sktelecom/ssm/policy/i0/d;->i()Lcom/sktelecom/ssm/policy/i0/d;",
+        "method@0xea4d:Lcom/sktelecom/ssm/policy/i0/d;->h(I)I",
+        "method@0xeb0c:Lcom/sktelecom/ssm/policy/i0/j/a;->x(Landroid/content/Context;)Z",
+        "method@0xeafa:Lcom/sktelecom/ssm/policy/i0/j/a;->n0(Landroid/content/Context;Z)V",
+        "method@0xe8fa:Lcom/sktelecom/ssm/policy/gid20/l/b;->e(Landroid/content/Context;Ljava/lang/String;I)I",
+        "method@0xeae1:Lcom/sktelecom/ssm/policy/i0/j/a;->b(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;I)I",
+        "method@0xe71d:Lcom/sktelecom/ssm/policy/db/a0/b;->W(Landroid/content/Context;)Z",
+        "method@0xebc3:Lcom/sktelecom/ssm/policy/k0/g/a;->a()Lcom/sktelecom/ssm/policy/k0/g/a;",
+        "method@0xeb0f:Lcom/sktelecom/ssm/policy/i0/j/b;->a(IZ)Ljava/lang/String;",
+        "method@0xebc4:Lcom/sktelecom/ssm/policy/k0/g/a;->b(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)J",
+        "method@0xfafe:Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z",
+        "method@0xeb0e:Lcom/sktelecom/ssm/policy/i0/j/a;->z(Landroid/content/Context;)Z",
+        "method@0xeac9:Lcom/sktelecom/ssm/policy/i0/j/a;->E(Landroid/content/Context;Ljava/lang/String;)Z",
+        "method@0xe910:Lcom/sktelecom/ssm/policy/gid20/l/c;->S(Landroid/content/Context;Ljava/lang/String;)I",
+        "method@0xeb08:Lcom/sktelecom/ssm/policy/i0/j/a;->u0(Landroid/content/Context;Z)Z",
+        "method@0xebc3:Lcom/sktelecom/ssm/policy/k0/g/a;->a()Lcom/sktelecom/ssm/policy/k0/g/a;",
+        "method@0xeb0f:Lcom/sktelecom/ssm/policy/i0/j/b;->a(IZ)Ljava/lang/String;",
+        "method@0xebc4:Lcom/sktelecom/ssm/policy/k0/g/a;->b(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)J",
+        "method@0xeb08:Lcom/sktelecom/ssm/policy/i0/j/a;->u0(Landroid/content/Context;Z)Z",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf937:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xe8fa:Lcom/sktelecom/ssm/policy/gid20/l/b;->e(Landroid/content/Context;Ljava/lang/String;I)I",
+        "method@0xeae1:Lcom/sktelecom/ssm/policy/i0/j/a;->b(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;I)I",
+        "method@0xebc3:Lcom/sktelecom/ssm/policy/k0/g/a;->a()Lcom/sktelecom/ssm/policy/k0/g/a;",
+        "method@0xeb0f:Lcom/sktelecom/ssm/policy/i0/j/b;->a(IZ)Ljava/lang/String;",
+        "method@0xebc4:Lcom/sktelecom/ssm/policy/k0/g/a;->b(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)J",
+        "method@0xfafe:Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z",
+        "method@0xe71d:Lcom/sktelecom/ssm/policy/db/a0/b;->W(Landroid/content/Context;)Z",
+        "method@0xebc3:Lcom/sktelecom/ssm/policy/k0/g/a;->a()Lcom/sktelecom/ssm/policy/k0/g/a;",
+        "method@0xeb0f:Lcom/sktelecom/ssm/policy/i0/j/b;->a(IZ)Ljava/lang/String;",
+        "method@0xebc4:Lcom/sktelecom/ssm/policy/k0/g/a;->b(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)J",
+        "method@0xeac9:Lcom/sktelecom/ssm/policy/i0/j/a;->E(Landroid/content/Context;Ljava/lang/String;)Z",
+        "method@0xe910:Lcom/sktelecom/ssm/policy/gid20/l/c;->S(Landroid/content/Context;Ljava/lang/String;)I",
+        "method@0xe8fa:Lcom/sktelecom/ssm/policy/gid20/l/b;->e(Landroid/content/Context;Ljava/lang/String;I)I",
+        "method@0xeae3:Lcom/sktelecom/ssm/policy/i0/j/a;->c(Landroid/content/Context;ILjava/lang/String;)I",
+        "method@0xeae1:Lcom/sktelecom/ssm/policy/i0/j/a;->b(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;I)I",
+        "method@0xebc3:Lcom/sktelecom/ssm/policy/k0/g/a;->a()Lcom/sktelecom/ssm/policy/k0/g/a;",
+        "method@0xeb0f:Lcom/sktelecom/ssm/policy/i0/j/b;->a(IZ)Ljava/lang/String;",
+        "method@0xebc4:Lcom/sktelecom/ssm/policy/k0/g/a;->b(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)J",
+        "method@0xfafe:Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z",
+        "method@0xebc3:Lcom/sktelecom/ssm/policy/k0/g/a;->a()Lcom/sktelecom/ssm/policy/k0/g/a;",
+        "method@0xeb0f:Lcom/sktelecom/ssm/policy/i0/j/b;->a(IZ)Ljava/lang/String;",
+        "method@0xebc4:Lcom/sktelecom/ssm/policy/k0/g/a;->b(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)J",
+        "method@0xeac9:Lcom/sktelecom/ssm/policy/i0/j/a;->E(Landroid/content/Context;Ljava/lang/String;)Z",
+        "method@0xe910:Lcom/sktelecom/ssm/policy/gid20/l/c;->S(Landroid/content/Context;Ljava/lang/String;)I",
+        "method@0xfb10:Ljava/util/ArrayList;->size()I",
+        "method@0xe705:Lcom/sktelecom/ssm/policy/db/a0/b;->B(Landroid/content/Context;)Z",
+        "method@0xf0c5:Lcom/sktelecom/ssm/policy/util/x;->a(Landroid/content/Context;Lcom/sktelecom/ssm/policy/define/ResourceStrings;Ljava/lang/String;Ljava/util/ArrayList;Z)V",
+        "method@0xfb10:Ljava/util/ArrayList;->size()I",
+        "method@0xe719:Lcom/sktelecom/ssm/policy/db/a0/b;->S(Landroid/content/Context;)Z",
+        "method@0xf0c5:Lcom/sktelecom/ssm/policy/util/x;->a(Landroid/content/Context;Lcom/sktelecom/ssm/policy/define/ResourceStrings;Ljava/lang/String;Ljava/util/ArrayList;Z)V"
+      ],
+      "unique_fields": [
+        "field@0x71a4:Lcom/sktelecom/ssm/policy/define/ResourceStrings;->mediumcontrol_camera:Lcom/sktelecom/ssm/policy/define/ResourceStrings;",
+        "field@0x721f:Lcom/sktelecom/ssm/policy/define/a;->y:Ljava/lang/String;",
+        "field@0x71a7:Lcom/sktelecom/ssm/policy/define/ResourceStrings;->mediumcontrol_mike:Lcom/sktelecom/ssm/policy/define/ResourceStrings;",
+        "field@0x71a5:Lcom/sktelecom/ssm/policy/define/ResourceStrings;->mediumcontrol_gps:Lcom/sktelecom/ssm/policy/define/ResourceStrings;",
+        "field@0x71a7:Lcom/sktelecom/ssm/policy/define/ResourceStrings;->mediumcontrol_mike:Lcom/sktelecom/ssm/policy/define/ResourceStrings;",
+        "field@0x71a8:Lcom/sktelecom/ssm/policy/define/ResourceStrings;->mediumcontrol_noti:Lcom/sktelecom/ssm/policy/define/ResourceStrings;",
+        "field@0x71a9:Lcom/sktelecom/ssm/policy/define/ResourceStrings;->mediumcontrol_noti2:Lcom/sktelecom/ssm/policy/define/ResourceStrings;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/i0/j/a;->n0(Landroid/content/Context;Z)V",
+      "code_item": "0x552838",
+      "insns_start": "0x552848",
+      "header": {
+        "registers": 6,
+        "ins": 3,
+        "outs": 3,
+        "tries": 1,
+        "insns_size_cu": 59
+      },
+      "tries": [
+        {
+          "start_cu": "u001a",
+          "count_cu": 3,
+          "end_cu": "u001d",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0017",
+          "file_offset": "0x552876",
+          "orig_hex": "1214",
+          "patched_hex": "1204",
+          "changed": true,
+          "opcode": "0x12",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x7f9e:'device_policy'",
+        "string@0x926:'170922 - setCameraEnable '"
+      ],
+      "unique_calls": [
+        "method@0x1229:Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;",
+        "method@0x11d3:Landroid/content/ComponentName;-><init>(Landroid/content/Context;Ljava/lang/Class;)V",
+        "method@0xbc9:Landroid/app/admin/DevicePolicyManager;->isAdminActive(Landroid/content/ComponentName;)Z",
+        "method@0xbd7:Landroid/app/admin/DevicePolicyManager;->setCameraDisabled(Landroid/content/ComponentName;Z)V",
+        "method@0xf83f:Ljava/lang/Exception;->toString()Ljava/lang/String;",
+        "method@0xf05d:Lcom/sktelecom/ssm/policy/util/i;->c(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x7333:Lcom/sktelecom/ssm/policy/i0/j/a;->b:Ljava/lang/Class;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/o0/i/a;->E0(Z)Z",
+      "code_item": "0x55fb90",
+      "insns_start": "0x55fba0",
+      "header": {
+        "registers": 6,
+        "ins": 2,
+        "outs": 4,
+        "tries": 0,
+        "insns_size_cu": 96
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x55fba0",
+          "orig_hex": "6200bd73",
+          "patched_hex": "12100f00",
+          "changed": true,
+          "opcode": "0x62",
+          "ref": "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;"
+        }
+      ],
+      "unique_strings": [
+        "string@0x70ed:'androidlg'"
+      ],
+      "unique_calls": [
+        "method@0xe730:Lcom/sktelecom/ssm/policy/db/a0/b;->h0(Landroid/content/Context;)Z",
+        "method@0xca9c:Lcom/lge/mdm/LGMDMManager;->getAllowScreenCapture(Landroid/content/ComponentName;)Z",
+        "method@0xcacd:Lcom/lge/mdm/LGMDMManager;->setAllowScreenCapture(Landroid/content/ComponentName;Z)V",
+        "method@0xe730:Lcom/sktelecom/ssm/policy/db/a0/b;->h0(Landroid/content/Context;)Z",
+        "method@0xca9c:Lcom/lge/mdm/LGMDMManager;->getAllowScreenCapture(Landroid/content/ComponentName;)Z",
+        "method@0xcacd:Lcom/lge/mdm/LGMDMManager;->setAllowScreenCapture(Landroid/content/ComponentName;Z)V",
+        "method@0xca9e:Lcom/lge/mdm/LGMDMManager;->getAllowScreenCaptureWhitelistWithoutADB(Landroid/content/ComponentName;)Z",
+        "method@0xfafa:Ljava/util/ArrayList;-><init>()V",
+        "method@0xfbe6:Ljava/util/List;->add(Ljava/lang/Object;)Z",
+        "method@0xcacf:Lcom/lge/mdm/LGMDMManager;->setAllowScreenCaptureWhitelistWithoutADB(Landroid/content/ComponentName;ZLjava/util/List;)V"
+      ],
+      "unique_fields": [
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x7c5:Landroid/os/Build$VERSION;->SDK_INT:I",
+        "field@0x73bc:Lcom/sktelecom/ssm/policy/o0/i/a;->c:Landroid/content/Context;",
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;",
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;",
+        "field@0x73bc:Lcom/sktelecom/ssm/policy/o0/i/a;->c:Landroid/content/Context;",
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;",
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;",
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;",
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/o0/i/a;->G0(Z)Z",
+      "code_item": "0x55fca0",
+      "insns_start": "0x55fcb0",
+      "header": {
+        "registers": 6,
+        "ins": 2,
+        "outs": 3,
+        "tries": 1,
+        "insns_size_cu": 47
+      },
+      "tries": [
+        {
+          "start_cu": "u0013",
+          "count_cu": 17,
+          "end_cu": "u0024",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0009",
+          "file_offset": "0x55fcc2",
+          "orig_hex": "38000a00",
+          "patched_hex": "28090000",
+          "changed": true,
+          "opcode": "0x38",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x1833:'DEBUG - block USB'"
+      ],
+      "unique_calls": [
+        "method@0xf0c8:Lcom/sktelecom/ssm/policy/util/x;->d(Landroid/content/Context;Ljava/lang/String;Z)V",
+        "method@0xcaa0:Lcom/lge/mdm/LGMDMManager;->getAllowUSBDebugging(Landroid/content/ComponentName;)Z",
+        "method@0xcad1:Lcom/lge/mdm/LGMDMManager;->setAllowUSBDebugging(Landroid/content/ComponentName;Z)V",
+        "method@0xf8b4:Ljava/lang/NoSuchMethodError;->getMessage()Ljava/lang/String;",
+        "method@0xf05d:Lcom/sktelecom/ssm/policy/util/i;->c(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z",
+        "field@0x73bc:Lcom/sktelecom/ssm/policy/o0/i/a;->c:Landroid/content/Context;",
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;",
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/o0/i/a;->L()Z",
+      "code_item": "0x55ed8c",
+      "insns_start": "0x55ed9c",
+      "header": {
+        "registers": 4,
+        "ins": 1,
+        "outs": 2,
+        "tries": 1,
+        "insns_size_cu": 24
+      },
+      "tries": [
+        {
+          "start_cu": "u0006",
+          "count_cu": 6,
+          "end_cu": "u000c",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": false,
+      "changed_instructions": [],
+      "unique_strings": [],
+      "unique_calls": [
+        "method@0xca9d:Lcom/lge/mdm/LGMDMManager;->getAllowScreenCaptureBlacklistWithoutADB(Landroid/content/ComponentName;)Z",
+        "method@0xf985:Ljava/lang/Throwable;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/o0/i/a;->i0(Ljava/util/List;)V",
+      "code_item": "0x560f58",
+      "insns_start": "0x560f68",
+      "header": {
+        "registers": 5,
+        "ins": 2,
+        "outs": 4,
+        "tries": 1,
+        "insns_size_cu": 62
+      },
+      "tries": [
+        {
+          "start_cu": "u0007",
+          "count_cu": 43,
+          "end_cu": "u0032",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x560f68",
+          "orig_hex": "6200bd73",
+          "patched_hex": "0e000000",
+          "changed": true,
+          "opcode": "0x62",
+          "ref": "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;"
+        }
+      ],
+      "unique_strings": [],
+      "unique_calls": [
+        "method@0xcace:Lcom/lge/mdm/LGMDMManager;->setAllowScreenCaptureBlacklistWithoutADB(Landroid/content/ComponentName;ZLjava/util/List;)V",
+        "method@0xfbf0:Ljava/util/List;->isEmpty()Z",
+        "method@0xcab0:Lcom/lge/mdm/LGMDMManager;->getScreenCaptureBlacklist(Landroid/content/ComponentName;)Ljava/util/List;",
+        "method@0xfafa:Ljava/util/ArrayList;-><init>()V",
+        "method@0xfbeb:Ljava/util/List;->containsAll(Ljava/util/Collection;)Z",
+        "method@0xcace:Lcom/lge/mdm/LGMDMManager;->setAllowScreenCaptureBlacklistWithoutADB(Landroid/content/ComponentName;ZLjava/util/List;)V",
+        "method@0xf985:Ljava/lang/Throwable;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;",
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;",
+        "field@0x73bd:Lcom/sktelecom/ssm/policy/o0/i/a;->d:Lcom/lge/mdm/LGMDMManager;",
+        "field@0x73be:Lcom/sktelecom/ssm/policy/o0/i/a;->e:Landroid/content/ComponentName;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->D1(Z)Z",
+      "code_item": "0x576898",
+      "insns_start": "0x5768a8",
+      "header": {
+        "registers": 5,
+        "ins": 2,
+        "outs": 3,
+        "tries": 1,
+        "insns_size_cu": 49
+      },
+      "tries": [
+        {
+          "start_cu": "u0012",
+          "count_cu": 18,
+          "end_cu": "u0024",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0006",
+          "file_offset": "0x5768b4",
+          "orig_hex": "63002f72",
+          "patched_hex": "1214280b",
+          "changed": true,
+          "opcode": "0x63",
+          "ref": "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z"
+        }
+      ],
+      "unique_strings": [
+        "string@0x1833:'DEBUG - block USB'"
+      ],
+      "unique_calls": [
+        "method@0xf0c8:Lcom/sktelecom/ssm/policy/util/x;->d(Landroid/content/Context;Ljava/lang/String;Z)V",
+        "method@0xcb44:Lcom/samsung/android/knox/EnterpriseDeviceManager;->getRestrictionPolicy()Lcom/samsung/android/knox/restriction/RestrictionPolicy;",
+        "method@0xd602:Lcom/samsung/android/knox/restriction/RestrictionPolicy;->isUsbDebuggingEnabled()Z",
+        "method@0xd61e:Lcom/samsung/android/knox/restriction/RestrictionPolicy;->setUsbDebuggingEnabled(Z)Z",
+        "method@0xf985:Ljava/lang/Throwable;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x7484:Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->e:Lcom/samsung/android/knox/EnterpriseDeviceManager;",
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z",
+        "field@0x7483:Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->d:Landroid/content/Context;",
+        "field@0x7484:Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->e:Lcom/samsung/android/knox/EnterpriseDeviceManager;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->O0(ZLjava/lang/Class;)Z",
+      "code_item": "0x5758d8",
+      "insns_start": "0x5758e8",
+      "header": {
+        "registers": 8,
+        "ins": 3,
+        "outs": 3,
+        "tries": 3,
+        "insns_size_cu": 87
+      },
+      "tries": [
+        {
+          "start_cu": "u0006",
+          "count_cu": 14,
+          "end_cu": "u0014",
+          "handler_off": 1
+        },
+        {
+          "start_cu": "u0016",
+          "count_cu": 33,
+          "end_cu": "u0037",
+          "handler_off": 8
+        },
+        {
+          "start_cu": "u0041",
+          "count_cu": 7,
+          "end_cu": "u0048",
+          "handler_off": 15
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x5758e8",
+          "orig_hex": "62008474",
+          "patched_hex": "12100f00",
+          "changed": true,
+          "opcode": "0x62",
+          "ref": "field@0x7484:Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->e:Lcom/samsung/android/knox/EnterpriseDeviceManager;"
+        }
+      ],
+      "unique_strings": [
+        "string@0x7f9e:'device_policy'"
+      ],
+      "unique_calls": [
+        "method@0xcb44:Lcom/samsung/android/knox/EnterpriseDeviceManager;->getRestrictionPolicy()Lcom/samsung/android/knox/restriction/RestrictionPolicy;",
+        "method@0xd5e0:Lcom/samsung/android/knox/restriction/RestrictionPolicy;->isCameraEnabled(Z)Z",
+        "method@0xd613:Lcom/samsung/android/knox/restriction/RestrictionPolicy;->setCameraState(Z)Z",
+        "method@0x1229:Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;",
+        "method@0x11d3:Landroid/content/ComponentName;-><init>(Landroid/content/Context;Ljava/lang/Class;)V",
+        "method@0xbaf:Landroid/app/admin/DevicePolicyManager;->getCameraDisabled(Landroid/content/ComponentName;)Z",
+        "method@0xbd7:Landroid/app/admin/DevicePolicyManager;->setCameraDisabled(Landroid/content/ComponentName;Z)V",
+        "method@0xbaf:Landroid/app/admin/DevicePolicyManager;->getCameraDisabled(Landroid/content/ComponentName;)Z",
+        "method@0xf83f:Ljava/lang/Exception;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf985:Ljava/lang/Throwable;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x7484:Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->e:Lcom/samsung/android/knox/EnterpriseDeviceManager;",
+        "field@0x7483:Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->d:Landroid/content/Context;",
+        "field@0x7483:Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->d:Landroid/content/Context;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->z1(Z)Z",
+      "code_item": "0x5766ac",
+      "insns_start": "0x5766bc",
+      "header": {
+        "registers": 5,
+        "ins": 2,
+        "outs": 2,
+        "tries": 1,
+        "insns_size_cu": 35
+      },
+      "tries": [
+        {
+          "start_cu": "u0006",
+          "count_cu": 16,
+          "end_cu": "u0016",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x5766bc",
+          "orig_hex": "62008474",
+          "patched_hex": "12100f00",
+          "changed": true,
+          "opcode": "0x62",
+          "ref": "field@0x7484:Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->e:Lcom/samsung/android/knox/EnterpriseDeviceManager;"
+        }
+      ],
+      "unique_strings": [],
+      "unique_calls": [
+        "method@0xcb44:Lcom/samsung/android/knox/EnterpriseDeviceManager;->getRestrictionPolicy()Lcom/samsung/android/knox/restriction/RestrictionPolicy;",
+        "method@0xd5f9:Lcom/samsung/android/knox/restriction/RestrictionPolicy;->isScreenCaptureEnabled(Z)Z",
+        "method@0xd61b:Lcom/samsung/android/knox/restriction/RestrictionPolicy;->setScreenCapture(Z)Z",
+        "method@0xf985:Ljava/lang/Throwable;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x7484:Lcom/sktelecom/ssm/policy/ss/util/SamsungInterface;->e:Lcom/samsung/android/knox/EnterpriseDeviceManager;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/ss/util/a;->O(Z)Z",
+      "code_item": "0x571afc",
+      "insns_start": "0x571b0c",
+      "header": {
+        "registers": 5,
+        "ins": 2,
+        "outs": 2,
+        "tries": 1,
+        "insns_size_cu": 72
+      },
+      "tries": [
+        {
+          "start_cu": "u0001",
+          "count_cu": 17,
+          "end_cu": "u0012",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x571b0c",
+          "orig_hex": "1200",
+          "patched_hex": "1210",
+          "changed": true,
+          "opcode": "0x12",
+          "ref": null
+        },
+        {
+          "cu_offset": "u0001",
+          "file_offset": "0x571b0e",
+          "orig_hex": "54318f74",
+          "patched_hex": "0f000000",
+          "changed": true,
+          "opcode": "0x54",
+          "ref": "field@0x748f:Lcom/sktelecom/ssm/policy/ss/util/a;->g:Lcom/samsung/android/knox/restriction/RestrictionPolicy;"
+        }
+      ],
+      "unique_strings": [
+        "string@0xb9bb:'setScreenCapture has succeeded!'",
+        "string@0xb9ba:'setScreenCapture has failed.'",
+        "string@0x1c4c:'Exception: '",
+        "string@0x22ac:'IllegalArgumentException: '",
+        "string@0x5afc:'SecurityException: '"
+      ],
+      "unique_calls": [
+        "method@0xd61b:Lcom/samsung/android/knox/restriction/RestrictionPolicy;->setScreenCapture(Z)Z",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93b:Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05d:Lcom/sktelecom/ssm/policy/util/i;->c(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93b:Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf063:Lcom/sktelecom/ssm/policy/util/i;->i(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x748f:Lcom/sktelecom/ssm/policy/ss/util/a;->g:Lcom/samsung/android/knox/restriction/RestrictionPolicy;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/ss/util/a;->u(Z)Z",
+      "code_item": "0x570ecc",
+      "insns_start": "0x570edc",
+      "header": {
+        "registers": 5,
+        "ins": 2,
+        "outs": 2,
+        "tries": 1,
+        "insns_size_cu": 72
+      },
+      "tries": [
+        {
+          "start_cu": "u0001",
+          "count_cu": 17,
+          "end_cu": "u0012",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x570edc",
+          "orig_hex": "1200",
+          "patched_hex": "1210",
+          "changed": true,
+          "opcode": "0x12",
+          "ref": null
+        },
+        {
+          "cu_offset": "u0001",
+          "file_offset": "0x570ede",
+          "orig_hex": "54318f74",
+          "patched_hex": "0f000000",
+          "changed": true,
+          "opcode": "0x54",
+          "ref": "field@0x748f:Lcom/sktelecom/ssm/policy/ss/util/a;->g:Lcom/samsung/android/knox/restriction/RestrictionPolicy;"
+        }
+      ],
+      "unique_strings": [
+        "string@0x98c:'20150908 KNOX_APN setCameraState has succeeded!'",
+        "string@0x98b:'20150908 KNOX_APN setCameraState has failed.'",
+        "string@0x1c4c:'Exception: '",
+        "string@0x22ac:'IllegalArgumentException: '",
+        "string@0x5afc:'SecurityException: '"
+      ],
+      "unique_calls": [
+        "method@0xd613:Lcom/samsung/android/knox/restriction/RestrictionPolicy;->setCameraState(Z)Z",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93b:Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05d:Lcom/sktelecom/ssm/policy/util/i;->c(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93b:Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf063:Lcom/sktelecom/ssm/policy/util/i;->i(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x748f:Lcom/sktelecom/ssm/policy/ss/util/a;->g:Lcom/samsung/android/knox/restriction/RestrictionPolicy;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/util/MeatGrinder;->onNativeSecurityCritical()V",
+      "code_item": "0x57fa24",
+      "insns_start": "0x57fa34",
+      "header": {
+        "registers": 1,
+        "ins": 0,
+        "outs": 1,
+        "tries": 0,
+        "insns_size_cu": 17
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x57fa34",
+          "orig_hex": "1a00fa5a",
+          "patched_hex": "0e000000",
+          "changed": true,
+          "opcode": "0x1a",
+          "ref": "string@0x5afa:'Security Critical: Starting shutdown sequence from Native signal'"
+        }
+      ],
+      "unique_strings": [
+        "string@0x5afa:'Security Critical: Starting shutdown sequence from Native signal'"
+      ],
+      "unique_calls": [
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf0b6:Lcom/sktelecom/ssm/policy/util/u;->a()V"
+      ],
+      "unique_fields": [
+        "field@0x74aa:Lcom/sktelecom/ssm/policy/util/MeatGrinder;->b:Z",
+        "field@0x74a9:Lcom/sktelecom/ssm/policy/util/MeatGrinder;->a:Lcom/sktelecom/ssm/policy/util/u;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/util/r;->b()Z",
+      "code_item": "0x580044",
+      "insns_start": "0x580054",
+      "header": {
+        "registers": 5,
+        "ins": 1,
+        "outs": 3,
+        "tries": 0,
+        "insns_size_cu": 60
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u000d",
+          "file_offset": "0x58006e",
+          "orig_hex": "0a01",
+          "patched_hex": "1201",
+          "changed": true,
+          "opcode": "0xa",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0xb042:'rootReason'",
+        "string@0x133e:'CODE_'"
+      ],
+      "unique_calls": [
+        "method@0xefe3:Lcom/sktelecom/ssm/policy/util/MeatGrinder;->a()Lcom/sktelecom/ssm/policy/util/MeatGrinder;",
+        "method@0xe745:Lcom/sktelecom/ssm/policy/db/a0/b;->s()Z",
+        "method@0xefe6:Lcom/sktelecom/ssm/policy/util/MeatGrinder;->checkSecurityStatus(Landroid/content/Context;Z)I",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf937:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xe7de:Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;",
+        "method@0xe7ec:Lcom/sktelecom/ssm/policy/db/z/a;->r(Ljava/lang/String;Ljava/lang/String;)V",
+        "method@0xefe8:Lcom/sktelecom/ssm/policy/util/MeatGrinder;->clearSecurityLog()V",
+        "method@0xe7de:Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;",
+        "method@0xe7e8:Lcom/sktelecom/ssm/policy/db/z/a;->n(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x74df:Lcom/sktelecom/ssm/policy/util/r;->b:Landroid/content/Context;",
+        "field@0x74df:Lcom/sktelecom/ssm/policy/util/r;->b:Landroid/content/Context;",
+        "field@0x74df:Lcom/sktelecom/ssm/policy/util/r;->b:Landroid/content/Context;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/z/h/a;->C()Z",
+      "code_item": "0x527dcc",
+      "insns_start": "0x527ddc",
+      "header": {
+        "registers": 4,
+        "ins": 1,
+        "outs": 2,
+        "tries": 0,
+        "insns_size_cu": 26
+      },
+      "tries": [],
+      "has_patch": false,
+      "changed_instructions": [],
+      "unique_strings": [],
+      "unique_calls": [
+        "method@0x5b0a:Lcom/ctb/dpm/CtbDpm;->getScreenCaptureDisabled(Landroid/content/ComponentName;)Z",
+        "method@0xbc4:Landroid/app/admin/DevicePolicyManager;->getScreenCaptureDisabled(Landroid/content/ComponentName;)Z"
+      ],
+      "unique_fields": [
+        "field@0x74fd:Lcom/sktelecom/ssm/policy/z/h/a;->e:Lcom/ctb/dpm/CtbDpm;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/z/h/a;->a0(Z)V",
+      "code_item": "0x528fe8",
+      "insns_start": "0x528ff8",
+      "header": {
+        "registers": 6,
+        "ins": 2,
+        "outs": 3,
+        "tries": 2,
+        "insns_size_cu": 82
+      },
+      "tries": [
+        {
+          "start_cu": "u001a",
+          "count_cu": 19,
+          "end_cu": "u002d",
+          "handler_off": 1
+        },
+        {
+          "start_cu": "u003e",
+          "count_cu": 19,
+          "end_cu": "u0051",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": false,
+      "changed_instructions": [],
+      "unique_strings": [
+        "string@0xb409:'setClipboardEnabled : '"
+      ],
+      "unique_calls": [
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x5af3:Lcom/ctb/dpm/CtbDpm;->getClipboardDisabled(Landroid/content/ComponentName;)Z",
+        "method@0x5b1b:Lcom/ctb/dpm/CtbDpm;->setClipboardDisabled(Landroid/content/ComponentName;Z)V",
+        "method@0xf985:Ljava/lang/Throwable;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xbb0:Landroid/app/admin/DevicePolicyManager;->getClipboardDisabled(Landroid/content/ComponentName;)Z",
+        "method@0xbd8:Landroid/app/admin/DevicePolicyManager;->setClipboardDisabled(Landroid/content/ComponentName;Z)V"
+      ],
+      "unique_fields": [
+        "field@0x74fd:Lcom/sktelecom/ssm/policy/z/h/a;->e:Lcom/ctb/dpm/CtbDpm;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x74fd:Lcom/sktelecom/ssm/policy/z/h/a;->e:Lcom/ctb/dpm/CtbDpm;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/z/h/a;->d0(Z)V",
+      "code_item": "0x5291b8",
+      "insns_start": "0x5291c8",
+      "header": {
+        "registers": 6,
+        "ins": 2,
+        "outs": 3,
+        "tries": 2,
+        "insns_size_cu": 94
+      },
+      "tries": [
+        {
+          "start_cu": "u001f",
+          "count_cu": 19,
+          "end_cu": "u0032",
+          "handler_off": 1
+        },
+        {
+          "start_cu": "u0041",
+          "count_cu": 19,
+          "end_cu": "u0054",
+          "handler_off": 5
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0017",
+          "file_offset": "0x5291f6",
+          "orig_hex": "38000300",
+          "patched_hex": "00000000",
+          "changed": true,
+          "opcode": "0x38",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0xb4e0:'setDeveloperMode : '"
+      ],
+      "unique_calls": [
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x5af6:Lcom/ctb/dpm/CtbDpm;->getDeveloperModeDisabled(Landroid/content/ComponentName;)Z",
+        "method@0x5b1e:Lcom/ctb/dpm/CtbDpm;->setDeveloperModeDisabled(Landroid/content/ComponentName;Z)V",
+        "method@0xf8e5:Ljava/lang/SecurityException;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xbb3:Landroid/app/admin/DevicePolicyManager;->getDeveloperModeDisabled(Landroid/content/ComponentName;)Z",
+        "method@0xbdb:Landroid/app/admin/DevicePolicyManager;->setDeveloperModeDisabled(Landroid/content/ComponentName;Z)V",
+        "method@0xf985:Ljava/lang/Throwable;->toString()Ljava/lang/String;"
+      ],
+      "unique_fields": [
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z",
+        "field@0x74fd:Lcom/sktelecom/ssm/policy/z/h/a;->e:Lcom/ctb/dpm/CtbDpm;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x74fd:Lcom/sktelecom/ssm/policy/z/h/a;->e:Lcom/ctb/dpm/CtbDpm;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/z/h/a;->u0(Z)V",
+      "code_item": "0x529f94",
+      "insns_start": "0x529fa4",
+      "header": {
+        "registers": 6,
+        "ins": 2,
+        "outs": 4,
+        "tries": 3,
+        "insns_size_cu": 109
+      },
+      "tries": [
+        {
+          "start_cu": "u0037",
+          "count_cu": 8,
+          "end_cu": "u003f",
+          "handler_off": 1
+        },
+        {
+          "start_cu": "u003f",
+          "count_cu": 11,
+          "end_cu": "u004a",
+          "handler_off": 5
+        },
+        {
+          "start_cu": "u004b",
+          "count_cu": 24,
+          "end_cu": "u0063",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0024",
+          "file_offset": "0x529fec",
+          "orig_hex": "6e30325b2005",
+          "patched_hex": "000000000000",
+          "changed": true,
+          "opcode": "0x6e",
+          "ref": "method@0x5b32:Lcom/ctb/dpm/CtbDpm;->setScreenCaptureDisabled(Landroid/content/ComponentName;Z)V"
+        },
+        {
+          "cu_offset": "u003c",
+          "file_offset": "0x52a01c",
+          "orig_hex": "6e30f00b1502",
+          "patched_hex": "000000000000",
+          "changed": true,
+          "opcode": "0x6e",
+          "ref": "method@0xbf0:Landroid/app/admin/DevicePolicyManager;->setScreenCaptureDisabled(Landroid/content/ComponentName;Z)V"
+        },
+        {
+          "cu_offset": "u0060",
+          "file_offset": "0x52a064",
+          "orig_hex": "6e30f00b0501",
+          "patched_hex": "000000000000",
+          "changed": true,
+          "opcode": "0x6e",
+          "ref": "method@0xbf0:Landroid/app/admin/DevicePolicyManager;->setScreenCaptureDisabled(Landroid/content/ComponentName;Z)V"
+        }
+      ],
+      "unique_strings": [
+        "string@0xb9be:'setScreenCaptureState : '",
+        "string@0x5a35:'SSM'"
+      ],
+      "unique_calls": [
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf192:Lcom/sktelecom/ssm/policy/z/h/a;->C()Z",
+        "method@0x5b32:Lcom/ctb/dpm/CtbDpm;->setScreenCaptureDisabled(Landroid/content/ComponentName;Z)V",
+        "method@0xf192:Lcom/sktelecom/ssm/policy/z/h/a;->C()Z",
+        "method@0xbf0:Landroid/app/admin/DevicePolicyManager;->setScreenCaptureDisabled(Landroid/content/ComponentName;Z)V",
+        "method@0xba7:Landroid/app/admin/DevicePolicyManager;->clearProfileOwner(Landroid/content/ComponentName;)V",
+        "method@0xf1d8:Lcom/sktelecom/ssm/policy/z/h/a;->x()I",
+        "method@0xbee:Landroid/app/admin/DevicePolicyManager;->setProfileOwner(Landroid/content/ComponentName;Ljava/lang/String;I)Z",
+        "method@0xbf0:Landroid/app/admin/DevicePolicyManager;->setScreenCaptureDisabled(Landroid/content/ComponentName;Z)V",
+        "method@0xf83f:Ljava/lang/Exception;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x74fd:Lcom/sktelecom/ssm/policy/z/h/a;->e:Lcom/ctb/dpm/CtbDpm;",
+        "field@0x74fd:Lcom/sktelecom/ssm/policy/z/h/a;->e:Lcom/ctb/dpm/CtbDpm;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x7c5:Landroid/os/Build$VERSION;->SDK_INT:I",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x7c5:Landroid/os/Build$VERSION;->SDK_INT:I",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/z/h/a;->x0(Z)V",
+      "code_item": "0x52a1bc",
+      "insns_start": "0x52a1cc",
+      "header": {
+        "registers": 5,
+        "ins": 2,
+        "outs": 3,
+        "tries": 0,
+        "insns_size_cu": 70
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u001b",
+          "file_offset": "0x52a202",
+          "orig_hex": "38000300",
+          "patched_hex": "00000000",
+          "changed": true,
+          "opcode": "0x38",
+          "ref": null
+        },
+        {
+          "cu_offset": "u0034",
+          "file_offset": "0x52a234",
+          "orig_hex": "38000300",
+          "patched_hex": "00000000",
+          "changed": true,
+          "opcode": "0x38",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0xbbd0:'setUsbState : '"
+      ],
+      "unique_calls": [
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf195:Lcom/sktelecom/ssm/policy/z/h/a;->F()Z",
+        "method@0x5b35:Lcom/ctb/dpm/CtbDpm;->setUsbDisabled(Landroid/content/ComponentName;Z)V",
+        "method@0xf195:Lcom/sktelecom/ssm/policy/z/h/a;->F()Z",
+        "method@0xbf4:Landroid/app/admin/DevicePolicyManager;->setUsbDisabled(Landroid/content/ComponentName;Z)V"
+      ],
+      "unique_fields": [
+        "field@0x74fd:Lcom/sktelecom/ssm/policy/z/h/a;->e:Lcom/ctb/dpm/CtbDpm;",
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z",
+        "field@0x74fd:Lcom/sktelecom/ssm/policy/z/h/a;->e:Lcom/ctb/dpm/CtbDpm;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z",
+        "field@0x74fc:Lcom/sktelecom/ssm/policy/z/h/a;->d:Landroid/app/admin/DevicePolicyManager;",
+        "field@0x74fe:Lcom/sktelecom/ssm/policy/z/h/a;->f:Landroid/content/ComponentName;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/init/f1$c;->b(Lretrofit2/d;Lretrofit2/r;)V",
+      "code_item": "0x4fda2c",
+      "insns_start": "0x4fda3c",
+      "header": {
+        "registers": 13,
+        "ins": 3,
+        "outs": 3,
+        "tries": 2,
+        "insns_size_cu": 320
+      },
+      "tries": [
+        {
+          "start_cu": "u0038",
+          "count_cu": 168,
+          "end_cu": "u00e0",
+          "handler_off": 1
+        },
+        {
+          "start_cu": "u00e0",
+          "count_cu": 7,
+          "end_cu": "u00e7",
+          "handler_off": 6
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u00d8",
+          "file_offset": "0x4fdbec",
+          "orig_hex": "0a06",
+          "patched_hex": "1216",
+          "changed": true,
+          "opcode": "0xa",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x9cf3:'list'",
+        "string@0x95ba:'integrity'",
+        "string@0x7188:'apkHashResponse jsonData = '",
+        "string@0x81b3:'encData'",
+        "string@0x7183:'apkHashResponse decryption jsonData = '",
+        "string@0xbc5a:'sha256Value = '",
+        "string@0xf76:'ApkFileName'",
+        "string@0xf75:'ApkFileHash'",
+        "string@0x7182:'apkFileName = '",
+        "string@0x7181:'apkFileHash = '",
+        "string@0x93ae:'hash test ok!'",
+        "string@0x7186:'apkHashResponse error something : '",
+        "string@0xafea:'result : '"
+      ],
+      "unique_calls": [
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0xff2c:Lretrofit2/r;->e()Z",
+        "method@0xc227:Lcom/google/gson/d;-><init>()V",
+        "method@0xff29:Lretrofit2/r;->a()Ljava/lang/Object;",
+        "method@0xc239:Lcom/google/gson/d;->q(Lcom/google/gson/i;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xe745:Lcom/sktelecom/ssm/policy/db/a0/b;->s()Z",
+        "method@0xfef5:Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V",
+        "method@0xfefe:Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf002:Lcom/sktelecom/ssm/policy/util/a;->a(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfef5:Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V",
+        "method@0xfeff:Lorg/json/JSONObject;->has(Ljava/lang/String;)Z",
+        "method@0xfefb:Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;",
+        "method@0xfee6:Lorg/json/JSONArray;->length()I",
+        "method@0x1223:Landroid/content/Context;->getPackageName()Ljava/lang/String;",
+        "method@0xe92c:Lcom/sktelecom/ssm/policy/gid20/l/c;->x(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;",
+        "method@0xf0af:Lcom/sktelecom/ssm/policy/util/s;->c(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfee1:Lorg/json/JSONArray;->get(I)Ljava/lang/Object;",
+        "method@0xfefe:Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xfefe:Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf900:Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xe7de:Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;",
+        "method@0xe7ee:Lcom/sktelecom/ssm/policy/db/z/a;->t(Ljava/lang/String;Z)V",
+        "method@0xf83f:Ljava/lang/Exception;->toString()Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xff2a:Lretrofit2/r;->b()I",
+        "method@0xf937:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf937:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xdf1c:Lcom/sktelecom/ssm/init/f1;->y(Lcom/sktelecom/ssm/init/f1;)Landroid/os/Handler;",
+        "method@0x1686:Landroid/os/Handler;->sendEmptyMessage(I)Z",
+        "method@0xe7de:Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;",
+        "method@0xe7ee:Lcom/sktelecom/ssm/policy/db/z/a;->t(Ljava/lang/String;Z)V",
+        "method@0xdf1c:Lcom/sktelecom/ssm/init/f1;->y(Lcom/sktelecom/ssm/init/f1;)Landroid/os/Handler;",
+        "method@0x1686:Landroid/os/Handler;->sendEmptyMessage(I)Z"
+      ],
+      "unique_fields": [
+        "field@0x6e73:Lcom/sktelecom/ssm/init/f1$c;->a:Lcom/sktelecom/ssm/init/f1;",
+        "field@0x713:Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;",
+        "field@0x710:Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;",
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z",
+        "field@0x6e73:Lcom/sktelecom/ssm/init/f1$c;->a:Lcom/sktelecom/ssm/init/f1;",
+        "field@0x6e73:Lcom/sktelecom/ssm/init/f1$c;->a:Lcom/sktelecom/ssm/init/f1;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/init/o0$e;->b(Lretrofit2/d;Lretrofit2/r;)V",
+      "code_item": "0x4eac68",
+      "insns_start": "0x4eac78",
+      "header": {
+        "registers": 10,
+        "ins": 3,
+        "outs": 3,
+        "tries": 1,
+        "insns_size_cu": 267
+      },
+      "tries": [
+        {
+          "start_cu": "u002b",
+          "count_cu": 192,
+          "end_cu": "u00eb",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u00b1",
+          "file_offset": "0x4eadda",
+          "orig_hex": "0a03",
+          "patched_hex": "1213",
+          "changed": true,
+          "opcode": "0xa",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x9cf3:'list'",
+        "string@0xbdab:'ssmHashResponse jsonData = '",
+        "string@0xc41c:'val = '",
+        "string@0xf76:'ApkFileName'",
+        "string@0xf75:'ApkFileHash'",
+        "string@0x1d38:'FN = '",
+        "string@0x1cd8:'FH = '",
+        "string@0x205f:'H test ok!'",
+        "string@0x5a40:'SSM i s v = '",
+        "string@0x95ba:'integrity'",
+        "string@0xbdaa:'ssmHashResponse error something : '"
+      ],
+      "unique_calls": [
+        "method@0xff2c:Lretrofit2/r;->e()Z",
+        "method@0xc227:Lcom/google/gson/d;-><init>()V",
+        "method@0xff29:Lretrofit2/r;->a()Ljava/lang/Object;",
+        "method@0xc239:Lcom/google/gson/d;->q(Lcom/google/gson/i;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfef5:Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V",
+        "method@0xfeff:Lorg/json/JSONObject;->has(Ljava/lang/String;)Z",
+        "method@0xfefb:Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;",
+        "method@0xfee6:Lorg/json/JSONArray;->length()I",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0x1223:Landroid/content/Context;->getPackageName()Ljava/lang/String;",
+        "method@0xe92c:Lcom/sktelecom/ssm/policy/gid20/l/c;->x(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;",
+        "method@0xf0af:Lcom/sktelecom/ssm/policy/util/s;->c(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfee1:Lorg/json/JSONArray;->get(I)Ljava/lang/Object;",
+        "method@0xfefe:Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xfefe:Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf900:Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0xe7de:Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;",
+        "method@0xe7ee:Lcom/sktelecom/ssm/policy/db/z/a;->t(Ljava/lang/String;Z)V",
+        "method@0xdf98:Lcom/sktelecom/ssm/init/o0;->H(Lcom/sktelecom/ssm/init/o0;)Landroid/os/Handler;",
+        "method@0x1686:Landroid/os/Handler;->sendEmptyMessage(I)Z",
+        "method@0xf83f:Ljava/lang/Exception;->toString()Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xff2a:Lretrofit2/r;->b()I",
+        "method@0xf937:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x6eb4:Lcom/sktelecom/ssm/init/o0$e;->a:Lcom/sktelecom/ssm/init/o0;",
+        "field@0x6eb4:Lcom/sktelecom/ssm/init/o0$e;->a:Lcom/sktelecom/ssm/init/o0;",
+        "field@0x713:Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;",
+        "field@0x710:Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;",
+        "field@0x6eb4:Lcom/sktelecom/ssm/init/o0$e;->a:Lcom/sktelecom/ssm/init/o0;",
+        "field@0x6eb4:Lcom/sktelecom/ssm/init/o0$e;->a:Lcom/sktelecom/ssm/init/o0;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/init/p0$f;->b(Lretrofit2/d;Lretrofit2/r;)V",
+      "code_item": "0x4edee0",
+      "insns_start": "0x4edef0",
+      "header": {
+        "registers": 10,
+        "ins": 3,
+        "outs": 3,
+        "tries": 1,
+        "insns_size_cu": 267
+      },
+      "tries": [
+        {
+          "start_cu": "u002b",
+          "count_cu": 192,
+          "end_cu": "u00eb",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u00b1",
+          "file_offset": "0x4ee052",
+          "orig_hex": "0a03",
+          "patched_hex": "1213",
+          "changed": true,
+          "opcode": "0xa",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x9cf3:'list'",
+        "string@0xbdab:'ssmHashResponse jsonData = '",
+        "string@0xc41c:'val = '",
+        "string@0xf76:'ApkFileName'",
+        "string@0xf75:'ApkFileHash'",
+        "string@0x1d38:'FN = '",
+        "string@0x1cd8:'FH = '",
+        "string@0x205f:'H test ok!'",
+        "string@0x5a40:'SSM i s v = '",
+        "string@0x95ba:'integrity'",
+        "string@0xbdaa:'ssmHashResponse error something : '"
+      ],
+      "unique_calls": [
+        "method@0xff2c:Lretrofit2/r;->e()Z",
+        "method@0xc227:Lcom/google/gson/d;-><init>()V",
+        "method@0xff29:Lretrofit2/r;->a()Ljava/lang/Object;",
+        "method@0xc239:Lcom/google/gson/d;->q(Lcom/google/gson/i;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfef5:Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V",
+        "method@0xfeff:Lorg/json/JSONObject;->has(Ljava/lang/String;)Z",
+        "method@0xfefb:Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;",
+        "method@0xfee6:Lorg/json/JSONArray;->length()I",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0x1223:Landroid/content/Context;->getPackageName()Ljava/lang/String;",
+        "method@0xe92c:Lcom/sktelecom/ssm/policy/gid20/l/c;->x(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;",
+        "method@0xf0af:Lcom/sktelecom/ssm/policy/util/s;->c(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfee1:Lorg/json/JSONArray;->get(I)Ljava/lang/Object;",
+        "method@0xfefe:Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xfefe:Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf900:Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0xe7de:Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;",
+        "method@0xe7ee:Lcom/sktelecom/ssm/policy/db/z/a;->t(Ljava/lang/String;Z)V",
+        "method@0xe036:Lcom/sktelecom/ssm/init/p0;->w(Lcom/sktelecom/ssm/init/p0;)Landroid/os/Handler;",
+        "method@0x1686:Landroid/os/Handler;->sendEmptyMessage(I)Z",
+        "method@0xf83f:Ljava/lang/Exception;->toString()Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xff2a:Lretrofit2/r;->b()I",
+        "method@0xf937:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x6ed8:Lcom/sktelecom/ssm/init/p0$f;->a:Lcom/sktelecom/ssm/init/p0;",
+        "field@0x6ed8:Lcom/sktelecom/ssm/init/p0$f;->a:Lcom/sktelecom/ssm/init/p0;",
+        "field@0x713:Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;",
+        "field@0x710:Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;",
+        "field@0x6ed8:Lcom/sktelecom/ssm/init/p0$f;->a:Lcom/sktelecom/ssm/init/p0;",
+        "field@0x6ed8:Lcom/sktelecom/ssm/init/p0$f;->a:Lcom/sktelecom/ssm/init/p0;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/init/q0$d;->b(Lretrofit2/d;Lretrofit2/r;)V",
+      "code_item": "0x4f1a68",
+      "insns_start": "0x4f1a78",
+      "header": {
+        "registers": 10,
+        "ins": 3,
+        "outs": 3,
+        "tries": 1,
+        "insns_size_cu": 267
+      },
+      "tries": [
+        {
+          "start_cu": "u002b",
+          "count_cu": 192,
+          "end_cu": "u00eb",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u00b1",
+          "file_offset": "0x4f1bda",
+          "orig_hex": "0a03",
+          "patched_hex": "1213",
+          "changed": true,
+          "opcode": "0xa",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x9cf3:'list'",
+        "string@0xbdab:'ssmHashResponse jsonData = '",
+        "string@0xc41c:'val = '",
+        "string@0xf76:'ApkFileName'",
+        "string@0xf75:'ApkFileHash'",
+        "string@0x1d38:'FN = '",
+        "string@0x1cd8:'FH = '",
+        "string@0x205f:'H test ok!'",
+        "string@0x5a40:'SSM i s v = '",
+        "string@0x95ba:'integrity'",
+        "string@0xbdaa:'ssmHashResponse error something : '"
+      ],
+      "unique_calls": [
+        "method@0xff2c:Lretrofit2/r;->e()Z",
+        "method@0xc227:Lcom/google/gson/d;-><init>()V",
+        "method@0xff29:Lretrofit2/r;->a()Ljava/lang/Object;",
+        "method@0xc239:Lcom/google/gson/d;->q(Lcom/google/gson/i;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfef5:Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V",
+        "method@0xfeff:Lorg/json/JSONObject;->has(Ljava/lang/String;)Z",
+        "method@0xfefb:Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;",
+        "method@0xfee6:Lorg/json/JSONArray;->length()I",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0x1223:Landroid/content/Context;->getPackageName()Ljava/lang/String;",
+        "method@0xe92c:Lcom/sktelecom/ssm/policy/gid20/l/c;->x(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;",
+        "method@0xf0af:Lcom/sktelecom/ssm/policy/util/s;->c(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfee1:Lorg/json/JSONArray;->get(I)Ljava/lang/Object;",
+        "method@0xfefe:Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xfefe:Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf900:Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0xe7de:Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;",
+        "method@0xe7ee:Lcom/sktelecom/ssm/policy/db/z/a;->t(Ljava/lang/String;Z)V",
+        "method@0xe0ac:Lcom/sktelecom/ssm/init/q0;->u(Lcom/sktelecom/ssm/init/q0;)Landroid/os/Handler;",
+        "method@0x1686:Landroid/os/Handler;->sendEmptyMessage(I)Z",
+        "method@0xf83f:Ljava/lang/Exception;->toString()Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xff2a:Lretrofit2/r;->b()I",
+        "method@0xf937:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x6f06:Lcom/sktelecom/ssm/init/q0$d;->a:Lcom/sktelecom/ssm/init/q0;",
+        "field@0x6f06:Lcom/sktelecom/ssm/init/q0$d;->a:Lcom/sktelecom/ssm/init/q0;",
+        "field@0x713:Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;",
+        "field@0x710:Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;",
+        "field@0x6f06:Lcom/sktelecom/ssm/init/q0$d;->a:Lcom/sktelecom/ssm/init/q0;",
+        "field@0x6f06:Lcom/sktelecom/ssm/init/q0$d;->a:Lcom/sktelecom/ssm/init/q0;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/init/r0$e;->b(Lretrofit2/d;Lretrofit2/r;)V",
+      "code_item": "0x4f56f0",
+      "insns_start": "0x4f5700",
+      "header": {
+        "registers": 10,
+        "ins": 3,
+        "outs": 3,
+        "tries": 1,
+        "insns_size_cu": 267
+      },
+      "tries": [
+        {
+          "start_cu": "u002b",
+          "count_cu": 192,
+          "end_cu": "u00eb",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u00b1",
+          "file_offset": "0x4f5862",
+          "orig_hex": "0a03",
+          "patched_hex": "1213",
+          "changed": true,
+          "opcode": "0xa",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x9cf3:'list'",
+        "string@0xbdab:'ssmHashResponse jsonData = '",
+        "string@0xc41c:'val = '",
+        "string@0xf76:'ApkFileName'",
+        "string@0xf75:'ApkFileHash'",
+        "string@0x1d38:'FN = '",
+        "string@0x1cd8:'FH = '",
+        "string@0x205f:'H test ok!'",
+        "string@0x5a40:'SSM i s v = '",
+        "string@0x95ba:'integrity'",
+        "string@0xbdaa:'ssmHashResponse error something : '"
+      ],
+      "unique_calls": [
+        "method@0xff2c:Lretrofit2/r;->e()Z",
+        "method@0xc227:Lcom/google/gson/d;-><init>()V",
+        "method@0xff29:Lretrofit2/r;->a()Ljava/lang/Object;",
+        "method@0xc239:Lcom/google/gson/d;->q(Lcom/google/gson/i;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfef5:Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V",
+        "method@0xfeff:Lorg/json/JSONObject;->has(Ljava/lang/String;)Z",
+        "method@0xfefb:Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;",
+        "method@0xfee6:Lorg/json/JSONArray;->length()I",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0x1223:Landroid/content/Context;->getPackageName()Ljava/lang/String;",
+        "method@0xe92c:Lcom/sktelecom/ssm/policy/gid20/l/c;->x(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;",
+        "method@0xf0af:Lcom/sktelecom/ssm/policy/util/s;->c(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfee1:Lorg/json/JSONArray;->get(I)Ljava/lang/Object;",
+        "method@0xfefe:Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xfefe:Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf900:Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x3ccf:Landroidx/fragment/app/Fragment;->getContext()Landroid/content/Context;",
+        "method@0xe7de:Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;",
+        "method@0xe7ee:Lcom/sktelecom/ssm/policy/db/z/a;->t(Ljava/lang/String;Z)V",
+        "method@0xe11d:Lcom/sktelecom/ssm/init/r0;->t(Lcom/sktelecom/ssm/init/r0;)Landroid/os/Handler;",
+        "method@0x1686:Landroid/os/Handler;->sendEmptyMessage(I)Z",
+        "method@0xf83f:Ljava/lang/Exception;->toString()Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xff2a:Lretrofit2/r;->b()I",
+        "method@0xf937:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x6f36:Lcom/sktelecom/ssm/init/r0$e;->a:Lcom/sktelecom/ssm/init/r0;",
+        "field@0x6f36:Lcom/sktelecom/ssm/init/r0$e;->a:Lcom/sktelecom/ssm/init/r0;",
+        "field@0x713:Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;",
+        "field@0x710:Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;",
+        "field@0x6f36:Lcom/sktelecom/ssm/init/r0$e;->a:Lcom/sktelecom/ssm/init/r0;",
+        "field@0x6f36:Lcom/sktelecom/ssm/init/r0$e;->a:Lcom/sktelecom/ssm/init/r0;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/lib/f;->g0(Landroid/content/Context;)Z",
+      "code_item": "0x50734c",
+      "insns_start": "0x50735c",
+      "header": {
+        "registers": 4,
+        "ins": 2,
+        "outs": 3,
+        "tries": 0,
+        "insns_size_cu": 42
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x50735c",
+          "orig_hex": "1a003996",
+          "patched_hex": "12100f00",
+          "changed": true,
+          "opcode": "0x1a",
+          "ref": "string@0x9639:'isActivateBCKLicense'"
+        }
+      ],
+      "unique_strings": [
+        "string@0x9639:'isActivateBCKLicense'",
+        "string@0x88b:'0'",
+        "string@0x963a:'isActivateBckLicense:'"
+      ],
+      "unique_calls": [
+        "method@0xe7bf:Lcom/sktelecom/ssm/policy/db/v;->e(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf8ff:Ljava/lang/String;->equals(Ljava/lang/Object;)Z",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf060:Lcom/sktelecom/ssm/policy/util/i;->f(Ljava/lang/String;)V"
+      ],
+      "unique_fields": []
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/lib/f;->h0(Landroid/content/Context;)Z",
+      "code_item": "0x5073b0",
+      "insns_start": "0x5073c0",
+      "header": {
+        "registers": 4,
+        "ins": 2,
+        "outs": 3,
+        "tries": 0,
+        "insns_size_cu": 42
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x5073c0",
+          "orig_hex": "1a003b96",
+          "patched_hex": "12100f00",
+          "changed": true,
+          "opcode": "0x1a",
+          "ref": "string@0x963b:'isActivateKnoxLicense'"
+        }
+      ],
+      "unique_strings": [
+        "string@0x963b:'isActivateKnoxLicense'",
+        "string@0x88b:'0'",
+        "string@0x963c:'isActivateKpeLicense:'"
+      ],
+      "unique_calls": [
+        "method@0xe7bf:Lcom/sktelecom/ssm/policy/db/v;->e(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf8ff:Ljava/lang/String;->equals(Ljava/lang/Object;)Z",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf060:Lcom/sktelecom/ssm/policy/util/i;->f(Ljava/lang/String;)V"
+      ],
+      "unique_fields": []
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/PolicyService$b;->b(Lretrofit2/d;Lretrofit2/r;)V",
+      "code_item": "0x50e7ec",
+      "insns_start": "0x50e7fc",
+      "header": {
+        "registers": 8,
+        "ins": 3,
+        "outs": 3,
+        "tries": 4,
+        "insns_size_cu": 289
+      },
+      "tries": [
+        {
+          "start_cu": "u000a",
+          "count_cu": 190,
+          "end_cu": "u00c8",
+          "handler_off": 1
+        },
+        {
+          "start_cu": "u00ca",
+          "count_cu": 24,
+          "end_cu": "u00e2",
+          "handler_off": 6
+        },
+        {
+          "start_cu": "u00e4",
+          "count_cu": 3,
+          "end_cu": "u00e7",
+          "handler_off": 9
+        },
+        {
+          "start_cu": "u00e9",
+          "count_cu": 33,
+          "end_cu": "u010a",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0088",
+          "file_offset": "0x50e90c",
+          "orig_hex": "0a04",
+          "patched_hex": "1214",
+          "changed": true,
+          "opcode": "0xa",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0xf75:'ApkFileHash'",
+        "string@0x9cf3:'list'",
+        "string@0x7187:'apkHashResponse jsonBody = '",
+        "string@0xbc5a:'sha256Value = '",
+        "string@0x93af:'hash test ok! apkFileName = '",
+        "string@0xf76:'ApkFileName'",
+        "string@0x5a3f:'SSM i s f = '",
+        "string@0x95ba:'integrity'",
+        "string@0x7184:'apkHashResponse error body : '",
+        "string@0x7186:'apkHashResponse error something : '",
+        "string@0x1c30:'Exception in apkHashResponse: '"
+      ],
+      "unique_calls": [
+        "method@0xb7f:Landroid/app/Service;->getApplicationContext()Landroid/content/Context;",
+        "method@0xff2c:Lretrofit2/r;->e()Z",
+        "method@0xff29:Lretrofit2/r;->a()Ljava/lang/Object;",
+        "method@0xff29:Lretrofit2/r;->a()Ljava/lang/Object;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93b:Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xc4b8:Lcom/google/gson/k;->s(Ljava/lang/String;)Z",
+        "method@0xc4b7:Lcom/google/gson/k;->r(Ljava/lang/String;)Lcom/google/gson/f;",
+        "method@0x1223:Landroid/content/Context;->getPackageName()Ljava/lang/String;",
+        "method@0xe92c:Lcom/sktelecom/ssm/policy/gid20/l/c;->x(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;",
+        "method@0xf0af:Lcom/sktelecom/ssm/policy/util/s;->c(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xc24a:Lcom/google/gson/f;->iterator()Ljava/util/Iterator;",
+        "method@0xfbc5:Ljava/util/Iterator;->hasNext()Z",
+        "method@0xfbc6:Ljava/util/Iterator;->next()Ljava/lang/Object;",
+        "method@0xc254:Lcom/google/gson/i;->e()Lcom/google/gson/k;",
+        "method@0xc4b8:Lcom/google/gson/k;->s(Ljava/lang/String;)Z",
+        "method@0xc4b6:Lcom/google/gson/k;->q(Ljava/lang/String;)Lcom/google/gson/i;",
+        "method@0xc257:Lcom/google/gson/i;->h()Ljava/lang/String;",
+        "method@0xf900:Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xc4b6:Lcom/google/gson/k;->q(Ljava/lang/String;)Lcom/google/gson/i;",
+        "method@0xf93b:Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93e:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xe7de:Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;",
+        "method@0xe7ee:Lcom/sktelecom/ssm/policy/db/z/a;->t(Ljava/lang/String;Z)V",
+        "method@0xff2b:Lretrofit2/r;->d()Lokhttp3/b0;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xfe6a:Lokhttp3/b0;->z()Ljava/lang/String;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfe67:Lokhttp3/b0;->close()V",
+        "method@0xf97c:Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V",
+        "method@0xfe67:Lokhttp3/b0;->close()V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xff2a:Lretrofit2/r;->b()I",
+        "method@0xf937:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93b:Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x701e:Lcom/sktelecom/ssm/policy/PolicyService$b;->a:Lcom/sktelecom/ssm/policy/PolicyService;",
+        "field@0x713:Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;",
+        "field@0x710:Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/PolicyService$c;->b(Lretrofit2/d;Lretrofit2/r;)V",
+      "code_item": "0x50eacc",
+      "insns_start": "0x50eadc",
+      "header": {
+        "registers": 10,
+        "ins": 3,
+        "outs": 3,
+        "tries": 4,
+        "insns_size_cu": 273
+      },
+      "tries": [
+        {
+          "start_cu": "u0008",
+          "count_cu": 187,
+          "end_cu": "u00c3",
+          "handler_off": 1
+        },
+        {
+          "start_cu": "u00c5",
+          "count_cu": 24,
+          "end_cu": "u00dd",
+          "handler_off": 6
+        },
+        {
+          "start_cu": "u00df",
+          "count_cu": 3,
+          "end_cu": "u00e2",
+          "handler_off": 9
+        },
+        {
+          "start_cu": "u00e4",
+          "count_cu": 18,
+          "end_cu": "u00f6",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u009d",
+          "file_offset": "0x50ec16",
+          "orig_hex": "0a05",
+          "patched_hex": "1215",
+          "changed": true,
+          "opcode": "0xa",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x81b3:'encData'",
+        "string@0x717e:'apkCCHashResponse jsonData = '",
+        "string@0x9cf3:'list'",
+        "string@0x5302:'My APK Hash = '",
+        "string@0xf75:'ApkFileHash'",
+        "string@0x0:''",
+        "string@0x231a:'Integrity Check OK! Match found: '",
+        "string@0xf76:'ApkFileName'",
+        "string@0x717d:'apkCCHashResponse error: '",
+        "string@0x1c2f:'Exception in apkCCHashResponse: '"
+      ],
+      "unique_calls": [
+        "method@0xb7f:Landroid/app/Service;->getApplicationContext()Landroid/content/Context;",
+        "method@0xff2c:Lretrofit2/r;->e()Z",
+        "method@0xff29:Lretrofit2/r;->a()Ljava/lang/Object;",
+        "method@0xff29:Lretrofit2/r;->a()Ljava/lang/Object;",
+        "method@0xe745:Lcom/sktelecom/ssm/policy/db/a0/b;->s()Z",
+        "method@0xc4b8:Lcom/google/gson/k;->s(Ljava/lang/String;)Z",
+        "method@0xc4b6:Lcom/google/gson/k;->q(Ljava/lang/String;)Lcom/google/gson/i;",
+        "method@0xc257:Lcom/google/gson/i;->h()Ljava/lang/String;",
+        "method@0xf002:Lcom/sktelecom/ssm/policy/util/a;->a(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xc25c:Lcom/google/gson/i;->toString()Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfef5:Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V",
+        "method@0xff09:Lorg/json/JSONObject;->optJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;",
+        "method@0x1223:Landroid/content/Context;->getPackageName()Ljava/lang/String;",
+        "method@0xe92c:Lcom/sktelecom/ssm/policy/gid20/l/c;->x(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;",
+        "method@0xf0af:Lcom/sktelecom/ssm/policy/util/s;->c(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfee6:Lorg/json/JSONArray;->length()I",
+        "method@0xfee9:Lorg/json/JSONArray;->optJSONObject(I)Lorg/json/JSONObject;",
+        "method@0xff0e:Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf900:Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xff0d:Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xff2b:Lretrofit2/r;->d()Lokhttp3/b0;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xfe6a:Lokhttp3/b0;->z()Ljava/lang/String;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xfe67:Lokhttp3/b0;->close()V",
+        "method@0xf97c:Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V",
+        "method@0xfe67:Lokhttp3/b0;->close()V",
+        "method@0xe405:Lcom/sktelecom/ssm/policy/PolicyService$c;->c(Landroid/content/Context;Z)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf838:Ljava/lang/Exception;->getMessage()Ljava/lang/String;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05d:Lcom/sktelecom/ssm/policy/util/i;->c(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0x7026:Lcom/sktelecom/ssm/policy/PolicyService$c;->a:Lcom/sktelecom/ssm/policy/PolicyService;",
+        "field@0x713:Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;",
+        "field@0x710:Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;",
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/policy/i0/b;->E(Ljava/lang/String;)Z",
+      "code_item": "0x548808",
+      "insns_start": "0x548818",
+      "header": {
+        "registers": 4,
+        "ins": 2,
+        "outs": 2,
+        "tries": 0,
+        "insns_size_cu": 73
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x548818",
+          "orig_hex": "22008726",
+          "patched_hex": "12000f00",
+          "changed": true,
+          "opcode": "0x22",
+          "ref": "type@0x2687:Ljava/lang/StringBuilder;"
+        }
+      ],
+      "unique_strings": [
+        "string@0x96e1:'isConnectedUSBPackage - a_sClassName : '",
+        "string@0x7c3:'.*UsbStorageActivity.*'",
+        "string@0x7c1:'.*SwitchUsbSettings.*'",
+        "string@0x7c2:'.*UsbModeSelectionActivity.*'",
+        "string@0x7c0:'.*MtpStorageSwitch.*'",
+        "string@0x7a64:'com.sonyericsson.usbux'",
+        "string@0x7c4:'.*connectivity.USBConnectivity.*'"
+      ],
+      "unique_calls": [
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf911:Ljava/lang/String;->matches(Ljava/lang/String;)Z",
+        "method@0xf911:Ljava/lang/String;->matches(Ljava/lang/String;)Z",
+        "method@0xf911:Ljava/lang/String;->matches(Ljava/lang/String;)Z",
+        "method@0xf911:Ljava/lang/String;->matches(Ljava/lang/String;)Z",
+        "method@0xf911:Ljava/lang/String;->matches(Ljava/lang/String;)Z",
+        "method@0xf911:Ljava/lang/String;->matches(Ljava/lang/String;)Z"
+      ],
+      "unique_fields": []
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/init/c1;->z(Landroid/content/Context;)Z",
+      "code_item": "0x4fc458",
+      "insns_start": "0x4fc468",
+      "header": {
+        "registers": 4,
+        "ins": 2,
+        "outs": 3,
+        "tries": 0,
+        "insns_size_cu": 24
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x4fc468",
+          "orig_hex": "1a003d96",
+          "patched_hex": "12100f00",
+          "changed": true,
+          "opcode": "0x1a",
+          "ref": "string@0x963d:'isActivateLicense'"
+        }
+      ],
+      "unique_strings": [
+        "string@0x963d:'isActivateLicense'",
+        "string@0x88b:'0'"
+      ],
+      "unique_calls": [
+        "method@0xe7bf:Lcom/sktelecom/ssm/policy/db/v;->e(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xe728:Lcom/sktelecom/ssm/policy/db/a0/b;->d0(Landroid/content/Context;)Z",
+        "method@0xf8ff:Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+      ],
+      "unique_fields": []
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/InoutActivity;->b2(Landroid/content/DialogInterface;I)V",
+      "code_item": "0x4ce668",
+      "insns_start": "0x4ce678",
+      "header": {
+        "registers": 3,
+        "ins": 3,
+        "outs": 2,
+        "tries": 0,
+        "insns_size_cu": 19
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u000d",
+          "file_offset": "0x4ce692",
+          "orig_hex": "13020020",
+          "patched_hex": "13020000",
+          "changed": true,
+          "opcode": "0x13",
+          "ref": null
+        }
+      ],
+      "unique_strings": [],
+      "unique_calls": [
+        "method@0x1250:Landroid/content/DialogInterface;->dismiss()V",
+        "method@0xa03:Landroid/app/Activity;->getWindow()Landroid/view/Window;",
+        "method@0x1c2a:Landroid/view/Window;->addFlags(I)V"
+      ],
+      "unique_fields": [
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/InoutActivity;->onCreate(Landroid/os/Bundle;)V",
+      "code_item": "0x4ce7c8",
+      "insns_start": "0x4ce7d8",
+      "header": {
+        "registers": 7,
+        "ins": 2,
+        "outs": 3,
+        "tries": 0,
+        "insns_size_cu": 648
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u000b",
+          "file_offset": "0x4ce7ee",
+          "orig_hex": "13000020",
+          "patched_hex": "13000000",
+          "changed": true,
+          "opcode": "0x13",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x73ed:'bluetooth'",
+        "string@0x9d3d:'location'",
+        "string@0x208a:'HH:mm:ss'",
+        "string@0x8333:'extra4'",
+        "string@0xa688:'notification'",
+        "string@0x8334:'extra5'",
+        "string@0xa7d2:'onCreate nfcPayload = '",
+        "string@0x532b:'NFC ResultCode = '",
+        "string@0x5328:'NFC EventCode = '",
+        "string@0x5329:'NFC GatewayNumber = '",
+        "string@0x9605:'invalidInstall'"
+      ],
+      "unique_calls": [
+        "method@0x3d9b:Landroidx/fragment/app/FragmentActivity;->onCreate(Landroid/os/Bundle;)V",
+        "method@0xa03:Landroid/app/Activity;->getWindow()Landroid/view/Window;",
+        "method@0x1c2a:Landroid/view/Window;->addFlags(I)V",
+        "method@0xf0d7:Lcom/sktelecom/ssm/policy/util/y;->O(Landroid/content/Context;)Z",
+        "method@0xa38:Landroid/app/Activity;->setRequestedOrientation(I)V",
+        "method@0x23ae:Landroidx/appcompat/app/AppCompatActivity;->setContentView(I)V",
+        "method@0xe70d:Lcom/sktelecom/ssm/policy/db/a0/b;->G(Landroid/content/Context;)Z",
+        "method@0xe70d:Lcom/sktelecom/ssm/policy/db/a0/b;->G(Landroid/content/Context;)Z",
+        "method@0xe712:Lcom/sktelecom/ssm/policy/db/a0/b;->L(Landroid/content/Context;)Z",
+        "method@0xe73a:Lcom/sktelecom/ssm/policy/db/a0/b;->m0(Landroid/content/Context;)Z",
+        "method@0xe70d:Lcom/sktelecom/ssm/policy/db/a0/b;->G(Landroid/content/Context;)Z",
+        "method@0xe724:Lcom/sktelecom/ssm/policy/db/a0/b;->b0(Landroid/content/Context;)Z",
+        "method@0xe712:Lcom/sktelecom/ssm/policy/db/a0/b;->L(Landroid/content/Context;)Z",
+        "method@0xe73b:Lcom/sktelecom/ssm/policy/db/a0/b;->n(Landroid/content/Context;)Z",
+        "method@0xa01:Landroid/app/Activity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;",
+        "method@0x11b2:Landroid/bluetooth/BluetoothManager;->getAdapter()Landroid/bluetooth/BluetoothAdapter;",
+        "method@0xa01:Landroid/app/Activity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x21e5:Landroid/widget/TextClock;->setFormat12Hour(Ljava/lang/CharSequence;)V",
+        "method@0x21e6:Landroid/widget/TextClock;->setFormat24Hour(Ljava/lang/CharSequence;)V",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0xe70d:Lcom/sktelecom/ssm/policy/db/a0/b;->G(Landroid/content/Context;)Z",
+        "method@0xdac4:Lcom/sktelecom/ssm/InoutActivity;->q0()V",
+        "method@0xda8d:Lcom/sktelecom/ssm/InoutActivity;->c0()V",
+        "method@0xe724:Lcom/sktelecom/ssm/policy/db/a0/b;->b0(Landroid/content/Context;)Z",
+        "method@0xdace:Lcom/sktelecom/ssm/InoutActivity;->t0()V",
+        "method@0xe712:Lcom/sktelecom/ssm/policy/db/a0/b;->L(Landroid/content/Context;)Z",
+        "method@0xdacb:Lcom/sktelecom/ssm/InoutActivity;->s0()V",
+        "method@0xe711:Lcom/sktelecom/ssm/policy/db/a0/b;->K(Landroid/content/Context;)Z",
+        "method@0xdac7:Lcom/sktelecom/ssm/InoutActivity;->r0()V",
+        "method@0xdac1:Lcom/sktelecom/ssm/InoutActivity;->p0()V",
+        "method@0x1686:Landroid/os/Handler;->sendEmptyMessage(I)Z",
+        "method@0x9f6:Landroid/app/Activity;->getIntent()Landroid/content/Intent;",
+        "method@0x9f6:Landroid/app/Activity;->getIntent()Landroid/content/Intent;",
+        "method@0x1263:Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I",
+        "method@0xe70d:Lcom/sktelecom/ssm/policy/db/a0/b;->G(Landroid/content/Context;)Z",
+        "method@0xe724:Lcom/sktelecom/ssm/policy/db/a0/b;->b0(Landroid/content/Context;)Z",
+        "method@0xe712:Lcom/sktelecom/ssm/policy/db/a0/b;->L(Landroid/content/Context;)Z",
+        "method@0xe73b:Lcom/sktelecom/ssm/policy/db/a0/b;->n(Landroid/content/Context;)Z",
+        "method@0xa59:Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V",
+        "method@0xa68:Landroid/app/AlertDialog$Builder;->setTitle(I)Landroid/app/AlertDialog$Builder;",
+        "method@0xa60:Landroid/app/AlertDialog$Builder;->setMessage(I)Landroid/app/AlertDialog$Builder;",
+        "method@0xa5d:Landroid/app/AlertDialog$Builder;->setCancelable(Z)Landroid/app/AlertDialog$Builder;",
+        "method@0xde24:Lcom/sktelecom/ssm/i1;-><init>(Lcom/sktelecom/ssm/InoutActivity;I)V",
+        "method@0xa66:Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;",
+        "method@0xa6b:Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;",
+        "method@0xa01:Landroid/app/Activity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;",
+        "method@0xb4e:Landroid/app/NotificationManager;->cancel(I)V",
+        "method@0x9f6:Landroid/app/Activity;->getIntent()Landroid/content/Intent;",
+        "method@0x125c:Landroid/content/Intent;->getByteArrayExtra(Ljava/lang/String;)[B",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf8f3:Ljava/lang/String;-><init>([BLjava/nio/charset/Charset;)V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf0e6:Lcom/sktelecom/ssm/policy/util/y;->g(Landroid/content/Context;)I",
+        "method@0xddce:Lcom/sktelecom/ssm/gateway/a/b;->a([B)Lcom/sktelecom/ssm/gateway/a/b$a;",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xddcd:Lcom/sktelecom/ssm/gateway/a/b$a;->c()Ljava/lang/String;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xddcb:Lcom/sktelecom/ssm/gateway/a/b$a;->a()Ljava/lang/String;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xf930:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xddcc:Lcom/sktelecom/ssm/gateway/a/b$a;->b()Ljava/lang/String;",
+        "method@0xf93c:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0xf94d:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0xf05c:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0xda94:Lcom/sktelecom/ssm/InoutActivity;->e0(Lcom/sktelecom/ssm/gateway/a/b$a;)V",
+        "method@0xdaa5:Lcom/sktelecom/ssm/InoutActivity;->i2()V",
+        "method@0xe7de:Lcom/sktelecom/ssm/policy/db/z/a;->d(Landroid/content/Context;)Lcom/sktelecom/ssm/policy/db/z/a;",
+        "method@0xe7e3:Lcom/sktelecom/ssm/policy/db/z/a;->i(Ljava/lang/String;Z)Z",
+        "method@0xa59:Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V",
+        "method@0xa68:Landroid/app/AlertDialog$Builder;->setTitle(I)Landroid/app/AlertDialog$Builder;",
+        "method@0xa60:Landroid/app/AlertDialog$Builder;->setMessage(I)Landroid/app/AlertDialog$Builder;",
+        "method@0xa5d:Landroid/app/AlertDialog$Builder;->setCancelable(Z)Landroid/app/AlertDialog$Builder;",
+        "method@0xde18:Lcom/sktelecom/ssm/h1;-><init>(Lcom/sktelecom/ssm/InoutActivity;)V",
+        "method@0xa66:Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;",
+        "method@0xa6b:Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;"
+      ],
+      "unique_fields": [
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z",
+        "field@0x6c4a:Lcom/sktelecom/ssm/InoutActivity;->s4:Z",
+        "field@0x6c4b:Lcom/sktelecom/ssm/InoutActivity;->t4:Z",
+        "field@0x6c4c:Lcom/sktelecom/ssm/InoutActivity;->u4:Z",
+        "field@0x6c4a:Lcom/sktelecom/ssm/InoutActivity;->s4:Z",
+        "field@0x6c42:Lcom/sktelecom/ssm/InoutActivity;->k4:Landroid/bluetooth/BluetoothManager;",
+        "field@0x6c43:Lcom/sktelecom/ssm/InoutActivity;->l4:Landroid/bluetooth/BluetoothAdapter;",
+        "field@0x6c4b:Lcom/sktelecom/ssm/InoutActivity;->t4:Z",
+        "field@0x6c4a:Lcom/sktelecom/ssm/InoutActivity;->s4:Z",
+        "field@0x6c45:Lcom/sktelecom/ssm/InoutActivity;->n4:Landroid/location/LocationManager;",
+        "field@0x6c19:Lcom/sktelecom/ssm/InoutActivity;->K3:Landroid/view/View;",
+        "field@0x6c1f:Lcom/sktelecom/ssm/InoutActivity;->N3:Lskinfosec/utils/CircleRoundProgressBar;",
+        "field@0x6c1d:Lcom/sktelecom/ssm/InoutActivity;->M3:Lskinfosec/utils/SecurityOrbitView;",
+        "field@0x6c1b:Lcom/sktelecom/ssm/InoutActivity;->L3:Landroid/widget/ImageView;",
+        "field@0x6c21:Lcom/sktelecom/ssm/InoutActivity;->O3:Landroid/widget/TextView;",
+        "field@0x6c23:Lcom/sktelecom/ssm/InoutActivity;->P3:Landroid/widget/TextView;",
+        "field@0x6c25:Lcom/sktelecom/ssm/InoutActivity;->Q3:Landroid/widget/TextView;",
+        "field@0x6c27:Lcom/sktelecom/ssm/InoutActivity;->R3:Landroid/widget/TextView;",
+        "field@0x6c29:Lcom/sktelecom/ssm/InoutActivity;->S3:Landroid/widget/TextView;",
+        "field@0x6c2b:Lcom/sktelecom/ssm/InoutActivity;->T3:Landroid/widget/TextView;",
+        "field@0x6c35:Lcom/sktelecom/ssm/InoutActivity;->Y3:Landroid/view/View;",
+        "field@0x6c37:Lcom/sktelecom/ssm/InoutActivity;->Z3:Landroid/view/View;",
+        "field@0x6c38:Lcom/sktelecom/ssm/InoutActivity;->a4:Landroid/widget/LinearLayout;",
+        "field@0x6c33:Lcom/sktelecom/ssm/InoutActivity;->X3:Landroid/widget/LinearLayout;",
+        "field@0x6c2d:Lcom/sktelecom/ssm/InoutActivity;->U3:Landroid/widget/TextView;",
+        "field@0x6c31:Lcom/sktelecom/ssm/InoutActivity;->W3:Landroid/widget/TextClock;",
+        "field@0x6c31:Lcom/sktelecom/ssm/InoutActivity;->W3:Landroid/widget/TextClock;",
+        "field@0x6c2f:Lcom/sktelecom/ssm/InoutActivity;->V3:Landroid/widget/TextView;",
+        "field@0x6c1e:Lcom/sktelecom/ssm/InoutActivity;->M4:Landroid/os/Handler;",
+        "field@0x772e:Ljava/nio/charset/StandardCharsets;->UTF_8:Ljava/nio/charset/Charset;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/PrivacyActivity;->onCreate(Landroid/os/Bundle;)V",
+      "code_item": "0x4d95dc",
+      "insns_start": "0x4d95ec",
+      "header": {
+        "registers": 7,
+        "ins": 2,
+        "outs": 2,
+        "tries": 0,
+        "insns_size_cu": 147
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u000b",
+          "file_offset": "0x4d9602",
+          "orig_hex": "13000020",
+          "patched_hex": "13000000",
+          "changed": true,
+          "opcode": "0x13",
+          "ref": null
+        }
+      ],
+      "unique_strings": [],
+      "unique_calls": [
+        "method@0x3d9b:Landroidx/fragment/app/FragmentActivity;->onCreate(Landroid/os/Bundle;)V",
+        "method@0xa03:Landroid/app/Activity;->getWindow()Landroid/view/Window;",
+        "method@0x1c2a:Landroid/view/Window;->addFlags(I)V",
+        "method@0x23ae:Landroidx/appcompat/app/AppCompatActivity;->setContentView(I)V",
+        "method@0xe738:Lcom/sktelecom/ssm/policy/db/a0/b;->l0(Landroid/content/Context;)Z",
+        "method@0xa39:Landroid/app/Activity;->setResult(I)V",
+        "method@0x9eb:Landroid/app/Activity;->finish()V",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x1dc3:Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V",
+        "method@0xf873:Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;",
+        "method@0x1dcb:Landroid/widget/Button;->setTag(Ljava/lang/Object;)V",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x1dc3:Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V",
+        "method@0xf873:Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;",
+        "method@0x1dcb:Landroid/widget/Button;->setTag(Ljava/lang/Object;)V",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x1e0d:Landroid/widget/CheckBox;->setOnCheckedChangeListener(Landroid/widget/CompoundButton$OnCheckedChangeListener;)V",
+        "method@0xdb8e:Lcom/sktelecom/ssm/PrivacyActivity;->K()Ljava/lang/String;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x1d14:Landroid/webkit/WebView;->getSettings()Landroid/webkit/WebSettings;",
+        "method@0x1d10:Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V",
+        "method@0x1d14:Landroid/webkit/WebView;->getSettings()Landroid/webkit/WebSettings;",
+        "method@0x1d11:Landroid/webkit/WebSettings;->setTextZoom(I)V",
+        "method@0x1d19:Landroid/webkit/WebView;->setScrollbarFadingEnabled(Z)V",
+        "method@0x1d18:Landroid/webkit/WebView;->setScrollBarStyle(I)V",
+        "method@0x1d16:Landroid/webkit/WebView;->loadUrl(Ljava/lang/String;)V",
+        "method@0xdb7a:Lcom/sktelecom/ssm/PrivacyActivity$a;-><init>(Lcom/sktelecom/ssm/PrivacyActivity;)V",
+        "method@0x1d1b:Landroid/webkit/WebView;->setWebViewClient(Landroid/webkit/WebViewClient;)V"
+      ],
+      "unique_fields": [
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z",
+        "field@0x6ca9:Lcom/sktelecom/ssm/PrivacyActivity;->I3:Landroid/widget/Button;",
+        "field@0x6cb0:Lcom/sktelecom/ssm/PrivacyActivity;->P3:Landroid/view/View$OnClickListener;",
+        "field@0x6ca9:Lcom/sktelecom/ssm/PrivacyActivity;->I3:Landroid/widget/Button;",
+        "field@0x6cb0:Lcom/sktelecom/ssm/PrivacyActivity;->P3:Landroid/view/View$OnClickListener;",
+        "field@0x6caf:Lcom/sktelecom/ssm/PrivacyActivity;->O3:Landroid/widget/CompoundButton$OnCheckedChangeListener;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/QrcodeActivity;->onCreate(Landroid/os/Bundle;)V",
+      "code_item": "0x4d9e84",
+      "insns_start": "0x4d9e94",
+      "header": {
+        "registers": 4,
+        "ins": 2,
+        "outs": 3,
+        "tries": 0,
+        "insns_size_cu": 200
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u000b",
+          "file_offset": "0x4d9eaa",
+          "orig_hex": "13000020",
+          "patched_hex": "13000000",
+          "changed": true,
+          "opcode": "0x13",
+          "ref": null
+        }
+      ],
+      "unique_strings": [],
+      "unique_calls": [
+        "method@0x3d9b:Landroidx/fragment/app/FragmentActivity;->onCreate(Landroid/os/Bundle;)V",
+        "method@0xa03:Landroid/app/Activity;->getWindow()Landroid/view/Window;",
+        "method@0x1c2a:Landroid/view/Window;->addFlags(I)V",
+        "method@0x23ae:Landroidx/appcompat/app/AppCompatActivity;->setContentView(I)V",
+        "method@0x9f6:Landroid/app/Activity;->getIntent()Landroid/content/Intent;",
+        "method@0x9f6:Landroid/app/Activity;->getIntent()Landroid/content/Intent;",
+        "method@0x125a:Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0xf6b0:Lcom/sktelecom/ssm/x2;-><init>(Lcom/sktelecom/ssm/QrcodeActivity;)V",
+        "method@0x1dc3:Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V",
+        "method@0xf6b9:Lcom/sktelecom/ssm/y2;-><init>(Lcom/sktelecom/ssm/QrcodeActivity;)V",
+        "method@0x2037:Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View$OnClickListener;)V",
+        "method@0xe70d:Lcom/sktelecom/ssm/policy/db/a0/b;->G(Landroid/content/Context;)Z",
+        "method@0xdbac:Lcom/sktelecom/ssm/QrcodeActivity;->L()V",
+        "method@0xe712:Lcom/sktelecom/ssm/policy/db/a0/b;->L(Landroid/content/Context;)Z",
+        "method@0xdbae:Lcom/sktelecom/ssm/QrcodeActivity;->N()V",
+        "method@0xe711:Lcom/sktelecom/ssm/policy/db/a0/b;->K(Landroid/content/Context;)Z",
+        "method@0xdbad:Lcom/sktelecom/ssm/QrcodeActivity;->M()V",
+        "method@0xdbb6:Lcom/sktelecom/ssm/QrcodeActivity;->V()V"
+      ],
+      "unique_fields": [
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z",
+        "field@0x6cb4:Lcom/sktelecom/ssm/QrcodeActivity;->H3:Ljava/lang/String;",
+        "field@0x6cc0:Lcom/sktelecom/ssm/QrcodeActivity;->T3:Z",
+        "field@0x6cb5:Lcom/sktelecom/ssm/QrcodeActivity;->I3:Landroid/widget/ImageView;",
+        "field@0x6cb6:Lcom/sktelecom/ssm/QrcodeActivity;->J3:Landroid/widget/ImageView;",
+        "field@0x6cb7:Lcom/sktelecom/ssm/QrcodeActivity;->K3:Landroid/widget/TextView;",
+        "field@0x6cb8:Lcom/sktelecom/ssm/QrcodeActivity;->L3:Landroid/widget/TextView;",
+        "field@0x6cb9:Lcom/sktelecom/ssm/QrcodeActivity;->M3:Landroid/widget/TextView;",
+        "field@0x6cba:Lcom/sktelecom/ssm/QrcodeActivity;->N3:Landroid/widget/TextView;",
+        "field@0x6cbb:Lcom/sktelecom/ssm/QrcodeActivity;->O3:Landroid/widget/TextView;",
+        "field@0x6cbd:Lcom/sktelecom/ssm/QrcodeActivity;->Q3:Landroid/widget/TableRow;",
+        "field@0x6cbc:Lcom/sktelecom/ssm/QrcodeActivity;->P3:Landroid/widget/TextView;",
+        "field@0x6cb5:Lcom/sktelecom/ssm/QrcodeActivity;->I3:Landroid/widget/ImageView;"
+      ]
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/SamsungELMActivity;->M(Landroid/content/Context;)Z",
+      "code_item": "0x4db070",
+      "insns_start": "0x4db080",
+      "header": {
+        "registers": 4,
+        "ins": 2,
+        "outs": 3,
+        "tries": 0,
+        "insns_size_cu": 40
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0x4db080",
+          "orig_hex": "7100f3f00000",
+          "patched_hex": "12100f000000",
+          "changed": true,
+          "opcode": "0x71",
+          "ref": "method@0xf0f3:Lcom/sktelecom/ssm/policy/util/y;->t()Ljava/lang/String;"
+        },
+        {
+          "cu_offset": "u0003",
+          "file_offset": "0x4db086",
+          "orig_hex": "0c00",
+          "patched_hex": "0000",
+          "changed": true,
+          "opcode": "0xc",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x5909:'SAMSUNG'",
+        "string@0x963d:'isActivateLicense'",
+        "string@0x88b:'0'",
+        "string@0x8ca:'1'"
+      ],
+      "unique_calls": [
+        "method@0xf0f3:Lcom/sktelecom/ssm/policy/util/y;->t()Ljava/lang/String;",
+        "method@0xf900:Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z",
+        "method@0xe32e:Lcom/sktelecom/ssm/lib/f;->f0(Landroid/content/Context;)Lcom/sktelecom/ssm/lib/f;",
+        "method@0xe345:Lcom/sktelecom/ssm/lib/f;->y(Landroid/content/Context;)Z",
+        "method@0xe7bf:Lcom/sktelecom/ssm/policy/db/v;->e(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+        "method@0xf8ff:Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+      ],
+      "unique_fields": []
+    },
+    {
+      "dex": "classes.dex",
+      "method": "Lcom/sktelecom/ssm/SamsungELMActivity;->onCreate(Landroid/os/Bundle;)V",
+      "code_item": "0x4db62c",
+      "insns_start": "0x4db63c",
+      "header": {
+        "registers": 3,
+        "ins": 2,
+        "outs": 2,
+        "tries": 0,
+        "insns_size_cu": 46
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u000b",
+          "file_offset": "0x4db652",
+          "orig_hex": "13000020",
+          "patched_hex": "13000000",
+          "changed": true,
+          "opcode": "0x13",
+          "ref": null
+        }
+      ],
+      "unique_strings": [],
+      "unique_calls": [
+        "method@0x3d9b:Landroidx/fragment/app/FragmentActivity;->onCreate(Landroid/os/Bundle;)V",
+        "method@0xa03:Landroid/app/Activity;->getWindow()Landroid/view/Window;",
+        "method@0x1c2a:Landroid/view/Window;->addFlags(I)V",
+        "method@0x23ae:Landroidx/appcompat/app/AppCompatActivity;->setContentView(I)V",
+        "method@0xdbe7:Lcom/sktelecom/ssm/SamsungELMActivity;->M(Landroid/content/Context;)Z",
+        "method@0x9eb:Landroid/app/Activity;->finish()V",
+        "method@0x2399:Landroidx/appcompat/app/AppCompatActivity;->findViewById(I)Landroid/view/View;",
+        "method@0x1dc3:Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V"
+      ],
+      "unique_fields": [
+        "field@0x722f:Lcom/sktelecom/ssm/policy/define/c;->a:Z",
+        "field@0x6cd6:Lcom/sktelecom/ssm/SamsungELMActivity;->M3:Landroid/view/View$OnClickListener;"
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "method": "Lcom/sktelecom/ssm/watcher/WatchingService$k;->k(Landroid/content/Context;)V",
+      "code_item": "0xb3e38",
+      "insns_start": "0xb3e48",
+      "header": {
+        "registers": 4,
+        "ins": 2,
+        "outs": 3,
+        "tries": 0,
+        "insns_size_cu": 30
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u000f",
+          "file_offset": "0xb3e66",
+          "orig_hex": "6e309d023001",
+          "patched_hex": "000000000000",
+          "changed": true,
+          "opcode": "0x6e",
+          "ref": "method@0x29d:Lcom/sktelecom/ssm/policy/util/MeatGrinder;->checkSecurityStatusWithBomb(Landroid/content/Context;Z)I"
+        },
+        {
+          "cu_offset": "u0012",
+          "file_offset": "0xb3e6c",
+          "orig_hex": "0a03",
+          "patched_hex": "1203",
+          "changed": true,
+          "opcode": "0xa",
+          "ref": null
+        }
+      ],
+      "unique_strings": [],
+      "unique_calls": [
+        "method@0x252:Lcom/sktelecom/ssm/policy/db/a0/b;->q(Landroid/content/Context;)Z",
+        "method@0x29b:Lcom/sktelecom/ssm/policy/util/MeatGrinder;->a()Lcom/sktelecom/ssm/policy/util/MeatGrinder;",
+        "method@0x29d:Lcom/sktelecom/ssm/policy/util/MeatGrinder;->checkSecurityStatusWithBomb(Landroid/content/Context;Z)I",
+        "method@0x413:Lcom/sktelecom/ssm/watcher/WatchingService;->s(Lcom/sktelecom/ssm/watcher/WatchingService;)V",
+        "method@0x3d4:Lcom/sktelecom/ssm/watcher/WatchingService$k;->v()V"
+      ],
+      "unique_fields": [
+        "field@0x1f:Lcom/sktelecom/ssm/InoutActivity;->H3:Z",
+        "field@0x10b:Lcom/sktelecom/ssm/watcher/WatchingService$k;->z3:Lcom/sktelecom/ssm/watcher/WatchingService;"
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "method": "Lcom/sktelecom/ssm/watcher/WatchingService$k;->t(Landroid/content/Context;Ljava/util/List;)Z",
+      "code_item": "0xb34b4",
+      "insns_start": "0xb34c4",
+      "header": {
+        "registers": 11,
+        "ins": 3,
+        "outs": 2,
+        "tries": 0,
+        "insns_size_cu": 221
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0xb34c4",
+          "orig_hex": "710086020000",
+          "patched_hex": "12000f000000",
+          "changed": true,
+          "opcode": "0x71",
+          "ref": "method@0x286:Lcom/sktelecom/ssm/policy/i0/d;->i()Lcom/sktelecom/ssm/policy/i0/d;"
+        },
+        {
+          "cu_offset": "u0003",
+          "file_offset": "0xb34ca",
+          "orig_hex": "0c00",
+          "patched_hex": "0000",
+          "changed": true,
+          "opcode": "0xc",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x3b68:'cameraCtlType : '",
+        "string@0x5454:'ssException : '",
+        "string@0x5118:'runningPkgList : '",
+        "string@0x3b66:'camList2 : '",
+        "string@0x4c0c:'needCameraWatching = '"
+      ],
+      "unique_calls": [
+        "method@0x286:Lcom/sktelecom/ssm/policy/i0/d;->i()Lcom/sktelecom/ssm/policy/i0/d;",
+        "method@0x285:Lcom/sktelecom/ssm/policy/i0/d;->h(I)I",
+        "method@0x13f6:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x13fb:Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;",
+        "method@0x140b:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0x2a6:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x250:Lcom/sktelecom/ssm/policy/db/a0/b;->d0(Landroid/content/Context;)Z",
+        "method@0x13f6:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x1401:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0x140b:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0x2a6:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x24c:Lcom/sktelecom/ssm/policy/db/a0/b;->W(Landroid/content/Context;)Z",
+        "method@0x1725:Ljava/util/ArrayList;-><init>()V",
+        "method@0x6b:Landroid/content/Context;->getPackageName()Ljava/lang/String;",
+        "method@0x277:Lcom/sktelecom/ssm/policy/gid20/l/c;->o(Landroid/content/Context;)Ljava/lang/String;",
+        "method@0x284:Lcom/sktelecom/ssm/policy/i0/d;->d()[Ljava/lang/String;",
+        "method@0x284:Lcom/sktelecom/ssm/policy/i0/d;->d()[Ljava/lang/String;",
+        "method@0x1737:Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;",
+        "method@0x17fd:Ljava/util/List;->addAll(Ljava/util/Collection;)Z",
+        "method@0x17fc:Ljava/util/List;->add(Ljava/lang/Object;)Z",
+        "method@0x17fc:Ljava/util/List;->add(Ljava/lang/Object;)Z",
+        "method@0x13f6:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x180f:Ljava/util/List;->toArray()[Ljava/lang/Object;",
+        "method@0x1757:Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x140b:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0x2a6:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x17c5:Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V",
+        "method@0x17c8:Ljava/util/HashSet;->containsAll(Ljava/util/Collection;)Z",
+        "method@0x13f6:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x180f:Ljava/util/List;->toArray()[Ljava/lang/Object;",
+        "method@0x1757:Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x140b:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0x2a6:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x13f6:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x1401:Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;",
+        "method@0x140b:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0x2a6:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V"
+      ],
+      "unique_fields": [
+        "field@0xf:Landroid/os/Build$VERSION;->SDK_INT:I"
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "method": "Lskinfosec/utils/f;->c(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;",
+      "code_item": "0x29cde0",
+      "insns_start": "0x29cdf0",
+      "header": {
+        "registers": 14,
+        "ins": 2,
+        "outs": 3,
+        "tries": 1,
+        "insns_size_cu": 141
+      },
+      "tries": [
+        {
+          "start_cu": "u0004",
+          "count_cu": 121,
+          "end_cu": "u007d",
+          "handler_off": 1
+        }
+      ],
+      "has_patch": false,
+      "changed_instructions": [],
+      "unique_strings": [
+        "string@0x2f1c:'SSMUtils'",
+        "string@0x0:''",
+        "string@0x34b4:'X509'",
+        "string@0x2e6d:'SHA1'",
+        "string@0x5d8:'0'",
+        "string@0x4e1f:'packageName: '",
+        "string@0x6e:' ,  fingerprint: '"
+      ],
+      "unique_calls": [
+        "method@0x6a:Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;",
+        "method@0x9a:Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;",
+        "method@0x9b:Landroid/content/pm/Signature;->toByteArray()[B",
+        "method@0x1202:Ljava/io/ByteArrayInputStream;-><init>([B)V",
+        "method@0x1651:Ljava/security/cert/CertificateFactory;->getInstance(Ljava/lang/String;)Ljava/security/cert/CertificateFactory;",
+        "method@0x1650:Ljava/security/cert/CertificateFactory;->generateCertificate(Ljava/io/InputStream;)Ljava/security/cert/Certificate;",
+        "method@0x15f5:Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;",
+        "method@0x1687:Ljava/security/cert/X509Certificate;->getEncoded()[B",
+        "method@0x15f3:Ljava/security/MessageDigest;->digest([B)[B",
+        "method@0x13f6:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0x1356:Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;",
+        "method@0x13cd:Ljava/lang/String;->length()I",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x140b:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0x13f6:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x13ff:Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;",
+        "method@0x140b:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0x16a:Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I",
+        "method@0x1337:Ljava/lang/Exception;->toString()Ljava/lang/String;",
+        "method@0x16a:Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I",
+        "method@0x13de:Ljava/lang/String;->toUpperCase()Ljava/lang/String;"
+      ],
+      "unique_fields": [
+        "field@0x4:Landroid/content/pm/PackageInfo;->signatures:[Landroid/content/pm/Signature;"
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "method": "Lcom/sktelecom/ssm/watcher/WatchingService;->W(Landroid/content/Context;)Z",
+      "code_item": "0xb4c60",
+      "insns_start": "0xb4c70",
+      "header": {
+        "registers": 4,
+        "ins": 2,
+        "outs": 3,
+        "tries": 0,
+        "insns_size_cu": 60
+      },
+      "tries": [],
+      "has_patch": true,
+      "changed_instructions": [
+        {
+          "cu_offset": "u0000",
+          "file_offset": "0xb4c70",
+          "orig_hex": "7100b7020000",
+          "patched_hex": "12100f000000",
+          "changed": true,
+          "opcode": "0x71",
+          "ref": "method@0x2b7:Lcom/sktelecom/ssm/policy/util/y;->t()Ljava/lang/String;"
+        },
+        {
+          "cu_offset": "u0003",
+          "file_offset": "0xb4c76",
+          "orig_hex": "0c00",
+          "patched_hex": "0000",
+          "changed": true,
+          "opcode": "0xc",
+          "ref": null
+        }
+      ],
+      "unique_strings": [
+        "string@0x2def:'SAMSUNG'",
+        "string@0x4726:'isActivateLicense'",
+        "string@0x5d8:'0'",
+        "string@0xf17:'ELM activate = '",
+        "string@0x686:'1'"
+      ],
+      "unique_calls": [
+        "method@0x2b7:Lcom/sktelecom/ssm/policy/util/y;->t()Ljava/lang/String;",
+        "method@0x13bc:Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z",
+        "method@0x229:Lcom/sktelecom/ssm/lib/f;->f0(Landroid/content/Context;)Lcom/sktelecom/ssm/lib/f;",
+        "method@0x22a:Lcom/sktelecom/ssm/lib/f;->y(Landroid/content/Context;)Z",
+        "method@0x25d:Lcom/sktelecom/ssm/policy/db/v;->e(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+        "method@0x13f6:Ljava/lang/StringBuilder;-><init>()V",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x1400:Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "method@0x140b:Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+        "method@0x2a6:Lcom/sktelecom/ssm/policy/util/i;->b(Ljava/lang/String;)V",
+        "method@0x13bb:Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+      ],
+      "unique_fields": []
+    }
+  ]
+}
