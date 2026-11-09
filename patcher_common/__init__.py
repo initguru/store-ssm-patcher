@@ -540,7 +540,7 @@ def _verify_register_types(dex, method, ordinary, edges):
             actual = state[reg]
             require(actual != 'CONFLICT', ('register type conflict', o, reg))
             require(actual != 'U', ('uninitialized register', o, reg))
-            if is_ref(typ):
+            if typ is not None and is_ref(typ):
                 require(actual == '0' or is_ref(actual), ('register type mismatch', o, reg, typ, actual))
                 require(actual == '0' or _is_ref_assignable(dex, actual[2:], typ[2:]), 'reference type mismatch')
             else:
@@ -626,13 +626,14 @@ def _verify_register_types(dex, method, ordinary, edges):
             pos = 0
             for typ in types:
                 if initializing and pos == 0:
-                    require(isinstance(allocation, tuple) and allocation[0] == 'N',
-                            ('constructor requires uninitialized object',o))
+                    assert isinstance(allocation, tuple), ('constructor requires uninitialized object',o)
+                    require(allocation[0] == 'N', ('constructor requires uninitialized object',o))
                     require(mid['class_type'] in (allocation[2], 'Ljava/lang/Object;'), 'reference type mismatch')
                 else:
                     read(regs[pos],typ)
                 pos += 2 if typ == 'W1' else 1
             if initializing:
+                assert isinstance(allocation, tuple), ('constructor requires uninitialized object',o)
                 state = [category(allocation[2]) if value == allocation else value for value in state]
         elif 0x7b <= op <= 0x8f:
             read(regs[1], 'W1' if 1 in wide else 'I')
