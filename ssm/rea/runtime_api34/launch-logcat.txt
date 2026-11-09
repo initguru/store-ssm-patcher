@@ -1,0 +1,420 @@
+--------- beginning of main
+11-10 07:17:40.784  1595  1595 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.sktelecom.ssm], userId:[0], reason:[package is added.].
+--------- beginning of system
+11-10 07:17:40.799   555   582 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+11-10 07:17:40.801  1595  1595 I AiAiEcho: AppFetcherImpl onPackageChanged com.sktelecom.ssm.
+11-10 07:17:40.802   555   574 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+11-10 07:17:40.803  1595  2464 I AiAiEcho: AppIndexer Package:[com.sktelecom.ssm] UserProfile:[0] Enabled:[true].
+11-10 07:17:40.803  1595  2464 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.sktelecom.ssm], userId:[0], reason:[package is updated.].
+11-10 07:17:40.816   555  2636 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10193; state: DISABLED
+11-10 07:17:40.817   555  2636 W ActivityTaskManager: callingPackage for (uid=2000, pid=4471) has no WPC
+11-10 07:17:40.817   555  2636 D CompatibilityChangeReporter: Compat change id reported: 244637991; UID 2000; state: ENABLED
+11-10 07:17:40.819   555  2636 D CompatibilityChangeReporter: Compat change id reported: 265464455; UID 10193; state: DISABLED
+11-10 07:17:40.819   555  2636 D CompatibilityChangeReporter: Compat change id reported: 265452344; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 266124927; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 265451093; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 265456536; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 255940284; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 236283604; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 263959004; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 264304459; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 264301586; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 254631730; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 273509367; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 263259275; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 174042980; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 174042936; UID 10193; state: DISABLED
+11-10 07:17:40.820   555  2636 D CompatibilityChangeReporter: Compat change id reported: 181136395; UID 10193; state: DISABLED
+11-10 07:17:40.821   555  2636 D CompatibilityChangeReporter: Compat change id reported: 194480991; UID 10193; state: ENABLED
+11-10 07:17:40.827   555  2636 D CompatibilityChangeReporter: Compat change id reported: 184838306; UID 10193; state: DISABLED
+11-10 07:17:40.827   555  2636 D CompatibilityChangeReporter: Compat change id reported: 185004937; UID 10193; state: DISABLED
+11-10 07:17:40.827   555  2636 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10193; state: DISABLED
+11-10 07:17:40.828   555  2636 V SplashScreenExceptionList: SplashScreen checking exception for package com.sktelecom.ssm (target sdk:30) -> false
+11-10 07:17:40.828   555  2636 D CompatibilityChangeReporter: Compat change id reported: 205907456; UID 10193; state: DISABLED
+11-10 07:17:40.830   555  2636 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.sktelecom.ssm/.DEFAULT_MAIN} with LAUNCH_SINGLE_TASK from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+11-10 07:17:40.832   555   575 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10193; state: DISABLED
+11-10 07:17:40.832   555   575 D CompatibilityChangeReporter: Compat change id reported: 177438394; UID 10193; state: DISABLED
+11-10 07:17:40.832   555   575 D CompatibilityChangeReporter: Compat change id reported: 135772972; UID 10193; state: DISABLED
+11-10 07:17:40.832   768   845 V WindowManagerShell: Transition requested: android.os.BinderProxy@2c8103d TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=14 displayId=0 isRunning=true baseIntent=Intent { flg=0x10800000 cmp=com.sktelecom.ssm/.DEFAULT_MAIN } baseActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.MainActivity} topActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.MainActivity} origActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.DEFAULT_MAIN} realActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.MainActivity} numActivities=1 lastActiveTime=33354 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@4fb032} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{2497183 com.sktelecom.ssm.DEFAULT_MAIN} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+11-10 07:17:40.832   555   575 D CompatibilityChangeReporter: Compat change id reported: 135754954; UID 10193; state: ENABLED
+11-10 07:17:40.833   555   584 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10193; state: ENABLED
+11-10 07:17:40.834  1005  1715 D EGL_emulation: app_time_stats: avg=1068.69ms min=3.48ms max=13538.99ms count=13
+11-10 07:17:40.838  1595  1912 I AiAiEcho: EchoSearch: WidgetFetcherImpl is initialized with [31] widgets [reason=package added for userId: 0]
+11-10 07:17:40.839   355   355 D Zygote  : Forked child process 4474
+11-10 07:17:40.839   555   584 I ActivityManager: Start proc 4474:com.sktelecom.ssm/u0a193 for next-top-activity {com.sktelecom.ssm/com.sktelecom.ssm.DEFAULT_MAIN}
+11-10 07:17:40.848   768   880 D SplashScreenView: Build android.window.SplashScreenView{d0dd943 V.E...... ......ID 0,0-0,0}
+11-10 07:17:40.848   768   880 D SplashScreenView: Icon: view: android.widget.ImageView{3ea1bc0 V.ED..... ......I. 0,0-0,0 #10204f0 android:id/splashscreen_icon_view} drawable: com.android.wm.shell.startingsurface.SplashscreenIconDrawableFactory$ImmobileIconDrawable@5a280f9 size: 420
+11-10 07:17:40.848   768   880 D SplashScreenView: Branding: view: android.view.View{312f83e G.ED..... ......I. 0,0-0,0 #10204ef android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+11-10 07:17:40.881   555  2390 D CoreBackPreview: Window{18ebb1c u0 Splash Screen com.sktelecom.ssm}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@3adacfa, mPriority=0, mIsAnimationCallback=false}
+11-10 07:17:40.885   555   626 D CompatibilityChangeReporter: Compat change id reported: 265195908; UID 10193; state: ENABLED
+11-10 07:17:40.897  4474  4474 I m.sktelecom.ssm: Using CollectorTypeCC GC.
+11-10 07:17:40.903   768   909 E OpenGLRenderer: Unable to match the desired swap behavior.
+11-10 07:17:40.903  3632  4199 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10120; state: ENABLED
+11-10 07:17:40.904   392   392 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+11-10 07:17:40.907  4474  4474 E m.sktelecom.ssm: Not starting debugger since process cannot load the jdwp agent.
+11-10 07:17:40.917  4474  4474 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10193; state: DISABLED
+11-10 07:17:40.917  4474  4474 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10193; state: DISABLED
+11-10 07:17:40.927   555   743 D CompatibilityChangeReporter: Compat change id reported: 170503758; UID 10193; state: DISABLED
+11-10 07:17:40.929   768   845 V WindowManagerShell: onTransitionReady android.os.BinderProxy@2c8103d: {id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@6758c63} m=OPEN f=NONE leash=Surface(name=Task=14)/@0xd3068f4 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@8652060} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xe4f381d sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+11-10 07:17:40.929   555   572 V WindowManager: Sent Transition #6 createdAt=11-10 07:17:40.821 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=14 displayId=0 isRunning=true baseIntent=Intent { flg=0x10800000 cmp=com.sktelecom.ssm/.DEFAULT_MAIN } baseActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.MainActivity} topActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.MainActivity} origActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.DEFAULT_MAIN} realActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.MainActivity} numActivities=1 lastActiveTime=33354 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{e731c23 Task{a6b10fd #14 type=standard A=10193:android.task.ssm}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{fa7d520 com.sktelecom.ssm.DEFAULT_MAIN} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+11-10 07:17:40.930   555   572 V WindowManager:     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+11-10 07:17:40.930   555   572 V WindowManager:     info={id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{e731c23 Task{a6b10fd #14 type=standard A=10193:android.task.ssm}}} m=OPEN f=NONE leash=Surface(name=Task=14)/@0xde8d1dd sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{RemoteToken{425aed9 Task{49d49a6 #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x270c753 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+11-10 07:17:40.930   768   845 V WindowManagerShell: Playing animation for (#6)android.os.BinderProxy@2c8103d@0
+11-10 07:17:40.930   768   845 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultMixedHandler@707369b
+11-10 07:17:40.930   768   845 V WindowManagerShell:  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@797aa38
+11-10 07:17:40.930   768   845 V WindowManagerShell:  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@c0ba11
+11-10 07:17:40.930   768   845 V WindowManagerShell:  try handler com.android.wm.shell.recents.RecentsTransitionHandler@4e69776
+11-10 07:17:40.930   768   845 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+11-10 07:17:40.930   768   845 V WindowManagerShell:  try handler com.android.wm.shell.pip.PipTransition@398a177
+11-10 07:17:40.930   768   845 V WindowManagerShell:  try handler com.android.wm.shell.splitscreen.StageCoordinator@23931e4
+11-10 07:17:40.930   768   845 V WindowManagerShell:  try handler com.android.wm.shell.transition.RemoteTransitionHandler@9e5e64d
+11-10 07:17:40.930   768   845 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@6758c63} m=OPEN f=NONE leash=Surface(name=Task=14)/@0xd3068f4 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@8652060} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xe4f381d sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+11-10 07:17:40.930   768   845 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@d2c3919, appThread = android.app.IApplicationThread$Stub$Proxy@7901dde, debugName = LauncherToDream }}
+11-10 07:17:40.930   768   845 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity}},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@92a8bbf, appThread = android.app.IApplicationThread$Stub$Proxy@26be28c, debugName = QuickstepLaunchHome }}
+11-10 07:17:40.930   768   845 V WindowManagerShell:  Delegate animation for #6 to null
+11-10 07:17:40.930   768   845 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultTransitionHandler@7a51f4e
+11-10 07:17:40.930   768   845 V WindowManagerShell: start default transition animation, info = {id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@6758c63} m=OPEN f=NONE leash=Surface(name=Task=14)/@0xd3068f4 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@8652060} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xe4f381d sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+11-10 07:17:40.930   768   845 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@cfc39ea animAttr=0x13 type=OPEN isEntrance=false
+11-10 07:17:40.930  4474  4474 D nativeloader: Configuring clns-6 for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=30, uses_libraries=ALL, library_path=/data/app/~~2V3FRGYsDU-Xf8bbvesiSA==/com.sktelecom.ssm-Q2_E60y2r1kahX8b5hmXvg==/lib/arm64:/data/app/~~2V3FRGYsDU-Xf8bbvesiSA==/com.sktelecom.ssm-Q2_E60y2r1kahX8b5hmXvg==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.sktelecom.ssm
+11-10 07:17:40.931   555  2925 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-10 07:17:40.931   555  2925 W Binder  : java.lang.IllegalArgumentException: Unable to get package com.skhy.store
+11-10 07:17:40.931   555  2925 W Binder  : 	at com.android.server.art.Utils.getPackageOrThrow(Utils.java:271)
+11-10 07:17:40.931   555  2925 W Binder  : 	at com.android.server.art.DexUseManagerLocal.isOwningPackageForPrimaryDex(DexUseManagerLocal.java:443)
+11-10 07:17:40.931   555  2925 W Binder  : 	at com.android.server.art.DexUseManagerLocal.lambda$notifyDexContainersLoaded$9(DexUseManagerLocal.java:396)
+11-10 07:17:40.931   555  2925 W Binder  : 	at com.android.server.art.DexUseManagerLocal.$r8$lambda$hXjaMQ6JLgVjiJmhGgjNj0X7opA(DexUseManagerLocal.java:0)
+11-10 07:17:40.931   555  2925 W Binder  : 	at com.android.server.art.DexUseManagerLocal$$ExternalSyntheticLambda9.apply(R8$$SyntheticClass:0)
+11-10 07:17:40.931   555  2925 W Binder  : 	at com.android.server.art.DexUseManagerLocal.findOwningPackage(DexUseManagerLocal.java:433)
+11-10 07:17:40.931   555  2925 W Binder  : 	at com.android.server.art.DexUseManagerLocal.notifyDexContainersLoaded(DexUseManagerLocal.java:395)
+11-10 07:17:40.931   555  2925 W Binder  : 	at com.android.server.pm.PackageManagerService$IPackageManagerImpl.notifyDexLoad(PackageManagerService.java:5539)
+11-10 07:17:40.931   555  2925 W Binder  : 	at android.content.pm.IPackageManager$Stub.onTransact(IPackageManager.java:3257)
+11-10 07:17:40.931   555  2925 W Binder  : 	at com.android.server.pm.PackageManagerService$IPackageManagerImpl.onTransact(PackageManagerService.java:6334)
+11-10 07:17:40.931   555  2925 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1344)
+11-10 07:17:40.931   555  2925 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1275)
+11-10 07:17:40.932   768   845 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@b5c0ab6 animAttr=0x12 type=OPEN isEntrance=true
+11-10 07:17:40.932   768   845 V WindowManagerShell:  animated by com.android.wm.shell.transition.DefaultTransitionHandler@7a51f4e
+11-10 07:17:40.933  4474  4474 I m.sktelecom.ssm: Failed to add image file: Failed to find OatDexFile for DexFile /data/app/~~XxhfoBdARSn64eMSNFadBw==/com.sktelecom.ssm-iVDqyXP5WApUxrpL4pwxXQ==/base.apk (canonical path /data/app/~~XxhfoBdARSn64eMSNFadBw==/com.sktelecom.ssm-iVDqyXP5WApUxrpL4pwxXQ==/base.apk) in OatFile /data/app/~~2V3FRGYsDU-Xf8bbvesiSA==/com.sktelecom.ssm-Q2_E60y2r1kahX8b5hmXvg==/oat/arm64/base.odex
+11-10 07:17:40.934  4474  4474 D nativeloader: Configuring clns-7 for other apk /data/app/~~2V3FRGYsDU-Xf8bbvesiSA==/com.sktelecom.ssm-Q2_E60y2r1kahX8b5hmXvg==/base.apk. target_sdk_version=30, uses_libraries=, library_path=/data/app/~~2V3FRGYsDU-Xf8bbvesiSA==/com.sktelecom.ssm-Q2_E60y2r1kahX8b5hmXvg==/lib/arm64:/data/app/~~2V3FRGYsDU-Xf8bbvesiSA==/com.sktelecom.ssm-Q2_E60y2r1kahX8b5hmXvg==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.sktelecom.ssm
+11-10 07:17:40.962  4474  4474 V GraphicsEnvironment: Currently set values for:
+11-10 07:17:40.962  4474  4474 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-10 07:17:40.962  4474  4474 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-10 07:17:40.962  4474  4474 V GraphicsEnvironment: ANGLE GameManagerService for com.sktelecom.ssm: false
+11-10 07:17:40.962  4474  4474 V GraphicsEnvironment: com.sktelecom.ssm is not listed in per-application setting
+11-10 07:17:40.962  4474  4474 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+11-10 07:17:40.964  4474  4474 I MultiDex: VM with version 2.1.0 has multidex support
+11-10 07:17:40.965  4474  4474 I MultiDex: Installing application
+11-10 07:17:40.965  4474  4474 I MultiDex: VM has multidex support, MultiDex support library is disabled.
+11-10 07:17:40.966   555   743 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-10 07:17:40.966   555   743 D PackageManager: Clear ephemeral installer activity
+11-10 07:17:40.969  3308  3330 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10153; state: ENABLED
+11-10 07:17:40.971  4474  4474 I TSSM    : PolicyProvider.onCreate() Line 2 : ********* PolicyProvider onCreate() *********3.5.9
+11-10 07:17:40.980  1481  1481 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+11-10 07:17:40.995  4474  4492 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10193; state: DISABLED
+11-10 07:17:40.995  1401  1401 V ContactsProvider: Scheduled notifyChange started.
+11-10 07:17:40.998   958   958 D BluetoothPbapService:  onChange on contact uri 
+11-10 07:17:40.999   555   743 D CompatibilityChangeReporter: Compat change id reported: 171306433; UID 10193; state: DISABLED
+11-10 07:17:41.012  1635  2002 D TextClassifierLibImpl: Skipping asynchronous LangId reload. No model change.
+11-10 07:17:41.012  1635  2002 D TextClassifierLibImpl: Skipping asynchronous actions model reload. No model change.
+11-10 07:17:41.012  1635  1989 V ContactModelManager: Append shortcut contacts.
+11-10 07:17:41.017   958  4494 D BluetoothPbapUtils: primaryVersionCounter = 0, secondaryVersionCounter=0
+11-10 07:17:41.019  1635  1989 W ContactModelManager: Could not load lightweighTokens model.
+11-10 07:17:41.030  1635  1989 D TextClassifierLibImpl: Loaded annotator model: en_v803
+11-10 07:17:41.070  4474  4474 I TSSM    : MainApplication.onCreate() Line 2 : ************** MainApplication ****************
+11-10 07:17:41.071   555   743 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-10 07:17:41.071   555   743 D PackageManager: Clear ephemeral installer activity
+11-10 07:17:41.076   555   743 I ActivityTaskManager: START u0 {cat=[android.intent.category.DEFAULT,android.intent.category.LAUNCHER] flg=0x14000000 cmp=com.sktelecom.ssm/.DEFAULT_MAIN} with LAUNCH_SINGLE_TASK from uid 10193 (BAL_ALLOW_VISIBLE_WINDOW) result code=3
+11-10 07:17:41.076   768   803 D KeyguardService: setOccluded(false)
+11-10 07:17:41.076   768   803 D KeyguardViewMediator: setOccluded(false)
+11-10 07:17:41.076   768   845 D WindowManagerShell: onActivityRestartAttempt: ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.MainActivity}
+11-10 07:17:41.076   768   768 D KeyguardViewMediator: handleSetOccluded(false)
+11-10 07:17:41.078   555  2925 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10193. pid: 4474
+11-10 07:17:41.086  4474  4499 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+11-10 07:17:41.087  4474  4499 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+11-10 07:17:41.095   555  2925 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 10193; state: DISABLED
+11-10 07:17:41.095  4474  4499 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+11-10 07:17:41.117  4474  4474 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 10193; state: DISABLED
+11-10 07:17:41.117  4474  4474 D CompatibilityChangeReporter: Compat change id reported: 37756858; UID 10193; state: ENABLED
+11-10 07:17:41.119   768   845 V WindowManagerShell: Transition requested: android.os.BinderProxy@1f7e53d TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=14 displayId=0 isRunning=true baseIntent=Intent { flg=0x10800000 cmp=com.sktelecom.ssm/.DEFAULT_MAIN } baseActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.MainActivity} topActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.InitActivity} origActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.DEFAULT_MAIN} realActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.MainActivity} numActivities=2 lastActiveTime=33644 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@8936132} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{d09ce83 com.sktelecom.ssm.InitActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+11-10 07:17:41.120   555  2925 I ActivityTaskManager: START u0 {cmp=com.sktelecom.ssm/.InitActivity} with LAUNCH_SINGLE_TASK from uid 10193 (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-10 07:17:41.127   555  2913 I ActivityTaskManager: START u0 {cmp=com.sktelecom.ssm/.InitActivity} with LAUNCH_SINGLE_TASK from uid 10193 (BAL_ALLOW_VISIBLE_WINDOW) result code=3
+11-10 07:17:41.130   768   845 D WindowManagerShell: onActivityRestartAttempt: ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.InitActivity}
+11-10 07:17:41.134   768   845 V WindowManagerShell: onTransitionReady android.os.BinderProxy@1f7e53d: {id=8 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{null m=OPEN f=STARTING_WINDOW_TRANSFER|FILLS_TASK|IS_BEHIND_STARTING_WINDOW leash=Surface(name=ActivityRecord{332239d u0 com.sktelecom.ssm/.InitActivity)/@0x6b11253 sb=Rect(0, 0 - 0, 0) eb=Rect(0, 0 - 1080, 2400) d=-1->0 r=-1->0:-1},{null m=TO_BACK f=FILLS_TASK|IS_BEHIND_STARTING_WINDOW|IS_OCCLUDED leash=Surface(name=ActivityRecord{e229954 u0 com.sktelecom.ssm/.DEFAULT_MAIN)/@0xc2c4790 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+11-10 07:17:41.134   768   845 V WindowManagerShell: Non-visible anim so abort: (#8)android.os.BinderProxy@1f7e53d@0
+11-10 07:17:41.134   768   845 V WindowManagerShell: Transition was merged: (#8)android.os.BinderProxy@1f7e53d@0 into (#6)android.os.BinderProxy@2c8103d@0
+11-10 07:17:41.135   555   572 V WindowManager: Sent Transition #8 createdAt=11-10 07:17:41.118 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=14 displayId=0 isRunning=true baseIntent=Intent { flg=0x10800000 cmp=com.sktelecom.ssm/.DEFAULT_MAIN } baseActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.MainActivity} topActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.InitActivity} origActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.DEFAULT_MAIN} realActivity=ComponentInfo{com.sktelecom.ssm/com.sktelecom.ssm.MainActivity} numActivities=2 lastActiveTime=33644 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{e731c23 Task{a6b10fd #14 type=standard A=10193:android.task.ssm}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{b8fe24b com.sktelecom.ssm.InitActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+11-10 07:17:41.135   555   572 V WindowManager:     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+11-10 07:17:41.136   555   572 V WindowManager:     info={id=8 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{null m=OPEN f=STARTING_WINDOW_TRANSFER|FILLS_TASK|IS_BEHIND_STARTING_WINDOW leash=Surface(name=ActivityRecord{332239d u0 com.sktelecom.ssm/.InitActivity)/@0x38211c5 sb=Rect(0, 0 - 0, 0) eb=Rect(0, 0 - 1080, 2400) d=-1->0 r=-1->0:-1},{null m=TO_BACK f=FILLS_TASK|IS_BEHIND_STARTING_WINDOW|IS_OCCLUDED leash=Surface(name=ActivityRecord{e229954 u0 com.sktelecom.ssm/.DEFAULT_MAIN)/@0x275803c sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+11-10 07:17:41.145  4474  4474 D CompatibilityChangeReporter: Compat change id reported: 171228096; UID 10193; state: ENABLED
+11-10 07:17:41.177  4474  4474 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 10193; state: DISABLED
+11-10 07:17:41.178  4474  4474 W OpenGLRenderer: Unknown dataspace 0
+11-10 07:17:41.219  1336  4324 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x5000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+11-10 07:17:41.221   555  2914 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10193; state: DISABLED
+11-10 07:17:41.230   555  2913 D CoreBackPreview: Window{c39ad4 u0 com.sktelecom.ssm/com.sktelecom.ssm.InitActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@1842af6, mPriority=0, mIsAnimationCallback=false}
+11-10 07:17:41.233  2029  2413 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of bdxy@f4a56d7
+11-10 07:17:41.235   768   845 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#6)android.os.BinderProxy@2c8103d@0
+11-10 07:17:41.236   555   572 V WindowManager: Finish Transition #6: created at 11-10 07:17:40.821 collect-started=0.25ms request-sent=8.059ms started=14.337ms ready=94.698ms sent=107.875ms finished=414.578ms
+11-10 07:17:41.237   555   572 V WindowManager: Finish Transition #8: created at 11-10 07:17:41.118 collect-started=0.007ms request-sent=1.085ms started=2.265ms ready=14.636ms sent=15.959ms finished=118.618ms
+11-10 07:17:41.241  1635  1635 I GsaVoiceInteractionSrv: (REDACTED) O received %s
+11-10 07:17:41.241   768   845 V WindowManagerShell: Track 0 became idle
+11-10 07:17:41.241   768   845 V WindowManagerShell: All active transition animations finished
+11-10 07:17:41.243  4474  4474 E ActivityThread: Failed to find provider info for com.sktelecom.ssm.lib.ssmLibInfo
+11-10 07:17:41.244   768   768 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-10 07:17:41.244   768   768 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+11-10 07:17:41.251  1336  4511 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-10 07:17:41.253  1635  2031 W A       : Failed to notify listeners
+11-10 07:17:41.253  1635  2031 W A       : java.util.concurrent.CancellationException
+11-10 07:17:41.253  1635  2031 W A       : 	at java.util.concurrent.FutureTask.report(FutureTask.java:121)
+11-10 07:17:41.253  1635  2031 W A       : 	at java.util.concurrent.FutureTask.get(FutureTask.java:191)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.bv.get(PG:1)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.ee.a(PG:1)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.cj.r(PG:2)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.cc.run(PG:4)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.bg.execute(PG:1)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.bj.c(PG:1)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.bj.b(PG:3)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.cy.done(PG:1)
+11-10 07:17:41.253  1635  2031 W A       : 	at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:381)
+11-10 07:17:41.253  1635  2031 W A       : 	at java.util.concurrent.FutureTask.cancel(FutureTask.java:179)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.bv.cancel(PG:1)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.android.libraries.search.assistant.fulfillment.server.l.o.run(PG:1)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.apps.tiktok.tracing.er.run(PG:1)
+11-10 07:17:41.253  1635  2031 W A       : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.eb.a(PG:1)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.cw.run(PG:4)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.common.w.a.ec.run(PG:1)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.android.libraries.i.z.run(PG:1)
+11-10 07:17:41.253  1635  2031 W A       : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-10 07:17:41.253  1635  2031 W A       : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.android.libraries.i.h.run(PG:2)
+11-10 07:17:41.253  1635  2031 W A       : 	at java.lang.Thread.run(Thread.java:1012)
+11-10 07:17:41.253  1635  2031 W A       : 	at com.google.android.libraries.i.ai.run(PG:5)
+11-10 07:17:41.257   392   755 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10193 pid=4474
+11-10 07:17:41.257   392   755 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10193 => denied (49 us)
+11-10 07:17:41.257   392   997 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10193 pid=0
+11-10 07:17:41.257   392   997 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10193 => denied (185 us)
+11-10 07:17:41.257   392   755 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10193 pid=4474
+11-10 07:17:41.257   392   755 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10193 => denied (145 us)
+11-10 07:17:41.257   392   755 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10193 pid=4474
+11-10 07:17:41.257   392   755 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10193 => denied (20 us)
+11-10 07:17:41.257   392   997 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10193 pid=0
+11-10 07:17:41.257   392   997 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10193 => denied (152 us)
+11-10 07:17:41.269  4474  4497 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-10 07:17:41.269  4474  4497 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-10 07:17:41.271  1336  1374 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-10 07:17:41.286  1481  4510 I Auth    : [SupervisedAccountIntentOperation] onHandleIntent(): android.intent.action.PACKAGE_ADDED
+11-10 07:17:41.292  1481  1481 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-10 07:17:41.292  1481  1481 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-10 07:17:41.293  1336  1374 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-10 07:17:41.295  1336  4324 I ProximityAuth: [RecentAppsMediator] Package added: (user=UserHandle{0}) com.sktelecom.ssm
+11-10 07:17:41.296  1336  4521 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package: flg=0x4000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+11-10 07:17:41.297  1336  4511 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package: flg=0x4000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+11-10 07:17:41.301  1721  2496 W SearchServiceCore: Abort, client detached.
+11-10 07:17:41.301  1721  2496 W SearchServiceCore: Abort, client detached.
+11-10 07:17:41.301  1721  2496 W SearchServiceCore: Abort, client detached.
+--------- beginning of kernel
+11-10 07:17:41.305   161   161 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+11-10 07:17:41.303   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-10 07:17:41.303  4474  4497 I Gralloc4: mapper 4.x is not supported
+11-10 07:17:41.303  1336  4324 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package: flg=0x5000010 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+11-10 07:17:41.305  1336  4512 I Fitness : FitCleanupIntentOperation received Intent android.intent.action.PACKAGE_CHANGED [CONTEXT service_id=17 ]
+11-10 07:17:41.308  4474  4497 E OpenGLRenderer: Unable to match the desired swap behavior.
+11-10 07:17:41.311  1481  4518 I Dck     : doesDeviceHaveSupportedWirelessCapabilities: wccSysProp:0, wccMendel:3, deviceWccOverride:false [CONTEXT service_id=289 ]
+11-10 07:17:41.311  1481  4518 I Dck     : isDckModuleEligible: isAtLeastR:true, hasWccSupport:false, downloadAllowed:false [CONTEXT service_id=289 ]
+11-10 07:17:41.311  1481  4518 W Dck     : Dck module not eligible for asynchronous downloading [CONTEXT service_id=289 ]
+11-10 07:17:41.312  1481  4510 I BlockstoreStorage: Clearing Blockstore Data for package com.sktelecom.ssm [CONTEXT service_id=258 ]
+11-10 07:17:41.321  1481  1481 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.BIND_SHARED_PREFS pkg=com.google.android.gms }
+11-10 07:17:41.322  1336  1367 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-10 07:17:41.327  1481  3372 I BlockstoreStorage: Keyless data not found or its IsLastInstallationData = false. [CONTEXT service_id=258 ]
+11-10 07:17:41.335  1336  1367 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-10 07:17:41.336  1336  1336 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+11-10 07:17:41.336  1336  1336 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.nearby.exposurenotification.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiServiceNoInstantApps }
+11-10 07:17:41.338  1481  4519 I ChimeraConfigurator: Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+11-10 07:17:41.341   555  2918 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10193 pid=0
+11-10 07:17:41.341   555  2918 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10193 => denied (27 us)
+11-10 07:17:41.341   555  2918 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10193 pid=0
+11-10 07:17:41.341   555  2918 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10193 => denied (4 us)
+11-10 07:17:41.341   555  2918 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10193 pid=0
+11-10 07:17:41.341   555  2918 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10193 => denied (3 us)
+11-10 07:17:41.358  1481  4519 I ChimeraConfigurator: Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2318189190400+mlkit.ocr.common,tflite_dynamite:2640104055100400+tflite_dynamite,vision_ocr:2316024025100000+vision.ocr
+11-10 07:17:41.361  1481  4519 I GmsDebugLogger: [73] 1801
+11-10 07:17:41.362  1481  4519 W ZappDownloader: No successful module downloads for requested features [vision.ocr].
+11-10 07:17:41.362  1481  4519 I GmsDebugLogger: [30] [VisionOcrDynamite.integ:231602402100000],[TfliteDynamiteDynamite.integ:264010405100400],[MlkitOcrCommon.optional:231818100400]
+11-10 07:17:41.363  1481  4519 W ChimeraConfigService: Retry attempt was throttled. [CONTEXT service_id=264 ]
+11-10 07:17:41.363  1481  4519 I ChimeraConfigurator: Update complete: success
+11-10 07:17:41.366  1481  4519 I GmsModuleFndr: Beginning GMS chimera module scan
+11-10 07:17:41.366  1481  4519 I ModuleSetMgr: Computing pending module set with APKs: [[AdsFdrDynamite.integ:231004600100000], [Cronetdynamite:231818190400], [Dynamiteloader:231818190000], [Dynamitemodulesa:231818190000], [Dynamitemodulesc:231818190000], [Googlecertificates:231818190000], [Mapsdynamite:231818190000], [Measurementdynamite:231818190000]]
+11-10 07:17:41.372  1481  4519 I ModuleSetMgr: Pending container module APKs: []
+11-10 07:17:41.372  1481  4519 I ModuleSetMgr: Pending non-container module APKs: []
+11-10 07:17:41.374  1481  4519 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/00000000/AdsDynamite.apk Binary XML file line #15
+11-10 07:17:41.382   958  1257 D BtGatt.ScanManager: uid 10127 isForeground true scanMode 1
+11-10 07:17:41.382   958  1257 D BtGatt.ScanManager: uid 10127 isForeground true scanMode -1
+11-10 07:17:41.384  1005  1869 D OneSearchSuggestProvider: Shut down the binder channel
+11-10 07:17:41.385  1005  1056 I IPCThreadState: oneway function results for code 2 on binder at 0xb400007332318da0 will be dropped but finished with status UNKNOWN_TRANSACTION
+11-10 07:17:41.385  1005  1101 I ImeTracker: com.google.android.apps.nexuslauncher:40eb1312: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+11-10 07:17:41.385   555   750 I ImeTracker: com.google.android.apps.nexuslauncher:40eb1312: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-10 07:17:41.386  1635  2031 I AssistantForeground: (REDACTED) Get launcher package: %s
+11-10 07:17:41.387   555   572 I ActivityTaskManager: Displayed com.sktelecom.ssm/.InitActivity for user 0: +558ms
+11-10 07:17:41.403   555  2636 D CompatibilityChangeReporter: Compat change id reported: 214016041; UID 10193; state: DISABLED
+11-10 07:17:41.403   555  2636 I ImeTracker: com.sktelecom.ssm:1033c9a2: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+11-10 07:17:41.403   555  2636 I ImeTracker: com.sktelecom.ssm:1033c9a2: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-10 07:17:41.428  1336  1374 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-10 07:17:41.437  1524  1524 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3227 
+11-10 07:17:41.449  1336  1374 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-10 07:17:41.471   354  4537 I resolv  : GetAddrInfoHandler::run: {0 786432 0 983040 10127 0}
+11-10 07:17:41.478  1524  1524 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 0, unlocked = true
+11-10 07:17:41.479  1524  1524 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=com.sktelecom.ssm fieldId=0 fieldName=null extras=null}, false)
+11-10 07:17:41.479  1524  1524 I GoogleInputMethodService: GoogleInputMethodService.shouldHideHeaderOnInitialState():4008 ShouldHideHeaderOnInitialState = false
+11-10 07:17:41.481  1635  2014 W native  : W0000 00:00:1794262661.481552    2014 input-utils.cc:142] Failed to get value for update inducing feature |longitude| due to INVALID_ARGUMENT: No feature generators for feature "longitude"
+11-10 07:17:41.481  1635  2014 W native  : === Source Location Trace: ===
+11-10 07:17:41.481  1635  2014 W native  : ./speech/service/context/features/feature-dictionary-provider.h:99
+11-10 07:17:41.481  1635  2014 W native  :  Subgraphs depending on this feature will not have a new revision.
+11-10 07:17:41.481  1635  2014 W native  : W0000 00:00:1794262661.481583    2014 input-utils.cc:142] Failed to get value for update inducing feature |latitude| due to INVALID_ARGUMENT: No feature generators for feature "latitude"
+11-10 07:17:41.481  1635  2014 W native  : === Source Location Trace: ===
+11-10 07:17:41.481  1635  2014 W native  : ./speech/service/context/features/feature-dictionary-provider.h:99
+11-10 07:17:41.481  1635  2014 W native  :  Subgraphs depending on this feature will not have a new revision.
+11-10 07:17:41.481  1635  2014 W native  : W0000 00:00:1794262661.481632    2014 input-utils.cc:142] Failed to get value for update inducing feature |longitude| due to INVALID_ARGUMENT: No feature generators for feature "longitude"
+11-10 07:17:41.481  1635  2014 W native  : === Source Location Trace: ===
+11-10 07:17:41.481  1635  2014 W native  : ./speech/service/context/features/feature-dictionary-provider.h:99
+11-10 07:17:41.481  1635  2014 W native  :  Subgraphs depending on this feature will not have a new revision.
+11-10 07:17:41.481  1635  2014 W native  : W0000 00:00:1794262661.481636    2014 input-utils.cc:142] Failed to get value for update inducing feature |latitude| due to INVALID_ARGUMENT: No feature generators for feature "latitude"
+11-10 07:17:41.481  1635  2014 W native  : === Source Location Trace: ===
+11-10 07:17:41.481  1635  2014 W native  : ./speech/service/context/features/feature-dictionary-provider.h:99
+11-10 07:17:41.481  1635  2014 W native  :  Subgraphs depending on this feature will not have a new revision.
+11-10 07:17:41.483  1524  1524 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 2, unlocked = true
+11-10 07:17:41.484   354  4538 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-10 07:17:41.484   354  4538 I resolv  : doQuery: rcode=0, ancount=0, return value=-3
+11-10 07:17:41.485   354  4539 I resolv  : GetAddrInfoHandler::run: {0 786432 0 983040 10127 0}
+11-10 07:17:41.488  1481  4519 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/00000004/DynamiteModulesC.apk Binary XML file line #15
+11-10 07:17:41.496   354  4540 I resolv  : res_nmkquery: (QUERY, IN, A)
+11-10 07:17:41.496   354  4540 I resolv  : doQuery: rcode=0, ancount=0, return value=-3
+11-10 07:17:41.498  1481  4263 I cr_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@e79b52
+11-10 07:17:41.500  1481  1584 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-10 07:17:41.508  1635  3494 W A       : Candidate identifiers aren't set, ignoring.
+11-10 07:17:41.508  1635  3494 W A       : Candidate identifiers aren't set, ignoring.
+11-10 07:17:41.509  1481  4519 I ChimeraConfigurator: Checking 1 listeners. All downloaded: false
+11-10 07:17:41.509  1481  4519 I GmsDebugLogger: [83] 1 [vision.ocr]
+11-10 07:17:41.514  1481  4514 W Vision  : Request for optional module download of ocr failed. Request again.
+11-10 07:17:41.514  1481  4514 W Vision  : Would have logged:
+11-10 07:17:41.514  1481  4514 W Vision  : # dsae@37884fe7
+11-10 07:17:41.514  1481  4514 I Vision  : Schedule retrying download ocr at 34040 with backoff 20 seconds
+11-10 07:17:41.527  1481  1584 I Icing   : Indexing done com.google.android.gms-apps
+11-10 07:17:41.527  1481  1584 I Icing   : Indexing com.google.android.gms-apps from com.google.android.gms
+11-10 07:17:41.527  1481  1584 I Icing   : Indexing done com.google.android.gms-apps
+11-10 07:17:41.720   555   635 I RoleService: Granting default roles...
+11-10 07:17:41.734   872   923 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+11-10 07:17:41.736   872   923 I Role    : com.google.android.gms not qualified for android.app.role.SYSTEM_CALL_STREAMING due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.telecom.CallStreamingService', mCategories='[]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='android.permission.BIND_CALL_STREAMING_SERVICE', mQueryFlags=0, mMetaData=[]}
+11-10 07:17:41.736   872   923 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.SYSTEM_CALL_STREAMING
+11-10 07:17:41.737   872   923 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+11-10 07:17:41.761  1336  1336 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.clearcut.bootcount.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-10 07:17:41.765   768   879 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@6ece361
+11-10 07:17:41.765   555  2922 D CoreBackPreview: Window{18ebb1c u0 Splash Screen com.sktelecom.ssm EXITING}: Setting back callback null
+11-10 07:17:41.766   555  2185 W InputManager-JNI: Input channel object '18ebb1c Splash Screen com.sktelecom.ssm (client)' was disposed without first being removed with the input manager!
+11-10 07:17:42.003   555   626 D OomAdjuster: Not killing cached processes
+11-10 07:17:42.008   555  2922 E JobScheduler.JobStatus: App com.google.android.contacts became active but still in NEVER bucket
+11-10 07:17:42.010   555  2922 W JobScheduler: Job didn't exist in JobStore: d7a0626 #u0a153/7 com.google.android.contacts/com.google.android.apps.contacts.shortcut.ShortcutJobService
+11-10 07:17:42.294   354  4542 I resolv  : GetAddrInfoHandler::run: {0 786432 0 983040 10127 0}
+11-10 07:17:42.294  1336  3303 W enyb    : [{0}] Failed to resolve name. status={1}
+11-10 07:17:42.478   555  2926 I Telecom : : isInEmergencyCall: false: TSI.iIEC@ANs🔒
+11-10 07:17:42.479   555  2926 I Telecom : : isInEmergencyCall: false: TSI.iIEC@ANw🔒
+11-10 07:17:42.728  1481  1481 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-10 07:17:42.825  4474  4497 D EGL_emulation: app_time_stats: avg=495.49ms min=35.81ms max=1374.93ms count=3
+11-10 07:17:42.953   555   728 I SdkSandboxManager: Reconciling sdk data package directories for 0
+11-10 07:17:43.015   555  2922 E JobScheduler.JobStatus: App com.google.android.contacts became active but still in NEVER bucket
+11-10 07:17:43.289  1721  1721 I BgTaskExecutorImpl: (REDACTED) Starting %s background task %s.
+11-10 07:17:43.297  1721  2296 I NetworkRecognitionRnr: Using pair HTTP connection
+11-10 07:17:43.299  1721  3007 I A       : [Upload] Connected
+11-10 07:17:43.301  1721  1721 E A       : onError
+11-10 07:17:43.301  1721  1721 E A       : com.google.android.apps.gsa.shared.speech.a.m: errorCode: 65561, engine: 2
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.staticplugins.da.a.f.a(PG:3)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.s3.o.gO(PG:1)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.cc.g.a.f.e(PG:2)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:22)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.jB(PG:6)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.s3.p.c(PG:14)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.s3.q.run(PG:1)
+11-10 07:17:43.301  1721  1721 E A       : 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:487)
+11-10 07:17:43.301  1721  1721 E A       : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.e.run(PG:2)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.bi.run(PG:1)
+11-10 07:17:43.301  1721  1721 E A       : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+11-10 07:17:43.301  1721  1721 E A       : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+11-10 07:17:43.301  1721  1721 E A       : 	at java.lang.Thread.run(Thread.java:1012)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.l.run(PG:5)
+11-10 07:17:43.301  1721  1721 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.o: errorCode: 65586, engine: 2
+11-10 07:17:43.301  1721  1721 E A       : 	... 15 more
+11-10 07:17:43.301  1721  1721 E A       : Caused by: com.google.android.apps.gsa.shared.speech.a.k: errorCode: 401, engine: 2
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.assistant.shared.n.h.a(PG:5)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.s3.producers.j.hh(PG:2)
+11-10 07:17:43.301  1721  1721 E A       : 	at com.google.android.apps.gsa.speech.k.a.g.d(PG:16)
+11-10 07:17:43.301  1721  1721 E A       : 	... 12 more
+11-10 07:17:43.301  1721  3007 I NetworkRecognitionRnr: Using pair HTTP connection
+11-10 07:17:43.303  1721  2917 I A       : [Upload] Connected
+11-10 07:17:43.303  1721  1721 W A       : Failed to sync device settings.
+11-10 07:17:43.303  1721  1721 I A       : Retrying to sync device settings.
+11-10 07:17:43.306   555   614 W JobScheduler: Job didn't exist in JobStore: 20fcc36 #u0a132/-353 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-10 07:17:43.306  1721  2496 W SearchServiceCore: Abort, client detached.
+11-10 07:17:43.306  1721  2496 W SearchServiceCore: Abort, client detached.
+11-10 07:17:43.306  1721  2496 W SearchServiceCore: Abort, client detached.
+11-10 07:17:43.367   555  2913 D WifiNl80211Manager: Scan result ready event
+11-10 07:17:43.367   555  2913 D WifiNative: Scan result ready event
+11-10 07:17:43.407   555  2913 W ProcessStats: Tracking association SourceState{12e81ef com.google.android.gms/10127 BFgs #2916} whose proc state 4 is better than process ProcessState{1c3f207 com.google.process.gservices/10127 pkg=com.google.android.gsf} proc state 13 (22914 skipped)
+11-10 07:17:43.459  1336  1336 I Nearby  : Successfully shutdown executor MBleClient.backgroundExecutor. [CONTEXT service_id=49 ]
+11-10 07:17:43.459  1336  1336 I Nearby  : Successfully shutdown executor MBleClient.alarmExecutor. [CONTEXT service_id=49 ]
+11-10 07:17:43.517  1336  1336 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.icing.LIGHTWEIGHT_INDEX_SERVICE dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-10 07:17:43.587  4450  4451 I AidlLazyServiceRegistrar: Process has 0 (of 1 available) client(s) in use after notification artd has clients: 0
+11-10 07:17:43.587  4450  4451 I AidlLazyServiceRegistrar: Trying to shut down the service. No clients in use for any service in process.
+11-10 07:17:43.591   161   161 I servicemanager: Notifying artd they don't (previously: do) have clients when we now have no record of a client
+11-10 07:17:43.591   161   161 I servicemanager: Unregistering artd
+11-10 07:17:43.591   161   161 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-10 07:17:43.587  4450  4451 I AidlLazyServiceRegistrar: Unregistered all clients and exiting
+11-10 07:17:43.593     1     1 I init    : Service 'artd' (pid 4450) exited with status 0 oneshot service took 3.209000 seconds in background
+11-10 07:17:43.593     1     1 I init    : Sending signal 9 to service 'artd' (pid 4450) process group...
+11-10 07:17:43.593     1     1 I libprocessgroup: Successfully killed process cgroup uid 1082 pid 4450 in 0ms
+11-10 07:17:43.642  1481  1481 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.people.contactssync.service.START pkg=com.google.android.gms }
+11-10 07:17:43.753  1481  1481 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.potokens.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-10 07:17:44.192  1336  1336 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.contextmanager.service.ContextManagerService.START pkg=com.google.android.gms }
+11-10 07:17:44.656  1524  2097 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10150; state: ENABLED
+11-10 07:17:44.725   768   768 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+11-10 07:17:44.923  3723  3723 W rules.WifiRx: FenceState currentState is not true
+11-10 07:17:44.935   391   411 W GpuWork : Failed to attach bpf program to power/gpu_work_period tracepoint [2(No such file or directory)]
+11-10 07:17:45.015   354  4544 I resolv  : GetAddrInfoHandler::run: {0 786432 0 983040 10127 0}
+11-10 07:17:45.015  1336  3303 W enyb    : [{0}] Failed to resolve name. status={1}
+11-10 07:17:45.051  1336  1336 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.instantapps.START pkg=com.google.android.gms }
+11-10 07:17:45.083   354  4545 I resolv  : GetAddrInfoHandler::run: {0 786432 0 983040 10127 0}
+11-10 07:17:45.084  1336  2403 E WakeLock: GCM_HB_ALARM release without a matched acquire!
+11-10 07:17:45.084  1336  2403 W WakeLock: GCM_HB_ALARM counter does not exist
+11-10 07:17:45.085  1336  2403 I AlarmManager: setExactAndAllowWhileIdle [name: GCM_CONN_ALARM type: 2 triggerAtMillis: 56136]
+11-10 07:17:45.085   555   614 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 10127; state: ENABLED
+11-10 07:17:45.086  1336  2403 E WakeLock: GCM_CONN_ALARM release without a matched acquire!
+11-10 07:17:45.476  2029  2029 I BugleDataModel: ActionExecutorImpl: Timestamp for ACTION_EXECUTE_QUEUED_FixupMessageStatusOnStartupAction elapsedRealTime: 38001 currentTimeMillis: 1794262665476
+11-10 07:17:45.477  2029  2029 I BugleDataModel: ActionExecutorImpl: Timestamp for ACTION_EXECUTE_QUEUED_ProcessPendingMessagesAction elapsedRealTime: 38002 currentTimeMillis: 1794262665477
+11-10 07:17:45.488  2029  2442 I BugleDataModel: FixupMessageStatusOnStartupAction: sendFailedCnt: 0, downloadFailedCnt: 0, partsProcessingFailedCnt: 0
+11-10 07:17:45.499  2029  2442 W BugleConnectivity: Unregister ConnectivityStateListener for subId -1 fail.
+11-10 07:17:45.502  2029  2442 I BugleDataModel: PendingMessagesProcessor: process from FixupMessageStatusOnStartupAction due to connectivity changed with delay 0 with queues:
+11-10 07:17:45.502  2029  2442 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel sms_send 
+11-10 07:17:45.502  2029  2442 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel mms_send 
+11-10 07:17:45.502  2029  2442 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel mms_download 
+11-10 07:17:45.502  2029  2442 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel rcs_send 
+11-10 07:17:45.502  2029  2442 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel rcs_ft_upload 
+11-10 07:17:45.502  2029  2442 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel rcs_ft_download 
+11-10 07:17:45.502  2029  2442 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel cloud_sync_send 
+11-10 07:17:45.502  2029  2442 I BugleDataModel: ProcessPendingMessagesTimers: cleared next retry time for channel cloud_sync_attachment_download 
+11-10 07:17:45.503  2029  2029 I BugleDataModel: ActionExecutorImpl: Timestamp for ACTION_EXECUTE_QUEUED_GenericWorkerQueueAction elapsedRealTime: 38029 currentTimeMillis: 1794262665503
+11-10 07:17:45.504  1336  1336 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.account.workaccount.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-10 07:17:45.504  2029  2442 W BugleConnectivity: Unregister ConnectivityStateListener for subId -1 fail.
+11-10 07:17:45.506  2029  2442 I BugleDataModel: PendingMessagesProcessor: process from ProcessPendingMessagesAction due to scheduled processing with delay 0 with queues:
+11-10 07:17:45.506  2029  2442 I BugleDataModel: ActionExecutorImpl: Timestamp for ACTION_BACKGROUND_QUEUED_GenericWorkerQueueAction elapsedRealTime: 38031 currentTimeMillis: 1794262665506
+11-10 07:17:45.508  2029  2310 I BugleJobs: GenericWorkerQueueAction: Bailing early, no work found, no failed work found
+11-10 07:17:45.508  2029  2310 I BugleDataModel: ActionExecutorImpl: Timestamp for ACTION_RESPONSE_QUEUED_GenericWorkerQueueAction elapsedRealTime: 38033 currentTimeMillis: 1794262665508
+11-10 07:17:45.574  1336  1336 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.proximity.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-10 07:17:45.731  1481  1481 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.checkin.START pkg=com.google.android.gms }
+11-10 07:17:45.777  1481  1481 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.cryptauth.cryptauthservice.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-10 07:17:45.848  1336  1336 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.proximity.devicesyncservice.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentBoundBrokerService }
+11-10 07:17:45.948   555   634 D ActivityManager: freezing 3857 com.android.emergency
+11-10 07:17:45.959   555   634 D ActivityManager: freezing 3930 com.google.android.marvin.talkback
+11-10 07:17:45.959   555   634 D ActivityManager: freezing 3907 com.google.android.healthconnect.controller
+11-10 07:17:46.191  1481  1481 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.mdd.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-10 07:17:46.219  1481  1481 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.mobstore.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+11-10 07:17:47.020   555   582 D OomAdjuster: Not killing cached processes
+11-10 07:17:48.322   354  4546 I resolv  : GetAddrInfoHandler::run: {0 786432 0 983040 10127 0}
+11-10 07:17:48.323  1336  3303 W enyb    : [{0}] Failed to resolve name. status={1}

@@ -1,0 +1,1840 @@
+Activity Resolver Table:
+  Full MIME Types:
+      ssm/nfc:
+        630c97a com.sktelecom.ssm/.MainActivity filter c0a3321
+          Action: "android.nfc.action.NDEF_DISCOVERED"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "ssm/nfc"
+
+  Base MIME Types:
+      ssm:
+        630c97a com.sktelecom.ssm/.MainActivity filter c0a3321
+          Action: "android.nfc.action.NDEF_DISCOVERED"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "ssm/nfc"
+
+  Schemes:
+      opensourcelicense:
+        23effe8 com.sktelecom.ssm/.settings.OpenLicenseActivity filter c3bd601
+          Action: "android.intent.action.VIEW"
+          Category: "android.intent.category.DEFAULT"
+          Category: "android.intent.category.BROWSABLE"
+          Scheme: "opensourcelicense"
+          Authority: "open": -1
+      ssm:
+        2c70ea3 com.sktelecom.ssm/.InitActivity filter f752559
+          Action: "android.intent.action.VIEW"
+          Category: "android.intent.category.DEFAULT"
+          Category: "android.intent.category.BROWSABLE"
+          Scheme: "ssm"
+          Authority: "com.sktelecom.ssm": -1
+          Path: "PatternMatcher{LITERAL: /startapp}"
+      genericidp:
+        6749ca6 com.sktelecom.ssm/com.google.firebase.auth.internal.GenericIdpActivity filter 5c576e7
+          Action: "android.intent.action.VIEW"
+          Category: "android.intent.category.DEFAULT"
+          Category: "android.intent.category.BROWSABLE"
+          Scheme: "genericidp"
+          Authority: "firebase.auth": -1
+          Path: "PatternMatcher{LITERAL: /}"
+      recaptcha:
+        cf83294 com.sktelecom.ssm/com.google.firebase.auth.internal.RecaptchaActivity filter 78ed13d
+          Action: "android.intent.action.VIEW"
+          Category: "android.intent.category.DEFAULT"
+          Category: "android.intent.category.BROWSABLE"
+          Scheme: "recaptcha"
+          Authority: "firebase.auth": -1
+          Path: "PatternMatcher{LITERAL: /}"
+
+  Non-Data Actions:
+      com.sktelecom.ssm.action.USERNOTIFY:
+        218351e com.sktelecom.ssm/.UserNotifyActivity filter 7b1f1ff
+          Action: "com.sktelecom.ssm.action.USERNOTIFY"
+          Category: "android.intent.category.DEFAULT"
+      android.intent.action.MAIN:
+        630c97a com.sktelecom.ssm/.MainActivity filter e85252b
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.SKGROUP"
+        8720346 com.sktelecom.ssm/.DEFAULT_MAIN filter 3aee907
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+          Category: "android.intent.category.SKGROUP"
+        567c9f6 com.sktelecom.ssm/com.sktelecom.settings.business.BusinessAppActivity_Alias_Host filter 6fe21f7
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+        b1d26d0 com.sktelecom.ssm/.launcher.util.EmptyHomeActivity filter 21d16c9
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.DEFAULT"
+          Category: "android.intent.category.HOME"
+      android.intent.action.VIEW:
+        57ff8b8 com.sktelecom.ssm/.SystemLockActivity filter b952691
+          Action: "android.intent.action.VIEW"
+          Category: "android.intent.category.DEFAULT"
+        275dffc com.sktelecom.ssm/.RecentTasksActivity filter f575685
+          Action: "android.intent.action.VIEW"
+          Category: "android.intent.category.DEFAULT"
+        46a8cda com.sktelecom.ssm/.TranslucentActionActivity filter 2e4950b
+          Action: "android.intent.action.VIEW"
+          Action: "com.sktelecom.ssm.action.ACTION_RELOAD_WINDOW"
+          Category: "android.intent.category.DEFAULT"
+      com.sktelecom.ssm.action.ACTION_RELOAD_WINDOW:
+        46a8cda com.sktelecom.ssm/.TranslucentActionActivity filter 2e4950b
+          Action: "android.intent.action.VIEW"
+          Action: "com.sktelecom.ssm.action.ACTION_RELOAD_WINDOW"
+          Category: "android.intent.category.DEFAULT"
+      com.sktelecom.ssm.action.CUSTOMLOCK:
+        335e05d com.sktelecom.ssm/.CustomLockActivity filter d3b0dd2
+          Action: "com.sktelecom.ssm.action.CUSTOMLOCK"
+          Category: "android.intent.category.DEFAULT"
+      com.sktelecom.ssm.action.PASSWORDADVICE:
+        f3e8f82 com.sktelecom.ssm/.UserNotifyActivityPasswordAdvice filter de8e693
+          Action: "com.sktelecom.ssm.action.PASSWORDADVICE"
+          Category: "android.intent.category.DEFAULT"
+      com.sktelecom.ssm.action.MAIN:
+        630c97a com.sktelecom.ssm/.MainActivity filter a461d88
+          Action: "com.sktelecom.ssm.action.MAIN"
+          Category: "android.intent.category.DEFAULT"
+        8720346 com.sktelecom.ssm/.DEFAULT_MAIN filter ee38a34
+          Action: "com.sktelecom.ssm.action.MAIN"
+          Category: "android.intent.category.DEFAULT"
+      com.sktelecom.ssm.action.DEVICECERTIFY:
+        2c70ea3 com.sktelecom.ssm/.InitActivity filter a4915a0
+          Action: "com.sktelecom.ssm.action.DEVICECERTIFY"
+          Category: "android.intent.category.DEFAULT"
+      com.sktelecom.ssm.action.qrcode.SCAN:
+        bca21ce com.sktelecom.ssm/.gateway.QRCodeReaderActivity filter eb158ef
+          Action: "com.sktelecom.ssm.action.qrcode.SCAN"
+      com.sktelecom.ssm.action.PASSWORDEXPIREDNOTIFY:
+        f0e852a com.sktelecom.ssm/.UserNotifyActivityPasswordExpired filter e3daf1b
+          Action: "com.sktelecom.ssm.action.PASSWORDEXPIREDNOTIFY"
+          Category: "android.intent.category.DEFAULT"
+      com.sktelecom.ssm.action.USERNOTIFY_SINGLETOP:
+        497e864 com.sktelecom.ssm/.UserNotifyActivity_SingleTop filter ed49acd
+          Action: "com.sktelecom.ssm.action.USERNOTIFY_SINGLETOP"
+          Category: "android.intent.category.DEFAULT"
+      com.sktelecom.ssm.action.NOTIFICATION:
+        8b9ebcc com.sktelecom.ssm/.notification.NotificationActivity filter 8c9be15
+          Action: "com.sktelecom.ssm.action.NOTIFICATION"
+          Category: "android.intent.category.DEFAULT"
+
+  MIME Typed Actions:
+      android.nfc.action.NDEF_DISCOVERED:
+        630c97a com.sktelecom.ssm/.MainActivity filter c0a3321
+          Action: "android.nfc.action.NDEF_DISCOVERED"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "ssm/nfc"
+
+Receiver Resolver Table:
+  Schemes:
+      file:
+        c905bdf com.sktelecom.ssm/.policy.receiver.Gid40MountMediaReceiver filter 2ef402c
+          Action: "android.intent.action.MEDIA_REMOVED"
+          Action: "android.intent.action.MEDIA_MOUNTED"
+          Action: "android.intent.action.MEDIA_UNMOUNTED"
+          Scheme: "file"
+
+  Non-Data Actions:
+      edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.ACTION_SEND_DATA:
+        b6fe400 com.sktelecom.ssm/.policy.receiver.BootCompletedReceiver filter be89a7e
+          Action: "com.sktelecom.ssm.action.ACTION_SEND_DATA"
+          Action: "com.sktelecom.ssm.action.ACTION_SKTMOFFICE_LINKAGE_REQUEST"
+          Action: "android.intent.action.TIME_SET"
+          Action: "com.sktelecom.ssm.action.ACTION_FORCE_APP_INSTALL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_FACTORY_RESET_CONTROL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_POLICY"
+          Action: "android.intent.action.RESTART_SERVICE_ALARM"
+          Action: "com.sktelecom.ssm.action.ACTION_V3_SCAN_REQUEST"
+      android.intent.action.BATTERY_OKAY:
+        79c4c51 com.sktelecom.ssm/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy filter 4735cb6
+          Action: "android.intent.action.BATTERY_OKAY"
+          Action: "android.intent.action.BATTERY_LOW"
+      android.intent.action.ACTION_POWER_DISCONNECTED:
+        6456edb com.sktelecom.ssm/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy filter bb91d78
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+          Action: "android.intent.action.ACTION_POWER_CONNECTED"
+      edm.intent.action.device.outside:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      edm.intent.certificate.action.certificate.failure:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sec.action.USER_ACTIVITY:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.ACTION_STOP_WARNIG_SOUND:
+        a654171 com.sktelecom.ssm/.policy.receiver.WarningSoundReceiver filter 5737b56
+          Action: "com.sktelecom.ssm.action.ACTION_STOP_WARNIG_SOUND"
+          Action: "com.sktelecom.ssm.action.ACTION_START_WARNIG_SOUND"
+      com.sktelecom.ssm.action.ACTION_APP_STATUS:
+        2fd9663 com.sktelecom.ssm/.policy.receiver.WorkAppExecuteReceiver filter d5d6260
+          Action: "com.sktelecom.ssm.action.ACTION_APP_STATUS"
+      com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.ACTION_STOP_TRACE:
+        7f52a73 com.sktelecom.ssm/.trace.TraceBroadcast filter e444d30
+          Action: "com.sktelecom.ssm.action.ACTION_STOP_TRACE"
+          Action: "com.sktelecom.ssm.action.ACTION_START_TRACE"
+      android.intent.action.sec.CBA_INSTALL_STATUS:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      android.intent.action.DEVICE_STORAGE_LOW:
+        6221db7 com.sktelecom.ssm/androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy filter 41e9924
+          Action: "android.intent.action.DEVICE_STORAGE_LOW"
+          Action: "android.intent.action.DEVICE_STORAGE_OK"
+      android.net.conn.CONNECTIVITY_CHANGE:
+        9885c8d com.sktelecom.ssm/androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy filter d508e42
+          Action: "android.net.conn.CONNECTIVITY_CHANGE"
+      edm.intent.action.ldap.createacct.result:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.external.api.RECEIVE:
+        4d67b65 com.sktelecom.ssm/.policy.receiver.ExternalApiReceiver filter e09803a
+          Action: "com.sktelecom.ssm.action.external.api.RECEIVE"
+          Category: "com.sktelecom.ssm"
+      com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      android.intent.action.DEVICE_STORAGE_OK:
+        6221db7 com.sktelecom.ssm/androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy filter 41e9924
+          Action: "android.intent.action.DEVICE_STORAGE_LOW"
+          Action: "android.intent.action.DEVICE_STORAGE_OK"
+      android.app.action.DEVICE_ADMIN_DISABLED:
+        2c8d6fb com.sktelecom.ssm/.policy.receiver.SSMDeviceAdminReceiver filter 2263318
+          Action: "android.app.action.DEVICE_ADMIN_DISABLED"
+          Action: "android.app.action.DEVICE_ADMIN_ENABLED"
+      com.samsung.android.mdm.VPN_BIND_RESULT:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      android.app.action.DEVICE_ADMIN_ENABLED:
+        2c8d6fb com.sktelecom.ssm/.policy.receiver.SSMDeviceAdminReceiver filter 2263318
+          Action: "android.app.action.DEVICE_ADMIN_DISABLED"
+          Action: "android.app.action.DEVICE_ADMIN_ENABLED"
+      com.sktelecom.ssm.action.ACTION_SKTMOFFICE_LINKAGE_REQUEST:
+        b6fe400 com.sktelecom.ssm/.policy.receiver.BootCompletedReceiver filter be89a7e
+          Action: "com.sktelecom.ssm.action.ACTION_SEND_DATA"
+          Action: "com.sktelecom.ssm.action.ACTION_SKTMOFFICE_LINKAGE_REQUEST"
+          Action: "android.intent.action.TIME_SET"
+          Action: "com.sktelecom.ssm.action.ACTION_FORCE_APP_INSTALL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_FACTORY_RESET_CONTROL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_POLICY"
+          Action: "android.intent.action.RESTART_SERVICE_ALARM"
+          Action: "com.sktelecom.ssm.action.ACTION_V3_SCAN_REQUEST"
+      edm.intent.action.unexpected.kiosk.behavior:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.ACTION_USER_RESTORE:
+        a3868e1 com.sktelecom.ssm/.policy.receiver.RestoreReceiver filter 8ff6606
+          Action: "com.sktelecom.ssm.action.ACTION_USER_RESTORE"
+      com.sktelecom.ssm.action.ACTION_COMMUNICATION_RESTART:
+        5b9ada9 com.sktelecom.ssm/.policy.receiver.AlarmReceiver filter cae9f2e
+          Action: "com.sktelecom.ssm.action.ACTION_COMMUNICATION_RESTART"
+          Action: "com.sktelecom.ssm.action.ACTION_CHECK_GPS_LOG"
+          Action: "com.sktelecom.ssm.action.ACTION_COMMUNICATION_CYCLE"
+          Action: "com.sktelecom.ssm.action.ACTION_RUN_APPLICATION_JOB"
+          Action: "com.sktelecom.ssm.action.AGCHECK_DELAY"
+      com.samsung.android.knox.intent.action.APPLICATION_FOCUS_CHANGE:
+        72935bf com.sktelecom.ssm/.reciever.SamsungPackageFocusReceiver filter ba6448c
+          Action: "com.samsung.android.knox.intent.action.APPLICATION_FOCUS_CHANGE"
+      edm.intent.action.knox_license.status:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.ACTION_LOCATION_TRACE:
+        66dfacf com.sktelecom.ssm/.policy.receiver.GpsAlarmReceiver filter a590c5c
+          Action: "com.sktelecom.ssm.action.ACTION_LOCATION_TRACE"
+      edm.intent.action.license.status:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.lge.mdm.intent.action.ACTION_NOTIFY_SPECIFIC_PROCESS_MAXIMUM_EXCEED:
+        afc5319 com.sktelecom.ssm/.reciever.LGNotifySpecificReceiver filter d172fde
+          Action: "com.lge.mdm.intent.action.ACTION_NOTIFY_SPECIFIC_PROCESS_MAXIMUM_EXCEED"
+          Action: "com.lge.mdm.intent.action.NOTIFY_SPECIFIC_PROCESS_KILLED"
+      com.sktelecom.ssm.action.ACTION_USER_BACKUP:
+        5f974eb com.sktelecom.ssm/.policy.receiver.LostBackupReceiver filter 5989248
+          Action: "com.sktelecom.ssm.action.ACTION_USER_BACKUP"
+      com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.NOTI:
+        93b83ad com.sktelecom.ssm/.notification.NotificationBroadcastReceiver filter 543f6e2
+          Action: "com.sktelecom.ssm.action.NOTI"
+          Action: "com.sktelecom.ssm.action.NOTIFICATION"
+      edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      edm.intent.application.action.prevent.start:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      edm.intent.action.enable.kiosk.mode.result:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.TOAST:
+        c43e7d7 com.sktelecom.ssm/.toast.ToastBroadcastReceiver filter d768c4
+          Action: "com.sktelecom.ssm.action.TOAST"
+      com.google.android.c2dm.intent.RECEIVE:
+        9099045 com.sktelecom.ssm/com.google.firebase.iid.FirebaseInstanceIdReceiver filter d65a39a
+          Action: "com.google.android.c2dm.intent.RECEIVE"
+      com.sktelecom.ssm.action.ACTION_CHECK_GPS_LOG:
+        5b9ada9 com.sktelecom.ssm/.policy.receiver.AlarmReceiver filter cae9f2e
+          Action: "com.sktelecom.ssm.action.ACTION_COMMUNICATION_RESTART"
+          Action: "com.sktelecom.ssm.action.ACTION_CHECK_GPS_LOG"
+          Action: "com.sktelecom.ssm.action.ACTION_COMMUNICATION_CYCLE"
+          Action: "com.sktelecom.ssm.action.ACTION_RUN_APPLICATION_JOB"
+          Action: "com.sktelecom.ssm.action.AGCHECK_DELAY"
+      android.intent.action.BATTERY_LOW:
+        79c4c51 com.sktelecom.ssm/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy filter 4735cb6
+          Action: "android.intent.action.BATTERY_OKAY"
+          Action: "android.intent.action.BATTERY_LOW"
+      com.sktelecom.ssm.action.ACTION_RESET_PROFILE:
+        371b21d com.sktelecom.ssm/.policy.receiver.ExportedReceiver filter b1bdc92
+          Action: "com.sktelecom.ssm.action.ACTION_RESET_PROFILE"
+      android.intent.action.TIMEZONE_CHANGED:
+        fb0de53 com.sktelecom.ssm/androidx.work.impl.background.systemalarm.RescheduleReceiver filter 93e2390
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.BOOT_COMPLETED"
+      android.intent.action.TIME_SET:
+        b6fe400 com.sktelecom.ssm/.policy.receiver.BootCompletedReceiver filter be89a7e
+          Action: "com.sktelecom.ssm.action.ACTION_SEND_DATA"
+          Action: "com.sktelecom.ssm.action.ACTION_SKTMOFFICE_LINKAGE_REQUEST"
+          Action: "android.intent.action.TIME_SET"
+          Action: "com.sktelecom.ssm.action.ACTION_FORCE_APP_INSTALL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_FACTORY_RESET_CONTROL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_POLICY"
+          Action: "android.intent.action.RESTART_SERVICE_ALARM"
+          Action: "com.sktelecom.ssm.action.ACTION_V3_SCAN_REQUEST"
+        fb0de53 com.sktelecom.ssm/androidx.work.impl.background.systemalarm.RescheduleReceiver filter 93e2390
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.BOOT_COMPLETED"
+      edm.intent.action.device.inside:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.ACTION_START_WARNIG_SOUND:
+        a654171 com.sktelecom.ssm/.policy.receiver.WarningSoundReceiver filter 5737b56
+          Action: "com.sktelecom.ssm.action.ACTION_STOP_WARNIG_SOUND"
+          Action: "com.sktelecom.ssm.action.ACTION_START_WARNIG_SOUND"
+      com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      android.intent.action.BOOT_COMPLETED:
+        b6fe400 com.sktelecom.ssm/.policy.receiver.BootCompletedReceiver filter e1c4439
+          Action: "android.intent.action.BOOT_COMPLETED"
+          mPriority=9999, mOrder=0, mHasStaticPartialTypes=false, mHasDynamicPartialTypes=false
+        fb0de53 com.sktelecom.ssm/androidx.work.impl.background.systemalarm.RescheduleReceiver filter 93e2390
+          Action: "android.intent.action.TIMEZONE_CHANGED"
+          Action: "android.intent.action.TIME_SET"
+          Action: "android.intent.action.BOOT_COMPLETED"
+      com.sktelecom.ssm.action.ACTION_FORCE_APP_INSTALL:
+        b6fe400 com.sktelecom.ssm/.policy.receiver.BootCompletedReceiver filter be89a7e
+          Action: "com.sktelecom.ssm.action.ACTION_SEND_DATA"
+          Action: "com.sktelecom.ssm.action.ACTION_SKTMOFFICE_LINKAGE_REQUEST"
+          Action: "android.intent.action.TIME_SET"
+          Action: "com.sktelecom.ssm.action.ACTION_FORCE_APP_INSTALL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_FACTORY_RESET_CONTROL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_POLICY"
+          Action: "android.intent.action.RESTART_SERVICE_ALARM"
+          Action: "com.sktelecom.ssm.action.ACTION_V3_SCAN_REQUEST"
+      android.intent.action.ACTION_V3M_VER2_AUTHSEND_ALARM:
+        47874c7 com.sktelecom.ssm/.policy.receiver.V3MVer2AuthSendReceiver filter 3c88af4
+          Action: "android.intent.action.ACTION_V3M_VER2_AUTHSEND_ALARM"
+      android.intent.action.ACTION_POWER_CONNECTED:
+        6456edb com.sktelecom.ssm/androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy filter bb91d78
+          Action: "android.intent.action.ACTION_POWER_DISCONNECTED"
+          Action: "android.intent.action.ACTION_POWER_CONNECTED"
+      com.sktelecom.ssm.action.NOTIFICATION:
+        93b83ad com.sktelecom.ssm/.notification.NotificationBroadcastReceiver filter 543f6e2
+          Action: "com.sktelecom.ssm.action.NOTI"
+          Action: "com.sktelecom.ssm.action.NOTIFICATION"
+      edm.intent.action.disable.kiosk.mode.result:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sec.action.NO_USER_ACTIVITY:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.ACTION_REVERT_FACTORY_RESET_CONTROL:
+        b6fe400 com.sktelecom.ssm/.policy.receiver.BootCompletedReceiver filter be89a7e
+          Action: "com.sktelecom.ssm.action.ACTION_SEND_DATA"
+          Action: "com.sktelecom.ssm.action.ACTION_SKTMOFFICE_LINKAGE_REQUEST"
+          Action: "android.intent.action.TIME_SET"
+          Action: "com.sktelecom.ssm.action.ACTION_FORCE_APP_INSTALL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_FACTORY_RESET_CONTROL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_POLICY"
+          Action: "android.intent.action.RESTART_SERVICE_ALARM"
+          Action: "com.sktelecom.ssm.action.ACTION_V3_SCAN_REQUEST"
+      com.samsung.edm.intent.action.CERTIFICATE_REMOVED:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.ACTION_REVERT_POLICY:
+        b6fe400 com.sktelecom.ssm/.policy.receiver.BootCompletedReceiver filter be89a7e
+          Action: "com.sktelecom.ssm.action.ACTION_SEND_DATA"
+          Action: "com.sktelecom.ssm.action.ACTION_SKTMOFFICE_LINKAGE_REQUEST"
+          Action: "android.intent.action.TIME_SET"
+          Action: "com.sktelecom.ssm.action.ACTION_FORCE_APP_INSTALL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_FACTORY_RESET_CONTROL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_POLICY"
+          Action: "android.intent.action.RESTART_SERVICE_ALARM"
+          Action: "com.sktelecom.ssm.action.ACTION_V3_SCAN_REQUEST"
+      android.intent.action.RESTART_SERVICE_ALARM:
+        b6fe400 com.sktelecom.ssm/.policy.receiver.BootCompletedReceiver filter be89a7e
+          Action: "com.sktelecom.ssm.action.ACTION_SEND_DATA"
+          Action: "com.sktelecom.ssm.action.ACTION_SKTMOFFICE_LINKAGE_REQUEST"
+          Action: "android.intent.action.TIME_SET"
+          Action: "com.sktelecom.ssm.action.ACTION_FORCE_APP_INSTALL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_FACTORY_RESET_CONTROL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_POLICY"
+          Action: "android.intent.action.RESTART_SERVICE_ALARM"
+          Action: "com.sktelecom.ssm.action.ACTION_V3_SCAN_REQUEST"
+      edm.intent.action.device.location.unavailable:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sec.enterprise.intent.action.BLOCKED_DOMAIN:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.lge.mdm.intent.action.NOTIFY_SPECIFIC_PROCESS_KILLED:
+        afc5319 com.sktelecom.ssm/.reciever.LGNotifySpecificReceiver filter d172fde
+          Action: "com.lge.mdm.intent.action.ACTION_NOTIFY_SPECIFIC_PROCESS_MAXIMUM_EXCEED"
+          Action: "com.lge.mdm.intent.action.NOTIFY_SPECIFIC_PROCESS_KILLED"
+      com.sktelecom.ssm.action.DONT_WATCHING:
+        373eaf5 com.sktelecom.ssm/.watcher.WatchingBroadcastReceiver filter 86fe08a
+          Action: "com.sktelecom.ssm.action.DONT_WATCHING"
+          Action: "com.sktelecom.ssm.action.ACTION_DESTROY_SERVICE"
+      androidx.work.diagnostics.REQUEST_DIAGNOSTICS:
+        f610caf com.sktelecom.ssm/androidx.work.impl.diagnostics.DiagnosticsReceiver filter c89e8bc
+          Action: "androidx.work.diagnostics.REQUEST_DIAGNOSTICS"
+      com.sktelecom.ssm.action.ACTION_START_TRACE:
+        7f52a73 com.sktelecom.ssm/.trace.TraceBroadcast filter e444d30
+          Action: "com.sktelecom.ssm.action.ACTION_STOP_TRACE"
+          Action: "com.sktelecom.ssm.action.ACTION_START_TRACE"
+      com.sktelecom.ssm.action.ACTION_COMMUNICATION_CYCLE:
+        5b9ada9 com.sktelecom.ssm/.policy.receiver.AlarmReceiver filter cae9f2e
+          Action: "com.sktelecom.ssm.action.ACTION_COMMUNICATION_RESTART"
+          Action: "com.sktelecom.ssm.action.ACTION_CHECK_GPS_LOG"
+          Action: "com.sktelecom.ssm.action.ACTION_COMMUNICATION_CYCLE"
+          Action: "com.sktelecom.ssm.action.ACTION_RUN_APPLICATION_JOB"
+          Action: "com.sktelecom.ssm.action.AGCHECK_DELAY"
+      edm.intent.application.action.prevent.stop:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      android.intent.action.MY_PACKAGE_REPLACED:
+        ef607d5 com.sktelecom.ssm/.policy.receiver.MyPackageReplacedReceiver filter 8e26bea
+          Action: "android.intent.action.MY_PACKAGE_REPLACED"
+          mPriority=9999, mOrder=0, mHasStaticPartialTypes=false, mHasDynamicPartialTypes=false
+      com.samsung.edm.intent.action.SIM_CARD_CHANGED:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.ACTION_V3_SCAN_REQUEST:
+        b6fe400 com.sktelecom.ssm/.policy.receiver.BootCompletedReceiver filter be89a7e
+          Action: "com.sktelecom.ssm.action.ACTION_SEND_DATA"
+          Action: "com.sktelecom.ssm.action.ACTION_SKTMOFFICE_LINKAGE_REQUEST"
+          Action: "android.intent.action.TIME_SET"
+          Action: "com.sktelecom.ssm.action.ACTION_FORCE_APP_INSTALL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_FACTORY_RESET_CONTROL"
+          Action: "com.sktelecom.ssm.action.ACTION_REVERT_POLICY"
+          Action: "android.intent.action.RESTART_SERVICE_ALARM"
+          Action: "com.sktelecom.ssm.action.ACTION_V3_SCAN_REQUEST"
+      androidx.work.impl.background.systemalarm.UpdateProxies:
+        fab3489 com.sktelecom.ssm/androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver filter dd4c8e
+          Action: "androidx.work.impl.background.systemalarm.UpdateProxies"
+      com.sktelecom.ssm.action.ACTION_RUN_APPLICATION_JOB:
+        5b9ada9 com.sktelecom.ssm/.policy.receiver.AlarmReceiver filter cae9f2e
+          Action: "com.sktelecom.ssm.action.ACTION_COMMUNICATION_RESTART"
+          Action: "com.sktelecom.ssm.action.ACTION_CHECK_GPS_LOG"
+          Action: "com.sktelecom.ssm.action.ACTION_COMMUNICATION_CYCLE"
+          Action: "com.sktelecom.ssm.action.ACTION_RUN_APPLICATION_JOB"
+          Action: "com.sktelecom.ssm.action.AGCHECK_DELAY"
+      com.sktelecom.ssm.action.AGCHECK_DELAY:
+        5b9ada9 com.sktelecom.ssm/.policy.receiver.AlarmReceiver filter cae9f2e
+          Action: "com.sktelecom.ssm.action.ACTION_COMMUNICATION_RESTART"
+          Action: "com.sktelecom.ssm.action.ACTION_CHECK_GPS_LOG"
+          Action: "com.sktelecom.ssm.action.ACTION_COMMUNICATION_CYCLE"
+          Action: "com.sktelecom.ssm.action.ACTION_RUN_APPLICATION_JOB"
+          Action: "com.sktelecom.ssm.action.AGCHECK_DELAY"
+      com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      android.intent.action.sec.SIM_CARD_CHANGED:
+        dbddd32 com.sktelecom.ssm/com.samsung.android.knox.IntentConverterReceiver filter 9e89a83
+          Action: "edm.intent.action.EMAIL_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.device.outside"
+          Action: "edm.intent.certificate.action.certificate.failure"
+          Action: "com.sec.action.USER_ACTIVITY"
+          Action: "com.sec.enterprise.intent.action.UPDATE_FOTA_VERSION_RESULT"
+          Action: "com.samsung.edm.intent.action.APPLICATION_FOCUS_CHANGE"
+          Action: "android.intent.action.sec.CBA_INSTALL_STATUS"
+          Action: "edm.intent.action.ldap.createacct.result"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_ADD_RESULT"
+          Action: "com.samsung.edm.intent.event.NTP_SERVER_UNREACHABLE"
+          Action: "com.samsung.android.mdm.VPN_BIND_RESULT"
+          Action: "edm.intent.action.unexpected.kiosk.behavior"
+          Action: "edm.intent.action.knox_license.status"
+          Action: "edm.intent.action.license.status"
+          Action: "com.samsung.edm.intent.action.ENFORCE_SMIME_ALIAS_RESULT"
+          Action: "edm.intent.action.EMAIL_ACCOUNT_ADD_RESULT"
+          Action: "edm.intent.application.action.prevent.start"
+          Action: "edm.intent.action.enable.kiosk.mode.result"
+          Action: "edm.intent.action.device.inside"
+          Action: "com.samsung.action.knox.certenroll.CEP_CERT_ENROLL_STATUS"
+          Action: "edm.intent.action.EXCHANGE_ACCOUNT_DELETE_RESULT"
+          Action: "edm.intent.action.disable.kiosk.mode.result"
+          Action: "com.sec.action.NO_USER_ACTIVITY"
+          Action: "com.samsung.edm.intent.action.CERTIFICATE_REMOVED"
+          Action: "com.sec.enterprise.knox.intent.action.KNOX_ATTESTATION_RESULT"
+          Action: "edm.intent.action.device.location.unavailable"
+          Action: "com.sec.enterprise.intent.action.BLOCKED_DOMAIN"
+          Action: "edm.intent.application.action.prevent.stop"
+          Action: "com.samsung.edm.intent.action.EXCHANGE_CBA_INSTALL_STATUS"
+          Action: "com.samsung.edm.intent.action.SIM_CARD_CHANGED"
+          Action: "com.samsung.action.knox.certenroll.CEP_SERVICE_DISCONNECTED"
+          Action: "android.intent.action.sec.SIM_CARD_CHANGED"
+      com.sktelecom.ssm.action.ACTION_DESTROY_SERVICE:
+        373eaf5 com.sktelecom.ssm/.watcher.WatchingBroadcastReceiver filter 86fe08a
+          Action: "com.sktelecom.ssm.action.DONT_WATCHING"
+          Action: "com.sktelecom.ssm.action.ACTION_DESTROY_SERVICE"
+
+Service Resolver Table:
+  Non-Data Actions:
+      com.sktelecom.ssm.action.accesscontrol.LOCATION_CHECK:
+        29682fd com.sktelecom.ssm/.accesscontrol.ACService filter 2ad0bf2
+          Action: "com.sktelecom.ssm.action.accesscontrol.LOCATION_CHECK"
+          Action: "com.sktelecom.ssm.action.accesscontrol.SEND"
+          Action: "com.sktelecom.ssm.action.accesscontrol.STOP"
+          Action: "com.sktelecom.ssm.action.accesscontrol.START"
+          Action: "com.sktelecom.ssm.action.accesscontrol.TIME_BASE_CHECK"
+      com.sktelecom.ssm.action.accesscontrol.SEND:
+        29682fd com.sktelecom.ssm/.accesscontrol.ACService filter 2ad0bf2
+          Action: "com.sktelecom.ssm.action.accesscontrol.LOCATION_CHECK"
+          Action: "com.sktelecom.ssm.action.accesscontrol.SEND"
+          Action: "com.sktelecom.ssm.action.accesscontrol.STOP"
+          Action: "com.sktelecom.ssm.action.accesscontrol.START"
+          Action: "com.sktelecom.ssm.action.accesscontrol.TIME_BASE_CHECK"
+      com.sktelecom.ssm.action.accesscontrol.STOP:
+        29682fd com.sktelecom.ssm/.accesscontrol.ACService filter 2ad0bf2
+          Action: "com.sktelecom.ssm.action.accesscontrol.LOCATION_CHECK"
+          Action: "com.sktelecom.ssm.action.accesscontrol.SEND"
+          Action: "com.sktelecom.ssm.action.accesscontrol.STOP"
+          Action: "com.sktelecom.ssm.action.accesscontrol.START"
+          Action: "com.sktelecom.ssm.action.accesscontrol.TIME_BASE_CHECK"
+      com.sktelecom.ssmpush.SSMService:
+        5747f9f com.sktelecom.ssm/com.sktelecom.ssmpush.SSMService filter 576f8ec
+          Action: "com.sktelecom.ssmpush.SSMService"
+      com.sktelecom.ssm.action.RUN:
+        f3bc4cb com.sktelecom.ssm/.watcher.WatchingService filter 26ad4a8 permission com.sktelecom.ssm.permission.START_WATCHING_SERVICE
+          Action: "com.sktelecom.ssm.action.RUN"
+          Category: "android.intent.category.DEFAULT"
+      com.google.android.gms.gcm.ACTION_TASK_READY:
+        973256d com.sktelecom.ssm/com.firebase.jobdispatcher.GooglePlayReceiver filter abc55a2 permission com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE
+          Action: "com.google.android.gms.gcm.ACTION_TASK_READY"
+      com.google.firebase.MESSAGING_EVENT:
+        60814b5 com.sktelecom.ssm/.push.MyFCMService filter be274a
+          Action: "com.google.firebase.MESSAGING_EVENT"
+        990c397 com.sktelecom.ssm/com.google.firebase.messaging.FirebaseMessagingService filter c057984
+          Action: "com.google.firebase.MESSAGING_EVENT"
+          mPriority=-500, mOrder=0, mHasStaticPartialTypes=false, mHasDynamicPartialTypes=false
+      com.sktelecom.ssm.action.toast:
+        e2b76bb com.sktelecom.ssm/.toast.ToastService filter 650b7d8
+          Action: "com.sktelecom.ssm.action.toast"
+      com.sktelecom.ssm.action.ac.hynix.START:
+        c7e0243 com.sktelecom.ssm/.accesscontrol.ACOutHynixService filter 92990c0
+          Action: "com.sktelecom.ssm.action.ac.hynix.START"
+          Action: "com.sktelecom.ssm.action.ac.hynix.STOP"
+      com.sktelecom.ssm.action.ac.beacon.STOP:
+        54d51f9 com.sktelecom.ssm/.accesscontrol.receiver.BeaconScanService filter 7bf53e
+          Action: "com.sktelecom.ssm.action.ac.beacon.STOP"
+          Action: "com.sktelecom.ssm.action.ac.beacon.START"
+      com.sktelecom.ssm.action.accesscontrol.START:
+        29682fd com.sktelecom.ssm/.accesscontrol.ACService filter 2ad0bf2
+          Action: "com.sktelecom.ssm.action.accesscontrol.LOCATION_CHECK"
+          Action: "com.sktelecom.ssm.action.accesscontrol.SEND"
+          Action: "com.sktelecom.ssm.action.accesscontrol.STOP"
+          Action: "com.sktelecom.ssm.action.accesscontrol.START"
+          Action: "com.sktelecom.ssm.action.accesscontrol.TIME_BASE_CHECK"
+      com.sktelecom.ssmpolicy.action.RUN:
+        637ebc1 com.sktelecom.ssm/.policy.PolicyService filter 7ea5f66
+          Action: "com.sktelecom.ssmpolicy.action.RUN"
+          Category: "android.intent.category.DEFAULT"
+      com.sktelecom.ssm.action.accesscontrol.TIME_BASE_CHECK:
+        29682fd com.sktelecom.ssm/.accesscontrol.ACService filter 2ad0bf2
+          Action: "com.sktelecom.ssm.action.accesscontrol.LOCATION_CHECK"
+          Action: "com.sktelecom.ssm.action.accesscontrol.SEND"
+          Action: "com.sktelecom.ssm.action.accesscontrol.STOP"
+          Action: "com.sktelecom.ssm.action.accesscontrol.START"
+          Action: "com.sktelecom.ssm.action.accesscontrol.TIME_BASE_CHECK"
+      com.google.firebase.auth.api.gms.service.START:
+        1724731 com.sktelecom.ssm/com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService filter 3f6e16
+          Action: "com.google.firebase.auth.api.gms.service.START"
+          Category: "android.intent.category.DEFAULT"
+      com.sktelecom.ssm.remote:
+        6bfe2a7 com.sktelecom.ssm/.remote.RemoteService filter aec9354
+          Action: "com.sktelecom.ssm.remote"
+          Category: "android.intent.category.DEFAULT"
+      com.sktelecom.ssm.action.ac.hynix.STOP:
+        c7e0243 com.sktelecom.ssm/.accesscontrol.ACOutHynixService filter 92990c0
+          Action: "com.sktelecom.ssm.action.ac.hynix.START"
+          Action: "com.sktelecom.ssm.action.ac.hynix.STOP"
+      com.sktelecom.ssm.action.ac.beacon.START:
+        54d51f9 com.sktelecom.ssm/.accesscontrol.receiver.BeaconScanService filter 7bf53e
+          Action: "com.sktelecom.ssm.action.ac.beacon.STOP"
+          Action: "com.sktelecom.ssm.action.ac.beacon.START"
+
+Domain verification status:
+
+Permissions:
+  Permission [com.sktelecom.ssm.permission.MPUSH_PERMISSION] (c1211c3):
+    sourcePackage=com.sktelecom.ssm
+    uid=10193 gids=[] type=0 prot=signature
+    perm=PermissionInfo{4ed2a40 com.sktelecom.ssm.permission.MPUSH_PERMISSION}
+    flags=0x0
+
+Permissions:
+  Permission [com.sktelecom.ssm.permission.LOCAL_BROADCAST] (10ceabe):
+    sourcePackage=com.sktelecom.ssm
+    uid=10193 gids=[] type=0 prot=signature
+    perm=PermissionInfo{efa071f com.sktelecom.ssm.permission.LOCAL_BROADCAST}
+    flags=0x0
+
+Permissions:
+  Permission [com.sktelecom.ssm.SUPPORT_PERMISSION] (f9aaa6c):
+    sourcePackage=com.sktelecom.ssm
+    uid=10193 gids=[] type=0 prot=signature
+    perm=PermissionInfo{4fa835 com.sktelecom.ssm.SUPPORT_PERMISSION}
+    flags=0x0
+
+Permissions:
+  Permission [com.sktelecom.ssm.permission.START_WATCHING_SERVICE] (528f4ca):
+    sourcePackage=com.sktelecom.ssm
+    uid=10193 gids=[] type=0 prot=signature
+    perm=PermissionInfo{b41f63b com.sktelecom.ssm.permission.START_WATCHING_SERVICE}
+    flags=0x0
+
+Registered ContentProviders:
+  com.sktelecom.ssm/.db.PolicyProvider:
+    Provider{be0158 com.sktelecom.ssm/.db.PolicyProvider}
+  com.sktelecom.ssm/androidx.core.content.FileProvider:
+    Provider{75f92b1 com.sktelecom.ssm/androidx.core.content.FileProvider}
+  com.sktelecom.ssm/androidx.work.impl.WorkManagerInitializer:
+    Provider{8499396 com.sktelecom.ssm/androidx.work.impl.WorkManagerInitializer}
+
+ContentProvider Authorities:
+  [com.sktelecom.ssm4.provider.SSMProvider]:
+    Provider{be0158 com.sktelecom.ssm/.db.PolicyProvider}
+      applicationInfo=ApplicationInfo{e4fbb17 com.sktelecom.ssm}
+  [com.sktelecom.provider.ssm4]:
+    Provider{be0158 com.sktelecom.ssm/.db.PolicyProvider}
+      applicationInfo=ApplicationInfo{dbddb04 com.sktelecom.ssm}
+  [com.sktelecom.ssm.workmanager-init]:
+    Provider{8499396 com.sktelecom.ssm/androidx.work.impl.WorkManagerInitializer}
+      applicationInfo=ApplicationInfo{ba9a8ed com.sktelecom.ssm}
+  [com.sktelecom.ssm.fileprovider]:
+    Provider{75f92b1 com.sktelecom.ssm/androidx.core.content.FileProvider}
+      applicationInfo=ApplicationInfo{d035322 com.sktelecom.ssm}
+
+Key Set Manager:
+  [com.sktelecom.ssm]
+      Signing KeySets: 56
+
+Packages:
+  Package [com.sktelecom.ssm] (9bfa370):
+    appId=10193
+    pkg=Package{304e6e9 com.sktelecom.ssm}
+    codePath=/data/app/~~2V3FRGYsDU-Xf8bbvesiSA==/com.sktelecom.ssm-Q2_E60y2r1kahX8b5hmXvg==
+    resourcePath=/data/app/~~2V3FRGYsDU-Xf8bbvesiSA==/com.sktelecom.ssm-Q2_E60y2r1kahX8b5hmXvg==
+    legacyNativeLibraryDir=/data/app/~~2V3FRGYsDU-Xf8bbvesiSA==/com.sktelecom.ssm-Q2_E60y2r1kahX8b5hmXvg==/lib
+    extractNativeLibs=true
+    primaryCpuAbi=arm64-v8a
+    secondaryCpuAbi=null
+    cpuAbiOverride=null
+    versionCode=910 minSdk=21 targetSdk=30
+    minExtensionVersions=[]
+    versionName=5.5.14.2624
+    usesNonSdkApi=false
+    splits=[base]
+    apkSigningVersion=2
+    flags=[ HAS_CODE ALLOW_TASK_REPARENTING ALLOW_CLEAR_USER_DATA LARGE_HEAP ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PARTIALLY_DIRECT_BOOT_AWARE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    forceQueryable=false
+    queriesPackages=[com.google.android.apps.maps]
+    dataDir=/data/user/0/com.sktelecom.ssm
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    usesOptionalLibraries:
+      com.lge.mdm
+      org.apache.http.legacy
+    usesLibraryFiles:
+      /system/framework/org.apache.http.legacy.jar
+    timeStamp=2026-11-10 07:17:40
+    lastUpdateTime=2026-11-09 19:07:56
+    installerPackageName=null
+    installerPackageUid=-1
+    initiatingPackageName=com.android.shell
+    originatingPackageName=null
+    packageSource=1
+    appMetadataFilePath=null
+    signatures=PackageSignatures{8a77f6e version:2, signatures:[50aa144f], past signatures:[]}
+    installPermissionsFixed=true
+    pkgFlags=[ HAS_CODE ALLOW_TASK_REPARENTING ALLOW_CLEAR_USER_DATA LARGE_HEAP ]
+    privatePkgFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PARTIALLY_DIRECT_BOOT_AWARE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    apexModuleName=null
+    declared permissions:
+      com.sktelecom.ssm.permission.START_WATCHING_SERVICE: prot=signature
+      com.sktelecom.ssm.permission.LOCAL_BROADCAST: prot=signature
+      com.sktelecom.ssm.SUPPORT_PERMISSION: prot=signature
+      com.sktelecom.ssm.permission.MPUSH_PERMISSION: prot=signature
+    requested permissions:
+      android.permission.QUERY_ALL_PACKAGES
+      android.permission.ACCESS_NOTIFICATION_POLICY
+      com.android.launcher.permission.INSTALL_SHORTCUT
+      com.android.launcher.permission.UNINSTALL_SHORTCUT
+      android.permission.READ_SYNC_SETTINGS
+      android.permission.WRITE_SYNC_SETTINGS
+      android.permission.READ_SYNC_STATS
+      android.permission.WRITE_EXTERNAL_STORAGE
+      android.permission.GET_PACKAGE_SIZE
+      android.permission.BLUETOOTH
+      android.permission.BLUETOOTH_ADMIN
+      android.permission.INTERNET
+      android.permission.RECEIVE_BOOT_COMPLETED
+      android.permission.ACCESS_NETWORK_STATE
+      android.permission.CAMERA
+      android.permission.ACCESS_WIFI_STATE
+      android.permission.CHANGE_WIFI_STATE
+      android.permission.CHANGE_NETWORK_STATE
+      android.permission.VIBRATE
+      android.permission.WAKE_LOCK
+      android.permission.KILL_BACKGROUND_PROCESSES
+      android.permission.NFC
+      android.permission.PACKAGE_USAGE_STATS
+      android.permission.REQUEST_INSTALL_PACKAGES
+      android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+      com.sec.enterprise.knox.permission.KNOX_ENTERPRISE_BILLING
+      android.permission.sec.MDM_ENTERPRISE_CONTAINER
+      android.permission.sec.MDM_RESTRICTION
+      android.permission.sec.MDM_DATE_TIME
+      android.permission.sec.MDM_WIFI
+      android.permission.sec.MDM_HW_CONTROL
+      android.permission.sec.MDM_APP_MGMT
+      android.permission.sec.MDM_BLUETOOTH
+      android.permission.sec.MDM_BLUETOOTH_SECUREMODE
+      android.permission.sec.MDM_LOCATION
+      android.permission.sec.MDM_PHONE_RESTRICTION
+      android.permission.sec.MDM_SECURITY
+      android.permission.sec.ENTERPRISE_DEVICE_ADMIN
+      android.permission.sec.MDM_FIREWALL
+      android.permission.sec.MDM_APN
+      android.permission.sec.MDM_VPN
+      android.permission.sec.MDM_INVENTORY
+      android.permission.sec.MDM_ROAMING
+      android.permission.sec.MDM_EXCHANGE
+      android.permission.sec.MDM_EMAIL
+      android.permission.sec.MDM_KIOSK_MODE
+      android.permission.sec.MDM_APP_PERMISSION_MGMT
+      com.sktelecom.ssm.launcher.permission.READ_SETTINGS
+      com.sktelecom.ssm.launcher.permission.WRITE_SETTINGS
+      com.sktelecom.ssm.installer.permission.PROVIDER_READ
+      android.permission.ACCESS_DOWNLOAD_MANAGER
+      android.permission.DOWNLOAD_WITHOUT_NOTIFICATION
+      android.permission.ACCESS_FINE_LOCATION
+      android.permission.ACCESS_COARSE_LOCATION
+      android.permission.WRITE_COARSE_LOCATION
+      com.sktelecom.ssm.permission.LOCAL_BROADCAST
+      android.permission.FOREGROUND_SERVICE
+      android.permission.GET_TASKS
+      com.sktelecom.ssm.SUPPORT_PERMISSION
+      com.samsung.android.knox.permission.KNOX_ENTERPRISE_DEVICE_ADMIN
+      com.samsung.android.knox.permission.KNOX_APN
+      com.samsung.android.knox.permission.KNOX_APP_MGMT
+      com.samsung.android.knox.permission.KNOX_BLUETOOTH
+      com.samsung.android.knox.permission.KNOX_BLUETOOTH_SECUREMODE
+      com.samsung.android.knox.permission.KNOX_DATE_TIME
+      com.samsung.android.knox.permission.KNOX_EMAIL
+      com.samsung.android.knox.permission.KNOX_CONTAINER
+      com.samsung.android.knox.permission.KNOX_EXCHANGE
+      com.samsung.android.knox.permission.KNOX_FIREWALL
+      com.samsung.android.knox.permission.KNOX_HW_CONTROL
+      com.samsung.android.knox.permission.KNOX_INVENTORY
+      com.samsung.android.knox.permission.KNOX_KIOSK_MODE
+      com.samsung.android.knox.permission.KNOX_LOCATION
+      com.samsung.android.knox.permission.KNOX_PHONE_RESTRICTION
+      com.samsung.android.knox.permission.KNOX_RESTRICTION_MGMT
+      com.samsung.android.knox.permission.KNOX_ROAMING
+      com.samsung.android.knox.permission.KNOX_SECURITY
+      com.samsung.android.knox.permission.KNOX_VPN
+      com.samsung.android.knox.permission.KNOX_WIFI
+      com.samsung.android.knox.permission.KNOX_EBILLING
+      android.permission.REQUEST_DELETE_PACKAGES
+      com.sktelecom.ssm.permission.MPUSH_PERMISSION
+      com.sktelecom.ssm.lib.permission.SSMLIB_PROVIDER_READ
+      com.sktelecom.ssm.lib.permission.SSMLIB_PROVIDER_WRITE
+      com.google.android.c2dm.permission.RECEIVE
+      com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+      android.permission.READ_EXTERNAL_STORAGE
+      android.permission.POST_NOTIFICATIONS
+      android.permission.BLUETOOTH_SCAN
+      android.permission.BLUETOOTH_CONNECT
+      android.permission.BLUETOOTH_ADVERTISE
+      android.permission.READ_MEDIA_AUDIO
+      android.permission.READ_MEDIA_VIDEO
+      android.permission.READ_MEDIA_IMAGES
+      android.permission.READ_MEDIA_VISUAL_USER_SELECTED
+    install permissions:
+      android.permission.DOWNLOAD_WITHOUT_NOTIFICATION: granted=true
+      com.google.android.c2dm.permission.RECEIVE: granted=true
+      android.permission.ACCESS_NOTIFICATION_POLICY: granted=true
+      com.sktelecom.ssm.permission.MPUSH_PERMISSION: granted=true
+      android.permission.NFC: granted=true
+      android.permission.CHANGE_NETWORK_STATE: granted=true
+      android.permission.FOREGROUND_SERVICE: granted=true
+      android.permission.WRITE_SYNC_SETTINGS: granted=true
+      com.sktelecom.ssm.installer.permission.PROVIDER_READ: granted=true
+      android.permission.RECEIVE_BOOT_COMPLETED: granted=true
+      com.sktelecom.ssm.permission.LOCAL_BROADCAST: granted=true
+      com.android.launcher.permission.UNINSTALL_SHORTCUT: granted=true
+      android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS: granted=true
+      android.permission.BLUETOOTH: granted=true
+      android.permission.GET_TASKS: granted=true
+      android.permission.INTERNET: granted=true
+      android.permission.BLUETOOTH_ADMIN: granted=true
+      android.permission.GET_PACKAGE_SIZE: granted=true
+      android.permission.PACKAGE_USAGE_STATS: granted=false
+      android.permission.ACCESS_DOWNLOAD_MANAGER: granted=false
+      android.permission.CHANGE_WIFI_STATE: granted=true
+      android.permission.ACCESS_NETWORK_STATE: granted=true
+      android.permission.KILL_BACKGROUND_PROCESSES: granted=true
+      android.permission.READ_SYNC_STATS: granted=true
+      com.sktelecom.ssm.SUPPORT_PERMISSION: granted=true
+      android.permission.REQUEST_DELETE_PACKAGES: granted=true
+      android.permission.READ_SYNC_SETTINGS: granted=true
+      android.permission.VIBRATE: granted=true
+      android.permission.ACCESS_WIFI_STATE: granted=true
+      android.permission.REQUEST_INSTALL_PACKAGES: granted=false
+      com.android.launcher.permission.INSTALL_SHORTCUT: granted=true
+      android.permission.QUERY_ALL_PACKAGES: granted=true
+      android.permission.WAKE_LOCK: granted=true
+    User 0: ceDataInode=123632 installed=true hidden=false suspended=false distractionFlags=0 stopped=true notLaunched=true enabled=0 instant=false virtual=false
+      installReason=0
+      firstInstallTime=2026-11-09 19:07:56
+      uninstallReason=0
+      overlay paths:
+        /product/overlay/EmulationPixel6/EmulationPixel6Overlay.apk
+        /product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk
+      legacy overlay paths:
+        /product/overlay/EmulationPixel6/EmulationPixel6Overlay.apk
+        /product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk
+      gids=[3002, 3003, 3001]
+      runtime permissions:
+        android.permission.POST_NOTIFICATIONS: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.ACCESS_FINE_LOCATION: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.READ_MEDIA_VISUAL_USER_SELECTED: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.BLUETOOTH_CONNECT: granted=true, flags=[ REVOKE_WHEN_REQUESTED|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.READ_EXTERNAL_STORAGE: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT]
+        android.permission.ACCESS_COARSE_LOCATION: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.READ_MEDIA_IMAGES: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.CAMERA: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.READ_MEDIA_AUDIO: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.READ_MEDIA_VIDEO: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.BLUETOOTH_ADVERTISE: granted=true, flags=[ REVOKE_WHEN_REQUESTED|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+        android.permission.WRITE_EXTERNAL_STORAGE: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|RESTRICTION_INSTALLER_EXEMPT]
+        android.permission.BLUETOOTH_SCAN: granted=true, flags=[ REVOKE_WHEN_REQUESTED|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+
+Queries:
+  system apps queryable: false
+  queries via forceQueryable:
+  queries via package name:
+    com.sktelecom.ssm:
+      com.google.android.apps.maps
+  queries via component:
+    com.google.android.settings.intelligence:
+      com.sktelecom.ssm
+    com.google.android.apps.messaging:
+      com.sktelecom.ssm
+  queryable via interaction:
+    User 0:
+  queryable via uses-library:
+
+Dexopt state:
+  [com.sktelecom.ssm]
+    path: /data/app/~~2V3FRGYsDU-Xf8bbvesiSA==/com.sktelecom.ssm-Q2_E60y2r1kahX8b5hmXvg==/base.apk
+      arm64: [status=verify] [reason=install] [primary-abi]
+        [location is /data/app/~~2V3FRGYsDU-Xf8bbvesiSA==/com.sktelecom.ssm-Q2_E60y2r1kahX8b5hmXvg==/oat/arm64/base.odex]
+
+Compiler stats:
+  [com.sktelecom.ssm]
+     base.apk - 281

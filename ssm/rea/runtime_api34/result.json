@@ -1,0 +1,28 @@
+{
+  "device": "google/sdk_gphone64_arm64/emu64a:14/UE1A.230829.050/12077443:userdebug/dev-keys",
+  "network": "wifi and mobile data disabled",
+  "art": [
+    {
+      "dex": "classes.dex",
+      "command": "/apex/com.android.art/bin/dex2oat64 --dex-file=/data/local/tmp/ssm-r01-classes.dex --oat-file=/data/local/tmp/ssm-r01-classes.dex.oat --instruction-set=arm64 --compiler-filter=verify --runtime-arg -Xnorelocate",
+      "exit_code": 0,
+      "log_path": "/Users/jihyun.son/dev/rea/ssm/ssm/rea/runtime_api34/classes.dex.verify.log"
+    },
+    {
+      "dex": "classes2.dex",
+      "command": "/apex/com.android.art/bin/dex2oat64 --dex-file=/data/local/tmp/ssm-r01-classes2.dex --oat-file=/data/local/tmp/ssm-r01-classes2.dex.oat --instruction-set=arm64 --compiler-filter=verify --runtime-arg -Xnorelocate",
+      "exit_code": 0,
+      "log_path": "/Users/jihyun.son/dev/rea/ssm/ssm/rea/runtime_api34/classes2.dex.verify.log"
+    }
+  ],
+  "install": {
+    "exit_code": 0,
+    "output": "Performing Streamed Install\nSuccess\n"
+  },
+  "launcher_resolution": "priority=0 preferredOrder=0 match=0x108000 specificIndex=-1 isDefault=false\ncom.sktelecom.ssm/.DEFAULT_MAIN\n",
+  "launch": {
+    "exit_code": 0,
+    "output": "Starting: Intent { cmp=com.sktelecom.ssm/.DEFAULT_MAIN }\nStatus: ok\nLaunchState: COLD\nActivity: com.sktelecom.ssm/.InitActivity\nTotalTime: 558\nWaitTime: 565\nComplete\n"
+  },
+  "pid": "4474"
+}
