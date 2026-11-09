@@ -2,12 +2,17 @@
 import importlib.util
 from pathlib import Path
 import struct
+import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
 import zipfile
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO_ROOT))
+from patcher_common import decode_tries, extract_apk_cert_sha1, find_unique_insn_offset, find_unique_method
+
 spec = importlib.util.spec_from_file_location('patch_ssm', Path(__file__).resolve().parent / 'patch_ssm.py')
 assert spec is not None and spec.loader is not None
 patcher = importlib.util.module_from_spec(spec)
@@ -25,14 +30,48 @@ NEW_PATCHES = [
  (0x552520,'71004eea0000','0e0000000000'), (0x5526c4,'1a00516b','0e000000'),
  (0x551cc0,'22008726','0e000000')]
 
+CERT_AND_AUDIT_PATCHES = [
+ (0x4ead54,'1201','1211'), (0x4edfcc,'1201','1211'),
+ (0x4f1b54,'1201','1211'), (0x4f57dc,'1201','1211'),
+ (0x50e85c,'1202','1212'), (0x50eaf4,'1202','1212'),
+ (0x52c2ea,'39000300','00000000'), (0x53d31a,'0a06','1206'),
+ (0x53d41c,'390a0300','0e000000'), (0x56585a,'0a04','1214'),
+ (0x53e340,'0a04','1214'), (0x4c5994,'0a00','1200')]
+
 class PatchContract(unittest.TestCase):
  def test_semantic_plan_and_count(self):
-  self.assertEqual([len(patcher.DEX[n]) for n in ('classes.dex','classes2.dex')], [50,4])
+  self.assertEqual([len(patcher.DEX[n]) for n in ('classes.dex','classes2.dex')], [62,4])
   self.assertTrue(set(NEW_PATCHES) <= set(patcher.DEX['classes.dex']))
+  self.assertTrue(set(CERT_AND_AUDIT_PATCHES) <= set(patcher.DEX['classes.dex']))
   self.assertFalse({0x529fec,0x52a01c,0x52a064} & {o for o,_,_ in patcher.DEX['classes.dex']})
+  cert_sha1 = extract_apk_cert_sha1(SOURCE)
+  self.assertEqual(cert_sha1, '7477ca27bf39d4a8bde8e8c95ac706418b6e5b24')
   with zipfile.ZipFile(SOURCE) as z:
    for name, expected in patcher.DEX.items():
-    self.assertEqual(patcher.plan_dex(name,z.read(name)), expected)
+    self.assertEqual(patcher.plan_dex(name, z.read(name), cert_sha1), expected)
+
+ def test_dynamic_cert_string_and_semantic_fallback(self):
+  with zipfile.ZipFile(SOURCE) as z:
+   dex = patcher.DexFile(z.read('classes.dex'))
+  idx = dex.find_string_index('7477CA27BF39D4A8BDE8E8C95AC706418B6E5B24')
+  self.assertEqual(idx, 0x0b12)
+  # Relaxed insns_size/registers_size fallback and obfuscated class/method fallback
+  m1 = find_unique_method(dex, 'fallback-size', class_filter='Lcom/sktelecom/ssm/policy/gid20/l/c;',
+   name_filter='h', proto='(Landroid/content/Context;)Ljava/lang/String;',
+   insns_size=9999, registers_size=99, required_strings=('com.sktelecom.ssm','currentSignature'))
+  self.assertEqual(m1.signature, 'Lcom/sktelecom/ssm/policy/gid20/l/c;->h(Landroid/content/Context;)Ljava/lang/String;')
+  m2 = find_unique_method(dex, 'fallback-obf', class_filter='Lcom/obfuscated/NonExistent;',
+   name_filter='renamedMethod', proto='(Landroid/content/Context;)Ljava/lang/String;',
+   insns_size=9999, registers_size=99, required_strings=('com.sktelecom.ssm','currentSignature'))
+  self.assertEqual(m2.signature, m1.signature)
+  off = find_unique_insn_offset(dex, m1, 'fallback-rel', pattern='1a01487a71203cff13000c01', rel_off=9999)
+  self.assertEqual(off, 0x5401da)
+  # Verify decode_tries on PolicyService$c.b (tries_size == 2)
+  mp = find_unique_method(dex, 'tries-test', class_filter='Lcom/sktelecom/ssm/policy/PolicyService$c;',
+   name_filter='b', proto='(Lretrofit2/d;Lretrofit2/r;)V')
+  tries = decode_tries(dex.data, mp, dex)
+  self.assertEqual(len(tries), 4)
+  self.assertEqual(tries[0]['handlers'][0]['type'], 'Ljava/lang/Exception;')
 
  def test_semantic_precondition_fails_closed(self):
   with zipfile.ZipFile(SOURCE) as z: original = bytearray(z.read('classes.dex'))
@@ -41,11 +80,16 @@ class PatchContract(unittest.TestCase):
    patcher.plan_dex('classes.dex',original)
 
  def test_actual_apk_exact_changes_and_cfg(self):
-  with zipfile.ZipFile(SOURCE) as src, zipfile.ZipFile(OUTPUT) as dst:
-   plans={n:patcher.ELF(src.read(n)).patches() for n in src.namelist() if n.startswith('lib/') and n.endswith('/libnative-lib.so')}
-   patcher.check(SOURCE,OUTPUT,plans)
-   for name, patches in patcher.DEX.items():
-    patcher.verify_dex_exact(src.read(name), dst.read(name), patches)
+  with tempfile.TemporaryDirectory() as tmp:
+   target = OUTPUT
+   if not target.exists():
+    target = Path(tmp) / 'ssm_patched.apk'
+    subprocess.run([sys.executable, str(Path(__file__).resolve().parent / 'patch_ssm.py'), str(SOURCE), str(target)], check=True)
+   with zipfile.ZipFile(SOURCE) as src, zipfile.ZipFile(target) as dst:
+    plans={n:patcher.ELF(src.read(n)).patches() for n in src.namelist() if n.startswith('lib/') and n.endswith('/libnative-lib.so')}
+    patcher.check(SOURCE,target,plans)
+    for name, patches in patcher.DEX.items():
+     patcher.verify_dex_exact(src.read(name), dst.read(name), patches)
 
  def test_new_bytecode_and_cfg(self):
   with zipfile.ZipFile(SOURCE) as z: original=z.read('classes.dex')
@@ -64,6 +108,11 @@ class PatchContract(unittest.TestCase):
    dex.decode_method(method)
    self.assertIn(off,{i[1] for i in method.insns})
   self.assertEqual(seen,expected)
+  for off,old,new in CERT_AND_AUDIT_PATCHES:
+   self.assertEqual(candidate[off:off+len(bytes.fromhex(new))].hex(),new)
+   method=next(m for m in dex.methods if m.insns_off<=off<m.insns_off+2*m.insns_size)
+   dex.decode_method(method)
+   self.assertIn(off,{i[1] for i in method.insns})
   # The new unconditional branches must land on actual instructions.
   for off,target in [(0x52a022,0x52a07c),(0x560ed4,0x560f10)]:
    self.assertEqual(off+2*struct.unpack_from('<b',candidate,off+1)[0],target)

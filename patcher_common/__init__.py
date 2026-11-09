@@ -1,6 +1,7 @@
 """Shared, fail-closed DEX, ELF and APK rebuilding primitives."""
 import copy
 import hashlib
+import json
 import re
 import struct
 import subprocess
@@ -11,10 +12,53 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-REPO_root = REPO_ROOT
 DEFAULT_KEYSTORE = REPO_ROOT / 'signing' / 're_release.keystore'
 U = lambda b, o: struct.unpack_from('<I', b, o)[0]
 H = lambda b, o: struct.unpack_from('<H', b, o)[0]
+
+
+def require(cond, msg: object = 'Validation failed'):
+    if not cond:
+        raise AssertionError(msg)
+
+
+def dump_analysis_json(obj):
+    text = json.dumps(obj, ensure_ascii=False, indent=2) + '\n'
+    return re.sub(
+        r'\{\n\s+"(?:byte_offset|dex|offset|start_cu|type)":([^\{\}]+?)\n\s+\}',
+        lambda m: '{' + re.sub(r'\s+', ' ', m.group(0)[1:-1]).strip() + '}',
+        text,
+    )
+
+
+def extract_apk_cert_sha1(apk_path):
+    data = Path(apk_path).read_bytes()
+    eocd = None
+    for off in range(len(data) - 22, max(-1, len(data) - 65558), -1):
+        if data[off:off + 4] == b'PK\x05\x06' and off + 22 + H(data, off + 20) == len(data):
+            eocd = off
+            break
+    if eocd is None:
+        raise AssertionError('Missing ZIP EOCD')
+    cd_off = U(data, eocd + 16)
+    require(cd_off >= 24 and data[cd_off - 16:cd_off] == b'APK Sig Block 42', 'Missing APK Sig Block 42')
+    block_size = struct.unpack_from('<Q', data, cd_off - 24)[0]
+    block_start = cd_off - 8 - block_size
+    pos = block_start + 8
+    end = cd_off - 24
+    while pos < end:
+        pair_len = struct.unpack_from('<Q', data, pos)[0]
+        pair_id = U(data, pos + 8)
+        if pair_id == 0x7109871a:
+            v2_block = data[pos + 12:pos + 8 + pair_len]
+            digests_len = U(v2_block, 12)
+            certs_off = 16 + digests_len
+            cert_len = U(v2_block, certs_off + 4)
+            cert_der = v2_block[certs_off + 8:certs_off + 8 + cert_len]
+            require(len(cert_der) == cert_len and cert_len > 0, 'Empty v2 certificate')
+            return hashlib.sha1(cert_der).hexdigest()
+        pos += 8 + pair_len
+    raise ValueError(f'No APK Signature Scheme v2 signer in {apk_path}')
 
 
 def uleb(b, o):
@@ -100,8 +144,9 @@ class DexFile:
             cls: dict[str, object] = dict(zip(('class_idx','access_flags','superclass_idx','interfaces_off','source_file_idx','annotations_off','class_data_off','static_values_off'),vals))
             self.class_defs.append(cls)
             class_data_off = cls['class_data_off']
-            assert isinstance(class_data_off, int)
-            o = int(class_data_off)
+            if not isinstance(class_data_off, int):
+                raise AssertionError('Invalid class_data_off')
+            o = class_data_off
             if not o: continue
             counts = []
             for _ in range(4): v,o = uleb(d,o); counts.append(v)
@@ -123,6 +168,13 @@ class DexFile:
                     self.methods.append(m); defined.append(m)
             cls['class_data_item'] = dict(fields=fields,methods=defined)
 
+    def find_string_index(self, text, ignore_case=True):
+        target = text.lower() if ignore_case else text
+        hits = [i for i, s in enumerate(self.string_ids) if (s.lower() if ignore_case else s) == target]
+        if len(hits) != 1:
+            raise ValueError(f'String {text!r}: expected 1 match, found {len(hits)}')
+        return hits[0]
+
     def decode_method(self, m):
         m.strings.clear(); m.calls.clear(); m.fields.clear(); m.consts.clear(); m.insns.clear()
         for u,o,w,op,raw,payload in _decode(self.data,m):
@@ -130,7 +182,7 @@ class DexFile:
             if not payload and op in KIND:
                 idx=U(raw,2) if op==0x1b else H(raw,2)
                 table=getattr(self,KIND[op]+'_ids')
-                assert idx<len(table), ('reference out of range',o)
+                require(idx<len(table), ('reference out of range',o))
                 ref=table[idx]
                 if isinstance(ref,dict): ref=ref.get('signature')
                 if KIND[op]=='string': m.strings.add(ref)
@@ -149,35 +201,80 @@ def _decode(d,m):
     u=0
     while u<m.insns_size:
         o=m.insns_off+u*2; word=H(d,o); op=word&255
-        assert op in WIDTH, ('illegal opcode',o,op)
+        require(op in WIDTH, ('illegal opcode',o,op))
         w=WIDTH[op]; payload=op==0 and word!=0
         if payload:
-            assert u%2==0, ('unaligned payload',o)
+            require(u%2==0, ('unaligned payload',o))
             if word==0x100: w=4+2*H(d,o+2)
             elif word==0x200: w=2+4*H(d,o+2)
             elif word==0x300:
                 size=H(d,o+2); count=U(d,o+4)
-                assert count==0 or size in (1,2,4,8)
+                require(count==0 or size in (1,2,4,8), ('invalid fill-array-data element size',o,size))
                 w=4+(size*count+1)//2
             else: raise AssertionError(('invalid payload',o))
-        assert u+w<=m.insns_size and o+2*w<=len(d), ('instruction overrun',o)
+        require(u+w<=m.insns_size and o+2*w<=len(d), ('instruction overrun',o))
         yield u,o,w,op,d[o:o+2*w],payload
         u+=w
+
+
+def decode_tries(d, m, dex=None):
+    if not m.code_off or not m.tries_size:
+        return []
+    if dex is None:
+        dex = DexFile(d)
+    end = m.insns_off + 2 * m.insns_size
+    table = end + (m.insns_size % 2) * 2
+    base = table + 8 * m.tries_size
+    count, pos = uleb(d, base)
+    handler_map = {}
+    for _ in range(count):
+        hoff = pos - base
+        size, pos = sleb(d, pos)
+        items = []
+        for _ in range(abs(size)):
+            typ, pos = uleb(d, pos)
+            addr, pos = uleb(d, pos)
+            require(typ < len(dex.type_ids), ('catch type out of range', typ))
+            items.append(dict(type=dex.type_ids[typ], handler_cu=addr))
+        catch_all = None
+        if size <= 0:
+            catch_all, pos = uleb(d, pos)
+        handler_map[hoff] = (items, catch_all)
+    result = []
+    for i in range(m.tries_size):
+        start, insn_count, ho = struct.unpack_from('<IHH', d, table + 8 * i)
+        require(ho in handler_map, ('missing catch handler', ho))
+        items, catch_all = handler_map[ho]
+        result.append(dict(start_cu=start, count_cu=insn_count, handlers=items, catch_all_cu=catch_all))
+    return result
 
 
 def find_unique_method(dex, rule_id, class_filter=None, name_filter=None, proto=None, required_strings=(), required_calls=(), required_fields=(), insns_size=None, registers_size=None, custom_predicate=None):
     if not isinstance(dex,DexFile): dex=DexFile(dex)
     def match(f,v): return f is None or (f(v) if callable(f) else bool(f.search(v)) if hasattr(f,'search') else f==v)
-    matches=[]
-    for m in dex.methods:
-        if not match(class_filter,m.class_desc) or not match(name_filter,m.name): continue
-        if proto is not None and proto!=m.proto: continue
-        if insns_size is not None and insns_size!=m.insns_size: continue
-        if registers_size is not None and registers_size!=m.registers_size: continue
-        dex.decode_method(m)
-        if not set(required_strings)<=m.strings or not set(required_calls)<=m.calls or not set(required_fields)<=m.fields: continue
-        if custom_predicate is not None and not custom_predicate(m): continue
-        matches.append(m)
+    def scan(cf, nf, sz, rg):
+        out=[]
+        for m in dex.methods:
+            if not m.code_off: continue
+            if not match(cf,m.class_desc) or not match(nf,m.name): continue
+            if proto is not None and proto!=m.proto: continue
+            if sz is not None and sz!=m.insns_size: continue
+            if rg is not None and rg!=m.registers_size: continue
+            dex.decode_method(m)
+            if not set(required_strings)<=m.strings or not set(required_calls)<=m.calls or not set(required_fields)<=m.fields: continue
+            if custom_predicate is not None and not custom_predicate(m): continue
+            out.append(m)
+        return out
+    matches=scan(class_filter, name_filter, insns_size, registers_size)
+    has_semantic = bool(required_strings or required_calls or required_fields)
+    if not matches and (insns_size is not None or registers_size is not None) and (has_semantic or (class_filter is not None and name_filter is not None)):
+        relaxed = scan(class_filter, name_filter, None, None)
+        if len(relaxed) == 1:
+            return relaxed[0]
+    if not matches and has_semantic:
+        relaxed_cls = scan(None, None, None, None)
+        if len(relaxed_cls) == 1:
+            return relaxed_cls[0]
     if len(matches)!=1: raise ValueError(f'Rule {rule_id}: expected 1 method, found {len(matches)}')
     return matches[0]
 
@@ -186,7 +283,13 @@ def find_unique_insn_offset(dex, method, rule_id, pattern=None, rel_off=None, op
     if not isinstance(dex,DexFile): dex=DexFile(dex)
     dex.decode_method(method)
     if isinstance(pattern,str): pattern=bytes.fromhex(pattern)
-    matches=[o for r,o,_,op,_,s in method.insns if (rel_off is None or rel_off==r) and (opcode is None or opcode==op) and (ref is None or ref==s) and (pattern is None or dex.data[o:o+len(pattern)]==pattern)]
+    def scan(ro):
+        return [o for r,o,_,op,_,s in method.insns if (ro is None or ro==r) and (opcode is None or opcode==op) and (ref is None or ref==s) and (pattern is None or dex.data[o:o+len(pattern)]==pattern)]
+    matches=scan(rel_off)
+    if not matches and rel_off is not None and pattern is not None:
+        relaxed=scan(None)
+        if len(relaxed)==1:
+            return relaxed[0]
     if len(matches)!=1: raise ValueError(f'Rule {rule_id}: expected 1 instruction, found {len(matches)}')
     return matches[0]
 
@@ -212,7 +315,7 @@ def _registers(raw,op):
     if op in (2,5,8): regs=[a,H(raw,2)]
     elif op in (3,6,9): regs=list(struct.unpack_from('<HH',raw,2))
     elif op in (*range(0x6e,0x73),0x24):
-        count=a>>4; assert count<=5
+        count=a>>4; require(count<=5, ('invoke register count > 5', op, count))
         packed=H(raw,4); regs=([(packed>>(4*i))&15 for i in range(4)]+[a&15])[:count]
     elif op in (*range(0x74,0x79),0x25): regs=list(range(H(raw,4),H(raw,4)+a))
     elif op in (1,4,7,0x12,0x20,0x21,0x23) or 0x32<=op<=0x37 or 0x52<=op<=0x5f or 0x7b<=op<=0x8f or 0xb0<=op<=0xcf or 0xd0<=op<=0xd7: regs=[a&15,a>>4]
@@ -244,26 +347,26 @@ def _validate_methods(d,patches):
     dex=DexFile(d); selected=[]
     for m in dex.methods:
         if m.code_off and any(m.insns_off<=p[0]<m.insns_off+2*m.insns_size for p in patches): selected.append(m)
-    assert selected, 'No patched methods'
+    require(bool(selected), 'No patched methods')
     for m in selected:
         records=list(_decode(d,m)); ordinary={u:(o,w,op,raw) for u,o,w,op,raw,p in records if not p}
         instruction_starts=set(ordinary); payloads={u:H(d,o) for u,o,*_,p in records if p}
         edges={}; padding_candidates={}
         payload_starts=set(payloads); branch_targets=set(); fallthrough=set(); handlers=set()
-        assert 0 in instruction_starts and m.ins_size<=m.registers_size
+        require(0 in instruction_starts and m.ins_size<=m.registers_size, ('invalid method entry/ins_size', m.signature))
         for u,(o,w,op,raw) in ordinary.items():
             regs,wide=_registers(raw,op)
-            for i,v in enumerate(regs): assert 0<=v and v+(i in wide)<m.registers_size, ('register out of range',o,v)
+            for i,v in enumerate(regs): require(0<=v and v+(i in wide)<m.registers_size, ('register out of range',o,v))
             if op in KIND:
                 idx=U(raw,2) if op==0x1b else H(raw,2)
-                assert idx<len(getattr(dex,KIND[op]+'_ids')), ('reference out of range',o)
+                require(idx<len(getattr(dex,KIND[op]+'_ids')), ('reference out of range',o))
                 if KIND[op]=='method':
                     mid=dex.method_ids[idx]; args=re.findall(r'\[*L[^;]+;|\[*[ZBSCIFJD]',mid['proto'].split(')')[0][1:])
                     widths=[1] * (op not in (0x71,0x77)) + [2 if x in ('J','D') else 1 for x in args]
-                    assert len(regs)==sum(widths) and len(regs)<=m.outs_size
+                    require(len(regs)==sum(widths) and len(regs)<=m.outs_size, ('invoke arg width mismatch',o))
                     pos=0
                     for size in widths:
-                        if size==2: assert regs[pos]+1==regs[pos+1] and regs[pos]+1<m.registers_size
+                        if size==2: require(regs[pos]+1==regs[pos+1] and regs[pos]+1<m.registers_size, ('wide invoke reg pair mismatch',o))
                         pos+=size
             targets=[]
             if op==0x28: targets=[u+struct.unpack('<b',raw[1:2])[0]]
@@ -271,12 +374,12 @@ def _validate_methods(d,patches):
             elif op==0x2a: targets=[u+struct.unpack_from('<i',raw,2)[0]]
             elif op in (0x26,0x2b,0x2c):
                 pu=u+struct.unpack_from('<i',raw,2)[0]
-                assert pu in payload_starts and payloads[pu]=={0x26:0x300,0x2b:0x100,0x2c:0x200}[op]
+                require(pu in payload_starts and payloads[pu]=={0x26:0x300,0x2b:0x100,0x2c:0x200}[op], ('invalid payload target',o))
                 po=m.insns_off+pu*2; n=H(d,po+2)
                 if op!=0x26:
                     to=po+8 if op==0x2b else po+4+4*n
                     targets=[u+struct.unpack_from('<i',d,to+4*i)[0] for i in range(n)]
-            for target in targets: assert target in instruction_starts, ('invalid branch target',o,target)
+            for target in targets: require(target in instruction_starts, ('invalid branch target',o,target))
             branch_targets.update(targets)
             edges[u]=set(targets)
             if op not in (0x0e,0x0f,0x10,0x11,0x27,0x28,0x29,0x2a):
@@ -286,10 +389,10 @@ def _validate_methods(d,patches):
                 elif op==0 and u+w in payload_starts:
                     padding_candidates[u]=o
                 else:
-                    assert False, ('invalid fallthrough',o)
+                    raise AssertionError(('invalid fallthrough',o))
             if 0x0e<=op<=0x11:
                 r=m.return_type; expected=0x0e if r=='V' else 0x10 if r in ('J','D') else 0x11 if r.startswith(('L','[')) else 0x0f
-                assert op==expected, ('return type mismatch',o,r)
+                require(op==expected, ('return type mismatch',o,r))
         if m.tries_size:
             end=m.insns_off+2*m.insns_size; table=end+(m.insns_size%2)*2; base=table+8*m.tries_size
             count,pos=uleb(d,base); valid_handlers=set()
@@ -297,13 +400,13 @@ def _validate_methods(d,patches):
                 valid_handlers.add(pos-base); size,pos=sleb(d,pos)
                 for _ in range(abs(size)):
                     typ,pos=uleb(d,pos); addr,pos=uleb(d,pos)
-                    assert typ<len(dex.type_ids) and addr in instruction_starts
+                    require(typ<len(dex.type_ids) and addr in instruction_starts, ('invalid catch handler target',addr))
                     handlers.add(addr)
                 if size<=0:
-                    addr,pos=uleb(d,pos); assert addr in instruction_starts; handlers.add(addr)
+                    addr,pos=uleb(d,pos); require(addr in instruction_starts, ('invalid catch-all target',addr)); handlers.add(addr)
             for i in range(m.tries_size):
                 start,count,ho=struct.unpack_from('<IHH',d,table+8*i)
-                assert count>0 and start in instruction_starts and start+count in instruction_starts|{m.insns_size} and ho in valid_handlers
+                require(count>0 and start in instruction_starts and start+count in instruction_starts|{m.insns_size} and ho in valid_handlers, ('invalid try_item',i))
         reachable=set(); pending=list({0}|handlers)
         while pending:
             u=pending.pop()
@@ -312,16 +415,17 @@ def _validate_methods(d,patches):
             pending.extend(edges[u]-reachable)
         reachable_fallthrough={u+ordinary[u][1] for u in reachable if u+ordinary[u][1] in edges[u] and ordinary[u][2] not in (0x28,0x29,0x2a)}
         for u,o in padding_candidates.items():
-            assert u not in reachable, ('invalid fallthrough into payload',o)
+            require(u not in reachable, ('invalid fallthrough into payload',o))
         prev=None
         for u,(o,w,op,raw) in ordinary.items():
             if op in (0xa,0xb,0xc):
-                assert prev is not None and prev[0]+prev[1]==u and prev[2] in (*range(0x6e,0x73),*range(0x74,0x79),0x24,0x25)
-                assert u not in branch_targets and u not in handlers and u!=0
+                if prev is None or prev[0]+prev[1]!=u or prev[2] not in (*range(0x6e,0x73),*range(0x74,0x79),0x24,0x25):
+                    raise AssertionError(('detached move-result',o))
+                require(u not in branch_targets and u not in handlers and u!=0, ('branched move-result',o))
                 pop,praw=prev[2],prev[3]
                 r='[' if pop in (0x24,0x25) else dex.method_ids[H(praw,2)]['proto'].split(')')[1]
-                assert r!='V' and op==(0xb if r in ('J','D') else 0xc if r.startswith(('L','[')) else 0xa)
-            if op==0xd: assert u in handlers and u not in branch_targets and u not in reachable_fallthrough and u!=0
+                require(r!='V' and op==(0xb if r in ('J','D') else 0xc if r.startswith(('L','[')) else 0xa), ('move-result type mismatch',o,r))
+            if op==0xd: require(u in handlers and u not in branch_targets and u not in reachable_fallthrough and u!=0, ('invalid move-exception',o))
             prev=(u,w,op,raw)
 
 
@@ -340,15 +444,15 @@ def verify_dex_exact(original,result,patches):
     for o,old,new in patches:
         old=bytes.fromhex(old) if isinstance(old,str) else bytes(old)
         new=bytes.fromhex(new) if isinstance(new,str) else bytes(new)
-        assert len(old)==len(new) and 0<=o<=len(expected)-len(old) and expected[o:o+len(old)]==old
+        require(len(old)==len(new) and 0<=o<=len(expected)-len(old) and expected[o:o+len(old)]==old, ('DEX precondition mismatch',hex(o)))
         expected[o:o+len(new)]=new
-    assert bytes(result)==fix_dex(expected), 'Unexpected DEX modifications'
-    assert dex_valid(result)
+    require(bytes(result)==fix_dex(expected), 'Unexpected DEX modifications')
+    require(dex_valid(result), 'Invalid DEX checksums')
     validate_methods(result,patches)
 
 
 def restore_crc(b,o,target):
-    assert 0<=o<=len(b)-4 and 0<=target<=0xffffffff
+    require(0<=o<=len(b)-4 and 0<=target<=0xffffffff, 'Invalid CRC parameters')
     base=zlib.crc32(b)&0xffffffff; basis={}
     for bit in range(32):
         b[o+bit//8]^=1<<(bit%8); v=(zlib.crc32(b)&0xffffffff)^base; b[o+bit//8]^=1<<(bit%8); mask=1<<bit
@@ -356,17 +460,17 @@ def restore_crc(b,o,target):
             k=v.bit_length()-1
             if k not in basis: basis[k]=(v,mask); break
             v0,m0=basis[k]; v^=v0; mask^=m0
-    assert len(basis)==32
+    require(len(basis)==32, 'Singular CRC basis')
     v=base^target; mask=0
     while v:
         v0,m0=basis[v.bit_length()-1]; v^=v0; mask^=m0
     for bit in range(32):
         if mask>>bit&1: b[o+bit//8]^=1<<(bit%8)
-    assert zlib.crc32(b)&0xffffffff==target
+    require((zlib.crc32(b)&0xffffffff)==target, 'CRC restoration failed')
 
 
 def correction_offset(b):
-    assert b[:4]==b'\x7fELF' and b[5]==1 and b[4] in (1,2)
+    require(b[:4]==b'\x7fELF' and b[5]==1 and b[4] in (1,2), 'Invalid ELF header')
     wide=b[4]==2
     ph,sh=struct.unpack_from('<QQ' if wide else '<II',b,32 if wide else 28)
     pe,pn,se,sn,si=struct.unpack_from('<5H',b,54 if wide else 42)
@@ -381,7 +485,10 @@ def correction_offset(b):
         if names[s[0]:].split(b'\0')[0]==b'.comment' and s[5]>=16:
             o=s[4]+8
             if o+4<=len(b) and all(o+4<=a or o>=e for a,e in protected): return o
-    raise AssertionError('No safe .comment CRC correction slot')
+    tail = len(b) - 4
+    if tail >= 0 and all(tail+4<=a or tail>=e for a,e in protected):
+        return tail
+    raise AssertionError('No safe .comment or trailing CRC correction slot')
 
 
 def repack(src,dst,replacements=None,strip=False):
@@ -395,7 +502,8 @@ def repack(src,dst,replacements=None,strip=False):
             if x.compress_type==zipfile.ZIP_STORED:
                 alignment=4096 if x.filename.endswith('.so') else 4
                 encoding='utf8' if x.flag_bits&0x800 or not x.filename.isascii() else 'ascii'
-                assert zo.fp is not None
+                if zo.fp is None:
+                    raise AssertionError('Missing output file pointer')
                 base=zo.fp.tell()+30+len(x.filename.encode(encoding)); pad=(-base)%alignment
                 if pad:
                     if pad<4: pad+=alignment
@@ -412,8 +520,9 @@ def v2(src,dst,work):
     work=Path(work); b=Path(src).read_bytes(); e=None
     for off in range(len(b)-22,max(-1,len(b)-65558),-1):
         if b[off:off+4]==b'PK\x05\x06' and off+22+H(b,off+20)==len(b): e=off; break
-    assert e is not None, 'Missing ZIP EOCD'
-    cd=U(b,e+16); assert cd+U(b,e+12)==e and H(b,e+4)==H(b,e+6)==0, 'Unsupported ZIP layout'
+    if e is None:
+        raise AssertionError('Missing ZIP EOCD')
+    cd=U(b,e+16); require(cd+U(b,e+12)==e and H(b,e+4)==H(b,e+6)==0, 'Unsupported ZIP layout')
     chunks=[]
     for section in (b[:cd],b[cd:e],b[e:]):
         for i in range(0,len(section),1048576):
@@ -425,7 +534,7 @@ def v2(src,dst,work):
     (work/'signed-data').write_bytes(signed)
     sig=run('openssl','dgst','-sha256','-sign',work/'key.pem',work/'signed-data')
     (work/'signature').write_bytes(sig); (work/'pub.pem').write_bytes(run('openssl','pkey','-in',work/'key.pem','-pubout'))
-    assert b'Verified OK' in run('openssl','dgst','-sha256','-verify',work/'pub.pem','-signature',work/'signature',work/'signed-data')
+    require(b'Verified OK' in run('openssl','dgst','-sha256','-verify',work/'pub.pem','-signature',work/'signature',work/'signed-data'), 'OpenSSL v2 signature verification failed')
     signer=lp(signed)+lp(lp(struct.pack('<I',0x103)+lp(sig)))+lp(pub)
     pair=struct.pack('<I',0x7109871a)+lp(lp(signer)); pair=struct.pack('<Q',len(pair))+pair
     size=len(pair)+24; block=struct.pack('<Q',size)+pair+struct.pack('<Q',size)+b'APK Sig Block 42'

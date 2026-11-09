@@ -1,4 +1,5 @@
 import importlib.util
+import tempfile
 import unittest
 import zipfile
 import zlib
@@ -7,13 +8,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from patcher_common import DexFile
+from patcher_common import DexFile, decode_tries, extract_apk_cert_sha1
 
 spec = importlib.util.spec_from_file_location('store', ROOT / 'store' / 'patcher' / 'patch_store.py')
 assert spec is not None and spec.loader is not None
 store = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(store)
-APK = ROOT / 'artifacts' / 'Store_1.26.0.apk'
+APK = ROOT / 'store' / 'apk' / 'Store_1.26.0.apk'
+PATCHED_APK = ROOT / 'artifacts' / 'Store_1.26.0_patched.apk'
 
 class StoreContract(unittest.TestCase):
  def test_empty_padding_payload(self):
@@ -24,9 +26,11 @@ class StoreContract(unittest.TestCase):
     dex.decode_method(m)
 
  def test_exact_plan_and_preservation(self):
+  cert_sha1 = extract_apk_cert_sha1(APK)
+  self.assertEqual(cert_sha1, 'e8404b806937b690b087fecca7845f7dfa34371e')
   with zipfile.ZipFile(APK) as z:
    d = z.read('classes.dex')
-  p = store.plan(d)
+  p = store.plan(d, cert_sha1)
   self.assertEqual(len(p), 16)
   self.assertEqual({o for o, _, _ in p}, {0x3a4f16,0x3a4fb2,0x3a4a4e,0x31f70e,0x3120b2,0x312cec,0x318068,0x3180b8,0x3181b8,0x318218,0x319150,0x319754,0x31c0fc,0x31c180,0x31c33c,0x3e7338})
   patched = bytearray(d)
@@ -38,9 +42,13 @@ class StoreContract(unittest.TestCase):
   for o in (0x3e7338,):
    self.assertEqual(patched[o+0x2e:o+0x32].hex(), '1203282d')
   store.validate_methods(patched, p)
+  dex = DexFile(d)
+  m_sig = store.select(dex, 'sig-check', store.RULES[14])
+  self.assertTrue(len(decode_tries(d, m_sig, dex)) >= 1)
   # The former partial overwrite leaves a detached move-result.
   patched[0x318068:0x318070] = bytes.fromhex('12100f0000000a00')
   with self.assertRaises(AssertionError): store.validate_methods(patched, p)
+
  def test_invalid_instructions(self):
   with zipfile.ZipFile(APK) as z:
    original = z.read('classes.dex')
@@ -51,6 +59,7 @@ class StoreContract(unittest.TestCase):
      d[o:o+len(bytes.fromhex(new))] = bytes.fromhex(new)
     d[0x318068:0x31806a] = bytes.fromhex(bad)
     with self.assertRaises(AssertionError): store.validate_methods(d, [(0x318068, '', '')])
+
  def test_double_to_int_wide_source(self):
   with zipfile.ZipFile(APK) as z:
    d = bytearray(z.read('classes.dex'))
@@ -61,6 +70,7 @@ class StoreContract(unittest.TestCase):
   d[0x318068:0x31806a] = bytes.fromhex('8a00')
   with self.assertRaisesRegex(AssertionError, 'register out of range'):
    store.validate_methods(d, [(0x318068, '', '')])
+
  def test_cfg_padding_and_reachable_payload(self):
   with zipfile.ZipFile(APK) as z:
    original = z.read('classes.dex')
@@ -116,14 +126,35 @@ class StoreContract(unittest.TestCase):
   b[0] ^= 1
   store.restore_crc(b, 12, expected)
   self.assertEqual(zlib.crc32(b), expected)
+
  def test_native_contract(self):
   with zipfile.ZipFile(APK) as z:
    for name, patches in store.native_plans().items():
     original = z.read(name)
+    resolved = store.resolve_native_patches(name, original)
+    self.assertEqual(resolved, patches)
     patched = store.patch_native(name, original)
     self.assertEqual(len(original), len(patched))
     self.assertEqual(zlib.crc32(original), zlib.crc32(patched))
-    for o, _, new in patches:
+    for o, _, new in resolved:
      self.assertEqual(patched[o:o+len(bytes.fromhex(new))].hex(), new)
+
+ def test_verify_rejects_unplanned_entry_modification(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   target = PATCHED_APK
+   if not target.exists():
+    import subprocess
+    target = Path(tmp) / 'store_patched.apk'
+    subprocess.run([sys.executable, str(ROOT / 'store' / 'patcher' / 'patch_store.py'), str(APK), str(target)], check=True)
+   store.verify(APK, target)
+   tampered = Path(tmp) / 'tampered.apk'
+   with zipfile.ZipFile(target) as zi, zipfile.ZipFile(tampered, 'w') as zo:
+    for info in zi.infolist():
+     data = zi.read(info.filename)
+     if info.filename == 'AndroidManifest.xml':
+      data = data[:-1] + bytes([data[-1] ^ 1])
+     zo.writestr(info, data)
+   with self.assertRaises(AssertionError):
+    store.verify(APK, tampered)
 
 if __name__ == '__main__': unittest.main()

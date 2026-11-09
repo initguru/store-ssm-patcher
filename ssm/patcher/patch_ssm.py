@@ -2,18 +2,21 @@
 """Strict SSM APK patcher; run with python3 -I from outside extracted inputs."""
 import argparse
 import hashlib
-import sys
-from pathlib import Path
 import struct
+import sys
 import tempfile
 import zipfile
+from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from patcher_common import (DEFAULT_KEYSTORE, DexFile, build_signed_apk, dex_valid,
- find_unique_insn_offset, find_unique_method, fix_dex,
- run, validate_methods, verify_dex_exact)
+from patcher_common import (DEFAULT_KEYSTORE, DexFile, build_signed_apk,
+ decode_tries, dex_valid, dump_analysis_json, extract_apk_cert_sha1,
+ find_unique_insn_offset, find_unique_method, fix_dex, require, run,
+ validate_methods, verify_dex_exact)
 
 __all__ = ['verify_dex_exact']
+
+DEFAULT_SSM_CERT_SHA1 = '7477ca27bf39d4a8bde8e8c95ac706418b6e5b24'
 
 DEX = {
  'classes.dex': [
@@ -59,10 +62,14 @@ DEX['classes.dex'] += [
  (0x552520,'71004eea0000','0e0000000000'),(0x5526c4,'1a00516b','0e000000'),
  (0x551cc0,'22008726','0e000000'),(0x4ce692,'13020020','13020000'),
  (0x4ce7ee,'13000020','13000000'),(0x4d9602,'13000020','13000000'),
- (0x4d9eaa,'13000020','13000000'),(0x4db652,'13000020','13000000')]
+ (0x4d9eaa,'13000020','13000000'),(0x4db652,'13000020','13000000'),
+ (0x4ead54,'1201','1211'),(0x4edfcc,'1201','1211'),
+ (0x4f1b54,'1201','1211'),(0x4f57dc,'1201','1211'),
+ (0x50e85c,'1202','1212'),(0x50eaf4,'1202','1212'),
+ (0x52c2ea,'39000300','00000000'),(0x53d31a,'0a06','1206'),
+ (0x53d41c,'390a0300','0e000000'),(0x56585a,'0a04','1214'),
+ (0x53e340,'0a04','1214'),(0x4c5994,'0a00','1200')]
 
-# Independent, version-specific semantic identities. No absolute file offsets are
-# used to select a method; relative instruction positions disambiguate repeats.
 SEMANTIC_METHODS = [
  ('policy/ss/util/SamsungInterface','D1','(Z)Z',49,5),
  ('policy/o0/i/a','G0','(Z)Z',47,6),
@@ -107,15 +114,23 @@ SEMANTIC_METHODS = [
  ('watcher/WatchingService$k','k','(Landroid/content/Context;)V',30,4),
  ('watcher/WatchingService','W','(Landroid/content/Context;)Z',60,4),
  ('watcher/WatchingService$k','t','(Landroid/content/Context;Ljava/util/List;)Z',221,11),
+ ('policy/db/t','a','(Landroid/content/Context;)Z',211,8),
+ ('policy/gid20/h','i','(Lorg/json/JSONObject;)Lorg/json/JSONObject;',118,7),
+ ('policy/gid20/h','s','(Landroid/content/Context;)V',86,11),
+ ('policy/receiver/PolicyBroadcastReceiver$a','run','()V',1038,9),
+ ('policy/gid20/l/a','u','(Ljava/lang/String;)I',228,10),
+ ('BackgroundService','onStartCommand','(Landroid/content/Intent;II)I',675,26),
 ]
-# Method identity index and byte-relative instruction position, in DEX table order.
+
 SEMANTIC_SITES = {
  'classes.dex': [(0,12),(1,18),(2,46),(3,54),(3,104),(4,0),(5,26),(6,0),
  (7,26),(8,432),(9,354),(10,354),(11,354),(12,354),(13,272),(14,314),
  (7,22),(15,0),(16,0),(17,214),(18,46),(19,0),(20,0),(21,0),(22,0),(23,0),
  (24,0),(25,0),(26,0),(27,0),(33,58),(33,70),(33,98),(33,106),(33,126),
  (34,56),(34,68),(34,98),(34,110),(35,42),(36,48),(36,108),(37,0),(38,0),(39,0),
- (28,26),(29,22),(30,22),(31,22),(32,22)],
+ (28,26),(29,22),(30,22),(31,22),(32,22),
+ (9,220),(10,220),(11,220),(12,220),(13,96),(14,24),
+ (43,6),(44,58),(45,0),(46,834),(47,252),(48,68)],
  'classes2.dex': [(40,30),(40,36),(41,0),(42,0)]
 }
 
@@ -124,11 +139,35 @@ SEMANTIC_FEATURES = {
  1: dict(required_strings=('DEBUG - block USB',)),
  2: dict(required_strings=('setDeveloperMode : ',)),
  3: dict(required_strings=('setUsbState : ',)),
+ 4: dict(required_strings=('.*MtpStorageSwitch.*',)),
  5: dict(required_strings=('rootReason',)),
  6: dict(required_strings=('Security Critical: Starting shutdown sequence from Native signal',)),
  7: dict(required_strings=('com.sktelecom.ssm','currentSignature')),
+ 8: dict(required_strings=('ApkFileHash','apkFileHash = ')),
+ 9: dict(required_strings=('ApkFileHash','FH = ')),
+ 10: dict(required_strings=('ApkFileHash','FH = ')),
+ 11: dict(required_strings=('ApkFileHash','FH = ')),
+ 12: dict(required_strings=('ApkFileHash','FH = ')),
+ 13: dict(required_strings=('ApkFileHash','Exception in apkHashResponse: ')),
+ 14: dict(required_strings=('ApkFileHash','Exception in apkCCHashResponse: ')),
+ 15: dict(required_strings=('device_policy',), required_calls=('Landroid/app/admin/DevicePolicyManager;->getCameraDisabled(Landroid/content/ComponentName;)Z',)),
  16: dict(required_calls=('Lcom/samsung/android/knox/restriction/RestrictionPolicy;->setCameraState(Z)Z',)),
+ 17: dict(required_strings=('jstest120905 performCamera() oDPM.isAdminActive(mDeviceAdminSample) = ',)),
+ 18: dict(required_strings=('170922 - setCameraEnable ',)),
+ 19: dict(required_strings=('170918 - controlCamera: ',)),
+ 20: dict(required_strings=('isActivateLicense',)),
+ 21: dict(required_strings=('SAMSUNG','isActivateLicense')),
+ 22: dict(required_strings=('isActivateBCKLicense','isActivateBckLicense:')),
+ 23: dict(required_strings=('isActivateKnoxLicense','isActivateKpeLicense:')),
+ 24: dict(required_calls=('Lcom/samsung/android/knox/restriction/RestrictionPolicy;->isScreenCaptureEnabled(Z)Z',)),
  25: dict(required_calls=('Lcom/samsung/android/knox/restriction/RestrictionPolicy;->setScreenCapture(Z)Z',)),
+ 26: dict(required_calls=('Lcom/lge/mdm/LGMDMManager;->setAllowScreenCapture(Landroid/content/ComponentName;Z)V',)),
+ 27: dict(required_calls=('Lcom/lge/mdm/LGMDMManager;->setAllowScreenCaptureBlacklistWithoutADB(Landroid/content/ComponentName;ZLjava/util/List;)V',)),
+ 28: dict(required_calls=('Landroid/content/DialogInterface;->dismiss()V','Landroid/view/Window;->addFlags(I)V')),
+ 29: dict(required_strings=('NFC EventCode = ',)),
+ 30: dict(required_calls=('Landroid/app/Activity;->setResult(I)V','Landroid/app/Activity;->getWindow()Landroid/view/Window;')),
+ 31: dict(required_calls=('Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z','Landroid/app/Activity;->getWindow()Landroid/view/Window;')),
+ 32: dict(required_calls=('Landroid/app/Activity;->finish()V','Landroid/view/Window;->addFlags(I)V')),
  33: dict(required_strings=('setScreenCaptureState : ',), required_fields=('Landroid/os/Build$VERSION;->SDK_INT:I',),
           required_calls=('Landroid/app/admin/DevicePolicyManager;->clearProfileOwner(Landroid/content/ComponentName;)V',)),
  34: dict(required_strings=('setCameraState : ',), required_calls=('Landroid/app/admin/DevicePolicyManager;->setCameraDisabled(Landroid/content/ComponentName;Z)V',)),
@@ -137,12 +176,21 @@ SEMANTIC_FEATURES = {
  37: dict(required_calls=('Landroid/database/Cursor;->close()V',)),
  38: dict(required_strings=(';',)),
  39: dict(required_strings=('40','41')),
+ 40: dict(required_calls=('Lcom/sktelecom/ssm/policy/util/MeatGrinder;->checkSecurityStatusWithBomb(Landroid/content/Context;Z)I',)),
+ 41: dict(required_strings=('ELM activate = ','SAMSUNG')),
+ 42: dict(required_strings=('needCameraWatching = ','camList2 : ')),
+ 43: dict(required_strings=('checkDbFileHash pre integrity = ','dbintegrity')),
+ 44: dict(required_strings=('malwareReportUrl','malwareReportEnable','gid20cid214')),
+ 45: dict(required_strings=('gid20cid271','packagename','signature')),
+ 46: dict(required_strings=('commandMalwareInspection','android.intent.action.PACKAGE_REPLACED')),
+ 47: dict(required_strings=('sha256Value : ',' / info.signature : ')),
+ 48: dict(required_strings=('commandMalwareInspection','gid20cid214')),
 }
 
-def plan_dex(dex_name, dex_bytes):
+def plan_dex(dex_name, dex_bytes, cert_sha1=None):
  dex = DexFile(dex_bytes)
  sites = SEMANTIC_SITES[dex_name]
- assert len(sites) == len(DEX[dex_name])
+ require(len(sites) == len(DEX[dex_name]), f'{dex_name}: site/rule count mismatch')
  plan = []
  for index, ((identity, relative), (_, old, new)) in enumerate(zip(sites, DEX[dex_name])):
   cls, name, proto, size, registers = SEMANTIC_METHODS[identity]
@@ -151,16 +199,20 @@ def plan_dex(dex_name, dex_bytes):
    name_filter=name, proto=proto, insns_size=size, registers_size=registers,
    **SEMANTIC_FEATURES.get(identity, {}))
   off = find_unique_insn_offset(dex, method, rid, pattern=old, rel_off=relative)
+  if identity == 7 and old.startswith('1a01'):
+   str_idx = dex.find_string_index(cert_sha1 or DEFAULT_SSM_CERT_SHA1)
+   require(0 <= str_idx <= 0xffff, f'{rid}: cert string index out of 16-bit range')
+   new = '1a01' + struct.pack('<H', str_idx).hex() + '0000000000000000'
   if len(bytes.fromhex(old)) != len(bytes.fromhex(new)):
    raise ValueError(f'{rid}: unequal patch widths')
+  if any(off < x + len(bytes.fromhex(y)) and x < off + len(bytes.fromhex(old)) for x, y, _ in plan):
+   raise ValueError(f'{rid}: overlapping patch at {hex(off)}')
   plan.append((off, old, new))
- if plan != DEX[dex_name]:
-  raise ValueError(f'{dex_name}: semantic plan differs from version-specific contract')
  return plan
 
 class ELF:
  def __init__(self,b):
-  self.b=b; assert b[:4]==b'\x7fELF' and b[5]==1
+  self.b=b; require(b[:4]==b'\x7fELF' and b[5]==1, 'invalid ELF header')
   self.w=b[4]==2; self.step=8 if self.w else 4
   self.machine=struct.unpack_from('<H',b,18)[0]
   off=struct.unpack_from('<Q' if self.w else '<I',b,40 if self.w else 32)[0]
@@ -192,16 +244,16 @@ class ELF:
  def ptr(self,off):
   return self.reloc.get(self.addr(off),struct.unpack_from('<Q' if self.w else '<I',self.b,off)[0])
  def jni(self,name):
-  raw=name.encode()+b'\0'; at=self.b.find(raw); assert at>=0 and self.b.find(raw,at+1)<0
+  raw=name.encode()+b'\0'; at=self.b.find(raw); require(at>=0 and self.b.find(raw,at+1)<0, f'ambiguous JNI name {name}')
   address=self.addr(at); hits=[]
   for s in self.ss:
    if s[2]&3!=3 or s[1]==8: continue
    for o in range(s[4],s[4]+s[5]-3*self.step+1,self.step):
     if self.ptr(o)==address:
      signature=self.file(self.ptr(o+self.step))
-     assert self.b[signature:signature+30].startswith(b'(Landroid/content/Context;Z)I\0')
+     require(self.b[signature:signature+30].startswith(b'(Landroid/content/Context;Z)I\0'), f'unexpected JNI signature for {name}')
      hits.append(self.ptr(o+2*self.step))
-  assert len(hits)==1,(name,hits)
+  require(len(hits)==1,(name,hits))
   return hits[0]
  def patches(self):
   zero={183:'00008052c0035fd6',40:'00207047',3:'31c0c3',62:'31c0c3'}[self.machine]
@@ -210,10 +262,7 @@ class ELF:
   for name in ['checkSecurityStatus','checkSecurityStatusWithBomb','isFoundDangerousProps','isFoundDangerousPropsAndroid14','_Z17delayedKillSwitchv']:
    address=self.jni(name) if name.startswith('check') else self.symbols[name]
    off=self.file(address); patch=bytes.fromhex(ret if name.startswith('_Z17') else zero)
-   if self.machine==40: assert address&1,'expected Thumb function'
-   if self.machine==183:
-    expected={'checkSecurityStatus':0x314d4,'checkSecurityStatusWithBomb':0x314e4,'isFoundDangerousProps':0x32630,'_Z17delayedKillSwitchv':0x32bcc}
-    if name in expected: assert off==expected[name],(name,hex(off))
+   if self.machine==40: require(bool(address&1),'expected Thumb function')
    found.append((name,off,patch))
   if self.machine==183:
    targets=[]
@@ -233,22 +282,23 @@ class ELF:
 
 def removed(name):
  upper=name.upper()
- return upper=='META-INF/MANIFEST.MF' or upper.startswith('META-INF/') and upper.endswith(('.SF','.RSA','.DSA'))
+ return upper=='META-INF/MANIFEST.MF' or upper.startswith('META-INF/') and upper.endswith(('.SF','.RSA','.DSA','.EC'))
 
-def check(original,output,plans):
+def check(original,output,plans,dex_plans=None):
  with zipfile.ZipFile(original) as src,zipfile.ZipFile(output) as dst:
   originals={i.filename:i for i in src.infolist() if not removed(i.filename)}
   actual={i.filename:i for i in dst.infolist()}
-  assert len(actual)==len(dst.infolist()),'duplicate output entries'
-  assert originals.keys()<=actual.keys(),'missing original entries'
+  require(len(actual)==len(dst.infolist()),'duplicate output entries')
+  require(originals.keys()<=actual.keys(),'missing original entries')
   added=actual.keys()-originals.keys()
-  assert all(removed(n) for n in added),('unexpected entries',added)
+  require(all(removed(n) for n in added),('unexpected entries',added))
   for n,i in originals.items():
-   assert dst.getinfo(n).compress_type==i.compress_type,(n,'compression changed')
+   require(dst.getinfo(n).compress_type==i.compress_type,(n,'compression changed'))
    b=dst.read(n)
    if n in DEX:
+    active_patches = (dex_plans or DEX)[n]
     expected_dex=bytearray(src.read(n))
-    for off,old,new in DEX[n]:
+    for off,old,new in active_patches:
      before,after=bytes.fromhex(old),bytes.fromhex(new)
      if len(before)!=len(after) or expected_dex[off:off+len(before)]!=before:
       raise ValueError((n,hex(off),'original mismatch'))
@@ -256,42 +306,39 @@ def check(original,output,plans):
     fix_dex(expected_dex)
     if b!=expected_dex:
      raise ValueError((n,'unexpected DEX change'))
-    assert dex_valid(b), (n,'invalid DEX checksums')
-    validate_methods(b,DEX[n])
-    for off,_,new in DEX[n]:
-     assert b[off:off+len(bytes.fromhex(new))]==bytes.fromhex(new),(n,hex(off),'patch absent')
+    require(dex_valid(b), (n,'invalid DEX checksums'))
+    validate_methods(b,active_patches)
+    for off,_,new in active_patches:
+     require(b[off:off+len(bytes.fromhex(new))]==bytes.fromhex(new),(n,hex(off),'patch absent'))
      print(n,hex(off),new)
     print(n,'SHA-1 and Adler32 OK')
    elif n in plans:
-    original=src.read(n); expected=bytearray(original)
+    original_so=src.read(n); expected=bytearray(original_so)
     for symbol,off,patch in plans[n]:
      expected[off:off+len(patch)]=patch
-     assert b[off:off+len(patch)]==patch,(n,symbol,'patch absent')
+     require(b[off:off+len(patch)]==patch,(n,symbol,'patch absent'))
      print(n,symbol,hex(off),patch.hex())
-    assert b==expected,(n,'unexpected native change')
-   else: assert b==src.read(n),(n,'content changed')
+    require(b==expected,(n,'unexpected native change'))
+   else: require(b==src.read(n),(n,'content changed'))
   raw=Path(output).read_bytes();stored=0;native=0
   for entry in dst.infolist():
    if entry.compress_type==zipfile.ZIP_STORED:
     nl,el=struct.unpack_from('<HH',raw,entry.header_offset+26)
     alignment=4096 if entry.filename.endswith('.so') else 4
-    assert (entry.header_offset+30+nl+el)%alignment==0,(entry.filename,'misaligned')
+    require((entry.header_offset+30+nl+el)%alignment==0,(entry.filename,'misaligned'))
     stored+=1;native+=int(entry.filename.endswith('.so'))
   print('STORED alignment OK:',stored,'entries; 4096-byte native entries:',native,'; others 4-byte')
-  assert 'res/2p.xml' in actual and 'res/2P.xml' in actual
+  require('res/2p.xml' in actual and 'res/2P.xml' in actual, 'missing case-distinct resource entries')
   print('ZIP entries original:',len(src.infolist()),'output:',len(dst.infolist()),'retained:',len(originals),'signing entries:',len(added))
   print('Case-distinct res/2p.xml and res/2P.xml both retained')
 
 def regenerate_analysis(source, output):
- """Regenerate static evidence from independently decoded APK DEX streams.
-
- Incoming edges enumerate every explicit invoke instruction in every code-bearing
- method of every DEX, not reflection, virtual dispatch expansion or native calls.
- """
+ """Regenerate static evidence from independently decoded APK DEX streams."""
  import json
  root=Path(__file__).resolve().parents[2] / 'ssm' / 'analysis'
  first=root/'ssm_patched_and_core_methods.json'
  second=root/'ssm_callgraph_and_signatures.json'
+ third=root/'ssm_certificate_and_universal_audit.json'
  previous=json.loads(first.read_text())
  summaries=json.loads(second.read_text())['patched_methods_summary']
  selected={(r['dex'],r['method']) for r in summaries}
@@ -300,11 +347,14 @@ def regenerate_analysis(source, output):
   for record in (methods.values() if isinstance(methods,dict) else methods):
    signature=record.get('method',record.get('signature'))
    if signature: selected.add((n,signature))
- before={};after={}; incoming={}; after_incoming={}
+ cert_sha1=extract_apk_cert_sha1(source)
+ before={};after={}; incoming={}; after_incoming={}; dex_plans={}
  with zipfile.ZipFile(source) as src,zipfile.ZipFile(output) as dst:
   for name in src.namelist():
    if not (name.startswith('classes') and name.endswith('.dex')):continue
    before[name]=DexFile(src.read(name));after[name]=DexFile(dst.read(name))
+   if name in DEX:
+    dex_plans[name]=plan_dex(name, before[name].data, cert_sha1)
    for dex,edges in ((before[name],incoming),(after[name],after_incoming)):
     for m in dex.methods:
      if not m.code_off:continue
@@ -313,7 +363,7 @@ def regenerate_analysis(source, output):
       if op in (*range(0x6e,0x73),*range(0x74,0x79)):
        edges.setdefault(ref,[]).append(dict(dex=name,method=m.signature,file_offset=hex(off),byte_offset=relative))
    for m in before[name].methods:
-    if any(m.insns_off<=o<m.insns_off+2*m.insns_size for o,_,_ in DEX.get(name,[])):
+    if any(m.insns_off<=o<m.insns_off+2*m.insns_size for o,_,_ in dex_plans.get(name,[])):
      selected.add((name,m.signature))
   native={}
   for name in src.namelist():
@@ -324,37 +374,67 @@ def regenerate_analysis(source, output):
   return [dict(byte_offset=r,file_offset=hex(o),width=w,opcode=hex(op),raw_hex=raw.hex(),ref=ref) for r,o,w,op,raw,ref in m.insns]
  records=[]
  for name,signature in sorted(selected):
-  if name not in before:continue
+  require(name in before, f'missing DEX {name} for {signature}')
   m=next((m for m in before[name].methods if m.signature==signature),None)
-  if m is None or not m.code_off:continue
-  a=next(m for m in after[name].methods if m.signature==signature)
-  patches=[dict(offset=hex(o),old=old,new=new) for o,old,new in DEX.get(name,[]) if m.insns_off<=o<m.insns_off+2*m.insns_size]
+  require(m is not None and bool(m.code_off), f'missing code-bearing method {name}:{signature}')
+  if m is None: raise AssertionError(signature)
+  a=next((x for x in after[name].methods if x.signature==signature),None)
+  require(a is not None and bool(a.code_off), f'missing patched method {name}:{signature}')
+  if a is None: raise AssertionError(signature)
+  patches=[dict(offset=hex(o),old=old,new=new) for o,old,new in dex_plans.get(name,[]) if m.insns_off<=o<m.insns_off+2*m.insns_size]
+  tries=decode_tries(before[name].data, m, before[name])
   records.append(dict(dex=name,method=signature,code_item=hex(m.code_off),insns_start=hex(m.insns_off),
    header=dict(registers=m.registers_size,ins=m.ins_size,outs=m.outs_size,tries=m.tries_size,insns_size_cu=m.insns_size),
-   has_patch=bool(patches),patch_tuples=patches,before_instructions=instructions(m),after_instructions=instructions(a),
+   try_blocks=tries,has_patch=bool(patches),patch_tuples=patches,
+   before_instructions=instructions(m),after_instructions=instructions(a),
    unique_strings=sorted(m.strings),unique_calls=sorted(m.calls),unique_fields=sorted(m.fields),
    incoming_callers=incoming.get(signature,[]),after_incoming_callers=after_incoming.get(signature,[])))
  dex_analysis: dict[str, dict] = {}
- evidence=dict(apk=Path(source).name,patch_tuple_count=sum(map(len,DEX.values())),native_analysis=native,dex_analysis=dex_analysis)
- for name,patches in DEX.items():
+ total_patches = sum(map(len, dex_plans.values()))
+ evidence=dict(apk=Path(source).name,patch_tuple_count=total_patches,native_analysis=native,dex_analysis=dex_analysis)
+ for name,patches in dex_plans.items():
   methods=[r for r in records if r['dex']==name]
   dex_analysis[name]=dict(patch_tuples=[dict(offset=hex(o),old=old,new=new) for o,old,new in patches],method_count=len(methods),methods=methods)
- first.write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+'\n')
- second.write_text(json.dumps(dict(patch_tuple_count=sum(map(len,DEX.values())),incoming_callers_coverage='All explicit invoke sites across all APK DEX methods; no runtime dispatch or reflection inference',patched_methods_summary=records),ensure_ascii=False,indent=2)+'\n')
+ first.write_text(dump_analysis_json(evidence))
+ second.write_text(dump_analysis_json(dict(patch_tuple_count=total_patches,incoming_callers_coverage='All explicit invoke sites across all APK DEX methods; no runtime dispatch or reflection inference',patched_methods_summary=records)))
+ if third.exists():
+  audit_doc=json.loads(third.read_text())
+  audit_doc.pop('patched_methods', None)
+  audit_doc['patch_tuple_count']=total_patches
+  by_sig={r['method']:r for r in records}
+  sec_methods=audit_doc.setdefault('security_critical_methods', {})
+  for r in records:
+   if r['has_patch'] and any(int(t['offset'], 16) in {o for o, _, _ in DEX['classes.dex'][50:]} for t in r['patch_tuples']):
+    sec_methods.setdefault(r['method'], {'dex': r['dex']})
+  for sig, rec in sec_methods.items():
+   if sig in by_sig:
+    r = by_sig[sig]
+    rec.pop('instructions', None)
+    rec.pop('before', None)
+    rec.pop('after', None)
+    rec['header']=r['header']
+    rec['try_blocks']=r['try_blocks']
+    rec['has_patch']=r['has_patch']
+    rec['patch_tuples']=r['patch_tuples']
+    rec['before_instructions']=r['before_instructions']
+    rec['after_instructions']=r['after_instructions']
+  third.write_text(dump_analysis_json(audit_doc))
 
 def main():
  p=argparse.ArgumentParser();p.add_argument('source');p.add_argument('output');p.add_argument('--red',action='store_true');p.add_argument('--regenerate-analysis',action='store_true');a=p.parse_args()
  src=Path(a.source).resolve(); out=Path(a.output).resolve()
- assert src!=out and not out.exists(),'refusing overwrite'
- replacements={};plans={}
+ require(src!=out and not out.exists(),'refusing overwrite')
+ cert_sha1=extract_apk_cert_sha1(src)
+ replacements={};plans={};dex_plans={}
  with zipfile.ZipFile(src) as z:
-  for n,patches in DEX.items():
-   b=bytearray(z.read(n));assert dex_valid(b),(n,'invalid input DEX')
-   patches=plan_dex(n,b)
+  for n in DEX:
+   b=bytearray(z.read(n));require(dex_valid(b),(n,'invalid input DEX'))
+   patches=plan_dex(n,b,cert_sha1)
+   dex_plans[n]=patches
    for off,old,new in patches:
     before=bytes.fromhex(old);after=bytes.fromhex(new)
-    assert len(before)==len(after)
-    assert b[off:off+len(before)]==before,(n,hex(off),'original mismatch')
+    require(len(before)==len(after), (n,hex(off),'width mismatch'))
+    require(b[off:off+len(before)]==before,(n,hex(off),'original mismatch'))
     b[off:off+len(after)]=after
    validate_methods(b,patches)
    replacements[n]=fix_dex(b)
@@ -363,20 +443,20 @@ def main():
    b=z.read(n);elf=ELF(b);plans[n]=elf.patches();changed=bytearray(b)
    for symbol,off,patch in plans[n]:
     before=b[off:off+len(patch)]
-    assert before!=patch and len(before)==len(patch),(n,symbol,'unexpected original')
+    require(before!=patch and len(before)==len(patch),(n,symbol,'unexpected original'))
     print('Native plan',n,symbol,hex(off),'original',before.hex(),'patch',patch.hex())
     changed[off:off+len(patch)]=patch
    replacements[n]=changed
- assert len(plans)==4
+ require(len(plans)==4, 'expected 4 ABI native plans')
  if a.red:
-  check(src,src,plans)
+  check(src,src,plans,dex_plans)
   raise AssertionError('RED expected failure did not occur')
  with tempfile.TemporaryDirectory(prefix='ssm-build-') as tmp:
   tmp=Path(tmp);signed=tmp/'signed.apk';ks=DEFAULT_KEYSTORE
   build_signed_apk(src, signed, replacements, ks)
-  check(src, signed, plans)
+  check(src, signed, plans, dex_plans)
   verification=run('jarsigner','-verify',signed)
-  assert b'jar verified.' in verification
+  require(b'jar verified.' in verification, 'jarsigner verification failed')
   print('v2 RSA signature verified with OpenSSL; Android platform verifier not executed')
   with open(signed,'rb') as source,open(out,'xb') as dest:
    while True:
