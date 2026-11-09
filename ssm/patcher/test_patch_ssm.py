@@ -89,7 +89,9 @@ class PatchContract(unittest.TestCase):
    off += size
   self.assertEqual(original_tags.count('uses-permission') - tags.count('uses-permission'), 19)
   self.assertEqual(original_tags.count('service') - tags.count('service'), 1)
-  for tag, name, value in [('manifest','compileSdkVersion',30), ('manifest','platformBuildVersionCode',30), ('manifest','compileSdkVersionCodename',11), ('manifest','platformBuildVersionName',11), ('uses-sdk','targetSdkVersion',30)]:
+  self.assertEqual(attrs['manifest', 'compileSdkVersionCodename'], (47, 8, 0, 3, 47))
+  self.assertEqual(strings[47], 'R')
+  for tag, name, value in [('manifest','compileSdkVersion',30), ('manifest','platformBuildVersionCode',30), ('manifest','platformBuildVersionName',11), ('uses-sdk','targetSdkVersion',30)]:
    self.assertEqual(attrs[tag, name], (0xffffffff,8,0,0x10,value))
 
  def test_native_crc_preserved(self):
@@ -126,6 +128,19 @@ class PatchContract(unittest.TestCase):
   tries = decode_tries(dex.data, mp, dex)
   self.assertEqual(len(tries), 4)
   self.assertEqual(tries[0]['handlers'][0]['type'], 'Ljava/lang/Exception;')
+
+ def test_existing_class_does_not_fallback_to_other_method(self):
+  with zipfile.ZipFile(SOURCE) as z:
+   dex = patcher.DexFile(z.read('classes.dex'))
+  with self.assertRaises(ValueError):
+   find_unique_method(dex, 'existing-class',
+    class_filter='Lcom/sktelecom/ssm/policy/gid20/l/c;',
+    name_filter='nonexistentMethod', proto='(Landroid/content/Context;)Ljava/lang/String;',
+    required_strings=('com.sktelecom.ssm', 'currentSignature'))
+
+ def test_permission_presets_return_without_persisting_empty_list(self):
+  self.assertIn((0x51feb4, '62022472', '11010000'), patcher.DEX['classes.dex'])
+  self.assertIn((0x52003c, '6e1094e504000a02', '1101000000000000'), patcher.DEX['classes.dex'])
 
  def test_semantic_precondition_fails_closed(self):
   with zipfile.ZipFile(SOURCE) as z: original = bytearray(z.read('classes.dex'))
@@ -180,6 +195,14 @@ class PatchContract(unittest.TestCase):
    with self.subTest(offset=hex(off),new=new):
     b=bytearray(original);b[off:off+len(bytes.fromhex(new))]=bytes.fromhex(new)
     with self.assertRaises(AssertionError):patcher.validate_methods(b,[(off,'',new)])
+
+ def test_rejects_integer_and_uninitialized_object_returns(self):
+  with zipfile.ZipFile(SOURCE) as z: original = z.read('classes.dex')
+  for code in ('1210110000000000', '1100000000000000'):
+   data = bytearray(original)
+   data[0x51fe58:0x51fe60] = bytes.fromhex(code)
+   with self.subTest(code=code), self.assertRaises(AssertionError):
+    patcher.validate_methods(data, [(0x51fe58, '', code)])
 
  def test_real_arm64_common_bl_target(self):
   with zipfile.ZipFile(SOURCE) as z: b=z.read('lib/arm64-v8a/libnative-lib.so')

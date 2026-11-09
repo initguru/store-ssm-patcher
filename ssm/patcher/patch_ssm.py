@@ -58,6 +58,8 @@ def patch_manifest(data: bytes) -> bytes:
  require(flags == 0, 'expected UTF-16LE StringPool')
  out = bytearray(data[:8+size])
  strings = []
+ scrub_indices = set()
+ string_offsets = {}
  for idx in range(count):
   off = 8 + start + struct.unpack_from('<I', data, 36+idx*4)[0]
   u16_len, = struct.unpack_from('<H', data, off)
@@ -67,7 +69,9 @@ def patch_manifest(data: bytes) -> bytes:
    off += 2
   text = data[off:off+u16_len*2].decode('utf-16le')
   strings.append(text)
+  string_offsets[idx] = off
   if text in SCRUB_STRINGS:
+   scrub_indices.add(idx)
    out[off:off+u16_len*2] = ('android.permission.UNUSED_' + f'{idx:03d}' + '_'*u16_len)[:u16_len].encode('utf-16le')
  pos = 8 + size
  ctype, header, size = struct.unpack_from('<HHI', data, pos)
@@ -75,12 +79,26 @@ def patch_manifest(data: bytes) -> bytes:
  out.extend(data[pos:pos+size])
  pos += size
  skipped = 0
- sdk = dict(compileSdkVersion=30, platformBuildVersionCode=30,
-            compileSdkVersionCodename=11, platformBuildVersionName=11)
+ sdk = dict(compileSdkVersion=30, platformBuildVersionCode=30, platformBuildVersionName=11)
+ codename_refs = []
+ retained_refs = set()
  while pos < len(data):
   ctype, header, size = struct.unpack_from('<HHI', data, pos)
   require(size >= header >= 8 and pos+size <= len(data), 'invalid XML chunk')
   chunk = bytearray(data[pos:pos+size])
+  refs = set()
+  if ctype in (0x0100, 0x0101, 0x0102, 0x0103):
+   node_refs = set(struct.unpack_from('<II', chunk, 16))
+   require(47 not in node_refs, 'shared codename node string')
+   refs.update(node_refs)
+  if header >= 16:
+   comment, = struct.unpack_from('<I', chunk, 12)
+   require(comment != 47, 'shared codename comment string')
+   refs.add(comment)
+  if ctype == 0x0104:
+   text_idx, _, _, dtype, value = struct.unpack_from('<IHBBI', chunk, 16)
+   refs.add(text_idx)
+   if dtype == 3: refs.add(value)
   if ctype == 0x0102:
    tag = strings[struct.unpack_from('<I', chunk, 20)[0]]
    astart, width, nattrs = struct.unpack_from('<HHH', chunk, 24)
@@ -90,6 +108,13 @@ def patch_manifest(data: bytes) -> bytes:
     aoff = 16 + astart + idx*width
     name = strings[struct.unpack_from('<I', chunk, aoff+4)[0]]
     raw, _, _, dtype, value = struct.unpack_from('<IHBBI', chunk, aoff+8)
+    attr_refs = set(struct.unpack_from('<II', chunk, aoff)) | {raw}
+    if dtype == 3: attr_refs.add(value)
+    if 47 in attr_refs:
+     require(tag == 'manifest' and name == 'compileSdkVersionCodename' and
+             (raw, dtype, value) == (47, 3, 47), 'shared codename string')
+     codename_refs.append((tag, name))
+    refs.update(attr_refs)
     if name == 'name':
      text = strings[raw] if raw != 0xffffffff else strings[value] if dtype == 3 else None
      remove |= (tag == 'uses-permission' and text in REMOVED_PERMISSIONS or
@@ -103,10 +128,17 @@ def patch_manifest(data: bytes) -> bytes:
    skipped -= 1
    pos += size
    continue
+  if ctype == 0x0104:
+   require(47 not in refs, 'shared codename text string')
   if not skipped:
+   retained_refs.update(refs)
    out.extend(chunk)
   pos += size
  require(not skipped, 'unclosed removed XML element')
+ require(not scrub_indices & retained_refs, 'scrubbed string referenced by retained XML')
+ require(strings[47] == '9' and len(codename_refs) == 1, 'unexpected compile SDK codename')
+ off = string_offsets[47]
+ out[off:off+2] = 'R'.encode('utf-16le')
  struct.pack_into('<I', out, 4, len(out))
  return bytes(out)
 
@@ -172,8 +204,8 @@ DEX['classes.dex'] += [
  (0x53e340,'0a04','1214'),(0x4c5994,'0a00','1200')]
 
 DEX['classes.dex'] += [
- (0x51feb4,'62022472','287c0000'),
- (0x52003c,'6e1094e504000a02','2860000000000000'),
+ (0x51feb4,'62022472','11010000'),
+ (0x52003c,'6e1094e504000a02','1101000000000000'),
  (0x581044,'711008f000000a00','1210000000000000'),
  (0x581388,'6000c507','12100f00'),
  (0x4fbc60,'7110581703000a03','1213000000000000'),

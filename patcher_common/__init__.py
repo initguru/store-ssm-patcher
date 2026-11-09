@@ -273,7 +273,7 @@ def find_unique_method(dex, rule_id, class_filter=None, name_filter=None, proto=
         relaxed = scan(class_filter, name_filter, None, None)
         if len(relaxed) == 1:
             return relaxed[0]
-    if not matches and has_semantic:
+    if not matches and has_semantic and not any(match(class_filter, m.class_desc) for m in dex.methods):
         relaxed_cls = scan(None, None, None, None)
         if len(relaxed_cls) == 1:
             return relaxed_cls[0]
@@ -429,6 +429,140 @@ def _validate_methods(d,patches):
                 require(r!='V' and op==(0xb if r in ('J','D') else 0xc if r.startswith(('L','[')) else 0xa), ('move-result type mismatch',o,r))
             if op==0xd: require(u in handlers and u not in branch_targets and u not in reachable_fallthrough and u!=0, ('invalid move-exception',o))
             prev=(u,w,op,raw)
+        _verify_register_types(dex, m, ordinary, edges)
+
+
+def _verify_register_types(dex, method, ordinary, edges):
+    """Propagate verifier categories over normal and exceptional CFG edges."""
+    def category(desc):
+        return 'R' if desc.startswith(('L', '[')) else 'W1' if desc in ('J', 'D') else 'I'
+    def arguments(proto):
+        return re.findall(r'\[*L[^;]+;|\[*[ZBSCIFJD]', proto.split(')')[0][1:])
+    entry = ['U'] * method.registers_size
+    params = ([] if method.access_flags & 8 else ['R'])
+    for desc in arguments(method.proto):
+        typ = category(desc)
+        params.extend(['W1', 'W2'] if typ == 'W1' else [typ])
+    require(len(params) == method.ins_size, ('parameter width mismatch', method.signature))
+    entry[method.registers_size-method.ins_size:] = params
+    exceptional = {}
+    if method.tries_size:
+        d = dex.data
+        end = method.insns_off + method.insns_size*2
+        table = end + method.insns_size%2*2
+        base = table + method.tries_size*8
+        for i in range(method.tries_size):
+            start, count, ho = struct.unpack_from('<IHH', d, table+i*8)
+            size, pos = sleb(d, base+ho)
+            targets = []
+            for _ in range(abs(size)):
+                _, pos = uleb(d, pos)
+                addr, pos = uleb(d, pos)
+                targets.append(addr)
+            if size <= 0:
+                addr, pos = uleb(d, pos)
+                targets.append(addr)
+            for u in ordinary:
+                if start <= u < start+count:
+                    exceptional.setdefault(u, set()).update(targets)
+    states = {0: tuple(entry)}
+    pending = [0]
+    def merge(target, state):
+        old = states.get(target)
+        if old is None:
+            joined = tuple(state)
+        else:
+            joined = tuple(a if a == b else b if a == '0' and b in ('I', 'R') else a if b == '0' and a in ('I', 'R') else 'CONFLICT' for a, b in zip(old, state))
+        if joined != old:
+            states[target] = joined
+            pending.append(target)
+    while pending:
+        u = pending.pop()
+        o, _, op, raw = ordinary[u]
+        before = states[u]
+        state = list(before)
+        regs, wide = _registers(raw, op)
+        def read(reg, typ=None):
+            actual = state[reg]
+            require(actual != 'CONFLICT', ('register type conflict', o, reg))
+            require(actual != 'U', ('uninitialized register', o, reg))
+            require(typ is None or actual == typ or actual == '0' and typ in ('I', 'R'), ('register type mismatch', o, reg, typ, actual))
+            if typ == 'W1': read(reg+1, 'W2')
+        def write(reg, typ):
+            if reg > 0 and state[reg] == 'W2' and state[reg-1] == 'W1': state[reg-1] = 'CONFLICT'
+            if state[reg] == 'W1' and reg+1 < len(state): state[reg+1] = 'CONFLICT'
+            state[reg] = typ
+            if typ == 'W1':
+                require(reg+1 < len(state), ('wide register out of range', o, reg))
+                state[reg+1] = 'W2'
+        if op in (1, 2, 3, 4, 5, 6, 7, 8, 9):
+            typ = 'W1' if op in (4,5,6) else 'R' if op in (7,8,9) else 'I'
+            read(regs[1], typ)
+            write(regs[0], state[regs[1]])
+        elif op in (0xa, 0xb, 0xc, 0xd): write(regs[0], {0xa:'I',0xb:'W1',0xc:'R',0xd:'R'}[op])
+        elif op in (0xf,0x10,0x11): read(regs[0], {0xf:'I',0x10:'W1',0x11:'R'}[op])
+        elif 0x12 <= op <= 0x15:
+            value = raw[1] >> 4 if op == 0x12 else int.from_bytes(raw[2:], 'little')
+            write(regs[0], '0' if value == 0 else 'I')
+        elif 0x16 <= op <= 0x19: write(regs[0], 'W1')
+        elif op in (0x1a,0x1b,0x1c,0x22): write(regs[0], 'R')
+        elif op in (0x1d,0x1e,0x1f,0x26,0x27): read(regs[0], 'R')
+        elif op in (0x20,0x21):
+            read(regs[1], 'R'); write(regs[0], 'I')
+        elif op == 0x23:
+            read(regs[1], 'I'); write(regs[0], 'R')
+        elif op in (0x24,0x25):
+            desc = dex.type_ids[H(raw,2)]
+            typ = category(desc[1:])
+            for reg in regs: read(reg, typ)
+        elif 0x2b <= op <= 0x31:
+            if op in (0x2b,0x2c): read(regs[0], 'I')
+            else:
+                read(regs[1], 'W1' if 1 in wide else 'I')
+                read(regs[2], 'W1' if 2 in wide else 'I')
+                write(regs[0], 'I')
+        elif 0x32 <= op <= 0x3d:
+            if op in (0x32,0x33):
+                read(regs[0]); read(regs[1])
+                a,b = state[regs[0]],state[regs[1]]
+                require(a == b or '0' in (a,b), ('incompatible equality operands',o))
+            elif op in (0x38,0x39): read(regs[0])
+            else:
+                for reg in regs: read(reg, 'I')
+        elif 0x44 <= op <= 0x51:
+            read(regs[1], 'R'); read(regs[2], 'I')
+            typ = 'W1' if op in (0x45,0x4c) else 'R' if op in (0x46,0x4d) else 'I'
+            if op <= 0x4a: write(regs[0], typ)
+            else: read(regs[0], typ)
+        elif 0x52 <= op <= 0x6d:
+            field = dex.field_ids[H(raw,2)]
+            typ = category(field['field_type'])
+            if op < 0x60: read(regs[1], 'R')
+            if op in (*range(0x52,0x59),*range(0x60,0x67)): write(regs[0],typ)
+            else: read(regs[0],typ)
+        elif op in (*range(0x6e,0x73),*range(0x74,0x79)):
+            mid = dex.method_ids[H(raw,2)]
+            types = ([] if op in (0x71,0x77) else ['R']) + [category(a) for a in arguments(mid['proto'])]
+            pos = 0
+            for typ in types:
+                read(regs[pos],typ)
+                pos += 2 if typ == 'W1' else 1
+        elif 0x7b <= op <= 0x8f:
+            read(regs[1], 'W1' if 1 in wide else 'I')
+            write(regs[0], 'W1' if 0 in wide else 'I')
+        elif 0x90 <= op <= 0xcf:
+            sources = (1,2) if op < 0xb0 else (0,1)
+            for i in sources: read(regs[i], 'W1' if i in wide else 'I')
+            write(regs[0], 'W1' if 0 in wide else 'I')
+        elif 0xd0 <= op <= 0xe2:
+            read(regs[1], 'I'); write(regs[0], 'I')
+        else:
+            require(op in (0,0xe,0x28,0x29,0x2a), ('unsupported type transfer',o,op))
+        for target in edges[u]: merge(target, state)
+        # Only potentially throwing instructions transfer to a catch handler.
+        if op in (*range(0x1a,0x28),*range(0x44,0x79),0x93,0x94,0x9e,0x9f,0xb3,0xb4,0xbe,0xbf,0xd3,0xd4,0xdb,0xdc):
+            for target in exceptional.get(u, ()):
+                merge(target, before)
 
 
 def dex_valid(d):
@@ -479,6 +613,9 @@ def correction_offset(b):
     sections=[struct.unpack_from('<IIQQQQIIQQ' if wide else '<10I',b,sh+i*se) for i in range(sn)]
     st=sections[si]; names=b[st[4]:st[4]+st[5]]
     protected=[(0,64 if wide else 52),(ph,ph+pe*pn),(sh,sh+se*sn),(st[4],st[4]+st[5])]
+    for s in sections:
+        if s[1] != 8 and s[5] and (s[2] & 2 or s[1] in (2, 3, 4, 6, 9, 11)):
+            protected.append((s[4], s[4]+s[5]))
     for i in range(pn):
         p=struct.unpack_from('<IIQQQQQQ' if wide else '<8I',b,ph+i*pe)
         if p[0]==1:

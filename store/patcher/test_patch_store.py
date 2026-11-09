@@ -120,6 +120,16 @@ class StoreContract(unittest.TestCase):
   with self.assertRaisesRegex(ValueError, 'expected 1 instruction'):
    store.find_unique_insn_offset(dex, m, 'missing-insn', pattern=b'\xff' * 20)
 
+ def test_rejects_integer_and_uninitialized_object_returns(self):
+  with zipfile.ZipFile(APK) as z: original = z.read('classes.dex')
+  dex = DexFile(original)
+  method = next(m for m in dex.methods if m.code_off and m.return_type.startswith(('L', '[')) and m.registers_size > m.ins_size and m.insns_size >= 4)
+  for code in ('1210110000000000', '1100000000000000'):
+   data = bytearray(original)
+   data[method.insns_off:method.insns_off+8] = bytes.fromhex(code)
+   with self.subTest(code=code), self.assertRaises(AssertionError):
+    store.validate_methods(data, [(method.insns_off, '', code)])
+
  def test_crc_solver(self):
   b = bytearray(b'CRC independent fixture with sufficient bytes')
   expected = zlib.crc32(b)
