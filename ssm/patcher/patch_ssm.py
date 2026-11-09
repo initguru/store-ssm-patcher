@@ -2,6 +2,7 @@
 """Strict SSM APK patcher; run with python3 -I from outside extracted inputs."""
 import argparse
 import hashlib
+import os
 import struct
 import sys
 import tempfile
@@ -286,17 +287,23 @@ def removed(name):
 
 def check(original,output,plans,dex_plans=None):
  with zipfile.ZipFile(original) as src,zipfile.ZipFile(output) as dst:
-  originals={i.filename:i for i in src.infolist() if not removed(i.filename)}
+  src_infos=src.infolist()
+  require(len({i.filename for i in src_infos})==len(src_infos),'duplicate source entries')
+  originals={i.filename:i for i in src_infos if not removed(i.filename)}
   actual={i.filename:i for i in dst.infolist()}
   require(len(actual)==len(dst.infolist()),'duplicate output entries')
   require(originals.keys()<=actual.keys(),'missing original entries')
   added=actual.keys()-originals.keys()
   require(all(removed(n) for n in added),('unexpected entries',added))
+  resolved_dex_plans = dex_plans
+  if resolved_dex_plans is None:
+   cert_sha1 = extract_apk_cert_sha1(original)
+   resolved_dex_plans = {n: plan_dex(n, src.read(n), cert_sha1) for n in DEX}
   for n,i in originals.items():
    require(dst.getinfo(n).compress_type==i.compress_type,(n,'compression changed'))
    b=dst.read(n)
-   if n in DEX:
-    active_patches = (dex_plans or DEX)[n]
+   if n in resolved_dex_plans:
+    active_patches = resolved_dex_plans[n]
     expected_dex=bytearray(src.read(n))
     for off,old,new in active_patches:
      before,after=bytes.fromhex(old),bytes.fromhex(new)
@@ -339,14 +346,21 @@ def regenerate_analysis(source, output):
  first=root/'ssm_patched_and_core_methods.json'
  second=root/'ssm_callgraph_and_signatures.json'
  third=root/'ssm_certificate_and_universal_audit.json'
+ require(first.is_file() and second.is_file() and third.is_file(), 'missing required SSM analysis JSON files')
  previous=json.loads(first.read_text())
  summaries=json.loads(second.read_text())['patched_methods_summary']
+ audit_doc=json.loads(third.read_text())
+ sec_methods=audit_doc.get('security_critical_methods', {})
+ require(isinstance(sec_methods, dict) and bool(sec_methods), 'empty security_critical_methods in SSM audit JSON')
  selected={(r['dex'],r['method']) for r in summaries}
  for n,section in previous['dex_analysis'].items():
   methods=section.get('methods',[])
   for record in (methods.values() if isinstance(methods,dict) else methods):
    signature=record.get('method',record.get('signature'))
    if signature: selected.add((n,signature))
+ for sig, rec in sec_methods.items():
+  dex_name = rec.get('dex', 'classes.dex')
+  selected.add((dex_name, sig))
  cert_sha1=extract_apk_cert_sha1(source)
  before={};after={}; incoming={}; after_incoming={}; dex_plans={}
  with zipfile.ZipFile(source) as src,zipfile.ZipFile(output) as dst:
@@ -397,28 +411,29 @@ def regenerate_analysis(source, output):
   dex_analysis[name]=dict(patch_tuples=[dict(offset=hex(o),old=old,new=new) for o,old,new in patches],method_count=len(methods),methods=methods)
  first.write_text(dump_analysis_json(evidence))
  second.write_text(dump_analysis_json(dict(patch_tuple_count=total_patches,incoming_callers_coverage='All explicit invoke sites across all APK DEX methods; no runtime dispatch or reflection inference',patched_methods_summary=records)))
- if third.exists():
-  audit_doc=json.loads(third.read_text())
-  audit_doc.pop('patched_methods', None)
-  audit_doc['patch_tuple_count']=total_patches
-  by_sig={r['method']:r for r in records}
-  sec_methods=audit_doc.setdefault('security_critical_methods', {})
-  for r in records:
-   if r['has_patch'] and any(int(t['offset'], 16) in {o for o, _, _ in DEX['classes.dex'][50:]} for t in r['patch_tuples']):
-    sec_methods.setdefault(r['method'], {'dex': r['dex']})
-  for sig, rec in sec_methods.items():
-   if sig in by_sig:
-    r = by_sig[sig]
-    rec.pop('instructions', None)
-    rec.pop('before', None)
-    rec.pop('after', None)
-    rec['header']=r['header']
-    rec['try_blocks']=r['try_blocks']
-    rec['has_patch']=r['has_patch']
-    rec['patch_tuples']=r['patch_tuples']
-    rec['before_instructions']=r['before_instructions']
-    rec['after_instructions']=r['after_instructions']
-  third.write_text(dump_analysis_json(audit_doc))
+ audit_doc.pop('patched_methods', None)
+ audit_doc['patch_tuple_count']=total_patches
+ by_sig={r['method']:r for r in records}
+ for r in records:
+  if r['has_patch'] and any(int(t['offset'], 16) in {o for o, _, _ in DEX['classes.dex'][50:]} for t in r['patch_tuples']):
+   sec_methods.setdefault(r['method'], {'dex': r['dex']})
+ for sig, rec in sec_methods.items():
+  require(sig in by_sig, f'missing audit method record for {sig}')
+  r = by_sig[sig]
+  rec.pop('instructions', None)
+  rec.pop('before', None)
+  rec.pop('after', None)
+  rec.pop('tries', None)
+  rec['dex']=r['dex']
+  rec['header']=r['header']
+  rec['try_blocks']=r['try_blocks']
+  rec['has_patch']=r['has_patch']
+  rec['patch_tuples']=r['patch_tuples']
+  rec['before_instructions']=r['before_instructions']
+  rec['after_instructions']=r['after_instructions']
+  rec['incoming_callers']=r['incoming_callers']
+  rec['after_incoming_callers']=r['after_incoming_callers']
+ third.write_text(dump_analysis_json(audit_doc))
 
 def main():
  p=argparse.ArgumentParser();p.add_argument('source');p.add_argument('output');p.add_argument('--red',action='store_true');p.add_argument('--regenerate-analysis',action='store_true');a=p.parse_args()
@@ -451,19 +466,25 @@ def main():
  if a.red:
   check(src,src,plans,dex_plans)
   raise AssertionError('RED expected failure did not occur')
- with tempfile.TemporaryDirectory(prefix='ssm-build-') as tmp:
-  tmp=Path(tmp);signed=tmp/'signed.apk';ks=DEFAULT_KEYSTORE
-  build_signed_apk(src, signed, replacements, ks)
-  check(src, signed, plans, dex_plans)
-  verification=run('jarsigner','-verify',signed)
-  require(b'jar verified.' in verification, 'jarsigner verification failed')
-  print('v2 RSA signature verified with OpenSSL; Android platform verifier not executed')
-  with open(signed,'rb') as source,open(out,'xb') as dest:
-   while True:
-    chunk=source.read(1024*1024)
-    if not chunk:break
-    dest.write(chunk)
- if a.regenerate_analysis:regenerate_analysis(src,out)
+ out.parent.mkdir(parents=True, exist_ok=True)
+ stage_fd, stage_name = tempfile.mkstemp(prefix=f'.{out.name}.tmp-', dir=str(out.parent))
+ os.close(stage_fd)
+ stage_path = Path(stage_name)
+ try:
+  with tempfile.TemporaryDirectory(prefix='ssm-build-') as tmp:
+   tmp=Path(tmp);signed=tmp/'signed.apk';ks=DEFAULT_KEYSTORE
+   build_signed_apk(src, signed, replacements, ks)
+   check(src, signed, plans, dex_plans)
+   verification=run('jarsigner','-verify',signed)
+   require(b'jar verified.' in verification, 'jarsigner verification failed')
+   print('v2 RSA signature verified with OpenSSL; Android platform verifier not executed')
+   stage_path.write_bytes(signed.read_bytes())
+  if a.regenerate_analysis:
+   regenerate_analysis(src, stage_path)
+  os.link(stage_path, out)
+ finally:
+  if stage_path.exists():
+   stage_path.unlink()
  print('OUTPUT',out,'SHA256',hashlib.sha256(out.read_bytes()).hexdigest())
  print('Signed with existing local re_release keystore; cannot update an original-signed installation.')
 if __name__=='__main__':main()

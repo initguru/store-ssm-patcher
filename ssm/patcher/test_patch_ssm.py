@@ -155,9 +155,45 @@ class FullIntegrity(unittest.TestCase):
    for path,data in ((source,original),(output,candidate)):
     with zipfile.ZipFile(path,'w',compression=zipfile.ZIP_DEFLATED) as archive:
      archive.writestr('classes.dex',data);archive.writestr('res/2p.xml',b'a');archive.writestr('res/2P.xml',b'b')
-   with patch.object(patcher,'DEX',{'classes.dex':[(40,'1201','1200')]}),patch.object(patcher,'validate_methods'):
+   with patch.object(patcher,'validate_methods'):
     if tamper:
-     with self.assertRaisesRegex(ValueError,'unexpected DEX change'):patcher.check(source,output,{})
-    else:patcher.check(source,output,{})
+     with self.assertRaisesRegex(ValueError,'unexpected DEX change'):patcher.check(source,output,{},{'classes.dex':[(40,'1201','1200')]})
+    else:patcher.check(source,output,{},{'classes.dex':[(40,'1201','1200')]})
+
+ def test_analysis_and_rea_evidence_completeness(self):
+  import json
+  from patcher_common import dump_analysis_json
+  sample = {'byte_offset': 0, 'ref': 'A  B   C'}
+  self.assertEqual(json.loads(dump_analysis_json({'items': [sample]})), {'items': [sample]})
+  root = REPO_ROOT / 'ssm' / 'analysis'
+  p1 = json.loads((root / 'ssm_patched_and_core_methods.json').read_text())
+  p2 = json.loads((root / 'ssm_callgraph_and_signatures.json').read_text())
+  p3 = json.loads((root / 'ssm_certificate_and_universal_audit.json').read_text())
+  for d in p1['dex_analysis'].values():
+   for m in d['methods']:
+    self.assertIn('try_blocks', m)
+    self.assertIn('before_instructions', m)
+    self.assertIn('after_instructions', m)
+  for m in p2['patched_methods_summary']:
+   self.assertIn('try_blocks', m)
+   self.assertIn('before_instructions', m)
+   self.assertIn('after_instructions', m)
+  self.assertGreaterEqual(len(p3['security_critical_methods']), 24)
+  for sig, m in p3['security_critical_methods'].items():
+   self.assertIn('try_blocks', m, sig)
+   self.assertIn('before_instructions', m, sig)
+   self.assertIn('after_instructions', m, sig)
+   self.assertNotIn('before', m, sig)
+   self.assertNotIn('after', m, sig)
+  rea = json.loads((REPO_ROOT / 'ssm' / 'rea' / 'rea_ssm_evidence.json').read_text())
+  apk_sha = rea['canonical_artifacts']['patched_apk_sha256']
+  self.assertEqual(rea['patched_apk_signature_inspection']['summary']['artifact']['sha256'], apk_sha)
+  self.assertEqual(rea['rea_apk_signature_inspection']['summary']['artifact']['sha256'], apk_sha)
+  self.assertIn(apk_sha, {a['sha256'] for a in rea['artifacts']})
+  rec_ids = {r['evidence_id'] for r in rea['records']}
+  self.assertIn(rea['patched_apk_signature_inspection']['evidence_id'], rec_ids)
+  self.assertIn(rea['patched_apk_signature_inspection']['parent_evidence_id'], rec_ids)
+  for d in rea['android14_dex2oat64_verification']:
+   self.assertEqual(d['source_patched_apk_sha256'], apk_sha)
 
 if __name__=='__main__':unittest.main()

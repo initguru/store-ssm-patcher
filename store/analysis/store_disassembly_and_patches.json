@@ -32,46 +32,22 @@
             "tries": 0,
             "insns_size_cu": 10
           },
-          "tries": [],
-          "instructions": [
-            {
-              "cu_offset": "u0000",
-              "file_offset": "0x27b008",
-              "orig_hex": "22003b09",
-              "patched_hex": "22003b09",
-              "changed": false,
-              "opcode": "0x22",
-              "ref": "type@0x93b:Ljava/security/SecureRandom;"
-            },
-            {
-              "cu_offset": "u0002",
-              "file_offset": "0x27b00c",
-              "orig_hex": "70109a360000",
-              "patched_hex": "70109a360000",
-              "changed": false,
-              "opcode": "0x70",
-              "ref": "method@0x369a:Ljava/security/SecureRandom;-><init>()V"
-            },
-            {
-              "cu_offset": "u0005",
-              "file_offset": "0x27b012",
-              "orig_hex": "0e00",
-              "patched_hex": "0e00",
-              "changed": false,
-              "opcode": "0xe",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0006",
-              "file_offset": "0x27b014",
-              "orig_hex": "0003c80000000000",
-              "patched_hex": "0003c80000000000",
-              "changed": false,
-              "opcode": "0x0",
-              "ref": null
-            }
+          "has_patch": false,
+          "try_blocks": [],
+          "before_instructions": [
+            {"byte_offset": 0, "file_offset": "0x27b008", "width": 4, "opcode": "0x22", "raw_hex": "22003b09", "ref": "Ljava/security/SecureRandom;"},
+            {"byte_offset": 4, "file_offset": "0x27b00c", "width": 6, "opcode": "0x70", "raw_hex": "70109a360000", "ref": "Ljava/security/SecureRandom;-><init>()V"},
+            {"byte_offset": 10, "file_offset": "0x27b012", "width": 2, "opcode": "0xe", "raw_hex": "0e00", "ref": null},
+            {"byte_offset": 12, "file_offset": "0x27b014", "width": 8, "opcode": "0x0", "raw_hex": "0003c80000000000", "ref": null}
           ],
-          "has_patch": false
+          "after_instructions": [
+            {"byte_offset": 0, "file_offset": "0x27b008", "width": 4, "opcode": "0x22", "raw_hex": "22003b09", "ref": "Ljava/security/SecureRandom;"},
+            {"byte_offset": 4, "file_offset": "0x27b00c", "width": 6, "opcode": "0x70", "raw_hex": "70109a360000", "ref": "Ljava/security/SecureRandom;-><init>()V"},
+            {"byte_offset": 10, "file_offset": "0x27b012", "width": 2, "opcode": "0xe", "raw_hex": "0e00", "ref": null},
+            {"byte_offset": 12, "file_offset": "0x27b014", "width": 8, "opcode": "0x0", "raw_hex": "0003c80000000000", "ref": null}
+          ],
+          "incoming_callers": [],
+          "after_incoming_callers": []
         },
         "La5/b;->a(Landroid/content/Context;)Ljava/lang/String;": {
           "code_item": "0x27b01c",
@@ -84,750 +60,211 @@
             "tries": 1,
             "insns_size_cu": 164
           },
-          "tries": [
-            {"start_cu": "u000a", "count_cu": 140, "end_cu": "u0096", "handler_off": 1}
-          ],
-          "instructions": [
-            {
-              "cu_offset": "u0000",
-              "file_offset": "0x27b02c",
-              "orig_hex": "1a004305",
-              "patched_hex": "1a004305",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x543:'AndroidKeyStore'"
-            },
-            {
-              "cu_offset": "u0002",
-              "file_offset": "0x27b030",
-              "orig_hex": "1a01b23e",
-              "patched_hex": "1a01b23e",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x3eb2:'sklime'"
-            },
-            {
-              "cu_offset": "u0004",
-              "file_offset": "0x27b034",
-              "orig_hex": "60022901",
-              "patched_hex": "60022901",
-              "changed": false,
-              "opcode": "0x60",
-              "ref": "field@0x129:Landroid/os/Build$VERSION;->SDK_INT:I"
-            },
-            {
-              "cu_offset": "u0006",
-              "file_offset": "0x27b038",
-              "orig_hex": "13031700",
-              "patched_hex": "13031700",
-              "changed": false,
-              "opcode": "0x13",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0008",
-              "file_offset": "0x27b03c",
-              "orig_hex": "34329200",
-              "patched_hex": "34329200",
-              "changed": false,
-              "opcode": "0x34",
-              "ref": null
-            },
-            {
-              "cu_offset": "u000a",
-              "file_offset": "0x27b040",
-              "orig_hex": "711091360000",
-              "patched_hex": "711091360000",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x3691:Ljava/security/KeyStore;->getInstance(Ljava/lang/String;)Ljava/security/KeyStore;"
-            },
-            {
-              "cu_offset": "u000d",
-              "file_offset": "0x27b046",
-              "orig_hex": "0c03",
-              "patched_hex": "0c03",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u000e",
-              "file_offset": "0x27b048",
-              "orig_hex": "1204",
-              "patched_hex": "1204",
-              "changed": false,
-              "opcode": "0x12",
-              "ref": null
-            },
-            {
-              "cu_offset": "u000f",
-              "file_offset": "0x27b04a",
-              "orig_hex": "6e2092364300",
-              "patched_hex": "6e2092364300",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3692:Ljava/security/KeyStore;->load(Ljava/security/KeyStore$LoadStoreParameter;)V"
-            },
-            {
-              "cu_offset": "u0012",
-              "file_offset": "0x27b050",
-              "orig_hex": "6e208f361300",
-              "patched_hex": "6e208f361300",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x368f:Ljava/security/KeyStore;->containsAlias(Ljava/lang/String;)Z"
-            },
-            {
-              "cu_offset": "u0015",
-              "file_offset": "0x27b056",
-              "orig_hex": "0a05",
-              "patched_hex": "0a05",
-              "changed": false,
-              "opcode": "0xa",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0016",
-              "file_offset": "0x27b058",
-              "orig_hex": "1216",
-              "patched_hex": "1216",
-              "changed": false,
-              "opcode": "0x12",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0017",
-              "file_offset": "0x27b05a",
-              "orig_hex": "1207",
-              "patched_hex": "1207",
-              "changed": false,
-              "opcode": "0x12",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0018",
-              "file_offset": "0x27b05c",
-              "orig_hex": "39053400",
-              "patched_hex": "39053400",
-              "changed": false,
-              "opcode": "0x39",
-              "ref": null
-            },
-            {
-              "cu_offset": "u001a",
-              "file_offset": "0x27b060",
-              "orig_hex": "1a05a004",
-              "patched_hex": "1a05a004",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x4a0:'AES'"
-            },
-            {
-              "cu_offset": "u001c",
-              "file_offset": "0x27b064",
-              "orig_hex": "712091380500",
-              "patched_hex": "712091380500",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x3891:Ljavax/crypto/KeyGenerator;->getInstance(Ljava/lang/String;Ljava/lang/String;)Ljavax/crypto/KeyGenerator;"
-            },
-            {
-              "cu_offset": "u001f",
-              "file_offset": "0x27b06a",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0020",
-              "file_offset": "0x27b06c",
-              "orig_hex": "71009b000000",
-              "patched_hex": "71009b000000",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x9b:La2/h0;->n()V"
-            },
-            {
-              "cu_offset": "u0023",
-              "file_offset": "0x27b072",
-              "orig_hex": "710091000000",
-              "patched_hex": "710091000000",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x91:La2/h0;->d()Landroid/security/keystore/KeyGenParameterSpec$Builder;"
-            },
-            {
-              "cu_offset": "u0026",
-              "file_offset": "0x27b078",
-              "orig_hex": "0c05",
-              "patched_hex": "0c05",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0027",
-              "file_offset": "0x27b07a",
-              "orig_hex": "2368830e",
-              "patched_hex": "2368830e",
-              "changed": false,
-              "opcode": "0x23",
-              "ref": "type@0xe83:[Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0029",
-              "file_offset": "0x27b07e",
-              "orig_hex": "1a093707",
-              "patched_hex": "1a093707",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x737:'CBC'"
-            },
-            {
-              "cu_offset": "u002b",
-              "file_offset": "0x27b082",
-              "orig_hex": "4d090807",
-              "patched_hex": "4d090807",
-              "changed": false,
-              "opcode": "0x4d",
-              "ref": null
-            },
-            {
-              "cu_offset": "u002d",
-              "file_offset": "0x27b086",
-              "orig_hex": "712093008500",
-              "patched_hex": "712093008500",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x93:La2/h0;->f(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"
-            },
-            {
-              "cu_offset": "u0030",
-              "file_offset": "0x27b08c",
-              "orig_hex": "0c05",
-              "patched_hex": "0c05",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0031",
-              "file_offset": "0x27b08e",
-              "orig_hex": "2368830e",
-              "patched_hex": "2368830e",
-              "changed": false,
-              "opcode": "0x23",
-              "ref": "type@0xe83:[Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0033",
-              "file_offset": "0x27b092",
-              "orig_hex": "1a09431d",
-              "patched_hex": "1a09431d",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x1d43:'PKCS7Padding'"
-            },
-            {
-              "cu_offset": "u0035",
-              "file_offset": "0x27b096",
-              "orig_hex": "4d090807",
-              "patched_hex": "4d090807",
-              "changed": false,
-              "opcode": "0x4d",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0037",
-              "file_offset": "0x27b09a",
-              "orig_hex": "7120a6008500",
-              "patched_hex": "7120a6008500",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0xa6:La2/h0;->y(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"
-            },
-            {
-              "cu_offset": "u003a",
-              "file_offset": "0x27b0a0",
-              "orig_hex": "0c05",
-              "patched_hex": "0c05",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u003b",
-              "file_offset": "0x27b0a2",
-              "orig_hex": "711092000500",
-              "patched_hex": "711092000500",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x92:La2/h0;->e(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"
-            },
-            {
-              "cu_offset": "u003e",
-              "file_offset": "0x27b0a8",
-              "orig_hex": "0c05",
-              "patched_hex": "0c05",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u003f",
-              "file_offset": "0x27b0aa",
-              "orig_hex": "711095000500",
-              "patched_hex": "711095000500",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x95:La2/h0;->h(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec;"
-            },
-            {
-              "cu_offset": "u0042",
-              "file_offset": "0x27b0b0",
-              "orig_hex": "0c05",
-              "patched_hex": "0c05",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0043",
-              "file_offset": "0x27b0b2",
-              "orig_hex": "6e2092385000",
-              "patched_hex": "6e2092385000",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3892:Ljavax/crypto/KeyGenerator;->init(Ljava/security/spec/AlgorithmParameterSpec;)V"
-            },
-            {
-              "cu_offset": "u0046",
-              "file_offset": "0x27b0b8",
-              "orig_hex": "6e1090380000",
-              "patched_hex": "6e1090380000",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3890:Ljavax/crypto/KeyGenerator;->generateKey()Ljavax/crypto/SecretKey;"
-            },
-            {
-              "cu_offset": "u0049",
-              "file_offset": "0x27b0be",
-              "orig_hex": "2803",
-              "patched_hex": "2803",
-              "changed": false,
-              "opcode": "0x28",
-              "ref": null
-            },
-            {
-              "cu_offset": "u004a",
-              "file_offset": "0x27b0c0",
-              "orig_hex": "0d00",
-              "patched_hex": "0d00",
-              "changed": false,
-              "opcode": "0xd",
-              "ref": null
-            },
-            {
-              "cu_offset": "u004b",
-              "file_offset": "0x27b0c2",
-              "orig_hex": "284c",
-              "patched_hex": "284c",
-              "changed": false,
-              "opcode": "0x28",
-              "ref": null
-            },
-            {
-              "cu_offset": "u004c",
-              "file_offset": "0x27b0c4",
-              "orig_hex": "6e3090361304",
-              "patched_hex": "6e3090361304",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3690:Ljava/security/KeyStore;->getEntry(Ljava/lang/String;Ljava/security/KeyStore$ProtectionParameter;)Ljava/security/KeyStore$Entry;"
-            },
-            {
-              "cu_offset": "u004f",
-              "file_offset": "0x27b0ca",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0050",
-              "file_offset": "0x27b0cc",
-              "orig_hex": "1f003509",
-              "patched_hex": "1f003509",
-              "changed": false,
-              "opcode": "0x1f",
-              "ref": "type@0x935:Ljava/security/KeyStore$SecretKeyEntry;"
-            },
-            {
-              "cu_offset": "u0052",
-              "file_offset": "0x27b0d0",
-              "orig_hex": "6e108e360000",
-              "patched_hex": "6e108e360000",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x368e:Ljava/security/KeyStore$SecretKeyEntry;->getSecretKey()Ljavax/crypto/SecretKey;"
-            },
-            {
-              "cu_offset": "u0055",
-              "file_offset": "0x27b0d6",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0056",
-              "file_offset": "0x27b0d8",
-              "orig_hex": "2203bf09",
-              "patched_hex": "2203bf09",
-              "changed": false,
-              "opcode": "0x22",
-              "ref": "type@0x9bf:Ljavax/crypto/spec/IvParameterSpec;"
-            },
-            {
-              "cu_offset": "u0058",
-              "file_offset": "0x27b0dc",
-              "orig_hex": "71103e010a00",
-              "patched_hex": "71103e010a00",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x13e:La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u005b",
-              "file_offset": "0x27b0e2",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u005c",
-              "file_offset": "0x27b0e4",
-              "orig_hex": "7110c9370400",
-              "patched_hex": "7110c9370400",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x37c9:Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"
-            },
-            {
-              "cu_offset": "u005f",
-              "file_offset": "0x27b0ea",
-              "orig_hex": "13051000",
-              "patched_hex": "13051000",
-              "changed": false,
-              "opcode": "0x13",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0061",
-              "file_offset": "0x27b0ee",
-              "orig_hex": "6e3091357405",
-              "patched_hex": "6e3091357405",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3591:Ljava/lang/String;->substring(II)Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0064",
-              "file_offset": "0x27b0f4",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0065",
-              "file_offset": "0x27b0f6",
-              "orig_hex": "6e107a350400",
-              "patched_hex": "6e107a350400",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x357a:Ljava/lang/String;->getBytes()[B"
-            },
-            {
-              "cu_offset": "u0068",
-              "file_offset": "0x27b0fc",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0069",
-              "file_offset": "0x27b0fe",
-              "orig_hex": "702099384300",
-              "patched_hex": "702099384300",
-              "changed": false,
-              "opcode": "0x70",
-              "ref": "method@0x3899:Ljavax/crypto/spec/IvParameterSpec;-><init>([B)V"
-            },
-            {
-              "cu_offset": "u006c",
-              "file_offset": "0x27b104",
-              "orig_hex": "1a04a104",
-              "patched_hex": "1a04a104",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x4a1:'AES/CBC/PKCS7Padding'"
-            },
-            {
-              "cu_offset": "u006e",
-              "file_offset": "0x27b108",
-              "orig_hex": "71108c380400",
-              "patched_hex": "71108c380400",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x388c:Ljavax/crypto/Cipher;->getInstance(Ljava/lang/String;)Ljavax/crypto/Cipher;"
-            },
-            {
-              "cu_offset": "u0071",
-              "file_offset": "0x27b10e",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0072",
-              "file_offset": "0x27b110",
-              "orig_hex": "6e408e386430",
-              "patched_hex": "6e408e386430",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x388e:Ljavax/crypto/Cipher;->init(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V"
-            },
-            {
-              "cu_offset": "u0075",
-              "file_offset": "0x27b116",
-              "orig_hex": "13001a00",
-              "patched_hex": "13001a00",
-              "changed": false,
-              "opcode": "0x13",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0077",
-              "file_offset": "0x27b11a",
-              "orig_hex": "34021300",
-              "patched_hex": "34021300",
-              "changed": false,
-              "opcode": "0x34",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0079",
-              "file_offset": "0x27b11e",
-              "orig_hex": "7100e0000000",
-              "patched_hex": "7100e0000000",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0xe0:La2/q;->i()Ljava/util/Base64$Encoder;"
-            },
-            {
-              "cu_offset": "u007c",
-              "file_offset": "0x27b124",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u007d",
-              "file_offset": "0x27b126",
-              "orig_hex": "6e107a350100",
-              "patched_hex": "6e107a350100",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x357a:Ljava/lang/String;->getBytes()[B"
-            },
-            {
-              "cu_offset": "u0080",
-              "file_offset": "0x27b12c",
-              "orig_hex": "0c01",
-              "patched_hex": "0c01",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0081",
-              "file_offset": "0x27b12e",
-              "orig_hex": "6e208b381400",
-              "patched_hex": "6e208b381400",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x388b:Ljavax/crypto/Cipher;->doFinal([B)[B"
-            },
-            {
-              "cu_offset": "u0084",
-              "file_offset": "0x27b134",
-              "orig_hex": "0c01",
-              "patched_hex": "0c01",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0085",
-              "file_offset": "0x27b136",
-              "orig_hex": "7120df001000",
-              "patched_hex": "7120df001000",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0xdf:La2/q;->h(Ljava/util/Base64$Encoder;[B)Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0088",
-              "file_offset": "0x27b13c",
-              "orig_hex": "0c0a",
-              "patched_hex": "0c0a",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0089",
-              "file_offset": "0x27b13e",
-              "orig_hex": "2815",
-              "patched_hex": "2815",
-              "changed": false,
-              "opcode": "0x28",
-              "ref": null
-            },
-            {
-              "cu_offset": "u008a",
-              "file_offset": "0x27b140",
-              "orig_hex": "6e107a350100",
-              "patched_hex": "6e107a350100",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x357a:Ljava/lang/String;->getBytes()[B"
-            },
-            {
-              "cu_offset": "u008d",
-              "file_offset": "0x27b146",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u008e",
-              "file_offset": "0x27b148",
-              "orig_hex": "6e208b380400",
-              "patched_hex": "6e208b380400",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x388b:Ljavax/crypto/Cipher;->doFinal([B)[B"
-            },
-            {
-              "cu_offset": "u0091",
-              "file_offset": "0x27b14e",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0092",
-              "file_offset": "0x27b150",
-              "orig_hex": "7120d9087000",
-              "patched_hex": "7120d9087000",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x8d9:Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0095",
-              "file_offset": "0x27b156",
-              "orig_hex": "0c0a",
-              "patched_hex": "0c0a",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0096",
-              "file_offset": "0x27b158",
-              "orig_hex": "2808",
-              "patched_hex": "2808",
-              "changed": false,
-              "opcode": "0x28",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0097",
-              "file_offset": "0x27b15a",
-              "orig_hex": "6e10e8350000",
-              "patched_hex": "6e10e8350000",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x35e8:Ljava/lang/Throwable;->printStackTrace()V"
-            },
-            {
-              "cu_offset": "u009a",
-              "file_offset": "0x27b160",
-              "orig_hex": "71103e010a00",
-              "patched_hex": "71103e010a00",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x13e:La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u009d",
-              "file_offset": "0x27b166",
-              "orig_hex": "0c0a",
-              "patched_hex": "0c0a",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u009e",
-              "file_offset": "0x27b168",
-              "orig_hex": "110a",
-              "patched_hex": "110a",
-              "changed": false,
-              "opcode": "0x11",
-              "ref": null
-            },
-            {
-              "cu_offset": "u009f",
-              "file_offset": "0x27b16a",
-              "orig_hex": "0000",
-              "patched_hex": "0000",
-              "changed": false,
-              "opcode": "0x0",
-              "ref": null
-            },
-            {
-              "cu_offset": "u00a0",
-              "file_offset": "0x27b16c",
-              "orig_hex": "0003960000000000",
-              "patched_hex": "0003960000000000",
-              "changed": false,
-              "opcode": "0x0",
-              "ref": null
+          "has_patch": false,
+          "try_blocks": [
+            {
+              "start_cu": 10,
+              "count_cu": 140,
+              "handlers": [
+                {"type": "Ljava/lang/Exception;", "handler_cu": 74}
+              ],
+              "catch_all_cu": null
             }
           ],
-          "has_patch": false
+          "before_instructions": [
+            {"byte_offset": 0, "file_offset": "0x27b02c", "width": 4, "opcode": "0x1a", "raw_hex": "1a004305", "ref": "AndroidKeyStore"},
+            {"byte_offset": 4, "file_offset": "0x27b030", "width": 4, "opcode": "0x1a", "raw_hex": "1a01b23e", "ref": "sklime"},
+            {"byte_offset": 8, "file_offset": "0x27b034", "width": 4, "opcode": "0x60", "raw_hex": "60022901", "ref": "Landroid/os/Build$VERSION;->SDK_INT:I"},
+            {"byte_offset": 12, "file_offset": "0x27b038", "width": 4, "opcode": "0x13", "raw_hex": "13031700", "ref": null},
+            {"byte_offset": 16, "file_offset": "0x27b03c", "width": 4, "opcode": "0x34", "raw_hex": "34329200", "ref": null},
+            {"byte_offset": 20, "file_offset": "0x27b040", "width": 6, "opcode": "0x71", "raw_hex": "711091360000", "ref": "Ljava/security/KeyStore;->getInstance(Ljava/lang/String;)Ljava/security/KeyStore;"},
+            {"byte_offset": 26, "file_offset": "0x27b046", "width": 2, "opcode": "0xc", "raw_hex": "0c03", "ref": null},
+            {"byte_offset": 28, "file_offset": "0x27b048", "width": 2, "opcode": "0x12", "raw_hex": "1204", "ref": null},
+            {"byte_offset": 30, "file_offset": "0x27b04a", "width": 6, "opcode": "0x6e", "raw_hex": "6e2092364300", "ref": "Ljava/security/KeyStore;->load(Ljava/security/KeyStore$LoadStoreParameter;)V"},
+            {"byte_offset": 36, "file_offset": "0x27b050", "width": 6, "opcode": "0x6e", "raw_hex": "6e208f361300", "ref": "Ljava/security/KeyStore;->containsAlias(Ljava/lang/String;)Z"},
+            {"byte_offset": 42, "file_offset": "0x27b056", "width": 2, "opcode": "0xa", "raw_hex": "0a05", "ref": null},
+            {"byte_offset": 44, "file_offset": "0x27b058", "width": 2, "opcode": "0x12", "raw_hex": "1216", "ref": null},
+            {"byte_offset": 46, "file_offset": "0x27b05a", "width": 2, "opcode": "0x12", "raw_hex": "1207", "ref": null},
+            {"byte_offset": 48, "file_offset": "0x27b05c", "width": 4, "opcode": "0x39", "raw_hex": "39053400", "ref": null},
+            {"byte_offset": 52, "file_offset": "0x27b060", "width": 4, "opcode": "0x1a", "raw_hex": "1a05a004", "ref": "AES"},
+            {"byte_offset": 56, "file_offset": "0x27b064", "width": 6, "opcode": "0x71", "raw_hex": "712091380500", "ref": "Ljavax/crypto/KeyGenerator;->getInstance(Ljava/lang/String;Ljava/lang/String;)Ljavax/crypto/KeyGenerator;"},
+            {"byte_offset": 62, "file_offset": "0x27b06a", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 64, "file_offset": "0x27b06c", "width": 6, "opcode": "0x71", "raw_hex": "71009b000000", "ref": "La2/h0;->n()V"},
+            {"byte_offset": 70, "file_offset": "0x27b072", "width": 6, "opcode": "0x71", "raw_hex": "710091000000", "ref": "La2/h0;->d()Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 76, "file_offset": "0x27b078", "width": 2, "opcode": "0xc", "raw_hex": "0c05", "ref": null},
+            {"byte_offset": 78, "file_offset": "0x27b07a", "width": 4, "opcode": "0x23", "raw_hex": "2368830e", "ref": "[Ljava/lang/String;"},
+            {"byte_offset": 82, "file_offset": "0x27b07e", "width": 4, "opcode": "0x1a", "raw_hex": "1a093707", "ref": "CBC"},
+            {"byte_offset": 86, "file_offset": "0x27b082", "width": 4, "opcode": "0x4d", "raw_hex": "4d090807", "ref": null},
+            {"byte_offset": 90, "file_offset": "0x27b086", "width": 6, "opcode": "0x71", "raw_hex": "712093008500", "ref": "La2/h0;->f(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 96, "file_offset": "0x27b08c", "width": 2, "opcode": "0xc", "raw_hex": "0c05", "ref": null},
+            {"byte_offset": 98, "file_offset": "0x27b08e", "width": 4, "opcode": "0x23", "raw_hex": "2368830e", "ref": "[Ljava/lang/String;"},
+            {"byte_offset": 102, "file_offset": "0x27b092", "width": 4, "opcode": "0x1a", "raw_hex": "1a09431d", "ref": "PKCS7Padding"},
+            {"byte_offset": 106, "file_offset": "0x27b096", "width": 4, "opcode": "0x4d", "raw_hex": "4d090807", "ref": null},
+            {"byte_offset": 110, "file_offset": "0x27b09a", "width": 6, "opcode": "0x71", "raw_hex": "7120a6008500", "ref": "La2/h0;->y(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 116, "file_offset": "0x27b0a0", "width": 2, "opcode": "0xc", "raw_hex": "0c05", "ref": null},
+            {"byte_offset": 118, "file_offset": "0x27b0a2", "width": 6, "opcode": "0x71", "raw_hex": "711092000500", "ref": "La2/h0;->e(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 124, "file_offset": "0x27b0a8", "width": 2, "opcode": "0xc", "raw_hex": "0c05", "ref": null},
+            {"byte_offset": 126, "file_offset": "0x27b0aa", "width": 6, "opcode": "0x71", "raw_hex": "711095000500", "ref": "La2/h0;->h(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec;"},
+            {"byte_offset": 132, "file_offset": "0x27b0b0", "width": 2, "opcode": "0xc", "raw_hex": "0c05", "ref": null},
+            {"byte_offset": 134, "file_offset": "0x27b0b2", "width": 6, "opcode": "0x6e", "raw_hex": "6e2092385000", "ref": "Ljavax/crypto/KeyGenerator;->init(Ljava/security/spec/AlgorithmParameterSpec;)V"},
+            {"byte_offset": 140, "file_offset": "0x27b0b8", "width": 6, "opcode": "0x6e", "raw_hex": "6e1090380000", "ref": "Ljavax/crypto/KeyGenerator;->generateKey()Ljavax/crypto/SecretKey;"},
+            {"byte_offset": 146, "file_offset": "0x27b0be", "width": 2, "opcode": "0x28", "raw_hex": "2803", "ref": null},
+            {"byte_offset": 148, "file_offset": "0x27b0c0", "width": 2, "opcode": "0xd", "raw_hex": "0d00", "ref": null},
+            {"byte_offset": 150, "file_offset": "0x27b0c2", "width": 2, "opcode": "0x28", "raw_hex": "284c", "ref": null},
+            {"byte_offset": 152, "file_offset": "0x27b0c4", "width": 6, "opcode": "0x6e", "raw_hex": "6e3090361304", "ref": "Ljava/security/KeyStore;->getEntry(Ljava/lang/String;Ljava/security/KeyStore$ProtectionParameter;)Ljava/security/KeyStore$Entry;"},
+            {"byte_offset": 158, "file_offset": "0x27b0ca", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 160, "file_offset": "0x27b0cc", "width": 4, "opcode": "0x1f", "raw_hex": "1f003509", "ref": "Ljava/security/KeyStore$SecretKeyEntry;"},
+            {"byte_offset": 164, "file_offset": "0x27b0d0", "width": 6, "opcode": "0x6e", "raw_hex": "6e108e360000", "ref": "Ljava/security/KeyStore$SecretKeyEntry;->getSecretKey()Ljavax/crypto/SecretKey;"},
+            {"byte_offset": 170, "file_offset": "0x27b0d6", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 172, "file_offset": "0x27b0d8", "width": 4, "opcode": "0x22", "raw_hex": "2203bf09", "ref": "Ljavax/crypto/spec/IvParameterSpec;"},
+            {"byte_offset": 176, "file_offset": "0x27b0dc", "width": 6, "opcode": "0x71", "raw_hex": "71103e010a00", "ref": "La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"},
+            {"byte_offset": 182, "file_offset": "0x27b0e2", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 184, "file_offset": "0x27b0e4", "width": 6, "opcode": "0x71", "raw_hex": "7110c9370400", "ref": "Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"},
+            {"byte_offset": 190, "file_offset": "0x27b0ea", "width": 4, "opcode": "0x13", "raw_hex": "13051000", "ref": null},
+            {"byte_offset": 194, "file_offset": "0x27b0ee", "width": 6, "opcode": "0x6e", "raw_hex": "6e3091357405", "ref": "Ljava/lang/String;->substring(II)Ljava/lang/String;"},
+            {"byte_offset": 200, "file_offset": "0x27b0f4", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 202, "file_offset": "0x27b0f6", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350400", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 208, "file_offset": "0x27b0fc", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 210, "file_offset": "0x27b0fe", "width": 6, "opcode": "0x70", "raw_hex": "702099384300", "ref": "Ljavax/crypto/spec/IvParameterSpec;-><init>([B)V"},
+            {"byte_offset": 216, "file_offset": "0x27b104", "width": 4, "opcode": "0x1a", "raw_hex": "1a04a104", "ref": "AES/CBC/PKCS7Padding"},
+            {"byte_offset": 220, "file_offset": "0x27b108", "width": 6, "opcode": "0x71", "raw_hex": "71108c380400", "ref": "Ljavax/crypto/Cipher;->getInstance(Ljava/lang/String;)Ljavax/crypto/Cipher;"},
+            {"byte_offset": 226, "file_offset": "0x27b10e", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 228, "file_offset": "0x27b110", "width": 6, "opcode": "0x6e", "raw_hex": "6e408e386430", "ref": "Ljavax/crypto/Cipher;->init(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V"},
+            {"byte_offset": 234, "file_offset": "0x27b116", "width": 4, "opcode": "0x13", "raw_hex": "13001a00", "ref": null},
+            {"byte_offset": 238, "file_offset": "0x27b11a", "width": 4, "opcode": "0x34", "raw_hex": "34021300", "ref": null},
+            {"byte_offset": 242, "file_offset": "0x27b11e", "width": 6, "opcode": "0x71", "raw_hex": "7100e0000000", "ref": "La2/q;->i()Ljava/util/Base64$Encoder;"},
+            {"byte_offset": 248, "file_offset": "0x27b124", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 250, "file_offset": "0x27b126", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350100", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 256, "file_offset": "0x27b12c", "width": 2, "opcode": "0xc", "raw_hex": "0c01", "ref": null},
+            {"byte_offset": 258, "file_offset": "0x27b12e", "width": 6, "opcode": "0x6e", "raw_hex": "6e208b381400", "ref": "Ljavax/crypto/Cipher;->doFinal([B)[B"},
+            {"byte_offset": 264, "file_offset": "0x27b134", "width": 2, "opcode": "0xc", "raw_hex": "0c01", "ref": null},
+            {"byte_offset": 266, "file_offset": "0x27b136", "width": 6, "opcode": "0x71", "raw_hex": "7120df001000", "ref": "La2/q;->h(Ljava/util/Base64$Encoder;[B)Ljava/lang/String;"},
+            {"byte_offset": 272, "file_offset": "0x27b13c", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 274, "file_offset": "0x27b13e", "width": 2, "opcode": "0x28", "raw_hex": "2815", "ref": null},
+            {"byte_offset": 276, "file_offset": "0x27b140", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350100", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 282, "file_offset": "0x27b146", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 284, "file_offset": "0x27b148", "width": 6, "opcode": "0x6e", "raw_hex": "6e208b380400", "ref": "Ljavax/crypto/Cipher;->doFinal([B)[B"},
+            {"byte_offset": 290, "file_offset": "0x27b14e", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 292, "file_offset": "0x27b150", "width": 6, "opcode": "0x71", "raw_hex": "7120d9087000", "ref": "Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;"},
+            {"byte_offset": 298, "file_offset": "0x27b156", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 300, "file_offset": "0x27b158", "width": 2, "opcode": "0x28", "raw_hex": "2808", "ref": null},
+            {"byte_offset": 302, "file_offset": "0x27b15a", "width": 6, "opcode": "0x6e", "raw_hex": "6e10e8350000", "ref": "Ljava/lang/Throwable;->printStackTrace()V"},
+            {"byte_offset": 308, "file_offset": "0x27b160", "width": 6, "opcode": "0x71", "raw_hex": "71103e010a00", "ref": "La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"},
+            {"byte_offset": 314, "file_offset": "0x27b166", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 316, "file_offset": "0x27b168", "width": 2, "opcode": "0x11", "raw_hex": "110a", "ref": null},
+            {"byte_offset": 318, "file_offset": "0x27b16a", "width": 2, "opcode": "0x0", "raw_hex": "0000", "ref": null},
+            {"byte_offset": 320, "file_offset": "0x27b16c", "width": 8, "opcode": "0x0", "raw_hex": "0003960000000000", "ref": null}
+          ],
+          "after_instructions": [
+            {"byte_offset": 0, "file_offset": "0x27b02c", "width": 4, "opcode": "0x1a", "raw_hex": "1a004305", "ref": "AndroidKeyStore"},
+            {"byte_offset": 4, "file_offset": "0x27b030", "width": 4, "opcode": "0x1a", "raw_hex": "1a01b23e", "ref": "sklime"},
+            {"byte_offset": 8, "file_offset": "0x27b034", "width": 4, "opcode": "0x60", "raw_hex": "60022901", "ref": "Landroid/os/Build$VERSION;->SDK_INT:I"},
+            {"byte_offset": 12, "file_offset": "0x27b038", "width": 4, "opcode": "0x13", "raw_hex": "13031700", "ref": null},
+            {"byte_offset": 16, "file_offset": "0x27b03c", "width": 4, "opcode": "0x34", "raw_hex": "34329200", "ref": null},
+            {"byte_offset": 20, "file_offset": "0x27b040", "width": 6, "opcode": "0x71", "raw_hex": "711091360000", "ref": "Ljava/security/KeyStore;->getInstance(Ljava/lang/String;)Ljava/security/KeyStore;"},
+            {"byte_offset": 26, "file_offset": "0x27b046", "width": 2, "opcode": "0xc", "raw_hex": "0c03", "ref": null},
+            {"byte_offset": 28, "file_offset": "0x27b048", "width": 2, "opcode": "0x12", "raw_hex": "1204", "ref": null},
+            {"byte_offset": 30, "file_offset": "0x27b04a", "width": 6, "opcode": "0x6e", "raw_hex": "6e2092364300", "ref": "Ljava/security/KeyStore;->load(Ljava/security/KeyStore$LoadStoreParameter;)V"},
+            {"byte_offset": 36, "file_offset": "0x27b050", "width": 6, "opcode": "0x6e", "raw_hex": "6e208f361300", "ref": "Ljava/security/KeyStore;->containsAlias(Ljava/lang/String;)Z"},
+            {"byte_offset": 42, "file_offset": "0x27b056", "width": 2, "opcode": "0xa", "raw_hex": "0a05", "ref": null},
+            {"byte_offset": 44, "file_offset": "0x27b058", "width": 2, "opcode": "0x12", "raw_hex": "1216", "ref": null},
+            {"byte_offset": 46, "file_offset": "0x27b05a", "width": 2, "opcode": "0x12", "raw_hex": "1207", "ref": null},
+            {"byte_offset": 48, "file_offset": "0x27b05c", "width": 4, "opcode": "0x39", "raw_hex": "39053400", "ref": null},
+            {"byte_offset": 52, "file_offset": "0x27b060", "width": 4, "opcode": "0x1a", "raw_hex": "1a05a004", "ref": "AES"},
+            {"byte_offset": 56, "file_offset": "0x27b064", "width": 6, "opcode": "0x71", "raw_hex": "712091380500", "ref": "Ljavax/crypto/KeyGenerator;->getInstance(Ljava/lang/String;Ljava/lang/String;)Ljavax/crypto/KeyGenerator;"},
+            {"byte_offset": 62, "file_offset": "0x27b06a", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 64, "file_offset": "0x27b06c", "width": 6, "opcode": "0x71", "raw_hex": "71009b000000", "ref": "La2/h0;->n()V"},
+            {"byte_offset": 70, "file_offset": "0x27b072", "width": 6, "opcode": "0x71", "raw_hex": "710091000000", "ref": "La2/h0;->d()Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 76, "file_offset": "0x27b078", "width": 2, "opcode": "0xc", "raw_hex": "0c05", "ref": null},
+            {"byte_offset": 78, "file_offset": "0x27b07a", "width": 4, "opcode": "0x23", "raw_hex": "2368830e", "ref": "[Ljava/lang/String;"},
+            {"byte_offset": 82, "file_offset": "0x27b07e", "width": 4, "opcode": "0x1a", "raw_hex": "1a093707", "ref": "CBC"},
+            {"byte_offset": 86, "file_offset": "0x27b082", "width": 4, "opcode": "0x4d", "raw_hex": "4d090807", "ref": null},
+            {"byte_offset": 90, "file_offset": "0x27b086", "width": 6, "opcode": "0x71", "raw_hex": "712093008500", "ref": "La2/h0;->f(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 96, "file_offset": "0x27b08c", "width": 2, "opcode": "0xc", "raw_hex": "0c05", "ref": null},
+            {"byte_offset": 98, "file_offset": "0x27b08e", "width": 4, "opcode": "0x23", "raw_hex": "2368830e", "ref": "[Ljava/lang/String;"},
+            {"byte_offset": 102, "file_offset": "0x27b092", "width": 4, "opcode": "0x1a", "raw_hex": "1a09431d", "ref": "PKCS7Padding"},
+            {"byte_offset": 106, "file_offset": "0x27b096", "width": 4, "opcode": "0x4d", "raw_hex": "4d090807", "ref": null},
+            {"byte_offset": 110, "file_offset": "0x27b09a", "width": 6, "opcode": "0x71", "raw_hex": "7120a6008500", "ref": "La2/h0;->y(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 116, "file_offset": "0x27b0a0", "width": 2, "opcode": "0xc", "raw_hex": "0c05", "ref": null},
+            {"byte_offset": 118, "file_offset": "0x27b0a2", "width": 6, "opcode": "0x71", "raw_hex": "711092000500", "ref": "La2/h0;->e(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 124, "file_offset": "0x27b0a8", "width": 2, "opcode": "0xc", "raw_hex": "0c05", "ref": null},
+            {"byte_offset": 126, "file_offset": "0x27b0aa", "width": 6, "opcode": "0x71", "raw_hex": "711095000500", "ref": "La2/h0;->h(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec;"},
+            {"byte_offset": 132, "file_offset": "0x27b0b0", "width": 2, "opcode": "0xc", "raw_hex": "0c05", "ref": null},
+            {"byte_offset": 134, "file_offset": "0x27b0b2", "width": 6, "opcode": "0x6e", "raw_hex": "6e2092385000", "ref": "Ljavax/crypto/KeyGenerator;->init(Ljava/security/spec/AlgorithmParameterSpec;)V"},
+            {"byte_offset": 140, "file_offset": "0x27b0b8", "width": 6, "opcode": "0x6e", "raw_hex": "6e1090380000", "ref": "Ljavax/crypto/KeyGenerator;->generateKey()Ljavax/crypto/SecretKey;"},
+            {"byte_offset": 146, "file_offset": "0x27b0be", "width": 2, "opcode": "0x28", "raw_hex": "2803", "ref": null},
+            {"byte_offset": 148, "file_offset": "0x27b0c0", "width": 2, "opcode": "0xd", "raw_hex": "0d00", "ref": null},
+            {"byte_offset": 150, "file_offset": "0x27b0c2", "width": 2, "opcode": "0x28", "raw_hex": "284c", "ref": null},
+            {"byte_offset": 152, "file_offset": "0x27b0c4", "width": 6, "opcode": "0x6e", "raw_hex": "6e3090361304", "ref": "Ljava/security/KeyStore;->getEntry(Ljava/lang/String;Ljava/security/KeyStore$ProtectionParameter;)Ljava/security/KeyStore$Entry;"},
+            {"byte_offset": 158, "file_offset": "0x27b0ca", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 160, "file_offset": "0x27b0cc", "width": 4, "opcode": "0x1f", "raw_hex": "1f003509", "ref": "Ljava/security/KeyStore$SecretKeyEntry;"},
+            {"byte_offset": 164, "file_offset": "0x27b0d0", "width": 6, "opcode": "0x6e", "raw_hex": "6e108e360000", "ref": "Ljava/security/KeyStore$SecretKeyEntry;->getSecretKey()Ljavax/crypto/SecretKey;"},
+            {"byte_offset": 170, "file_offset": "0x27b0d6", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 172, "file_offset": "0x27b0d8", "width": 4, "opcode": "0x22", "raw_hex": "2203bf09", "ref": "Ljavax/crypto/spec/IvParameterSpec;"},
+            {"byte_offset": 176, "file_offset": "0x27b0dc", "width": 6, "opcode": "0x71", "raw_hex": "71103e010a00", "ref": "La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"},
+            {"byte_offset": 182, "file_offset": "0x27b0e2", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 184, "file_offset": "0x27b0e4", "width": 6, "opcode": "0x71", "raw_hex": "7110c9370400", "ref": "Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"},
+            {"byte_offset": 190, "file_offset": "0x27b0ea", "width": 4, "opcode": "0x13", "raw_hex": "13051000", "ref": null},
+            {"byte_offset": 194, "file_offset": "0x27b0ee", "width": 6, "opcode": "0x6e", "raw_hex": "6e3091357405", "ref": "Ljava/lang/String;->substring(II)Ljava/lang/String;"},
+            {"byte_offset": 200, "file_offset": "0x27b0f4", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 202, "file_offset": "0x27b0f6", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350400", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 208, "file_offset": "0x27b0fc", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 210, "file_offset": "0x27b0fe", "width": 6, "opcode": "0x70", "raw_hex": "702099384300", "ref": "Ljavax/crypto/spec/IvParameterSpec;-><init>([B)V"},
+            {"byte_offset": 216, "file_offset": "0x27b104", "width": 4, "opcode": "0x1a", "raw_hex": "1a04a104", "ref": "AES/CBC/PKCS7Padding"},
+            {"byte_offset": 220, "file_offset": "0x27b108", "width": 6, "opcode": "0x71", "raw_hex": "71108c380400", "ref": "Ljavax/crypto/Cipher;->getInstance(Ljava/lang/String;)Ljavax/crypto/Cipher;"},
+            {"byte_offset": 226, "file_offset": "0x27b10e", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 228, "file_offset": "0x27b110", "width": 6, "opcode": "0x6e", "raw_hex": "6e408e386430", "ref": "Ljavax/crypto/Cipher;->init(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V"},
+            {"byte_offset": 234, "file_offset": "0x27b116", "width": 4, "opcode": "0x13", "raw_hex": "13001a00", "ref": null},
+            {"byte_offset": 238, "file_offset": "0x27b11a", "width": 4, "opcode": "0x34", "raw_hex": "34021300", "ref": null},
+            {"byte_offset": 242, "file_offset": "0x27b11e", "width": 6, "opcode": "0x71", "raw_hex": "7100e0000000", "ref": "La2/q;->i()Ljava/util/Base64$Encoder;"},
+            {"byte_offset": 248, "file_offset": "0x27b124", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 250, "file_offset": "0x27b126", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350100", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 256, "file_offset": "0x27b12c", "width": 2, "opcode": "0xc", "raw_hex": "0c01", "ref": null},
+            {"byte_offset": 258, "file_offset": "0x27b12e", "width": 6, "opcode": "0x6e", "raw_hex": "6e208b381400", "ref": "Ljavax/crypto/Cipher;->doFinal([B)[B"},
+            {"byte_offset": 264, "file_offset": "0x27b134", "width": 2, "opcode": "0xc", "raw_hex": "0c01", "ref": null},
+            {"byte_offset": 266, "file_offset": "0x27b136", "width": 6, "opcode": "0x71", "raw_hex": "7120df001000", "ref": "La2/q;->h(Ljava/util/Base64$Encoder;[B)Ljava/lang/String;"},
+            {"byte_offset": 272, "file_offset": "0x27b13c", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 274, "file_offset": "0x27b13e", "width": 2, "opcode": "0x28", "raw_hex": "2815", "ref": null},
+            {"byte_offset": 276, "file_offset": "0x27b140", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350100", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 282, "file_offset": "0x27b146", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 284, "file_offset": "0x27b148", "width": 6, "opcode": "0x6e", "raw_hex": "6e208b380400", "ref": "Ljavax/crypto/Cipher;->doFinal([B)[B"},
+            {"byte_offset": 290, "file_offset": "0x27b14e", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 292, "file_offset": "0x27b150", "width": 6, "opcode": "0x71", "raw_hex": "7120d9087000", "ref": "Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;"},
+            {"byte_offset": 298, "file_offset": "0x27b156", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 300, "file_offset": "0x27b158", "width": 2, "opcode": "0x28", "raw_hex": "2808", "ref": null},
+            {"byte_offset": 302, "file_offset": "0x27b15a", "width": 6, "opcode": "0x6e", "raw_hex": "6e10e8350000", "ref": "Ljava/lang/Throwable;->printStackTrace()V"},
+            {"byte_offset": 308, "file_offset": "0x27b160", "width": 6, "opcode": "0x71", "raw_hex": "71103e010a00", "ref": "La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"},
+            {"byte_offset": 314, "file_offset": "0x27b166", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 316, "file_offset": "0x27b168", "width": 2, "opcode": "0x11", "raw_hex": "110a", "ref": null},
+            {"byte_offset": 318, "file_offset": "0x27b16a", "width": 2, "opcode": "0x0", "raw_hex": "0000", "ref": null},
+            {"byte_offset": 320, "file_offset": "0x27b16c", "width": 8, "opcode": "0x0", "raw_hex": "0003960000000000", "ref": null}
+          ],
+          "incoming_callers": [
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/easylogin/lock/PatternView;->onTouchEvent(Landroid/view/MotionEvent;)Z", "file_offset": "0x323f26", "byte_offset": 998},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/easylogin/lock/PatternView;->onTouchEvent(Landroid/view/MotionEvent;)Z", "file_offset": "0x324186", "byte_offset": 1606},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/easylogin/lock/PatternView;->onTouchEvent(Landroid/view/MotionEvent;)Z", "file_offset": "0x324306", "byte_offset": 1990},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/easylogin/lock/PatternView;->onTouchEvent(Landroid/view/MotionEvent;)Z", "file_offset": "0x3243e8", "byte_offset": 2216},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/setting/fragment/k;->c0(Landroidx/fragment/app/w;Ljava/lang/String;)V", "file_offset": "0x32a41e", "byte_offset": 138},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/setting/fragment/k;->d0(Landroidx/fragment/app/w;Ljava/lang/String;)V", "file_offset": "0x32a53c", "byte_offset": 232},
+            {"dex": "classes.dex", "method": "Lg5/a;->k()V", "file_offset": "0x360bb0", "byte_offset": 8},
+            {"dex": "classes.dex", "method": "Lh5/f;->afterTextChanged(Landroid/text/Editable;)V", "file_offset": "0x3650c8", "byte_offset": 608},
+            {"dex": "classes.dex", "method": "Lh5/f;->afterTextChanged(Landroid/text/Editable;)V", "file_offset": "0x365358", "byte_offset": 1264},
+            {"dex": "classes.dex", "method": "Lh5/f;->afterTextChanged(Landroid/text/Editable;)V", "file_offset": "0x3654e2", "byte_offset": 1658},
+            {"dex": "classes.dex", "method": "Lh5/f;->afterTextChanged(Landroid/text/Editable;)V", "file_offset": "0x3655c0", "byte_offset": 1880}
+          ],
+          "after_incoming_callers": [
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/easylogin/lock/PatternView;->onTouchEvent(Landroid/view/MotionEvent;)Z", "file_offset": "0x323f26", "byte_offset": 998},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/easylogin/lock/PatternView;->onTouchEvent(Landroid/view/MotionEvent;)Z", "file_offset": "0x324186", "byte_offset": 1606},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/easylogin/lock/PatternView;->onTouchEvent(Landroid/view/MotionEvent;)Z", "file_offset": "0x324306", "byte_offset": 1990},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/easylogin/lock/PatternView;->onTouchEvent(Landroid/view/MotionEvent;)Z", "file_offset": "0x3243e8", "byte_offset": 2216},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/setting/fragment/k;->c0(Landroidx/fragment/app/w;Ljava/lang/String;)V", "file_offset": "0x32a41e", "byte_offset": 138},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/setting/fragment/k;->d0(Landroidx/fragment/app/w;Ljava/lang/String;)V", "file_offset": "0x32a53c", "byte_offset": 232},
+            {"dex": "classes.dex", "method": "Lg5/a;->k()V", "file_offset": "0x360bb0", "byte_offset": 8},
+            {"dex": "classes.dex", "method": "Lh5/f;->afterTextChanged(Landroid/text/Editable;)V", "file_offset": "0x3650c8", "byte_offset": 608},
+            {"dex": "classes.dex", "method": "Lh5/f;->afterTextChanged(Landroid/text/Editable;)V", "file_offset": "0x365358", "byte_offset": 1264},
+            {"dex": "classes.dex", "method": "Lh5/f;->afterTextChanged(Landroid/text/Editable;)V", "file_offset": "0x3654e2", "byte_offset": 1658},
+            {"dex": "classes.dex", "method": "Lh5/f;->afterTextChanged(Landroid/text/Editable;)V", "file_offset": "0x3655c0", "byte_offset": 1880}
+          ]
         },
         "La5/b;->b(Landroid/content/Context;)Ljava/lang/String;": {
           "code_item": "0x27b184",
@@ -840,408 +277,129 @@
             "tries": 1,
             "insns_size_cu": 84
           },
-          "tries": [
-            {"start_cu": "u0010", "count_cu": 58, "end_cu": "u004a", "handler_off": 1}
-          ],
-          "instructions": [
+          "has_patch": false,
+          "try_blocks": [
             {
-              "cu_offset": "u0000",
-              "file_offset": "0x27b194",
-              "orig_hex": "6e1073030400",
-              "patched_hex": "6e1073030400",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x373:Landroid/content/Context;->getApplicationContext()Landroid/content/Context;"
-            },
-            {
-              "cu_offset": "u0003",
-              "file_offset": "0x27b19a",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0004",
-              "file_offset": "0x27b19c",
-              "orig_hex": "6e1086030000",
-              "patched_hex": "6e1086030000",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x386:Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;"
-            },
-            {
-              "cu_offset": "u0007",
-              "file_offset": "0x27b1a2",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0008",
-              "file_offset": "0x27b1a4",
-              "orig_hex": "6e1073030400",
-              "patched_hex": "6e1073030400",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x373:Landroid/content/Context;->getApplicationContext()Landroid/content/Context;"
-            },
-            {
-              "cu_offset": "u000b",
-              "file_offset": "0x27b1aa",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u000c",
-              "file_offset": "0x27b1ac",
-              "orig_hex": "6e1087030400",
-              "patched_hex": "6e1087030400",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x387:Landroid/content/Context;->getPackageName()Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u000f",
-              "file_offset": "0x27b1b2",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0010",
-              "file_offset": "0x27b1b4",
-              "orig_hex": "60012901",
-              "patched_hex": "60012901",
-              "changed": false,
-              "opcode": "0x60",
-              "ref": "field@0x129:Landroid/os/Build$VERSION;->SDK_INT:I"
-            },
-            {
-              "cu_offset": "u0012",
-              "file_offset": "0x27b1b8",
-              "orig_hex": "13021c00",
-              "patched_hex": "13021c00",
-              "changed": false,
-              "opcode": "0x13",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0014",
-              "file_offset": "0x27b1bc",
-              "orig_hex": "1203",
-              "patched_hex": "1203",
-              "changed": false,
-              "opcode": "0x12",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0015",
-              "file_offset": "0x27b1be",
-              "orig_hex": "34211500",
-              "patched_hex": "34211500",
-              "changed": false,
-              "opcode": "0x34",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0017",
-              "file_offset": "0x27b1c2",
-              "orig_hex": "15010008",
-              "patched_hex": "15010008",
-              "changed": false,
-              "opcode": "0x15",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0019",
-              "file_offset": "0x27b1c6",
-              "orig_hex": "6e3002044001",
-              "patched_hex": "6e3002044001",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x402:Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;"
-            },
-            {
-              "cu_offset": "u001c",
-              "file_offset": "0x27b1cc",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u001d",
-              "file_offset": "0x27b1ce",
-              "orig_hex": "711073000400",
-              "patched_hex": "711073000400",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x73:La2/g;->d(Landroid/content/pm/PackageInfo;)Landroid/content/pm/SigningInfo;"
-            },
-            {
-              "cu_offset": "u0020",
-              "file_offset": "0x27b1d4",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0021",
-              "file_offset": "0x27b1d6",
-              "orig_hex": "711089000400",
-              "patched_hex": "711089000400",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x89:La2/g;->z(Landroid/content/pm/SigningInfo;)[Landroid/content/pm/Signature;"
-            },
-            {
-              "cu_offset": "u0024",
-              "file_offset": "0x27b1dc",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0025",
-              "file_offset": "0x27b1de",
-              "orig_hex": "46040403",
-              "patched_hex": "46040403",
-              "changed": false,
-              "opcode": "0x46",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0027",
-              "file_offset": "0x27b1e2",
-              "orig_hex": "280d",
-              "patched_hex": "280d",
-              "changed": false,
-              "opcode": "0x28",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0028",
-              "file_offset": "0x27b1e4",
-              "orig_hex": "0d04",
-              "patched_hex": "0d04",
-              "changed": false,
-              "opcode": "0xd",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0029",
-              "file_offset": "0x27b1e6",
-              "orig_hex": "2822",
-              "patched_hex": "2822",
-              "changed": false,
-              "opcode": "0x28",
-              "ref": null
-            },
-            {
-              "cu_offset": "u002a",
-              "file_offset": "0x27b1e8",
-              "orig_hex": "13014000",
-              "patched_hex": "13014000",
-              "changed": false,
-              "opcode": "0x13",
-              "ref": null
-            },
-            {
-              "cu_offset": "u002c",
-              "file_offset": "0x27b1ec",
-              "orig_hex": "6e3002044001",
-              "patched_hex": "6e3002044001",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x402:Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;"
-            },
-            {
-              "cu_offset": "u002f",
-              "file_offset": "0x27b1f2",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0030",
-              "file_offset": "0x27b1f4",
-              "orig_hex": "5444ae00",
-              "patched_hex": "5444ae00",
-              "changed": false,
-              "opcode": "0x54",
-              "ref": "field@0xae:Landroid/content/pm/PackageInfo;->signatures:[Landroid/content/pm/Signature;"
-            },
-            {
-              "cu_offset": "u0032",
-              "file_offset": "0x27b1f8",
-              "orig_hex": "46040403",
-              "patched_hex": "46040403",
-              "changed": false,
-              "opcode": "0x46",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0034",
-              "file_offset": "0x27b1fc",
-              "orig_hex": "1a00a31e",
-              "patched_hex": "1a00a31e",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x1ea3:'SHA1'"
-            },
-            {
-              "cu_offset": "u0036",
-              "file_offset": "0x27b200",
-              "orig_hex": "711095360000",
-              "patched_hex": "711095360000",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x3695:Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;"
-            },
-            {
-              "cu_offset": "u0039",
-              "file_offset": "0x27b206",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u003a",
-              "file_offset": "0x27b208",
-              "orig_hex": "6e1014040400",
-              "patched_hex": "6e1014040400",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x414:Landroid/content/pm/Signature;->toByteArray()[B"
-            },
-            {
-              "cu_offset": "u003d",
-              "file_offset": "0x27b20e",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u003e",
-              "file_offset": "0x27b210",
-              "orig_hex": "6e2097364000",
-              "patched_hex": "6e2097364000",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3697:Ljava/security/MessageDigest;->update([B)V"
-            },
-            {
-              "cu_offset": "u0041",
-              "file_offset": "0x27b216",
-              "orig_hex": "6e1093360000",
-              "patched_hex": "6e1093360000",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3693:Ljava/security/MessageDigest;->digest()[B"
-            },
-            {
-              "cu_offset": "u0044",
-              "file_offset": "0x27b21c",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0045",
-              "file_offset": "0x27b21e",
-              "orig_hex": "1220",
-              "patched_hex": "1220",
-              "changed": false,
-              "opcode": "0x12",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0046",
-              "file_offset": "0x27b220",
-              "orig_hex": "7120d9080400",
-              "patched_hex": "7120d9080400",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x8d9:Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0049",
-              "file_offset": "0x27b226",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u004a",
-              "file_offset": "0x27b228",
-              "orig_hex": "1104",
-              "patched_hex": "1104",
-              "changed": false,
-              "opcode": "0x11",
-              "ref": null
-            },
-            {
-              "cu_offset": "u004b",
-              "file_offset": "0x27b22a",
-              "orig_hex": "6e10e8350400",
-              "patched_hex": "6e10e8350400",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x35e8:Ljava/lang/Throwable;->printStackTrace()V"
-            },
-            {
-              "cu_offset": "u004e",
-              "file_offset": "0x27b230",
-              "orig_hex": "1204",
-              "patched_hex": "1204",
-              "changed": false,
-              "opcode": "0x12",
-              "ref": null
-            },
-            {
-              "cu_offset": "u004f",
-              "file_offset": "0x27b232",
-              "orig_hex": "1104",
-              "patched_hex": "1104",
-              "changed": false,
-              "opcode": "0x11",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0050",
-              "file_offset": "0x27b234",
-              "orig_hex": "0003750000000000",
-              "patched_hex": "0003750000000000",
-              "changed": false,
-              "opcode": "0x0",
-              "ref": null
+              "start_cu": 16,
+              "count_cu": 58,
+              "handlers": [
+                {"type": "Ljava/lang/Exception;", "handler_cu": 40}
+              ],
+              "catch_all_cu": null
             }
           ],
-          "has_patch": false
+          "before_instructions": [
+            {"byte_offset": 0, "file_offset": "0x27b194", "width": 6, "opcode": "0x6e", "raw_hex": "6e1073030400", "ref": "Landroid/content/Context;->getApplicationContext()Landroid/content/Context;"},
+            {"byte_offset": 6, "file_offset": "0x27b19a", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 8, "file_offset": "0x27b19c", "width": 6, "opcode": "0x6e", "raw_hex": "6e1086030000", "ref": "Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;"},
+            {"byte_offset": 14, "file_offset": "0x27b1a2", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 16, "file_offset": "0x27b1a4", "width": 6, "opcode": "0x6e", "raw_hex": "6e1073030400", "ref": "Landroid/content/Context;->getApplicationContext()Landroid/content/Context;"},
+            {"byte_offset": 22, "file_offset": "0x27b1aa", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 24, "file_offset": "0x27b1ac", "width": 6, "opcode": "0x6e", "raw_hex": "6e1087030400", "ref": "Landroid/content/Context;->getPackageName()Ljava/lang/String;"},
+            {"byte_offset": 30, "file_offset": "0x27b1b2", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 32, "file_offset": "0x27b1b4", "width": 4, "opcode": "0x60", "raw_hex": "60012901", "ref": "Landroid/os/Build$VERSION;->SDK_INT:I"},
+            {"byte_offset": 36, "file_offset": "0x27b1b8", "width": 4, "opcode": "0x13", "raw_hex": "13021c00", "ref": null},
+            {"byte_offset": 40, "file_offset": "0x27b1bc", "width": 2, "opcode": "0x12", "raw_hex": "1203", "ref": null},
+            {"byte_offset": 42, "file_offset": "0x27b1be", "width": 4, "opcode": "0x34", "raw_hex": "34211500", "ref": null},
+            {"byte_offset": 46, "file_offset": "0x27b1c2", "width": 4, "opcode": "0x15", "raw_hex": "15010008", "ref": null},
+            {"byte_offset": 50, "file_offset": "0x27b1c6", "width": 6, "opcode": "0x6e", "raw_hex": "6e3002044001", "ref": "Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;"},
+            {"byte_offset": 56, "file_offset": "0x27b1cc", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 58, "file_offset": "0x27b1ce", "width": 6, "opcode": "0x71", "raw_hex": "711073000400", "ref": "La2/g;->d(Landroid/content/pm/PackageInfo;)Landroid/content/pm/SigningInfo;"},
+            {"byte_offset": 64, "file_offset": "0x27b1d4", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 66, "file_offset": "0x27b1d6", "width": 6, "opcode": "0x71", "raw_hex": "711089000400", "ref": "La2/g;->z(Landroid/content/pm/SigningInfo;)[Landroid/content/pm/Signature;"},
+            {"byte_offset": 72, "file_offset": "0x27b1dc", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 74, "file_offset": "0x27b1de", "width": 4, "opcode": "0x46", "raw_hex": "46040403", "ref": null},
+            {"byte_offset": 78, "file_offset": "0x27b1e2", "width": 2, "opcode": "0x28", "raw_hex": "280d", "ref": null},
+            {"byte_offset": 80, "file_offset": "0x27b1e4", "width": 2, "opcode": "0xd", "raw_hex": "0d04", "ref": null},
+            {"byte_offset": 82, "file_offset": "0x27b1e6", "width": 2, "opcode": "0x28", "raw_hex": "2822", "ref": null},
+            {"byte_offset": 84, "file_offset": "0x27b1e8", "width": 4, "opcode": "0x13", "raw_hex": "13014000", "ref": null},
+            {"byte_offset": 88, "file_offset": "0x27b1ec", "width": 6, "opcode": "0x6e", "raw_hex": "6e3002044001", "ref": "Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;"},
+            {"byte_offset": 94, "file_offset": "0x27b1f2", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 96, "file_offset": "0x27b1f4", "width": 4, "opcode": "0x54", "raw_hex": "5444ae00", "ref": "Landroid/content/pm/PackageInfo;->signatures:[Landroid/content/pm/Signature;"},
+            {"byte_offset": 100, "file_offset": "0x27b1f8", "width": 4, "opcode": "0x46", "raw_hex": "46040403", "ref": null},
+            {"byte_offset": 104, "file_offset": "0x27b1fc", "width": 4, "opcode": "0x1a", "raw_hex": "1a00a31e", "ref": "SHA1"},
+            {"byte_offset": 108, "file_offset": "0x27b200", "width": 6, "opcode": "0x71", "raw_hex": "711095360000", "ref": "Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;"},
+            {"byte_offset": 114, "file_offset": "0x27b206", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 116, "file_offset": "0x27b208", "width": 6, "opcode": "0x6e", "raw_hex": "6e1014040400", "ref": "Landroid/content/pm/Signature;->toByteArray()[B"},
+            {"byte_offset": 122, "file_offset": "0x27b20e", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 124, "file_offset": "0x27b210", "width": 6, "opcode": "0x6e", "raw_hex": "6e2097364000", "ref": "Ljava/security/MessageDigest;->update([B)V"},
+            {"byte_offset": 130, "file_offset": "0x27b216", "width": 6, "opcode": "0x6e", "raw_hex": "6e1093360000", "ref": "Ljava/security/MessageDigest;->digest()[B"},
+            {"byte_offset": 136, "file_offset": "0x27b21c", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 138, "file_offset": "0x27b21e", "width": 2, "opcode": "0x12", "raw_hex": "1220", "ref": null},
+            {"byte_offset": 140, "file_offset": "0x27b220", "width": 6, "opcode": "0x71", "raw_hex": "7120d9080400", "ref": "Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;"},
+            {"byte_offset": 146, "file_offset": "0x27b226", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 148, "file_offset": "0x27b228", "width": 2, "opcode": "0x11", "raw_hex": "1104", "ref": null},
+            {"byte_offset": 150, "file_offset": "0x27b22a", "width": 6, "opcode": "0x6e", "raw_hex": "6e10e8350400", "ref": "Ljava/lang/Throwable;->printStackTrace()V"},
+            {"byte_offset": 156, "file_offset": "0x27b230", "width": 2, "opcode": "0x12", "raw_hex": "1204", "ref": null},
+            {"byte_offset": 158, "file_offset": "0x27b232", "width": 2, "opcode": "0x11", "raw_hex": "1104", "ref": null},
+            {"byte_offset": 160, "file_offset": "0x27b234", "width": 8, "opcode": "0x0", "raw_hex": "0003750000000000", "ref": null}
+          ],
+          "after_instructions": [
+            {"byte_offset": 0, "file_offset": "0x27b194", "width": 6, "opcode": "0x6e", "raw_hex": "6e1073030400", "ref": "Landroid/content/Context;->getApplicationContext()Landroid/content/Context;"},
+            {"byte_offset": 6, "file_offset": "0x27b19a", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 8, "file_offset": "0x27b19c", "width": 6, "opcode": "0x6e", "raw_hex": "6e1086030000", "ref": "Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;"},
+            {"byte_offset": 14, "file_offset": "0x27b1a2", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 16, "file_offset": "0x27b1a4", "width": 6, "opcode": "0x6e", "raw_hex": "6e1073030400", "ref": "Landroid/content/Context;->getApplicationContext()Landroid/content/Context;"},
+            {"byte_offset": 22, "file_offset": "0x27b1aa", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 24, "file_offset": "0x27b1ac", "width": 6, "opcode": "0x6e", "raw_hex": "6e1087030400", "ref": "Landroid/content/Context;->getPackageName()Ljava/lang/String;"},
+            {"byte_offset": 30, "file_offset": "0x27b1b2", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 32, "file_offset": "0x27b1b4", "width": 4, "opcode": "0x60", "raw_hex": "60012901", "ref": "Landroid/os/Build$VERSION;->SDK_INT:I"},
+            {"byte_offset": 36, "file_offset": "0x27b1b8", "width": 4, "opcode": "0x13", "raw_hex": "13021c00", "ref": null},
+            {"byte_offset": 40, "file_offset": "0x27b1bc", "width": 2, "opcode": "0x12", "raw_hex": "1203", "ref": null},
+            {"byte_offset": 42, "file_offset": "0x27b1be", "width": 4, "opcode": "0x34", "raw_hex": "34211500", "ref": null},
+            {"byte_offset": 46, "file_offset": "0x27b1c2", "width": 4, "opcode": "0x15", "raw_hex": "15010008", "ref": null},
+            {"byte_offset": 50, "file_offset": "0x27b1c6", "width": 6, "opcode": "0x6e", "raw_hex": "6e3002044001", "ref": "Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;"},
+            {"byte_offset": 56, "file_offset": "0x27b1cc", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 58, "file_offset": "0x27b1ce", "width": 6, "opcode": "0x71", "raw_hex": "711073000400", "ref": "La2/g;->d(Landroid/content/pm/PackageInfo;)Landroid/content/pm/SigningInfo;"},
+            {"byte_offset": 64, "file_offset": "0x27b1d4", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 66, "file_offset": "0x27b1d6", "width": 6, "opcode": "0x71", "raw_hex": "711089000400", "ref": "La2/g;->z(Landroid/content/pm/SigningInfo;)[Landroid/content/pm/Signature;"},
+            {"byte_offset": 72, "file_offset": "0x27b1dc", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 74, "file_offset": "0x27b1de", "width": 4, "opcode": "0x46", "raw_hex": "46040403", "ref": null},
+            {"byte_offset": 78, "file_offset": "0x27b1e2", "width": 2, "opcode": "0x28", "raw_hex": "280d", "ref": null},
+            {"byte_offset": 80, "file_offset": "0x27b1e4", "width": 2, "opcode": "0xd", "raw_hex": "0d04", "ref": null},
+            {"byte_offset": 82, "file_offset": "0x27b1e6", "width": 2, "opcode": "0x28", "raw_hex": "2822", "ref": null},
+            {"byte_offset": 84, "file_offset": "0x27b1e8", "width": 4, "opcode": "0x13", "raw_hex": "13014000", "ref": null},
+            {"byte_offset": 88, "file_offset": "0x27b1ec", "width": 6, "opcode": "0x6e", "raw_hex": "6e3002044001", "ref": "Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;"},
+            {"byte_offset": 94, "file_offset": "0x27b1f2", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 96, "file_offset": "0x27b1f4", "width": 4, "opcode": "0x54", "raw_hex": "5444ae00", "ref": "Landroid/content/pm/PackageInfo;->signatures:[Landroid/content/pm/Signature;"},
+            {"byte_offset": 100, "file_offset": "0x27b1f8", "width": 4, "opcode": "0x46", "raw_hex": "46040403", "ref": null},
+            {"byte_offset": 104, "file_offset": "0x27b1fc", "width": 4, "opcode": "0x1a", "raw_hex": "1a00a31e", "ref": "SHA1"},
+            {"byte_offset": 108, "file_offset": "0x27b200", "width": 6, "opcode": "0x71", "raw_hex": "711095360000", "ref": "Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;"},
+            {"byte_offset": 114, "file_offset": "0x27b206", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 116, "file_offset": "0x27b208", "width": 6, "opcode": "0x6e", "raw_hex": "6e1014040400", "ref": "Landroid/content/pm/Signature;->toByteArray()[B"},
+            {"byte_offset": 122, "file_offset": "0x27b20e", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 124, "file_offset": "0x27b210", "width": 6, "opcode": "0x6e", "raw_hex": "6e2097364000", "ref": "Ljava/security/MessageDigest;->update([B)V"},
+            {"byte_offset": 130, "file_offset": "0x27b216", "width": 6, "opcode": "0x6e", "raw_hex": "6e1093360000", "ref": "Ljava/security/MessageDigest;->digest()[B"},
+            {"byte_offset": 136, "file_offset": "0x27b21c", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 138, "file_offset": "0x27b21e", "width": 2, "opcode": "0x12", "raw_hex": "1220", "ref": null},
+            {"byte_offset": 140, "file_offset": "0x27b220", "width": 6, "opcode": "0x71", "raw_hex": "7120d9080400", "ref": "Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;"},
+            {"byte_offset": 146, "file_offset": "0x27b226", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 148, "file_offset": "0x27b228", "width": 2, "opcode": "0x11", "raw_hex": "1104", "ref": null},
+            {"byte_offset": 150, "file_offset": "0x27b22a", "width": 6, "opcode": "0x6e", "raw_hex": "6e10e8350400", "ref": "Ljava/lang/Throwable;->printStackTrace()V"},
+            {"byte_offset": 156, "file_offset": "0x27b230", "width": 2, "opcode": "0x12", "raw_hex": "1204", "ref": null},
+            {"byte_offset": 158, "file_offset": "0x27b232", "width": 2, "opcode": "0x11", "raw_hex": "1104", "ref": null},
+            {"byte_offset": 160, "file_offset": "0x27b234", "width": 8, "opcode": "0x0", "raw_hex": "0003750000000000", "ref": null}
+          ],
+          "incoming_callers": [
+            {"dex": "classes.dex", "method": "La5/b;->a(Landroid/content/Context;)Ljava/lang/String;", "file_offset": "0x27b0dc", "byte_offset": 176},
+            {"dex": "classes.dex", "method": "La5/b;->a(Landroid/content/Context;)Ljava/lang/String;", "file_offset": "0x27b160", "byte_offset": 308},
+            {"dex": "classes.dex", "method": "La5/b;->c(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;", "file_offset": "0x27b308", "byte_offset": 172},
+            {"dex": "classes.dex", "method": "La5/b;->c(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;", "file_offset": "0x27b38c", "byte_offset": 304},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/easylogin/lock/PatternView;->onTouchEvent(Landroid/view/MotionEvent;)Z", "file_offset": "0x32402c", "byte_offset": 1260},
+            {"dex": "classes.dex", "method": "Lh5/f;->afterTextChanged(Landroid/text/Editable;)V", "file_offset": "0x3651ca", "byte_offset": 866},
+            {"dex": "classes.dex", "method": "Lk5/g;->onClick(Landroid/view/View;)V", "file_offset": "0x394984", "byte_offset": 660},
+            {"dex": "classes.dex", "method": "Lv1/j;->u()V", "file_offset": "0x3f4fe6", "byte_offset": 206}
+          ],
+          "after_incoming_callers": [
+            {"dex": "classes.dex", "method": "La5/b;->a(Landroid/content/Context;)Ljava/lang/String;", "file_offset": "0x27b0dc", "byte_offset": 176},
+            {"dex": "classes.dex", "method": "La5/b;->a(Landroid/content/Context;)Ljava/lang/String;", "file_offset": "0x27b160", "byte_offset": 308},
+            {"dex": "classes.dex", "method": "La5/b;->c(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;", "file_offset": "0x27b308", "byte_offset": 172},
+            {"dex": "classes.dex", "method": "La5/b;->c(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;", "file_offset": "0x27b38c", "byte_offset": 304},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/easylogin/lock/PatternView;->onTouchEvent(Landroid/view/MotionEvent;)Z", "file_offset": "0x32402c", "byte_offset": 1260},
+            {"dex": "classes.dex", "method": "Lh5/f;->afterTextChanged(Landroid/text/Editable;)V", "file_offset": "0x3651ca", "byte_offset": 866},
+            {"dex": "classes.dex", "method": "Lk5/g;->onClick(Landroid/view/View;)V", "file_offset": "0x394984", "byte_offset": 660},
+            {"dex": "classes.dex", "method": "Lv1/j;->u()V", "file_offset": "0x3f4fe6", "byte_offset": 206}
+          ]
         },
         "La5/b;->c(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;": {
           "code_item": "0x27b24c",
@@ -1254,741 +412,207 @@
             "tries": 1,
             "insns_size_cu": 162
           },
-          "tries": [
-            {"start_cu": "u0008", "count_cu": 140, "end_cu": "u0094", "handler_off": 1}
-          ],
-          "instructions": [
-            {
-              "cu_offset": "u0000",
-              "file_offset": "0x27b25c",
-              "orig_hex": "1a004305",
-              "patched_hex": "1a004305",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x543:'AndroidKeyStore'"
-            },
-            {
-              "cu_offset": "u0002",
-              "file_offset": "0x27b260",
-              "orig_hex": "60012901",
-              "patched_hex": "60012901",
-              "changed": false,
-              "opcode": "0x60",
-              "ref": "field@0x129:Landroid/os/Build$VERSION;->SDK_INT:I"
-            },
-            {
-              "cu_offset": "u0004",
-              "file_offset": "0x27b264",
-              "orig_hex": "13021700",
-              "patched_hex": "13021700",
-              "changed": false,
-              "opcode": "0x13",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0006",
-              "file_offset": "0x27b268",
-              "orig_hex": "34219200",
-              "patched_hex": "34219200",
-              "changed": false,
-              "opcode": "0x34",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0008",
-              "file_offset": "0x27b26c",
-              "orig_hex": "711091360000",
-              "patched_hex": "711091360000",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x3691:Ljava/security/KeyStore;->getInstance(Ljava/lang/String;)Ljava/security/KeyStore;"
-            },
-            {
-              "cu_offset": "u000b",
-              "file_offset": "0x27b272",
-              "orig_hex": "0c02",
-              "patched_hex": "0c02",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u000c",
-              "file_offset": "0x27b274",
-              "orig_hex": "1203",
-              "patched_hex": "1203",
-              "changed": false,
-              "opcode": "0x12",
-              "ref": null
-            },
-            {
-              "cu_offset": "u000d",
-              "file_offset": "0x27b276",
-              "orig_hex": "6e2092363200",
-              "patched_hex": "6e2092363200",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3692:Ljava/security/KeyStore;->load(Ljava/security/KeyStore$LoadStoreParameter;)V"
-            },
-            {
-              "cu_offset": "u0010",
-              "file_offset": "0x27b27c",
-              "orig_hex": "6e208f36a200",
-              "patched_hex": "6e208f36a200",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x368f:Ljava/security/KeyStore;->containsAlias(Ljava/lang/String;)Z"
-            },
-            {
-              "cu_offset": "u0013",
-              "file_offset": "0x27b282",
-              "orig_hex": "0a04",
-              "patched_hex": "0a04",
-              "changed": false,
-              "opcode": "0xa",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0014",
-              "file_offset": "0x27b284",
-              "orig_hex": "1215",
-              "patched_hex": "1215",
-              "changed": false,
-              "opcode": "0x12",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0015",
-              "file_offset": "0x27b286",
-              "orig_hex": "1206",
-              "patched_hex": "1206",
-              "changed": false,
-              "opcode": "0x12",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0016",
-              "file_offset": "0x27b288",
-              "orig_hex": "39043400",
-              "patched_hex": "39043400",
-              "changed": false,
-              "opcode": "0x39",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0018",
-              "file_offset": "0x27b28c",
-              "orig_hex": "1a04a004",
-              "patched_hex": "1a04a004",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x4a0:'AES'"
-            },
-            {
-              "cu_offset": "u001a",
-              "file_offset": "0x27b290",
-              "orig_hex": "712091380400",
-              "patched_hex": "712091380400",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x3891:Ljavax/crypto/KeyGenerator;->getInstance(Ljava/lang/String;Ljava/lang/String;)Ljavax/crypto/KeyGenerator;"
-            },
-            {
-              "cu_offset": "u001d",
-              "file_offset": "0x27b296",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u001e",
-              "file_offset": "0x27b298",
-              "orig_hex": "71009b000000",
-              "patched_hex": "71009b000000",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x9b:La2/h0;->n()V"
-            },
-            {
-              "cu_offset": "u0021",
-              "file_offset": "0x27b29e",
-              "orig_hex": "711094000a00",
-              "patched_hex": "711094000a00",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x94:La2/h0;->g(Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"
-            },
-            {
-              "cu_offset": "u0024",
-              "file_offset": "0x27b2a4",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0025",
-              "file_offset": "0x27b2a6",
-              "orig_hex": "2357830e",
-              "patched_hex": "2357830e",
-              "changed": false,
-              "opcode": "0x23",
-              "ref": "type@0xe83:[Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0027",
-              "file_offset": "0x27b2aa",
-              "orig_hex": "1a083707",
-              "patched_hex": "1a083707",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x737:'CBC'"
-            },
-            {
-              "cu_offset": "u0029",
-              "file_offset": "0x27b2ae",
-              "orig_hex": "4d080706",
-              "patched_hex": "4d080706",
-              "changed": false,
-              "opcode": "0x4d",
-              "ref": null
-            },
-            {
-              "cu_offset": "u002b",
-              "file_offset": "0x27b2b2",
-              "orig_hex": "712093007400",
-              "patched_hex": "712093007400",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x93:La2/h0;->f(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"
-            },
-            {
-              "cu_offset": "u002e",
-              "file_offset": "0x27b2b8",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u002f",
-              "file_offset": "0x27b2ba",
-              "orig_hex": "2357830e",
-              "patched_hex": "2357830e",
-              "changed": false,
-              "opcode": "0x23",
-              "ref": "type@0xe83:[Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0031",
-              "file_offset": "0x27b2be",
-              "orig_hex": "1a08431d",
-              "patched_hex": "1a08431d",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x1d43:'PKCS7Padding'"
-            },
-            {
-              "cu_offset": "u0033",
-              "file_offset": "0x27b2c2",
-              "orig_hex": "4d080706",
-              "patched_hex": "4d080706",
-              "changed": false,
-              "opcode": "0x4d",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0035",
-              "file_offset": "0x27b2c6",
-              "orig_hex": "7120a6007400",
-              "patched_hex": "7120a6007400",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0xa6:La2/h0;->y(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"
-            },
-            {
-              "cu_offset": "u0038",
-              "file_offset": "0x27b2cc",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0039",
-              "file_offset": "0x27b2ce",
-              "orig_hex": "711092000400",
-              "patched_hex": "711092000400",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x92:La2/h0;->e(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"
-            },
-            {
-              "cu_offset": "u003c",
-              "file_offset": "0x27b2d4",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u003d",
-              "file_offset": "0x27b2d6",
-              "orig_hex": "711095000400",
-              "patched_hex": "711095000400",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x95:La2/h0;->h(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec;"
-            },
-            {
-              "cu_offset": "u0040",
-              "file_offset": "0x27b2dc",
-              "orig_hex": "0c04",
-              "patched_hex": "0c04",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0041",
-              "file_offset": "0x27b2de",
-              "orig_hex": "6e2092384000",
-              "patched_hex": "6e2092384000",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3892:Ljavax/crypto/KeyGenerator;->init(Ljava/security/spec/AlgorithmParameterSpec;)V"
-            },
-            {
-              "cu_offset": "u0044",
-              "file_offset": "0x27b2e4",
-              "orig_hex": "6e1090380000",
-              "patched_hex": "6e1090380000",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3890:Ljavax/crypto/KeyGenerator;->generateKey()Ljavax/crypto/SecretKey;"
-            },
-            {
-              "cu_offset": "u0047",
-              "file_offset": "0x27b2ea",
-              "orig_hex": "2803",
-              "patched_hex": "2803",
-              "changed": false,
-              "opcode": "0x28",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0048",
-              "file_offset": "0x27b2ec",
-              "orig_hex": "0d0a",
-              "patched_hex": "0d0a",
-              "changed": false,
-              "opcode": "0xd",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0049",
-              "file_offset": "0x27b2ee",
-              "orig_hex": "284c",
-              "patched_hex": "284c",
-              "changed": false,
-              "opcode": "0x28",
-              "ref": null
-            },
-            {
-              "cu_offset": "u004a",
-              "file_offset": "0x27b2f0",
-              "orig_hex": "6e309036a203",
-              "patched_hex": "6e309036a203",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3690:Ljava/security/KeyStore;->getEntry(Ljava/lang/String;Ljava/security/KeyStore$ProtectionParameter;)Ljava/security/KeyStore$Entry;"
-            },
-            {
-              "cu_offset": "u004d",
-              "file_offset": "0x27b2f6",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u004e",
-              "file_offset": "0x27b2f8",
-              "orig_hex": "1f003509",
-              "patched_hex": "1f003509",
-              "changed": false,
-              "opcode": "0x1f",
-              "ref": "type@0x935:Ljava/security/KeyStore$SecretKeyEntry;"
-            },
-            {
-              "cu_offset": "u0050",
-              "file_offset": "0x27b2fc",
-              "orig_hex": "6e108e360000",
-              "patched_hex": "6e108e360000",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x368e:Ljava/security/KeyStore$SecretKeyEntry;->getSecretKey()Ljavax/crypto/SecretKey;"
-            },
-            {
-              "cu_offset": "u0053",
-              "file_offset": "0x27b302",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0054",
-              "file_offset": "0x27b304",
-              "orig_hex": "2202bf09",
-              "patched_hex": "2202bf09",
-              "changed": false,
-              "opcode": "0x22",
-              "ref": "type@0x9bf:Ljavax/crypto/spec/IvParameterSpec;"
-            },
-            {
-              "cu_offset": "u0056",
-              "file_offset": "0x27b308",
-              "orig_hex": "71103e010900",
-              "patched_hex": "71103e010900",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x13e:La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0059",
-              "file_offset": "0x27b30e",
-              "orig_hex": "0c03",
-              "patched_hex": "0c03",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u005a",
-              "file_offset": "0x27b310",
-              "orig_hex": "7110c9370300",
-              "patched_hex": "7110c9370300",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x37c9:Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"
-            },
-            {
-              "cu_offset": "u005d",
-              "file_offset": "0x27b316",
-              "orig_hex": "13041000",
-              "patched_hex": "13041000",
-              "changed": false,
-              "opcode": "0x13",
-              "ref": null
-            },
-            {
-              "cu_offset": "u005f",
-              "file_offset": "0x27b31a",
-              "orig_hex": "6e3091356304",
-              "patched_hex": "6e3091356304",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x3591:Ljava/lang/String;->substring(II)Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0062",
-              "file_offset": "0x27b320",
-              "orig_hex": "0c03",
-              "patched_hex": "0c03",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0063",
-              "file_offset": "0x27b322",
-              "orig_hex": "6e107a350300",
-              "patched_hex": "6e107a350300",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x357a:Ljava/lang/String;->getBytes()[B"
-            },
-            {
-              "cu_offset": "u0066",
-              "file_offset": "0x27b328",
-              "orig_hex": "0c03",
-              "patched_hex": "0c03",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0067",
-              "file_offset": "0x27b32a",
-              "orig_hex": "702099383200",
-              "patched_hex": "702099383200",
-              "changed": false,
-              "opcode": "0x70",
-              "ref": "method@0x3899:Ljavax/crypto/spec/IvParameterSpec;-><init>([B)V"
-            },
-            {
-              "cu_offset": "u006a",
-              "file_offset": "0x27b330",
-              "orig_hex": "1a03a104",
-              "patched_hex": "1a03a104",
-              "changed": false,
-              "opcode": "0x1a",
-              "ref": "string@0x4a1:'AES/CBC/PKCS7Padding'"
-            },
-            {
-              "cu_offset": "u006c",
-              "file_offset": "0x27b334",
-              "orig_hex": "71108c380300",
-              "patched_hex": "71108c380300",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x388c:Ljavax/crypto/Cipher;->getInstance(Ljava/lang/String;)Ljavax/crypto/Cipher;"
-            },
-            {
-              "cu_offset": "u006f",
-              "file_offset": "0x27b33a",
-              "orig_hex": "0c03",
-              "patched_hex": "0c03",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0070",
-              "file_offset": "0x27b33c",
-              "orig_hex": "6e408e385320",
-              "patched_hex": "6e408e385320",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x388e:Ljavax/crypto/Cipher;->init(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V"
-            },
-            {
-              "cu_offset": "u0073",
-              "file_offset": "0x27b342",
-              "orig_hex": "13001a00",
-              "patched_hex": "13001a00",
-              "changed": false,
-              "opcode": "0x13",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0075",
-              "file_offset": "0x27b346",
-              "orig_hex": "34011300",
-              "patched_hex": "34011300",
-              "changed": false,
-              "opcode": "0x34",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0077",
-              "file_offset": "0x27b34a",
-              "orig_hex": "7100e0000000",
-              "patched_hex": "7100e0000000",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0xe0:La2/q;->i()Ljava/util/Base64$Encoder;"
-            },
-            {
-              "cu_offset": "u007a",
-              "file_offset": "0x27b350",
-              "orig_hex": "0c00",
-              "patched_hex": "0c00",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u007b",
-              "file_offset": "0x27b352",
-              "orig_hex": "6e107a350a00",
-              "patched_hex": "6e107a350a00",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x357a:Ljava/lang/String;->getBytes()[B"
-            },
-            {
-              "cu_offset": "u007e",
-              "file_offset": "0x27b358",
-              "orig_hex": "0c0a",
-              "patched_hex": "0c0a",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u007f",
-              "file_offset": "0x27b35a",
-              "orig_hex": "6e208b38a300",
-              "patched_hex": "6e208b38a300",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x388b:Ljavax/crypto/Cipher;->doFinal([B)[B"
-            },
-            {
-              "cu_offset": "u0082",
-              "file_offset": "0x27b360",
-              "orig_hex": "0c0a",
-              "patched_hex": "0c0a",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0083",
-              "file_offset": "0x27b362",
-              "orig_hex": "7120df00a000",
-              "patched_hex": "7120df00a000",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0xdf:La2/q;->h(Ljava/util/Base64$Encoder;[B)Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0086",
-              "file_offset": "0x27b368",
-              "orig_hex": "0c09",
-              "patched_hex": "0c09",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0087",
-              "file_offset": "0x27b36a",
-              "orig_hex": "2815",
-              "patched_hex": "2815",
-              "changed": false,
-              "opcode": "0x28",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0088",
-              "file_offset": "0x27b36c",
-              "orig_hex": "6e107a350a00",
-              "patched_hex": "6e107a350a00",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x357a:Ljava/lang/String;->getBytes()[B"
-            },
-            {
-              "cu_offset": "u008b",
-              "file_offset": "0x27b372",
-              "orig_hex": "0c0a",
-              "patched_hex": "0c0a",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u008c",
-              "file_offset": "0x27b374",
-              "orig_hex": "6e208b38a300",
-              "patched_hex": "6e208b38a300",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x388b:Ljavax/crypto/Cipher;->doFinal([B)[B"
-            },
-            {
-              "cu_offset": "u008f",
-              "file_offset": "0x27b37a",
-              "orig_hex": "0c0a",
-              "patched_hex": "0c0a",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0090",
-              "file_offset": "0x27b37c",
-              "orig_hex": "7120d9086a00",
-              "patched_hex": "7120d9086a00",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x8d9:Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u0093",
-              "file_offset": "0x27b382",
-              "orig_hex": "0c09",
-              "patched_hex": "0c09",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0094",
-              "file_offset": "0x27b384",
-              "orig_hex": "2808",
-              "patched_hex": "2808",
-              "changed": false,
-              "opcode": "0x28",
-              "ref": null
-            },
-            {
-              "cu_offset": "u0095",
-              "file_offset": "0x27b386",
-              "orig_hex": "6e10e8350a00",
-              "patched_hex": "6e10e8350a00",
-              "changed": false,
-              "opcode": "0x6e",
-              "ref": "method@0x35e8:Ljava/lang/Throwable;->printStackTrace()V"
-            },
-            {
-              "cu_offset": "u0098",
-              "file_offset": "0x27b38c",
-              "orig_hex": "71103e010900",
-              "patched_hex": "71103e010900",
-              "changed": false,
-              "opcode": "0x71",
-              "ref": "method@0x13e:La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"
-            },
-            {
-              "cu_offset": "u009b",
-              "file_offset": "0x27b392",
-              "orig_hex": "0c09",
-              "patched_hex": "0c09",
-              "changed": false,
-              "opcode": "0xc",
-              "ref": null
-            },
-            {
-              "cu_offset": "u009c",
-              "file_offset": "0x27b394",
-              "orig_hex": "1109",
-              "patched_hex": "1109",
-              "changed": false,
-              "opcode": "0x11",
-              "ref": null
-            },
-            {
-              "cu_offset": "u009d",
-              "file_offset": "0x27b396",
-              "orig_hex": "0000",
-              "patched_hex": "0000",
-              "changed": false,
-              "opcode": "0x0",
-              "ref": null
-            },
-            {
-              "cu_offset": "u009e",
-              "file_offset": "0x27b398",
-              "orig_hex": "0003260000000000",
-              "patched_hex": "0003260000000000",
-              "changed": false,
-              "opcode": "0x0",
-              "ref": null
+          "has_patch": false,
+          "try_blocks": [
+            {
+              "start_cu": 8,
+              "count_cu": 140,
+              "handlers": [
+                {"type": "Ljava/lang/Exception;", "handler_cu": 72}
+              ],
+              "catch_all_cu": null
             }
           ],
-          "has_patch": false
+          "before_instructions": [
+            {"byte_offset": 0, "file_offset": "0x27b25c", "width": 4, "opcode": "0x1a", "raw_hex": "1a004305", "ref": "AndroidKeyStore"},
+            {"byte_offset": 4, "file_offset": "0x27b260", "width": 4, "opcode": "0x60", "raw_hex": "60012901", "ref": "Landroid/os/Build$VERSION;->SDK_INT:I"},
+            {"byte_offset": 8, "file_offset": "0x27b264", "width": 4, "opcode": "0x13", "raw_hex": "13021700", "ref": null},
+            {"byte_offset": 12, "file_offset": "0x27b268", "width": 4, "opcode": "0x34", "raw_hex": "34219200", "ref": null},
+            {"byte_offset": 16, "file_offset": "0x27b26c", "width": 6, "opcode": "0x71", "raw_hex": "711091360000", "ref": "Ljava/security/KeyStore;->getInstance(Ljava/lang/String;)Ljava/security/KeyStore;"},
+            {"byte_offset": 22, "file_offset": "0x27b272", "width": 2, "opcode": "0xc", "raw_hex": "0c02", "ref": null},
+            {"byte_offset": 24, "file_offset": "0x27b274", "width": 2, "opcode": "0x12", "raw_hex": "1203", "ref": null},
+            {"byte_offset": 26, "file_offset": "0x27b276", "width": 6, "opcode": "0x6e", "raw_hex": "6e2092363200", "ref": "Ljava/security/KeyStore;->load(Ljava/security/KeyStore$LoadStoreParameter;)V"},
+            {"byte_offset": 32, "file_offset": "0x27b27c", "width": 6, "opcode": "0x6e", "raw_hex": "6e208f36a200", "ref": "Ljava/security/KeyStore;->containsAlias(Ljava/lang/String;)Z"},
+            {"byte_offset": 38, "file_offset": "0x27b282", "width": 2, "opcode": "0xa", "raw_hex": "0a04", "ref": null},
+            {"byte_offset": 40, "file_offset": "0x27b284", "width": 2, "opcode": "0x12", "raw_hex": "1215", "ref": null},
+            {"byte_offset": 42, "file_offset": "0x27b286", "width": 2, "opcode": "0x12", "raw_hex": "1206", "ref": null},
+            {"byte_offset": 44, "file_offset": "0x27b288", "width": 4, "opcode": "0x39", "raw_hex": "39043400", "ref": null},
+            {"byte_offset": 48, "file_offset": "0x27b28c", "width": 4, "opcode": "0x1a", "raw_hex": "1a04a004", "ref": "AES"},
+            {"byte_offset": 52, "file_offset": "0x27b290", "width": 6, "opcode": "0x71", "raw_hex": "712091380400", "ref": "Ljavax/crypto/KeyGenerator;->getInstance(Ljava/lang/String;Ljava/lang/String;)Ljavax/crypto/KeyGenerator;"},
+            {"byte_offset": 58, "file_offset": "0x27b296", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 60, "file_offset": "0x27b298", "width": 6, "opcode": "0x71", "raw_hex": "71009b000000", "ref": "La2/h0;->n()V"},
+            {"byte_offset": 66, "file_offset": "0x27b29e", "width": 6, "opcode": "0x71", "raw_hex": "711094000a00", "ref": "La2/h0;->g(Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 72, "file_offset": "0x27b2a4", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 74, "file_offset": "0x27b2a6", "width": 4, "opcode": "0x23", "raw_hex": "2357830e", "ref": "[Ljava/lang/String;"},
+            {"byte_offset": 78, "file_offset": "0x27b2aa", "width": 4, "opcode": "0x1a", "raw_hex": "1a083707", "ref": "CBC"},
+            {"byte_offset": 82, "file_offset": "0x27b2ae", "width": 4, "opcode": "0x4d", "raw_hex": "4d080706", "ref": null},
+            {"byte_offset": 86, "file_offset": "0x27b2b2", "width": 6, "opcode": "0x71", "raw_hex": "712093007400", "ref": "La2/h0;->f(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 92, "file_offset": "0x27b2b8", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 94, "file_offset": "0x27b2ba", "width": 4, "opcode": "0x23", "raw_hex": "2357830e", "ref": "[Ljava/lang/String;"},
+            {"byte_offset": 98, "file_offset": "0x27b2be", "width": 4, "opcode": "0x1a", "raw_hex": "1a08431d", "ref": "PKCS7Padding"},
+            {"byte_offset": 102, "file_offset": "0x27b2c2", "width": 4, "opcode": "0x4d", "raw_hex": "4d080706", "ref": null},
+            {"byte_offset": 106, "file_offset": "0x27b2c6", "width": 6, "opcode": "0x71", "raw_hex": "7120a6007400", "ref": "La2/h0;->y(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 112, "file_offset": "0x27b2cc", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 114, "file_offset": "0x27b2ce", "width": 6, "opcode": "0x71", "raw_hex": "711092000400", "ref": "La2/h0;->e(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 120, "file_offset": "0x27b2d4", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 122, "file_offset": "0x27b2d6", "width": 6, "opcode": "0x71", "raw_hex": "711095000400", "ref": "La2/h0;->h(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec;"},
+            {"byte_offset": 128, "file_offset": "0x27b2dc", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 130, "file_offset": "0x27b2de", "width": 6, "opcode": "0x6e", "raw_hex": "6e2092384000", "ref": "Ljavax/crypto/KeyGenerator;->init(Ljava/security/spec/AlgorithmParameterSpec;)V"},
+            {"byte_offset": 136, "file_offset": "0x27b2e4", "width": 6, "opcode": "0x6e", "raw_hex": "6e1090380000", "ref": "Ljavax/crypto/KeyGenerator;->generateKey()Ljavax/crypto/SecretKey;"},
+            {"byte_offset": 142, "file_offset": "0x27b2ea", "width": 2, "opcode": "0x28", "raw_hex": "2803", "ref": null},
+            {"byte_offset": 144, "file_offset": "0x27b2ec", "width": 2, "opcode": "0xd", "raw_hex": "0d0a", "ref": null},
+            {"byte_offset": 146, "file_offset": "0x27b2ee", "width": 2, "opcode": "0x28", "raw_hex": "284c", "ref": null},
+            {"byte_offset": 148, "file_offset": "0x27b2f0", "width": 6, "opcode": "0x6e", "raw_hex": "6e309036a203", "ref": "Ljava/security/KeyStore;->getEntry(Ljava/lang/String;Ljava/security/KeyStore$ProtectionParameter;)Ljava/security/KeyStore$Entry;"},
+            {"byte_offset": 154, "file_offset": "0x27b2f6", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 156, "file_offset": "0x27b2f8", "width": 4, "opcode": "0x1f", "raw_hex": "1f003509", "ref": "Ljava/security/KeyStore$SecretKeyEntry;"},
+            {"byte_offset": 160, "file_offset": "0x27b2fc", "width": 6, "opcode": "0x6e", "raw_hex": "6e108e360000", "ref": "Ljava/security/KeyStore$SecretKeyEntry;->getSecretKey()Ljavax/crypto/SecretKey;"},
+            {"byte_offset": 166, "file_offset": "0x27b302", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 168, "file_offset": "0x27b304", "width": 4, "opcode": "0x22", "raw_hex": "2202bf09", "ref": "Ljavax/crypto/spec/IvParameterSpec;"},
+            {"byte_offset": 172, "file_offset": "0x27b308", "width": 6, "opcode": "0x71", "raw_hex": "71103e010900", "ref": "La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"},
+            {"byte_offset": 178, "file_offset": "0x27b30e", "width": 2, "opcode": "0xc", "raw_hex": "0c03", "ref": null},
+            {"byte_offset": 180, "file_offset": "0x27b310", "width": 6, "opcode": "0x71", "raw_hex": "7110c9370300", "ref": "Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"},
+            {"byte_offset": 186, "file_offset": "0x27b316", "width": 4, "opcode": "0x13", "raw_hex": "13041000", "ref": null},
+            {"byte_offset": 190, "file_offset": "0x27b31a", "width": 6, "opcode": "0x6e", "raw_hex": "6e3091356304", "ref": "Ljava/lang/String;->substring(II)Ljava/lang/String;"},
+            {"byte_offset": 196, "file_offset": "0x27b320", "width": 2, "opcode": "0xc", "raw_hex": "0c03", "ref": null},
+            {"byte_offset": 198, "file_offset": "0x27b322", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350300", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 204, "file_offset": "0x27b328", "width": 2, "opcode": "0xc", "raw_hex": "0c03", "ref": null},
+            {"byte_offset": 206, "file_offset": "0x27b32a", "width": 6, "opcode": "0x70", "raw_hex": "702099383200", "ref": "Ljavax/crypto/spec/IvParameterSpec;-><init>([B)V"},
+            {"byte_offset": 212, "file_offset": "0x27b330", "width": 4, "opcode": "0x1a", "raw_hex": "1a03a104", "ref": "AES/CBC/PKCS7Padding"},
+            {"byte_offset": 216, "file_offset": "0x27b334", "width": 6, "opcode": "0x71", "raw_hex": "71108c380300", "ref": "Ljavax/crypto/Cipher;->getInstance(Ljava/lang/String;)Ljavax/crypto/Cipher;"},
+            {"byte_offset": 222, "file_offset": "0x27b33a", "width": 2, "opcode": "0xc", "raw_hex": "0c03", "ref": null},
+            {"byte_offset": 224, "file_offset": "0x27b33c", "width": 6, "opcode": "0x6e", "raw_hex": "6e408e385320", "ref": "Ljavax/crypto/Cipher;->init(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V"},
+            {"byte_offset": 230, "file_offset": "0x27b342", "width": 4, "opcode": "0x13", "raw_hex": "13001a00", "ref": null},
+            {"byte_offset": 234, "file_offset": "0x27b346", "width": 4, "opcode": "0x34", "raw_hex": "34011300", "ref": null},
+            {"byte_offset": 238, "file_offset": "0x27b34a", "width": 6, "opcode": "0x71", "raw_hex": "7100e0000000", "ref": "La2/q;->i()Ljava/util/Base64$Encoder;"},
+            {"byte_offset": 244, "file_offset": "0x27b350", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 246, "file_offset": "0x27b352", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350a00", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 252, "file_offset": "0x27b358", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 254, "file_offset": "0x27b35a", "width": 6, "opcode": "0x6e", "raw_hex": "6e208b38a300", "ref": "Ljavax/crypto/Cipher;->doFinal([B)[B"},
+            {"byte_offset": 260, "file_offset": "0x27b360", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 262, "file_offset": "0x27b362", "width": 6, "opcode": "0x71", "raw_hex": "7120df00a000", "ref": "La2/q;->h(Ljava/util/Base64$Encoder;[B)Ljava/lang/String;"},
+            {"byte_offset": 268, "file_offset": "0x27b368", "width": 2, "opcode": "0xc", "raw_hex": "0c09", "ref": null},
+            {"byte_offset": 270, "file_offset": "0x27b36a", "width": 2, "opcode": "0x28", "raw_hex": "2815", "ref": null},
+            {"byte_offset": 272, "file_offset": "0x27b36c", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350a00", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 278, "file_offset": "0x27b372", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 280, "file_offset": "0x27b374", "width": 6, "opcode": "0x6e", "raw_hex": "6e208b38a300", "ref": "Ljavax/crypto/Cipher;->doFinal([B)[B"},
+            {"byte_offset": 286, "file_offset": "0x27b37a", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 288, "file_offset": "0x27b37c", "width": 6, "opcode": "0x71", "raw_hex": "7120d9086a00", "ref": "Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;"},
+            {"byte_offset": 294, "file_offset": "0x27b382", "width": 2, "opcode": "0xc", "raw_hex": "0c09", "ref": null},
+            {"byte_offset": 296, "file_offset": "0x27b384", "width": 2, "opcode": "0x28", "raw_hex": "2808", "ref": null},
+            {"byte_offset": 298, "file_offset": "0x27b386", "width": 6, "opcode": "0x6e", "raw_hex": "6e10e8350a00", "ref": "Ljava/lang/Throwable;->printStackTrace()V"},
+            {"byte_offset": 304, "file_offset": "0x27b38c", "width": 6, "opcode": "0x71", "raw_hex": "71103e010900", "ref": "La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"},
+            {"byte_offset": 310, "file_offset": "0x27b392", "width": 2, "opcode": "0xc", "raw_hex": "0c09", "ref": null},
+            {"byte_offset": 312, "file_offset": "0x27b394", "width": 2, "opcode": "0x11", "raw_hex": "1109", "ref": null},
+            {"byte_offset": 314, "file_offset": "0x27b396", "width": 2, "opcode": "0x0", "raw_hex": "0000", "ref": null},
+            {"byte_offset": 316, "file_offset": "0x27b398", "width": 8, "opcode": "0x0", "raw_hex": "0003260000000000", "ref": null}
+          ],
+          "after_instructions": [
+            {"byte_offset": 0, "file_offset": "0x27b25c", "width": 4, "opcode": "0x1a", "raw_hex": "1a004305", "ref": "AndroidKeyStore"},
+            {"byte_offset": 4, "file_offset": "0x27b260", "width": 4, "opcode": "0x60", "raw_hex": "60012901", "ref": "Landroid/os/Build$VERSION;->SDK_INT:I"},
+            {"byte_offset": 8, "file_offset": "0x27b264", "width": 4, "opcode": "0x13", "raw_hex": "13021700", "ref": null},
+            {"byte_offset": 12, "file_offset": "0x27b268", "width": 4, "opcode": "0x34", "raw_hex": "34219200", "ref": null},
+            {"byte_offset": 16, "file_offset": "0x27b26c", "width": 6, "opcode": "0x71", "raw_hex": "711091360000", "ref": "Ljava/security/KeyStore;->getInstance(Ljava/lang/String;)Ljava/security/KeyStore;"},
+            {"byte_offset": 22, "file_offset": "0x27b272", "width": 2, "opcode": "0xc", "raw_hex": "0c02", "ref": null},
+            {"byte_offset": 24, "file_offset": "0x27b274", "width": 2, "opcode": "0x12", "raw_hex": "1203", "ref": null},
+            {"byte_offset": 26, "file_offset": "0x27b276", "width": 6, "opcode": "0x6e", "raw_hex": "6e2092363200", "ref": "Ljava/security/KeyStore;->load(Ljava/security/KeyStore$LoadStoreParameter;)V"},
+            {"byte_offset": 32, "file_offset": "0x27b27c", "width": 6, "opcode": "0x6e", "raw_hex": "6e208f36a200", "ref": "Ljava/security/KeyStore;->containsAlias(Ljava/lang/String;)Z"},
+            {"byte_offset": 38, "file_offset": "0x27b282", "width": 2, "opcode": "0xa", "raw_hex": "0a04", "ref": null},
+            {"byte_offset": 40, "file_offset": "0x27b284", "width": 2, "opcode": "0x12", "raw_hex": "1215", "ref": null},
+            {"byte_offset": 42, "file_offset": "0x27b286", "width": 2, "opcode": "0x12", "raw_hex": "1206", "ref": null},
+            {"byte_offset": 44, "file_offset": "0x27b288", "width": 4, "opcode": "0x39", "raw_hex": "39043400", "ref": null},
+            {"byte_offset": 48, "file_offset": "0x27b28c", "width": 4, "opcode": "0x1a", "raw_hex": "1a04a004", "ref": "AES"},
+            {"byte_offset": 52, "file_offset": "0x27b290", "width": 6, "opcode": "0x71", "raw_hex": "712091380400", "ref": "Ljavax/crypto/KeyGenerator;->getInstance(Ljava/lang/String;Ljava/lang/String;)Ljavax/crypto/KeyGenerator;"},
+            {"byte_offset": 58, "file_offset": "0x27b296", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 60, "file_offset": "0x27b298", "width": 6, "opcode": "0x71", "raw_hex": "71009b000000", "ref": "La2/h0;->n()V"},
+            {"byte_offset": 66, "file_offset": "0x27b29e", "width": 6, "opcode": "0x71", "raw_hex": "711094000a00", "ref": "La2/h0;->g(Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 72, "file_offset": "0x27b2a4", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 74, "file_offset": "0x27b2a6", "width": 4, "opcode": "0x23", "raw_hex": "2357830e", "ref": "[Ljava/lang/String;"},
+            {"byte_offset": 78, "file_offset": "0x27b2aa", "width": 4, "opcode": "0x1a", "raw_hex": "1a083707", "ref": "CBC"},
+            {"byte_offset": 82, "file_offset": "0x27b2ae", "width": 4, "opcode": "0x4d", "raw_hex": "4d080706", "ref": null},
+            {"byte_offset": 86, "file_offset": "0x27b2b2", "width": 6, "opcode": "0x71", "raw_hex": "712093007400", "ref": "La2/h0;->f(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 92, "file_offset": "0x27b2b8", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 94, "file_offset": "0x27b2ba", "width": 4, "opcode": "0x23", "raw_hex": "2357830e", "ref": "[Ljava/lang/String;"},
+            {"byte_offset": 98, "file_offset": "0x27b2be", "width": 4, "opcode": "0x1a", "raw_hex": "1a08431d", "ref": "PKCS7Padding"},
+            {"byte_offset": 102, "file_offset": "0x27b2c2", "width": 4, "opcode": "0x4d", "raw_hex": "4d080706", "ref": null},
+            {"byte_offset": 106, "file_offset": "0x27b2c6", "width": 6, "opcode": "0x71", "raw_hex": "7120a6007400", "ref": "La2/h0;->y(Landroid/security/keystore/KeyGenParameterSpec$Builder;[Ljava/lang/String;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 112, "file_offset": "0x27b2cc", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 114, "file_offset": "0x27b2ce", "width": 6, "opcode": "0x71", "raw_hex": "711092000400", "ref": "La2/h0;->e(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec$Builder;"},
+            {"byte_offset": 120, "file_offset": "0x27b2d4", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 122, "file_offset": "0x27b2d6", "width": 6, "opcode": "0x71", "raw_hex": "711095000400", "ref": "La2/h0;->h(Landroid/security/keystore/KeyGenParameterSpec$Builder;)Landroid/security/keystore/KeyGenParameterSpec;"},
+            {"byte_offset": 128, "file_offset": "0x27b2dc", "width": 2, "opcode": "0xc", "raw_hex": "0c04", "ref": null},
+            {"byte_offset": 130, "file_offset": "0x27b2de", "width": 6, "opcode": "0x6e", "raw_hex": "6e2092384000", "ref": "Ljavax/crypto/KeyGenerator;->init(Ljava/security/spec/AlgorithmParameterSpec;)V"},
+            {"byte_offset": 136, "file_offset": "0x27b2e4", "width": 6, "opcode": "0x6e", "raw_hex": "6e1090380000", "ref": "Ljavax/crypto/KeyGenerator;->generateKey()Ljavax/crypto/SecretKey;"},
+            {"byte_offset": 142, "file_offset": "0x27b2ea", "width": 2, "opcode": "0x28", "raw_hex": "2803", "ref": null},
+            {"byte_offset": 144, "file_offset": "0x27b2ec", "width": 2, "opcode": "0xd", "raw_hex": "0d0a", "ref": null},
+            {"byte_offset": 146, "file_offset": "0x27b2ee", "width": 2, "opcode": "0x28", "raw_hex": "284c", "ref": null},
+            {"byte_offset": 148, "file_offset": "0x27b2f0", "width": 6, "opcode": "0x6e", "raw_hex": "6e309036a203", "ref": "Ljava/security/KeyStore;->getEntry(Ljava/lang/String;Ljava/security/KeyStore$ProtectionParameter;)Ljava/security/KeyStore$Entry;"},
+            {"byte_offset": 154, "file_offset": "0x27b2f6", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 156, "file_offset": "0x27b2f8", "width": 4, "opcode": "0x1f", "raw_hex": "1f003509", "ref": "Ljava/security/KeyStore$SecretKeyEntry;"},
+            {"byte_offset": 160, "file_offset": "0x27b2fc", "width": 6, "opcode": "0x6e", "raw_hex": "6e108e360000", "ref": "Ljava/security/KeyStore$SecretKeyEntry;->getSecretKey()Ljavax/crypto/SecretKey;"},
+            {"byte_offset": 166, "file_offset": "0x27b302", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 168, "file_offset": "0x27b304", "width": 4, "opcode": "0x22", "raw_hex": "2202bf09", "ref": "Ljavax/crypto/spec/IvParameterSpec;"},
+            {"byte_offset": 172, "file_offset": "0x27b308", "width": 6, "opcode": "0x71", "raw_hex": "71103e010900", "ref": "La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"},
+            {"byte_offset": 178, "file_offset": "0x27b30e", "width": 2, "opcode": "0xc", "raw_hex": "0c03", "ref": null},
+            {"byte_offset": 180, "file_offset": "0x27b310", "width": 6, "opcode": "0x71", "raw_hex": "7110c9370300", "ref": "Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"},
+            {"byte_offset": 186, "file_offset": "0x27b316", "width": 4, "opcode": "0x13", "raw_hex": "13041000", "ref": null},
+            {"byte_offset": 190, "file_offset": "0x27b31a", "width": 6, "opcode": "0x6e", "raw_hex": "6e3091356304", "ref": "Ljava/lang/String;->substring(II)Ljava/lang/String;"},
+            {"byte_offset": 196, "file_offset": "0x27b320", "width": 2, "opcode": "0xc", "raw_hex": "0c03", "ref": null},
+            {"byte_offset": 198, "file_offset": "0x27b322", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350300", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 204, "file_offset": "0x27b328", "width": 2, "opcode": "0xc", "raw_hex": "0c03", "ref": null},
+            {"byte_offset": 206, "file_offset": "0x27b32a", "width": 6, "opcode": "0x70", "raw_hex": "702099383200", "ref": "Ljavax/crypto/spec/IvParameterSpec;-><init>([B)V"},
+            {"byte_offset": 212, "file_offset": "0x27b330", "width": 4, "opcode": "0x1a", "raw_hex": "1a03a104", "ref": "AES/CBC/PKCS7Padding"},
+            {"byte_offset": 216, "file_offset": "0x27b334", "width": 6, "opcode": "0x71", "raw_hex": "71108c380300", "ref": "Ljavax/crypto/Cipher;->getInstance(Ljava/lang/String;)Ljavax/crypto/Cipher;"},
+            {"byte_offset": 222, "file_offset": "0x27b33a", "width": 2, "opcode": "0xc", "raw_hex": "0c03", "ref": null},
+            {"byte_offset": 224, "file_offset": "0x27b33c", "width": 6, "opcode": "0x6e", "raw_hex": "6e408e385320", "ref": "Ljavax/crypto/Cipher;->init(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V"},
+            {"byte_offset": 230, "file_offset": "0x27b342", "width": 4, "opcode": "0x13", "raw_hex": "13001a00", "ref": null},
+            {"byte_offset": 234, "file_offset": "0x27b346", "width": 4, "opcode": "0x34", "raw_hex": "34011300", "ref": null},
+            {"byte_offset": 238, "file_offset": "0x27b34a", "width": 6, "opcode": "0x71", "raw_hex": "7100e0000000", "ref": "La2/q;->i()Ljava/util/Base64$Encoder;"},
+            {"byte_offset": 244, "file_offset": "0x27b350", "width": 2, "opcode": "0xc", "raw_hex": "0c00", "ref": null},
+            {"byte_offset": 246, "file_offset": "0x27b352", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350a00", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 252, "file_offset": "0x27b358", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 254, "file_offset": "0x27b35a", "width": 6, "opcode": "0x6e", "raw_hex": "6e208b38a300", "ref": "Ljavax/crypto/Cipher;->doFinal([B)[B"},
+            {"byte_offset": 260, "file_offset": "0x27b360", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 262, "file_offset": "0x27b362", "width": 6, "opcode": "0x71", "raw_hex": "7120df00a000", "ref": "La2/q;->h(Ljava/util/Base64$Encoder;[B)Ljava/lang/String;"},
+            {"byte_offset": 268, "file_offset": "0x27b368", "width": 2, "opcode": "0xc", "raw_hex": "0c09", "ref": null},
+            {"byte_offset": 270, "file_offset": "0x27b36a", "width": 2, "opcode": "0x28", "raw_hex": "2815", "ref": null},
+            {"byte_offset": 272, "file_offset": "0x27b36c", "width": 6, "opcode": "0x6e", "raw_hex": "6e107a350a00", "ref": "Ljava/lang/String;->getBytes()[B"},
+            {"byte_offset": 278, "file_offset": "0x27b372", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 280, "file_offset": "0x27b374", "width": 6, "opcode": "0x6e", "raw_hex": "6e208b38a300", "ref": "Ljavax/crypto/Cipher;->doFinal([B)[B"},
+            {"byte_offset": 286, "file_offset": "0x27b37a", "width": 2, "opcode": "0xc", "raw_hex": "0c0a", "ref": null},
+            {"byte_offset": 288, "file_offset": "0x27b37c", "width": 6, "opcode": "0x71", "raw_hex": "7120d9086a00", "ref": "Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;"},
+            {"byte_offset": 294, "file_offset": "0x27b382", "width": 2, "opcode": "0xc", "raw_hex": "0c09", "ref": null},
+            {"byte_offset": 296, "file_offset": "0x27b384", "width": 2, "opcode": "0x28", "raw_hex": "2808", "ref": null},
+            {"byte_offset": 298, "file_offset": "0x27b386", "width": 6, "opcode": "0x6e", "raw_hex": "6e10e8350a00", "ref": "Ljava/lang/Throwable;->printStackTrace()V"},
+            {"byte_offset": 304, "file_offset": "0x27b38c", "width": 6, "opcode": "0x71", "raw_hex": "71103e010900", "ref": "La5/b;->b(Landroid/content/Context;)Ljava/lang/String;"},
+            {"byte_offset": 310, "file_offset": "0x27b392", "width": 2, "opcode": "0xc", "raw_hex": "0c09", "ref": null},
+            {"byte_offset": 312, "file_offset": "0x27b394", "width": 2, "opcode": "0x11", "raw_hex": "1109", "ref": null},
+            {"byte_offset": 314, "file_offset": "0x27b396", "width": 2, "opcode": "0x0", "raw_hex": "0000", "ref": null},
+            {"byte_offset": 316, "file_offset": "0x27b398", "width": 8, "opcode": "0x0", "raw_hex": "0003260000000000", "ref": null}
+          ],
+          "incoming_callers": [
+            {"dex": "classes.dex", "method": "Lcom/skhy/common/notice/c;->l(Ljava/lang/String;Ljava/lang/Object;Lv4/a;)V", "file_offset": "0x318d26", "byte_offset": 54},
+            {"dex": "classes.dex", "method": "Lm5/b;->onResume()V", "file_offset": "0x3a5068", "byte_offset": 1584},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/LoginActivity;->O(Ljava/lang/String;)V", "file_offset": "0x31e8e0", "byte_offset": 12},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/LoginActivity;->onResume()V", "file_offset": "0x31faf8", "byte_offset": 120},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/LoginActivity;->onResume()V", "file_offset": "0x31fccc", "byte_offset": 588},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/p;->a()V", "file_offset": "0x321078", "byte_offset": 32},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/t;->i(Ljava/lang/Object;Ljava/lang/String;)V", "file_offset": "0x32216a", "byte_offset": 1314},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/t;->i(Ljava/lang/Object;Ljava/lang/String;)V", "file_offset": "0x32217a", "byte_offset": 1330},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/t;->i(Ljava/lang/Object;Ljava/lang/String;)V", "file_offset": "0x32221c", "byte_offset": 1492},
+            {"dex": "classes.dex", "method": "Ls4/c;->f(Ljava/lang/String;)V", "file_offset": "0x3d8c74", "byte_offset": 24}
+          ],
+          "after_incoming_callers": [
+            {"dex": "classes.dex", "method": "Lcom/skhy/common/notice/c;->l(Ljava/lang/String;Ljava/lang/Object;Lv4/a;)V", "file_offset": "0x318d26", "byte_offset": 54},
+            {"dex": "classes.dex", "method": "Lm5/b;->onResume()V", "file_offset": "0x3a5068", "byte_offset": 1584},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/LoginActivity;->O(Ljava/lang/String;)V", "file_offset": "0x31e8e0", "byte_offset": 12},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/LoginActivity;->onResume()V", "file_offset": "0x31faf8", "byte_offset": 120},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/LoginActivity;->onResume()V", "file_offset": "0x31fccc", "byte_offset": 588},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/p;->a()V", "file_offset": "0x321078", "byte_offset": 32},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/t;->i(Ljava/lang/Object;Ljava/lang/String;)V", "file_offset": "0x32216a", "byte_offset": 1314},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/t;->i(Ljava/lang/Object;Ljava/lang/String;)V", "file_offset": "0x32217a", "byte_offset": 1330},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/activity/t;->i(Ljava/lang/Object;Ljava/lang/String;)V", "file_offset": "0x32221c", "byte_offset": 1492},
+            {"dex": "classes.dex", "method": "Ls4/c;->f(Ljava/lang/String;)V", "file_offset": "0x3d8c74", "byte_offset": 24}
+          ]
         },
         "Lt3/a;->z(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;": {
           "code_item": "0x3e7328",
@@ -2001,11 +625,6 @@
             "tries": 3,
             "insns_size_cu": 138
           },
-          "tries": [
-            {"start_cu": "u0010", "count_cu": 101, "end_cu": "u0075", "handler_off": 1},
-            {"start_cu": "u0075", "count_cu": 4, "end_cu": "u0079", "handler_off": 5},
-            {"start_cu": "u007b", "count_cu": 3, "end_cu": "u007e", "handler_off": 1}
-          ],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x3e7338", "width": 6, "opcode": "0x6e", "raw_hex": "6e1073030400", "ref": "Landroid/content/Context;->getApplicationContext()Landroid/content/Context;"},
@@ -2187,6 +806,12 @@
               ],
               "catch_all_cu": null
             }
+          ],
+          "after_incoming_callers": [
+            {"dex": "classes.dex", "method": "Lcom/skhy/common/conn/c;->d(Ljava/lang/String;Lcom/skhy/common/conn/d;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;", "file_offset": "0x317074", "byte_offset": 356},
+            {"dex": "classes.dex", "method": "Lcom/skhy/common/conn/e;->c(Landroid/content/Context;)V", "file_offset": "0x3179bc", "byte_offset": 700},
+            {"dex": "classes.dex", "method": "Lcom/skhy/common/conn/e;->d(Landroid/content/Context;Ljava/lang/String;)V", "file_offset": "0x317c84", "byte_offset": 616},
+            {"dex": "classes.dex", "method": "Lg5/a;->c(Ljava/lang/String;)Ljava/lang/String;", "file_offset": "0x360666", "byte_offset": 570}
           ]
         },
         "Lcom/liapp/x;-><clinit>()V": {
@@ -2200,7 +825,6 @@
             "tries": 0,
             "insns_size_cu": 230
           },
-          "tries": [],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x312090", "width": 2, "opcode": "0x12", "raw_hex": "1210", "ref": null},
@@ -2436,7 +1060,8 @@
             {"byte_offset": 452, "file_offset": "0x312254", "width": 8, "opcode": "0x0", "raw_hex": "0003b60000000000", "ref": null}
           ],
           "incoming_callers": [],
-          "try_blocks": []
+          "try_blocks": [],
+          "after_incoming_callers": []
         },
         "Lcom/liapp/x;->֭ݯٳگܫ(I)V": {
           "code_item": "0x312cdc",
@@ -2449,9 +1074,6 @@
             "tries": 1,
             "insns_size_cu": 116
           },
-          "tries": [
-            {"start_cu": "u0000", "count_cu": 33, "end_cu": "u0021", "handler_off": 1}
-          ],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x312cec", "width": 4, "opcode": "0x22", "raw_hex": "2200b300", "ref": "Landroid/content/Intent;"},
@@ -2601,6 +1223,11 @@
           ],
           "try_blocks": [
             {"start_cu": 0, "count_cu": 33, "handlers": [], "catch_all_cu": 34}
+          ],
+          "after_incoming_callers": [
+            {"dex": "classes.dex", "method": "Lcom/liapp/x;->۴ٯܴݬߨ()V", "file_offset": "0x31379a", "byte_offset": 74},
+            {"dex": "classes.dex", "method": "Lcom/liapp/x;->۴ٯܴݬߨ(Landroid/content/Context;)V", "file_offset": "0x313eb8", "byte_offset": 1736},
+            {"dex": "classes.dex", "method": "Lcom/liapp/x;->۴ٯܴݬߨ(Landroid/content/Context;)V", "file_offset": "0x3140aa", "byte_offset": 2234}
           ]
         },
         "Lcom/skhy/common/guard/GuardHooks;->guardsReadyHard()Z": {
@@ -2614,7 +1241,6 @@
             "tries": 0,
             "insns_size_cu": 32
           },
-          "tries": [],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x318068", "width": 6, "opcode": "0x71", "raw_hex": "71006a260000", "ref": "Lcom/skhy/common/guard/GuardState;->allLoaded()Z"},
@@ -2655,7 +1281,8 @@
             {"byte_offset": 56, "file_offset": "0x3180a0", "width": 8, "opcode": "0x0", "raw_hex": "0003b00000000000", "ref": null}
           ],
           "incoming_callers": [],
-          "try_blocks": []
+          "try_blocks": [],
+          "after_incoming_callers": []
         },
         "Lcom/skhy/common/guard/GuardHooks;->guardsReadyPlus()Z": {
           "code_item": "0x3180a8",
@@ -2668,9 +1295,6 @@
             "tries": 1,
             "insns_size_cu": 94
           },
-          "tries": [
-            {"start_cu": "u002b", "count_cu": 10, "end_cu": "u0035", "handler_off": 1}
-          ],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x3180b8", "width": 6, "opcode": "0x71", "raw_hex": "71005e260000", "ref": "Lcom/skhy/common/guard/GuardHooks;->nativeGuardsReady()Z"},
@@ -2781,7 +1405,8 @@
           "incoming_callers": [],
           "try_blocks": [
             {"start_cu": 43, "count_cu": 10, "handlers": [], "catch_all_cu": 56}
-          ]
+          ],
+          "after_incoming_callers": []
         },
         "Lcom/skhy/common/guard/GuardHooks;->onResumeCanary(Landroid/app/Activity;)V": {
           "code_item": "0x3181a8",
@@ -2794,9 +1419,6 @@
             "tries": 1,
             "insns_size_cu": 18
           },
-          "tries": [
-            {"start_cu": "u0005", "count_cu": 7, "end_cu": "u000c", "handler_off": 1}
-          ],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x3181b8", "width": 4, "opcode": "0x62", "raw_hex": "6200c513", "ref": "Lcom/skhy/common/guard/GuardHooks;->RESUME_SEQ:Ljava/util/concurrent/atomic/AtomicLong;"},
@@ -2822,7 +1444,8 @@
           "incoming_callers": [],
           "try_blocks": [
             {"start_cu": 5, "count_cu": 7, "handlers": [], "catch_all_cu": 12}
-          ]
+          ],
+          "after_incoming_callers": []
         },
         "Lcom/skhy/common/guard/GuardLoader;->a()V": {
           "code_item": "0x318208",
@@ -2835,7 +1458,6 @@
             "tries": 0,
             "insns_size_cu": 8
           },
-          "tries": [],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x318218", "width": 6, "opcode": "0x71", "raw_hex": "710066260000", "ref": "Lcom/skhy/common/guard/GuardLoader;->خٱڱجڨ()V"},
@@ -2852,7 +1474,10 @@
           "incoming_callers": [
             {"dex": "classes.dex", "method": "Lw4/a;->run()V", "file_offset": "0x3fe26e", "byte_offset": 18}
           ],
-          "try_blocks": []
+          "try_blocks": [],
+          "after_incoming_callers": [
+            {"dex": "classes.dex", "method": "Lw4/a;->run()V", "file_offset": "0x3fe26e", "byte_offset": 18}
+          ]
         },
         "Lcom/skhy/common/util/LiappAlert;->OnEvent(Landroid/content/Context;ILjava/lang/String;)I": {
           "code_item": "0x319140",
@@ -2865,7 +1490,6 @@
             "tries": 0,
             "insns_size_cu": 14
           },
-          "tries": [],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x319150", "width": 4, "opcode": "0x69", "raw_hex": "6900ee13", "ref": "Lcom/skhy/common/util/LiappAlert;->g_CurrentContext:Landroid/content/Context;"},
@@ -2887,7 +1511,8 @@
             {"byte_offset": 20, "file_offset": "0x319164", "width": 8, "opcode": "0x0", "raw_hex": "0003750000000000", "ref": null}
           ],
           "incoming_callers": [],
-          "try_blocks": []
+          "try_blocks": [],
+          "after_incoming_callers": []
         },
         "Lcom/skhy/common/util/LiappAlert;->forceExit(I)V": {
           "code_item": "0x319744",
@@ -2900,10 +1525,6 @@
             "tries": 2,
             "insns_size_cu": 80
           },
-          "tries": [
-            {"start_cu": "u0022", "count_cu": 25, "end_cu": "u003b", "handler_off": 1},
-            {"start_cu": "u003f", "count_cu": 7, "end_cu": "u0046", "handler_off": 3}
-          ],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x319754", "width": 4, "opcode": "0x22", "raw_hex": "2200f208", "ref": "Ljava/lang/StringBuilder;"},
@@ -2985,6 +1606,12 @@
           "try_blocks": [
             {"start_cu": 34, "count_cu": 25, "handlers": [], "catch_all_cu": 59},
             {"start_cu": 63, "count_cu": 7, "handlers": [], "catch_all_cu": 70}
+          ],
+          "after_incoming_callers": [
+            {"dex": "classes.dex", "method": "La5/d;->onClick(Landroid/content/DialogInterface;I)V", "file_offset": "0x27b3e2", "byte_offset": 2},
+            {"dex": "classes.dex", "method": "Lcom/skhy/common/util/LiappAlert;->OnEvent(Landroid/content/Context;ILjava/lang/String;)I", "file_offset": "0x31915a", "byte_offset": 10},
+            {"dex": "classes.dex", "method": "Lcom/skhy/common/util/LiappAlert;->֬٭۱ݳ߯()V", "file_offset": "0x31a9f8", "byte_offset": 36},
+            {"dex": "classes.dex", "method": "Lcom/skhy/common/util/LiappAlert;->ڮٲ׳۱ݭ(Landroid/content/DialogInterface;)V", "file_offset": "0x31aa66", "byte_offset": 2}
           ]
         },
         "Lcom/skhy/common/util/Y;->decide(Landroid/content/Context;Ljava/lang/String;I)Z": {
@@ -2998,7 +1625,6 @@
             "tries": 0,
             "insns_size_cu": 58
           },
-          "tries": [],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x31c0fc", "width": 6, "opcode": "0x71", "raw_hex": "7110b6260700", "ref": "Lcom/skhy/common/util/Y;->ݯܬݳݳ߯(Landroid/content/Context;)I"},
@@ -3073,7 +1699,8 @@
             {"byte_offset": 108, "file_offset": "0x31c168", "width": 8, "opcode": "0x0", "raw_hex": "0003f90000000000", "ref": null}
           ],
           "incoming_callers": [],
-          "try_blocks": []
+          "try_blocks": [],
+          "after_incoming_callers": []
         },
         "Lcom/skhy/common/util/Y;->hc(Landroid/app/Activity;)V": {
           "code_item": "0x31c170",
@@ -3086,9 +1713,6 @@
             "tries": 1,
             "insns_size_cu": 82
           },
-          "tries": [
-            {"start_cu": "u0000", "count_cu": 70, "end_cu": "u0046", "handler_off": 1}
-          ],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x31c180", "width": 6, "opcode": "0x6e", "raw_hex": "6e1085030600", "ref": "Landroid/content/Context;->getPackageCodePath()Ljava/lang/String;"},
@@ -3192,7 +1816,8 @@
               ],
               "catch_all_cu": null
             }
-          ]
+          ],
+          "after_incoming_callers": []
         },
         "Lcom/skhy/common/util/Y;->vs(Landroid/content/Context;Ljava/lang/String;)Z": {
           "code_item": "0x31c32c",
@@ -3205,9 +1830,6 @@
             "tries": 1,
             "insns_size_cu": 142
           },
-          "tries": [
-            {"start_cu": "u0008", "count_cu": 115, "end_cu": "u007b", "handler_off": 1}
-          ],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x31c33c", "width": 6, "opcode": "0x14", "raw_hex": "14006456a4e3", "ref": null},
@@ -3376,7 +1998,8 @@
               ],
               "catch_all_cu": null
             }
-          ]
+          ],
+          "after_incoming_callers": []
         },
         "Lm5/b;->onResume()V": {
           "code_item": "0x3a4a28",
@@ -3389,25 +2012,6 @@
             "tries": 17,
             "insns_size_cu": 814
           },
-          "tries": [
-            {"start_cu": "u000f", "count_cu": 47, "end_cu": "u003e", "handler_off": 1},
-            {"start_cu": "u0067", "count_cu": 4, "end_cu": "u006b", "handler_off": 5},
-            {"start_cu": "u009b", "count_cu": 20, "end_cu": "u00af", "handler_off": 10},
-            {"start_cu": "u00cc", "count_cu": 54, "end_cu": "u0102", "handler_off": 17},
-            {"start_cu": "u010a", "count_cu": 30, "end_cu": "u0128", "handler_off": 24},
-            {"start_cu": "u012c", "count_cu": 12, "end_cu": "u0138", "handler_off": 29},
-            {"start_cu": "u0140", "count_cu": 27, "end_cu": "u015b", "handler_off": 34},
-            {"start_cu": "u015b", "count_cu": 28, "end_cu": "u0177", "handler_off": 39},
-            {"start_cu": "u0179", "count_cu": 11, "end_cu": "u0184", "handler_off": 34},
-            {"start_cu": "u0185", "count_cu": 3, "end_cu": "u0188", "handler_off": 42},
-            {"start_cu": "u018a", "count_cu": 4, "end_cu": "u018e", "handler_off": 34},
-            {"start_cu": "u01a1", "count_cu": 36, "end_cu": "u01c5", "handler_off": 45},
-            {"start_cu": "u0235", "count_cu": 17, "end_cu": "u0246", "handler_off": 52},
-            {"start_cu": "u027b", "count_cu": 51, "end_cu": "u02ae", "handler_off": 57},
-            {"start_cu": "u02ee", "count_cu": 3, "end_cu": "u02f1", "handler_off": 66},
-            {"start_cu": "u02f3", "count_cu": 44, "end_cu": "u031f", "handler_off": 69},
-            {"start_cu": "u0327", "count_cu": 1, "end_cu": "u0328", "handler_off": 66}
-          ],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x3a4a38", "width": 6, "opcode": "0x6f", "raw_hex": "6f109f150f00", "ref": "Landroidx/fragment/app/w;->onResume()V"},
@@ -4353,6 +2957,15 @@
               "catch_all_cu": null
             },
             {"start_cu": 807, "count_cu": 1, "handlers": [], "catch_all_cu": 806}
+          ],
+          "after_incoming_callers": [
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/login/easylogin/EasyLoginSetupActivity;->onResume()V", "file_offset": "0x322bca", "byte_offset": 10},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/main/MainActivity;->onResume()V", "file_offset": "0x325ef2", "byte_offset": 10},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/setting/activity/SettingQNADetailActivity;->onResume()V", "file_offset": "0x3270c6", "byte_offset": 10},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/setting/activity/SettingQNAWriteActivity;->onResume()V", "file_offset": "0x327392", "byte_offset": 10},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/store/activity/AppDetailActivity;->onResume()V", "file_offset": "0x331d0a", "byte_offset": 10},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/store/activity/AppDetailQNAWriteActivity;->onResume()V", "file_offset": "0x33205a", "byte_offset": 10},
+            {"dex": "classes.dex", "method": "Lcom/skhy/store/store/activity/SearchAppActivity;->onResume()V", "file_offset": "0x333496", "byte_offset": 10}
           ]
         },
         "Lcom/skhy/store/login/activity/LoginActivity;->onCreate(Landroid/os/Bundle;)V": {
@@ -4366,10 +2979,6 @@
             "tries": 2,
             "insns_size_cu": 410
           },
-          "tries": [
-            {"start_cu": "u002f", "count_cu": 23, "end_cu": "u0046", "handler_off": 1},
-            {"start_cu": "u0090", "count_cu": 8, "end_cu": "u0098", "handler_off": 5}
-          ],
           "has_patch": true,
           "before_instructions": [
             {"byte_offset": 0, "file_offset": "0x31f5f8", "width": 4, "opcode": "0x8", "raw_hex": "08000600", "ref": null},
@@ -4763,7 +3372,8 @@
               ],
               "catch_all_cu": null
             }
-          ]
+          ],
+          "after_incoming_callers": []
         }
       }
     }

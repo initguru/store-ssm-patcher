@@ -157,4 +157,36 @@ class StoreContract(unittest.TestCase):
    with self.assertRaises(AssertionError):
     store.verify(APK, tampered)
 
+ def test_analysis_and_rea_evidence_completeness(self):
+  import json
+  root = ROOT / 'store' / 'analysis'
+  p1 = json.loads((root / 'store_disassembly_and_patches.json').read_text())
+  p2 = json.loads((root / 'store_certificate_and_universal_audit.json').read_text())
+  methods = p1['dex_analysis']['classes.dex']['methods']
+  self.assertEqual(len(methods), 18)
+  for sig, m in methods.items():
+   self.assertIn('try_blocks', m, sig)
+   self.assertIn('before_instructions', m, sig)
+   self.assertIn('after_instructions', m, sig)
+   self.assertNotIn('tries', m, sig)
+  sec = p2['security_critical_methods']
+  self.assertEqual(len(sec), 17)
+  for sig, m in sec.items():
+   self.assertIn('try_blocks', m, sig)
+   self.assertIn('before_instructions', m, sig)
+   self.assertIn('after_instructions', m, sig)
+   self.assertNotIn('before', m, sig)
+   self.assertNotIn('after', m, sig)
+   self.assertNotIn('tries', m, sig)
+  rea = json.loads((ROOT / 'store' / 'rea' / 'rea_store_evidence.json').read_text())
+  apk_sha = rea['canonical_artifacts']['patched_apk_sha256']
+  self.assertEqual(rea['patched_apk_signature_inspection']['summary']['artifact']['sha256'], apk_sha)
+  self.assertEqual(rea['rea_apk_signature_inspection']['summary']['artifact']['sha256'], apk_sha)
+  self.assertIn(apk_sha, {a['sha256'] for a in rea['artifacts']})
+  rec_ids = {r['evidence_id'] for r in rea['records']}
+  self.assertIn(rea['patched_apk_signature_inspection']['evidence_id'], rec_ids)
+  self.assertIn(rea['patched_apk_signature_inspection']['parent_evidence_id'], rec_ids)
+  for d in rea['android14_dex2oat64_verification']:
+   self.assertEqual(d['source_patched_apk_sha256'], apk_sha)
+
 if __name__ == '__main__': unittest.main()

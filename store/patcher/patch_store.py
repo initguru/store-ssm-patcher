@@ -2,6 +2,7 @@
 """Fail-closed static Store QA rebuild using shared verification primitives."""
 import argparse
 import hashlib
+import os
 import re
 import struct
 import sys
@@ -187,7 +188,9 @@ def _is_sig_entry(name):
 def verify(src,out,cert_sha1=None):
  cert_sha1 = cert_sha1 or extract_apk_cert_sha1(src)
  with zipfile.ZipFile(src) as a,zipfile.ZipFile(out) as z:
-  originals={i.filename:i for i in a.infolist() if not _is_sig_entry(i.filename)}
+  src_infos=a.infolist()
+  require(len({i.filename for i in src_infos})==len(src_infos), 'duplicate source entries')
+  originals={i.filename:i for i in src_infos if not _is_sig_entry(i.filename)}
   actual={i.filename:i for i in z.infolist()}
   require(len(actual)==len(z.infolist()), 'duplicate output entries')
   require(originals.keys()<=actual.keys(), 'missing original entries')
@@ -226,53 +229,69 @@ def regenerate_analysis(source, output):
  root=Path(__file__).resolve().parents[1]/'analysis'
  path=root/'store_disassembly_and_patches.json'
  audit_path=root/'store_certificate_and_universal_audit.json'
+ require(path.is_file() and audit_path.is_file(), 'missing required Store analysis JSON files')
  evidence=json.loads(path.read_text())
+ audit_doc=json.loads(audit_path.read_text())
+ sec_methods=audit_doc.get('security_critical_methods', {})
+ require(isinstance(sec_methods, dict) and bool(sec_methods), 'empty security_critical_methods in Store audit JSON')
  cert_sha1=extract_apk_cert_sha1(source)
- before={};after={};incoming={}
+ before={};after={};incoming={};after_incoming={}
  with zipfile.ZipFile(source) as src, zipfile.ZipFile(output) as dst:
   for name in src.namelist():
    if not (name.startswith('classes') and name.endswith('.dex')):continue
    before[name]=DexFile(src.read(name));after[name]=DexFile(dst.read(name))
-   for m in before[name].methods:
-    if not m.code_off:continue
-    before[name].decode_method(m)
-    for relative,off,_,op,_,ref in m.insns:
-     if op in (*range(0x6e,0x73),*range(0x74,0x79)):
-      incoming.setdefault(ref,[]).append(dict(dex=name,method=m.signature,file_offset=hex(off),byte_offset=relative))
+   for dex_obj, edges in ((before[name], incoming), (after[name], after_incoming)):
+    for m in dex_obj.methods:
+     if not m.code_off:continue
+     dex_obj.decode_method(m)
+     for relative,off,_,op,_,ref in m.insns:
+      if op in (*range(0x6e,0x73),*range(0x74,0x79)):
+       edges.setdefault(ref,[]).append(dict(dex=name,method=m.signature,file_offset=hex(off),byte_offset=relative))
  def instructions(m):
   return [dict(byte_offset=r,file_offset=hex(o),width=w,opcode=hex(op),raw_hex=raw.hex(),ref=ref) for r,o,w,op,raw,ref in m.insns]
  require('classes.dex' in before and 'classes.dex' in after, 'missing classes.dex')
  dex=before['classes.dex'];patched=after['classes.dex'];patches=plan(dex.data, cert_sha1)
  methods=evidence['dex_analysis']['classes.dex']['methods']
+ target_sigs = set(methods.keys())
  for m in dex.methods:
-  if not any(m.insns_off<=o<m.insns_off+2*m.insns_size for o,_,_ in patches):continue
-  a=next((x for x in patched.methods if x.signature==m.signature), None)
-  require(a is not None and bool(a.code_off), f'missing patched method {m.signature}')
-  if a is None: raise AssertionError(m.signature)
+  if any(m.insns_off<=o<m.insns_off+2*m.insns_size for o,_,_ in patches):
+   target_sigs.add(m.signature)
+ for sig in sorted(target_sigs):
+  m=next((x for x in dex.methods if x.signature==sig), None)
+  a=next((x for x in patched.methods if x.signature==sig), None)
+  require(m is not None and bool(m.code_off) and a is not None and bool(a.code_off), f'missing Store method {sig}')
+  if m is None or a is None: raise AssertionError(sig)
   patched.decode_method(a)
-  record=methods.setdefault(m.signature,{})
+  record=methods.setdefault(sig,{})
   record.pop('instructions',None)
+  record.pop('tries',None)
   record.update(
    try_blocks=decode_tries(dex.data, m, dex),
    before_instructions=instructions(m),
    after_instructions=instructions(a),
-   incoming_callers=incoming.get(m.signature,[]))
+   incoming_callers=incoming.get(sig,[]),
+   after_incoming_callers=after_incoming.get(sig,[]))
  evidence['incoming_callers_coverage']='All explicit invoke sites across every source APK DEX; excludes reflection, native calls and runtime dispatch expansion'
  path.write_text(dump_analysis_json(evidence))
- if audit_path.exists():
-  audit_doc=json.loads(audit_path.read_text())
-  for sig, rec in audit_doc.get('certificate_and_integrity_methods', {}).items():
-   m=next((x for x in dex.methods if x.signature==sig), None)
-   a=next((x for x in patched.methods if x.signature==sig), None)
-   require(m is not None and a is not None, f'missing audit method {sig}')
-   if m is None or a is None: raise AssertionError(sig)
-   patched.decode_method(a)
-   rec.pop('before', None)
-   rec.pop('after', None)
-   rec['try_blocks']=decode_tries(dex.data, m, dex)
-   rec['before_instructions']=instructions(m)
-   rec['after_instructions']=instructions(a)
-  audit_path.write_text(dump_analysis_json(audit_doc))
+ for sig, rec in sec_methods.items():
+  m=next((x for x in dex.methods if x.signature==sig), None)
+  a=next((x for x in patched.methods if x.signature==sig), None)
+  require(m is not None and bool(m.code_off) and a is not None and bool(a.code_off), f'missing Store audit method {sig}')
+  if m is None or a is None: raise AssertionError(sig)
+  patched.decode_method(a)
+  method_patches=[dict(offset=hex(o),old=old,new=new) for o,old,new in patches if m.insns_off<=o<m.insns_off+2*m.insns_size]
+  rec.pop('before', None)
+  rec.pop('after', None)
+  rec.pop('tries', None)
+  rec['header']=dict(registers=m.registers_size,ins=m.ins_size,outs=m.outs_size,tries=m.tries_size,insns_size_cu=m.insns_size)
+  rec['try_blocks']=decode_tries(dex.data, m, dex)
+  rec['has_patch']=bool(method_patches)
+  rec['patch_tuples']=method_patches
+  rec['before_instructions']=instructions(m)
+  rec['after_instructions']=instructions(a)
+  rec['incoming_callers']=incoming.get(sig,[])
+  rec['after_incoming_callers']=after_incoming.get(sig,[])
+ audit_path.write_text(dump_analysis_json(audit_doc))
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('source');ap.add_argument('output')
@@ -294,19 +313,24 @@ def main():
   fix_dex(d);verify_dex_exact(original,d,p)
   replacements={'classes.dex':d}
   for name in native_plans():replacements[name]=patch_native(name,z.read(name))
- with tempfile.TemporaryDirectory(prefix='store-build-') as tmp:
-  signed=Path(tmp)/'signed.apk'
-  build_signed_apk(src,signed,replacements,keystore=args.keystore)
-  verify(src,signed,cert_sha1)
-  verification=run('jarsigner','-verify',signed)
-  require(b'jar verified.' in verification, 'jarsigner verification failed')
-  with open(signed,'rb') as fsrc, open(out,'xb') as fdst:
-   while True:
-    chunk=fsrc.read(1024*1024)
-    if not chunk:break
-    fdst.write(chunk)
- if args.regenerate_analysis:
-  regenerate_analysis(src, out)
+ out.parent.mkdir(parents=True, exist_ok=True)
+ stage_fd, stage_name = tempfile.mkstemp(prefix=f'.{out.name}.tmp-', dir=str(out.parent))
+ os.close(stage_fd)
+ stage_path = Path(stage_name)
+ try:
+  with tempfile.TemporaryDirectory(prefix='store-build-') as tmp:
+   signed=Path(tmp)/'signed.apk'
+   build_signed_apk(src,signed,replacements,keystore=args.keystore)
+   verify(src,signed,cert_sha1)
+   verification=run('jarsigner','-verify',signed)
+   require(b'jar verified.' in verification, 'jarsigner verification failed')
+   stage_path.write_bytes(signed.read_bytes())
+  if args.regenerate_analysis:
+   regenerate_analysis(src, stage_path)
+  os.link(stage_path, out)
+ finally:
+  if stage_path.exists():
+   stage_path.unlink()
  print('OUTPUT',out,'SHA256',hashlib.sha256(out.read_bytes()).hexdigest())
  print('Local signing verified; Android platform verifier and runtime not executed')
 

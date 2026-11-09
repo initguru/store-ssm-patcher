@@ -5,63 +5,83 @@
       "digest": {
         "sha256": "0cc941a338fa577d18add15e1d89e9c6e9971acded2f1722bff7e6b457dc79a1"
       },
-      "format": "apk"
+      "format": "apk",
+      "sha256": "0cc941a338fa577d18add15e1d89e9c6e9971acded2f1722bff7e6b457dc79a1"
     },
     {
       "architecture": null,
       "digest": {
         "sha256": "257a374d42eb07499a2d96e9540307d27f7a82b0b2348d5f9ededadfde825fae"
       },
-      "format": "apk"
+      "format": "apk",
+      "sha256": "257a374d42eb07499a2d96e9540307d27f7a82b0b2348d5f9ededadfde825fae"
     },
     {
       "architecture": null,
       "digest": {
         "sha256": "2b302fa4683ba7449bdf92ea6132d74cbd5f0dfcb1d82e17e29a1bd4cf38d7fa"
       },
-      "format": "apk"
+      "format": "apk",
+      "sha256": "2b302fa4683ba7449bdf92ea6132d74cbd5f0dfcb1d82e17e29a1bd4cf38d7fa"
     },
     {
       "architecture": null,
       "digest": {
         "sha256": "5978b6bc5d9e338e623d955e3c0b1a30c385e10fbbf3dfd04dfc5139486c7dc8"
       },
-      "format": "apk"
+      "format": "apk",
+      "sha256": "5978b6bc5d9e338e623d955e3c0b1a30c385e10fbbf3dfd04dfc5139486c7dc8"
     },
     {
       "architecture": null,
       "digest": {
         "sha256": "60611afad4707a177bddc2beb6feab5ea8c1b4e1e3435b92339990f861daa2e2"
       },
-      "format": "apk"
+      "format": "apk",
+      "sha256": "60611afad4707a177bddc2beb6feab5ea8c1b4e1e3435b92339990f861daa2e2"
     },
     {
       "architecture": null,
       "digest": {
         "sha256": "9395e77bdf9817de3847c27ed26a4f57a5ffa7d77185ad34dff30adc54138e2d"
       },
-      "format": "apk"
+      "format": "apk",
+      "sha256": "9395e77bdf9817de3847c27ed26a4f57a5ffa7d77185ad34dff30adc54138e2d"
     },
     {
       "architecture": null,
       "digest": {
         "sha256": "ccf77f145134a70c3ec6aff704e10c8e17f6dc543751812b6067ca24b32665b8"
       },
-      "format": "apk"
+      "format": "apk",
+      "sha256": "ccf77f145134a70c3ec6aff704e10c8e17f6dc543751812b6067ca24b32665b8"
     },
     {
       "architecture": null,
       "digest": {
         "sha256": "2385c5adfdefe8bce114e7f140a50fad4458894085714e12d74198fc87b30d6b"
       },
-      "format": "apk"
+      "format": "apk",
+      "sha256": "2385c5adfdefe8bce114e7f140a50fad4458894085714e12d74198fc87b30d6b"
     },
     {
       "architecture": null,
       "digest": {
         "sha256": "be8ee6ee331eb9fec4890ae5b57ff7753dcbaa5b1972debc9e728964b607780b"
       },
-      "format": "apk"
+      "format": "apk",
+      "sha256": "be8ee6ee331eb9fec4890ae5b57ff7753dcbaa5b1972debc9e728964b607780b"
+    },
+    {
+      "artifact_id": "art_4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a",
+      "name": "SSM_5.5.14.2624_patched.apk",
+      "local_path": "artifacts/SSM_5.5.14.2624_patched.apk",
+      "sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a",
+      "size_bytes": 21543281,
+      "format": "apk",
+      "digest": {
+        "sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a"
+      }
     }
   ],
   "captures": [],
@@ -1254,41 +1274,151 @@
         "local_path": "/Users/jihyun.son/dev/rea/ssm/artifacts/SSM_5.5.14.2624_patched.apk",
         "name": "SSM_5.5.14.2624_patched.apk"
       }
+    },
+    {
+      "evidence_id": "ev_ca222820b55cf1b201d7802282ad439df2b0db432c6b2b157c98997c6f37b324",
+      "subject": {
+        "name": "SSM_5.5.14.2624_patched.apk",
+        "digest": {
+          "sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a"
+        },
+        "local_path": "artifacts/SSM_5.5.14.2624_patched.apk",
+        "format": "apk",
+        "architecture": null
+      },
+      "operation": "inspect_apk_signature",
+      "normalized_result": {
+        "artifact": {
+          "path": "artifacts/SSM_5.5.14.2624_patched.apk",
+          "sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a",
+          "bytes": 21543281
+        },
+        "schemes": {
+          "v1": {
+            "present": true,
+            "signers": 1
+          },
+          "v2": {
+            "present": true,
+            "signers": 1
+          },
+          "v3": {
+            "present": false,
+            "signers": 0
+          },
+          "v3.1": {
+            "present": false,
+            "signers": 0
+          }
+        },
+        "signers": [
+          {
+            "id": "apk:4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a:v1:signer:0",
+            "scheme": "v1",
+            "index": 0,
+            "certificate_sha256": "8aac3faf7b0727fa49462b3811ce70650316338b6dbcc31f9192530eac98fa20"
+          },
+          {
+            "id": "apk:4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a:v2:signer:0",
+            "scheme": "v2",
+            "index": 0,
+            "certificate_sha256": "8aac3faf7b0727fa49462b3811ce70650316338b6dbcc31f9192530eac98fa20"
+          }
+        ],
+        "posture": {
+          "v1_only": false,
+          "schemes_agree_on_signer": true,
+          "v1_signers_match_block_signers": true,
+          "strongest_scheme": "v2",
+          "self_consistent": true
+        }
+      }
+    },
+    {
+      "evidence_id": "ev_6a1c7ca7898d5a641df4d6d0859adbad0f7d85c9fa86de9ac49cb5f178fda2e6",
+      "subject": {
+        "name": "SSM_5.5.14.2624_patched.apk",
+        "digest": {
+          "sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a"
+        },
+        "local_path": "artifacts/SSM_5.5.14.2624_patched.apk",
+        "format": "apk",
+        "architecture": null
+      },
+      "operation": "inspect_analysis_view",
+      "parent_operation": "inspect_apk_signature",
+      "parent_evidence_id": "ev_ca222820b55cf1b201d7802282ad439df2b0db432c6b2b157c98997c6f37b324",
+      "view_digest": "1c3cde27dacc88c28e680845ca5907510c90f4a6e3f19554fa7187d4c74b1866",
+      "summary": {
+        "artifact": {
+          "path": "artifacts/SSM_5.5.14.2624_patched.apk",
+          "sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a",
+          "bytes": 21543281
+        },
+        "schemes": {
+          "v1": {
+            "present": true,
+            "signers": 1
+          },
+          "v2": {
+            "present": true,
+            "signers": 1
+          },
+          "v3": {
+            "present": false,
+            "signers": 0
+          },
+          "v3.1": {
+            "present": false,
+            "signers": 0
+          }
+        },
+        "signers": [
+          {
+            "id": "apk:4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a:v1:signer:0",
+            "scheme": "v1",
+            "index": 0,
+            "certificate_sha256": "8aac3faf7b0727fa49462b3811ce70650316338b6dbcc31f9192530eac98fa20"
+          },
+          {
+            "id": "apk:4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a:v2:signer:0",
+            "scheme": "v2",
+            "index": 0,
+            "certificate_sha256": "8aac3faf7b0727fa49462b3811ce70650316338b6dbcc31f9192530eac98fa20"
+          }
+        ],
+        "posture": {
+          "v1_only": false,
+          "schemes_agree_on_signer": true,
+          "v1_signers_match_block_signers": true,
+          "strongest_scheme": "v2",
+          "self_consistent": true
+        }
+      }
     }
   ],
   "scenarios": [],
   "unknowns": [],
   "canonical_artifacts": {
     "original_apk_sha256": "0cc941a338fa577d18add15e1d89e9c6e9971acded2f1722bff7e6b457dc79a1",
-    "patched_apk_sha256": "2385c5adfdefe8bce114e7f140a50fad4458894085714e12d74198fc87b30d6b",
+    "patched_apk_sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a",
     "android14_art_dex2oat64_verify": {
       "device": "emulator-5554 (Android 14 / API 34, arm64-v8a)",
       "command": "/apex/com.android.art/bin/dex2oat64 --compiler-filter=verify --instruction-set=arm64",
       "returncode": 0,
       "verification_errors": 0
-    }
+    },
+    "patched_apk_bytes": 21543281,
+    "source_apk_sha256": "0cc941a338fa577d18add15e1d89e9c6e9971acded2f1722bff7e6b457dc79a1"
   },
   "rea_apk_signature_inspection": {
-    "evidence_id": "ev_45f47c75e8c37cdcc97730b2f64434e66eecd9ed13197a67cc75ffdfeada4007",
-    "parent_evidence_id": "ev_8cf85d9bde1ea441ec97855e7717e493dce42eb948efb67623a3dad37d938e98",
-    "sha256": "2385c5adfdefe8bce114e7f140a50fad4458894085714e12d74198fc87b30d6b",
-    "schemes": {
-      "v1": true,
-      "v2": true,
-      "v3": false
-    },
-    "self_consistent": true,
-    "schemes_agree_on_signer": true,
-    "re_release_signer_cert_sha256": "8aac3faf7b0727fa49462b3811ce70650316338b6dbcc31f9192530eac98fa20"
-  },
-  "patched_apk_signature_inspection": {
     "evidence_id": "ev_6a1c7ca7898d5a641df4d6d0859adbad0f7d85c9fa86de9ac49cb5f178fda2e6",
     "subject": {
       "name": "SSM_5.5.14.2624_patched.apk",
       "digest": {
         "sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a"
       },
-      "local_path": "/Users/jihyun.son/dev/rea/ssm/artifacts/SSM_5.5.14.2624_patched.apk",
+      "local_path": "artifacts/SSM_5.5.14.2624_patched.apk",
       "format": "apk",
       "architecture": null
     },
@@ -1298,7 +1428,69 @@
     "view_digest": "1c3cde27dacc88c28e680845ca5907510c90f4a6e3f19554fa7187d4c74b1866",
     "summary": {
       "artifact": {
-        "path": "/Users/jihyun.son/dev/rea/ssm/artifacts/SSM_5.5.14.2624_patched.apk",
+        "path": "artifacts/SSM_5.5.14.2624_patched.apk",
+        "sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a",
+        "bytes": 21543281
+      },
+      "schemes": {
+        "v1": {
+          "present": true,
+          "signers": 1
+        },
+        "v2": {
+          "present": true,
+          "signers": 1
+        },
+        "v3": {
+          "present": false,
+          "signers": 0
+        },
+        "v3.1": {
+          "present": false,
+          "signers": 0
+        }
+      },
+      "signers": [
+        {
+          "id": "apk:4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a:v1:signer:0",
+          "scheme": "v1",
+          "index": 0,
+          "certificate_sha256": "8aac3faf7b0727fa49462b3811ce70650316338b6dbcc31f9192530eac98fa20"
+        },
+        {
+          "id": "apk:4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a:v2:signer:0",
+          "scheme": "v2",
+          "index": 0,
+          "certificate_sha256": "8aac3faf7b0727fa49462b3811ce70650316338b6dbcc31f9192530eac98fa20"
+        }
+      ],
+      "posture": {
+        "v1_only": false,
+        "schemes_agree_on_signer": true,
+        "v1_signers_match_block_signers": true,
+        "strongest_scheme": "v2",
+        "self_consistent": true
+      }
+    }
+  },
+  "patched_apk_signature_inspection": {
+    "evidence_id": "ev_6a1c7ca7898d5a641df4d6d0859adbad0f7d85c9fa86de9ac49cb5f178fda2e6",
+    "subject": {
+      "name": "SSM_5.5.14.2624_patched.apk",
+      "digest": {
+        "sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a"
+      },
+      "local_path": "artifacts/SSM_5.5.14.2624_patched.apk",
+      "format": "apk",
+      "architecture": null
+    },
+    "operation": "inspect_analysis_view",
+    "parent_operation": "inspect_apk_signature",
+    "parent_evidence_id": "ev_ca222820b55cf1b201d7802282ad439df2b0db432c6b2b157c98997c6f37b324",
+    "view_digest": "1c3cde27dacc88c28e680845ca5907510c90f4a6e3f19554fa7187d4c74b1866",
+    "summary": {
+      "artifact": {
+        "path": "artifacts/SSM_5.5.14.2624_patched.apk",
         "sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a",
         "bytes": 21543281
       },
@@ -1345,6 +1537,8 @@
   },
   "android14_dex2oat64_verification": [
     {
+      "source_patched_apk": "artifacts/SSM_5.5.14.2624_patched.apk",
+      "source_patched_apk_sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a",
       "dex": "classes.dex",
       "sha256": "188ac49ff6094c2334c80d064d284e3ef159355e9c6de15e8c512f9579666688",
       "size_bytes": 8440020,
@@ -1354,6 +1548,8 @@
       "verified": true
     },
     {
+      "source_patched_apk": "artifacts/SSM_5.5.14.2624_patched.apk",
+      "source_patched_apk_sha256": "4a763863032f8efe9c39a152e85fee5febc4ff994bf94b8ea16678f4944a6d1a",
       "dex": "classes2.dex",
       "sha256": "2f346f81a0d4466b51cd4d77411f7a351f374f711c69abc8f8d0dbb38a6dcd70",
       "size_bytes": 3790060,

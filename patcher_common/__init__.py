@@ -24,11 +24,13 @@ def require(cond, msg: object = 'Validation failed'):
 
 def dump_analysis_json(obj):
     text = json.dumps(obj, ensure_ascii=False, indent=2) + '\n'
-    return re.sub(
+    compact = re.sub(
         r'\{\n\s+"(?:byte_offset|dex|offset|start_cu|type)":([^\{\}]+?)\n\s+\}',
-        lambda m: '{' + re.sub(r'\s+', ' ', m.group(0)[1:-1]).strip() + '}',
+        lambda m: '{' + re.sub(r'\n\s*', ' ', m.group(0)[1:-1]).strip() + '}',
         text,
     )
+    require(json.loads(compact) == obj, 'JSON serialization round-trip mismatch')
+    return compact
 
 
 def extract_apk_cert_sha1(apk_path):
