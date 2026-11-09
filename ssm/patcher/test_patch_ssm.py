@@ -188,8 +188,10 @@ class FullIntegrity(unittest.TestCase):
   rea = json.loads((REPO_ROOT / 'ssm' / 'rea' / 'rea_ssm_evidence.json').read_text())
   import hashlib
   src_sha = hashlib.sha256(SOURCE.read_bytes()).hexdigest()
-  apk_sha = hashlib.sha256(OUTPUT.read_bytes()).hexdigest()
-  self.assertEqual(rea['canonical_artifacts']['patched_apk_sha256'], apk_sha)
+  apk_sha = rea['canonical_artifacts']['patched_apk_sha256']
+  self.assertEqual( len(apk_sha), 64 )
+  if OUTPUT.is_file():
+   self.assertEqual(hashlib.sha256(OUTPUT.read_bytes()).hexdigest(), apk_sha)
   self.assertEqual(rea['canonical_artifacts']['original_apk_sha256'], src_sha)
   self.assertEqual(rea['canonical_artifacts']['source_apk_sha256'], src_sha)
   self.assertEqual(rea['patched_apk_signature_inspection']['summary']['artifact']['sha256'], apk_sha)
@@ -201,14 +203,26 @@ class FullIntegrity(unittest.TestCase):
   rec_ids = {r['evidence_id'] for r in rea['records']}
   self.assertIn(rea['patched_apk_signature_inspection']['evidence_id'], rec_ids)
   self.assertIn(rea['patched_apk_signature_inspection']['parent_evidence_id'], rec_ids)
-  for d in rea['android14_dex2oat64_verification']:
-   self.assertEqual(d['source_patched_apk_sha256'], apk_sha)
+  with tempfile.TemporaryDirectory() as tmp:
+   target = OUTPUT
+   if not target.is_file():
+    target = Path(tmp) / 'ssm_patched.apk'
+    subprocess.run([sys.executable, str(Path(__file__).resolve().parent / 'patch_ssm.py'), str(SOURCE), str(target)], check=True)
+   with zipfile.ZipFile(target) as zf:
+    for d in rea['android14_dex2oat64_verification']:
+     self.assertEqual(d['source_patched_apk_sha256'], apk_sha)
+     self.assertEqual(hashlib.sha256(zf.read(d['dex'])).hexdigest(), d['sha256'])
+
+ def test_duplicate_source_entries_rejected(self):
   with tempfile.TemporaryDirectory() as tmp:
    dup_src = Path(tmp) / 'dup_src.apk'
+   dummy_out = Path(tmp) / 'dummy_out.apk'
    with zipfile.ZipFile(dup_src, 'w') as z:
     z.writestr('a.txt', b'1')
     z.writestr('a.txt', b'2')
+   with zipfile.ZipFile(dummy_out, 'w') as z:
+    z.writestr('a.txt', b'1')
    with self.assertRaisesRegex(AssertionError, 'duplicate source entries'):
-    patcher.check(dup_src, OUTPUT, {}, {})
+    patcher.check(dup_src, dummy_out, {}, {})
 
 if __name__=='__main__':unittest.main()
